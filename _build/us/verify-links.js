@@ -22,6 +22,8 @@ const html = [];
 
 const posix = p => p.split(path.sep).join('/');
 const SKIP = /^(https?:|\/\/|#|mailto:|tel:|sms:|data:|javascript:)/i;
+/* an href assembled inside a JS string ('…href="'+WA+msg+'"…') is not a path */
+const NOT_A_PATH = /['"`+]|\$\{|\{\{|<%/;
 const ATTR = /\b(href|src|srcset|poster)="([^"]+)"/g;
 
 const bad = [], seenOk = new Set();
@@ -37,7 +39,7 @@ for (const file of html) {
       ? m[2].split(',').map(s => s.trim().split(/\s+/)[0]).filter(Boolean)
       : [m[2]];
     for (const raw of refs) {
-      if (SKIP.test(raw)) continue;
+      if (SKIP.test(raw) || NOT_A_PATH.test(raw)) continue;
       const bare = raw.split('#')[0].split('?')[0];
       if (!bare) continue;
       checked++;

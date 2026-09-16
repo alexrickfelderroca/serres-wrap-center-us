@@ -1,0 +1,1026 @@
+/* ============================================================================
+   SERRES Wrap Center (US) - shared stylesheet for the US-only components.
+   File: assets/serres-us.css
+
+   THE "us-" CONTRACT
+   ------------------
+   This file is loaded on every page AFTER that page's inline <style>. The inline
+   style owns the inherited design system (tokens, .wrap/.btn/.display/.eyebrow/
+   .chrome-text/.gold-text/.reveal-up/.crumbs/.hstat/.tier/.cmp ...). This file
+   only ADDS the components the US spec introduces and must never restyle
+   anything the pages already ship.
+
+   Therefore:
+     1. EVERY selector in this file starts with a class prefixed "us-".
+        Element selectors (td, summary, svg) only ever appear as descendants of
+        a "us-" root, so they can never reach inherited markup.
+     2. No :root, no bare element rules, no @font-face, no resets.
+     3. Custom properties are all named "--us-*" and are declared on the
+        component roots listed in the "tokens" block below, so they inherit
+        down into each component and nowhere else.
+     4. Colour, spacing and motion come from the INHERITED tokens by name with a
+        literal fallback: var(--panel,#141417). Nothing is invented.
+     5. No dollar amount, phone number, address, e-mail or hour is ever authored
+        here - this file styles the boxes, assets/pricing.js and
+        assets/business.js fill them.
+
+   HELPER CLASSES CREATED HERE (all prefixed, all documented):
+     .us-tier-head      modifier on .us-tier-row  -> the tier table header row
+     .us-field-wide     modifier on .us-field     -> field spans the full form
+     .us-sticky-pad     put on the last block before <footer> on pages that
+                        render .us-sticky-bar, so the bar cannot cover content
+     .us-price-popular  works BOTH as a badge element inside a card AND as a
+                        modifier on .us-price-card / .us-pkg-card
+     .us-compare-col    cell class marking the emphasised column (like .col-pop)
+     .us-ctaband-actions  the button row inside .us-ctaband
+     .us-lander-k / .us-lander-v  key + value when .us-lander-facts is not a <dl>
+
+   MARKUP-AGNOSTIC TABLES
+   ----------------------
+   .us-tier-table, .us-vlt-table and .us-compare are laid out with CSS grid and
+   work whether the author writes a real <table>/<tr>/<td> or plain <div>s. Below
+   640px every one of them becomes a genuine stacked card layout - they never
+   scroll horizontally. Cells can carry data-label / data-tier and that label is
+   printed above the value on mobile only (an absent attribute prints nothing).
+
+   Contact affordances (.us-sticky-bar, cookie/consent links, the form) are gated
+   in MARKUP by the business.js *_LIVE flags; this file additionally makes an
+   empty .us-sticky-bar collapse to nothing, so a flagged-off bar cannot leave a
+   stray strip at the bottom of the viewport.
+   ========================================================================== */
+
+
+/* ---------------------------------------------------------------- tokens ---
+   Declared on every component root so they inherit into children only.        */
+.us-tier-table,.us-tier-row,.us-tier-badge,
+.us-price-grid,.us-price-card,.us-price-popular,
+.us-pkg-grid,.us-pkg-card,
+.us-trustbar,.us-ctaband,.us-terms,
+.us-form,.us-form-state,.us-form-error,
+.us-sticky-bar,.us-vlt-table,.us-nav-drop,
+.us-compare,.us-lander-facts,.us-countdown,
+.us-cookiebar,.us-note{
+  --us-display:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
+  --us-body:"DM Sans",system-ui,-apple-system,sans-serif;
+  --us-ease:var(--ease,cubic-bezier(.22,.61,.36,1));
+  --us-chrome:var(--chrome,linear-gradient(176deg,#fdfdfe 0%,#cfcfd6 32%,#8d8d97 52%,#f0f0f4 72%,#a6a6b0 100%));
+  --us-hairline:var(--chrome-line,linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 100%));
+  --us-gold:rgba(212,175,95,.62);
+  --us-gold-soft:rgba(212,175,95,.07);
+  --us-cut:18px;
+  --us-cut-sm:12px;
+  /* Stacked, never a single flat shadow. drop-shadow() is used on the clipped
+     cards because a box-shadow would be cropped away by their clip-path. */
+  --us-lift:drop-shadow(0 1px 2px rgba(0,0,0,.34)) drop-shadow(0 10px 20px rgba(0,0,0,.34)) drop-shadow(0 28px 52px rgba(0,0,0,.42));
+  --us-lift-hi:drop-shadow(0 2px 3px rgba(0,0,0,.40)) drop-shadow(0 16px 30px rgba(0,0,0,.44)) drop-shadow(0 44px 80px rgba(0,0,0,.52));
+  --us-panelshadow:inset 0 1px 0 rgba(255,255,255,.05),0 2px 4px rgba(0,0,0,.30),0 12px 26px -12px rgba(0,0,0,.58),0 34px 70px -30px rgba(0,0,0,.74);
+}
+
+
+/* ==========================================================================
+   1. PPF COVERAGE TABLE  -  spec 6.2
+   4 coverage rows x 2 film tiers. Grid on desktop, stacked cards under 640px.
+   ========================================================================== */
+.us-tier-table{
+  display:block;width:100%;margin-top:40px;
+  border:1px solid var(--line,rgba(255,255,255,.09));
+  border-collapse:collapse;
+  background:linear-gradient(180deg,rgba(25,25,32,.55),rgba(20,20,23,.35));
+  font-family:var(--us-body);
+}
+.us-tier-table thead,.us-tier-table tbody,.us-tier-table tfoot{display:block;width:100%}
+.us-tier-table th,.us-tier-table td{display:block;text-align:left;padding:0}
+
+.us-tier-row{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1.5fr) minmax(0,.78fr) minmax(0,.78fr);
+  align-items:center;gap:24px;
+  padding:22px 28px;
+  border-bottom:1px solid var(--line,rgba(255,255,255,.09));
+  position:relative;
+  transition:background .2s var(--us-ease);
+}
+.us-tier-table .us-tier-row:last-child{border-bottom:0}
+.us-tier-row:hover{background:rgba(255,255,255,.025)}
+
+/* header row -------------------------------------------------------------- */
+.us-tier-head,
+.us-tier-table thead .us-tier-row{
+  padding-top:16px;padding-bottom:16px;
+  background:rgba(255,255,255,.03);
+  border-bottom:1px solid var(--line-strong,rgba(255,255,255,.16));
+}
+.us-tier-head:hover,
+.us-tier-table thead .us-tier-row:hover{background:rgba(255,255,255,.03)}
+.us-tier-head > *,
+.us-tier-table thead .us-tier-row > *{
+  font-family:var(--us-display);font-weight:600;text-transform:uppercase;
+  letter-spacing:.2em;font-size:11.5px;line-height:1.35;
+  color:var(--muted,#9a9aa3);
+  background:none;-webkit-text-fill-color:currentColor;
+}
+
+/* cells ------------------------------------------------------------------- */
+.us-tier-name{
+  font-family:var(--us-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:.03em;font-size:23px;line-height:1.04;
+  color:var(--text,#f3f3f5);
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;
+}
+.us-tier-cov{
+  color:var(--muted,#9a9aa3);font-size:14.5px;line-height:1.5;text-wrap:pretty;
+}
+.us-tier-price{
+  font-family:var(--us-display);font-weight:700;font-size:30px;line-height:1;
+  letter-spacing:.01em;
+  background:var(--us-chrome);-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  white-space:nowrap;
+}
+/* "From" / per-tier sub-label inside the price cell */
+.us-tier-price small{
+  display:block;margin-bottom:5px;
+  font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.2em;font-size:10.5px;line-height:1.2;
+  background:none;color:var(--muted,#9a9aa3);-webkit-text-fill-color:var(--muted,#9a9aa3);
+}
+/* the data-tier label is mobile-only; suppressed here so it never doubles up */
+.us-tier-price::before{content:none}
+
+.us-tier-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 11px;
+  font-family:var(--us-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:.16em;font-size:10.5px;line-height:1.5;
+  color:#0a0a0b;background:var(--us-chrome);
+  border-radius:2px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 5px rgba(0,0,0,.4),0 8px 18px -8px rgba(0,0,0,.6);
+  white-space:nowrap;
+}
+.us-tier-row:has(.us-tier-badge){
+  background:linear-gradient(90deg,rgba(255,255,255,.055),rgba(255,255,255,.02) 55%,transparent);
+}
+.us-tier-row:has(.us-tier-badge)::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.55),transparent);
+}
+
+@media (max-width:640px){
+  .us-tier-table{border:0;background:none;margin-top:28px}
+  .us-tier-table thead{display:none}
+  .us-tier-row{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px 14px;
+    padding:22px 20px 20px;
+    margin-bottom:12px;
+    border:1px solid var(--line,rgba(255,255,255,.09));
+    background:var(--panel,#141417);
+    clip-path:polygon(0 0,100% 0,100% 100%,var(--us-cut-sm) 100%,0 calc(100% - var(--us-cut-sm)));
+    filter:var(--us-lift);
+  }
+  .us-tier-table .us-tier-row:last-child{border-bottom:1px solid var(--line,rgba(255,255,255,.09))}
+  .us-tier-name{grid-column:1/-1;font-size:24px}
+  .us-tier-cov{grid-column:1/-1;font-size:14px;margin-top:-4px}
+  .us-tier-price{
+    font-size:26px;
+    padding-top:12px;
+    border-top:1px solid var(--line,rgba(255,255,255,.09));
+  }
+  .us-tier-price::before{
+    content:attr(data-tier);display:block;margin-bottom:5px;
+    font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+    letter-spacing:.2em;font-size:10px;line-height:1.2;
+    background:none;color:var(--muted,#9a9aa3);-webkit-text-fill-color:var(--muted,#9a9aa3);
+  }
+}
+
+
+/* ==========================================================================
+   2. GENERIC PRICE CARDS  -  wraps / ceramic / tint / detailing  (spec 3)
+   ========================================================================== */
+.us-price-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(272px,1fr));
+  gap:20px;
+  margin-top:40px;
+  font-family:var(--us-body);
+}
+.us-price-card{
+  position:relative;
+  display:flex;flex-direction:column;gap:14px;
+  padding:30px 28px 28px;
+  background:var(--panel,#141417);
+  border:1px solid var(--line,rgba(255,255,255,.09));
+  clip-path:polygon(0 0,100% 0,100% 100%,var(--us-cut) 100%,0 calc(100% - var(--us-cut)));
+  filter:var(--us-lift);
+  transition:transform .24s var(--us-ease),background .24s var(--us-ease),
+             border-color .24s var(--us-ease),filter .24s var(--us-ease);
+}
+.us-price-card:hover{
+  transform:translateY(-4px);
+  background:var(--panel-2,#191920);
+  border-color:var(--line-strong,rgba(255,255,255,.16));
+  filter:var(--us-lift-hi);
+}
+.us-price-card::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:var(--us-hairline);opacity:.35;
+  transition:opacity .24s var(--us-ease);
+}
+.us-price-card:hover::before{opacity:.85}
+
+.us-price-name{
+  font-family:var(--us-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:.03em;font-size:25px;line-height:1.02;
+  color:var(--text,#f3f3f5);margin:0;padding-right:104px;
+}
+.us-price-amt{
+  font-family:var(--us-display);font-weight:700;font-size:46px;line-height:.98;
+  letter-spacing:.01em;margin-top:2px;
+  background:var(--us-chrome);-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+.us-price-amt small{
+  display:block;margin-bottom:6px;
+  font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.22em;font-size:11px;line-height:1.2;
+  background:none;color:var(--muted,#9a9aa3);-webkit-text-fill-color:var(--muted,#9a9aa3);
+}
+.us-price-cov{
+  color:var(--muted,#9a9aa3);font-size:14.5px;line-height:1.55;text-wrap:pretty;margin:0;
+}
+.us-price-note{
+  margin-top:auto;padding-top:14px;
+  border-top:1px solid var(--line,rgba(255,255,255,.09));
+  color:var(--muted,#9a9aa3);font-size:13px;line-height:1.5;
+}
+
+/* badge element ----------------------------------------------------------- */
+.us-price-popular{
+  position:absolute;top:18px;right:18px;z-index:2;
+  display:inline-flex;align-items:center;
+  padding:5px 12px;border-radius:2px;
+  font-family:var(--us-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:.16em;font-size:10.5px;line-height:1.5;
+  color:#0a0a0b;background:var(--us-chrome);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 5px rgba(0,0,0,.4),0 8px 18px -8px rgba(0,0,0,.6);
+  white-space:nowrap;
+}
+/* ...and the SAME class used as a card modifier --------------------------- */
+.us-price-card.us-price-popular,
+.us-pkg-card.us-price-popular{
+  position:relative;top:auto;right:auto;z-index:auto;
+  display:flex;border-radius:0;
+  background:var(--panel-2,#191920);color:var(--text,#f3f3f5);
+  border:1px solid rgba(255,255,255,.30);
+  box-shadow:none;filter:var(--us-lift-hi);
+  font-family:var(--us-body);font-size:inherit;font-weight:400;
+  letter-spacing:normal;text-transform:none;white-space:normal;
+}
+.us-price-card.us-price-popular{padding:30px 28px 28px}
+.us-pkg-card.us-price-popular{padding:32px 30px 30px}
+
+
+/* ==========================================================================
+   3. PACKAGES  -  spec 3 (PACKAGES)
+   Deliberately NOT a uniform 3-column grid: the featured package spans the
+   full width on tablet and gets a wider, taller column on desktop.
+   ========================================================================== */
+.us-pkg-grid{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:40px;
+  font-family:var(--us-body);
+}
+.us-pkg-card{
+  position:relative;
+  display:flex;flex-direction:column;gap:16px;
+  padding:32px 30px 30px;
+  background:var(--panel,#141417);
+  border:1px solid var(--line,rgba(255,255,255,.09));
+  clip-path:polygon(0 0,100% 0,100% 100%,var(--us-cut) 100%,0 calc(100% - var(--us-cut)));
+  filter:var(--us-lift);
+  transition:transform .24s var(--us-ease),background .24s var(--us-ease),
+             border-color .24s var(--us-ease),filter .24s var(--us-ease);
+}
+.us-pkg-card:hover{
+  transform:translateY(-4px);background:var(--panel-2,#191920);
+  border-color:var(--line-strong,rgba(255,255,255,.16));filter:var(--us-lift-hi);
+}
+.us-pkg-card::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:var(--us-hairline);opacity:.3;
+}
+.us-pkg-name{
+  font-family:var(--us-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:.03em;font-size:29px;line-height:1;color:var(--text,#f3f3f5);margin:0;
+}
+.us-pkg-incl{
+  margin:0;padding:0;list-style:none;
+  display:flex;flex-direction:column;gap:9px;
+  color:var(--muted,#9a9aa3);font-size:14.5px;line-height:1.5;text-wrap:pretty;
+}
+.us-pkg-incl li{display:flex;align-items:flex-start;gap:10px}
+.us-pkg-incl li::before{
+  content:"";flex:none;width:7px;height:7px;margin-top:8px;
+  background:var(--us-chrome);
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+}
+.us-pkg-incl p{margin:0}
+.us-pkg-price{
+  margin-top:auto;padding-top:18px;
+  border-top:1px solid var(--line,rgba(255,255,255,.09));
+  font-family:var(--us-display);font-weight:700;font-size:46px;line-height:.98;
+  letter-spacing:.01em;
+  background:var(--us-chrome);-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+.us-pkg-price small{
+  display:block;margin-bottom:6px;
+  font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.22em;font-size:11px;line-height:1.2;
+  background:none;color:var(--muted,#9a9aa3);-webkit-text-fill-color:var(--muted,#9a9aa3);
+}
+
+@media (min-width:700px){
+  .us-pkg-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* the featured one becomes a full-width banner rather than a third column */
+  .us-pkg-grid > .us-price-popular{grid-column:1/-1}
+}
+@media (min-width:1040px){
+  /* asymmetric rhythm - the middle column is wider and deeper than its neighbours */
+  .us-pkg-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);align-items:stretch}
+  .us-pkg-grid > .us-price-popular{grid-column:auto}
+  .us-pkg-grid > :nth-child(2){padding-top:42px;padding-bottom:38px}
+  .us-pkg-grid > :nth-child(2) .us-pkg-name{font-size:34px}
+  .us-pkg-grid > :nth-child(2) .us-pkg-price{font-size:54px}
+}
+
+
+/* ==========================================================================
+   4. TRUST BAR  -  3M / NAR / 1-yr warranty / Barcelona-proven  (spec 5.3)
+   ========================================================================== */
+.us-trustbar{
+  display:flex;flex-wrap:wrap;align-items:stretch;
+  margin-top:36px;
+  border-top:1px solid var(--line,rgba(255,255,255,.09));
+  border-bottom:1px solid var(--line,rgba(255,255,255,.09));
+  background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));
+  font-family:var(--us-body);
+}
+.us-trust-item{
+  position:relative;flex:1 1 200px;min-width:0;
+  display:flex;flex-direction:column;gap:5px;justify-content:center;
+  padding:20px 26px;min-height:80px;
+}
+.us-trust-item + .us-trust-item::before{
+  content:"";position:absolute;left:0;top:18px;bottom:18px;width:1px;
+  background:linear-gradient(180deg,transparent,var(--line-strong,rgba(255,255,255,.16)),transparent);
+}
+.us-trust-item strong{
+  font-family:var(--us-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;font-size:19px;line-height:1.05;color:var(--text,#f3f3f5);
+}
+.us-trust-item span{
+  font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.2em;font-size:11px;line-height:1.35;color:var(--muted,#9a9aa3);
+}
+.us-trust-item svg{width:20px;height:20px;flex:none;color:var(--muted,#9a9aa3)}
+@media (max-width:760px){
+  .us-trust-item{flex:1 1 44%;padding:16px 18px;min-height:74px}
+  /* 2 x 2: vertical rule between the pair, horizontal rule between the rows */
+  .us-trust-item + .us-trust-item::before{left:0;top:16px;bottom:16px;width:1px;height:auto;
+    background:linear-gradient(180deg,transparent,var(--line-strong,rgba(255,255,255,.16)),transparent)}
+  .us-trust-item:nth-child(n+3)::before{left:0;right:0;top:0;bottom:auto;width:auto;height:1px;
+    background:linear-gradient(90deg,transparent,var(--line,rgba(255,255,255,.09)) 30%,var(--line,rgba(255,255,255,.09)) 70%,transparent)}
+  .us-trust-item:nth-child(even)::before{left:0;right:auto;top:16px;bottom:16px;width:1px;height:auto;
+    background:linear-gradient(180deg,transparent,var(--line-strong,rgba(255,255,255,.16)),transparent)}
+}
+@media (max-width:420px){
+  .us-trust-item{flex:1 1 100%}
+  .us-trust-item + .us-trust-item::before{left:0;right:0;top:0;bottom:auto;width:auto;height:1px;
+    background:linear-gradient(90deg,transparent,var(--line,rgba(255,255,255,.09)) 30%,var(--line,rgba(255,255,255,.09)) 70%,transparent)}
+}
+
+
+/* ==========================================================================
+   5. CTA BAND  -  full-width strip before the footer  (spec 5.3 CtaBand)
+   No hard colour cut: a 6-stop vertical blend plus hairlines that fade out at
+   both ends, so the band melts into the page instead of butting against it.
+   ========================================================================== */
+.us-ctaband{
+  position:relative;
+  margin-top:96px;
+  padding:104px 0 108px;
+  text-align:center;
+  font-family:var(--us-body);
+  background:
+    radial-gradient(120% 92% at 50% 0%,rgba(62,66,84,.20),transparent 64%),
+    linear-gradient(180deg,
+      var(--bg,#0a0a0b) 0%,
+      rgba(12,12,14,.72) 12%,
+      var(--bg-2,#0e0e10) 34%,
+      var(--bg-2,#0e0e10) 66%,
+      rgba(12,12,14,.72) 88%,
+      var(--bg,#0a0a0b) 100%);
+}
+.us-ctaband::before,.us-ctaband::after{
+  content:"";position:absolute;left:0;right:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--line-strong,rgba(255,255,255,.16)) 22%,
+             var(--line-strong,rgba(255,255,255,.16)) 78%,transparent);
+  opacity:.7;
+}
+.us-ctaband::before{top:0}
+.us-ctaband::after{bottom:0}
+.us-ctaband h2{
+  font-family:var(--us-display);font-weight:700;text-transform:uppercase;
+  line-height:.94;letter-spacing:.012em;
+  font-size:clamp(36px,6vw,78px);margin:20px auto 0;max-width:16ch;text-wrap:balance;
+}
+.us-ctaband p{
+  margin:22px auto 0;max-width:54ch;color:var(--muted,#9a9aa3);
+  font-size:clamp(15px,1.4vw,17px);line-height:1.6;text-wrap:pretty;
+}
+.us-ctaband-actions{
+  margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+}
+@media (max-width:760px){
+  .us-ctaband{margin-top:64px;padding:76px 0 80px}
+  .us-ctaband-actions{margin-top:28px}
+}
+
+
+/* ==========================================================================
+   6. TERMS SMALL PRINT  -  spec 3 TERMS, shown under every price block
+   ========================================================================== */
+.us-terms{
+  margin-top:34px;padding:18px 0 0;
+  border-top:1px solid var(--line,rgba(255,255,255,.09));
+  display:flex;flex-wrap:wrap;gap:8px 28px;
+  list-style:none;
+  font-family:var(--us-body);font-size:13px;line-height:1.55;
+  color:var(--muted,#9a9aa3);
+}
+.us-terms li,.us-terms p{position:relative;margin:0;max-width:62ch;min-width:0}
+.us-terms li::before{
+  content:"";display:inline-block;width:5px;height:5px;margin-right:10px;
+  vertical-align:middle;
+  background:var(--line-strong,rgba(255,255,255,.16));
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+}
+.us-terms strong{color:var(--text,#f3f3f5);font-weight:500}
+
+
+/* ==========================================================================
+   7. QUOTE FORM  -  spec 7.1
+   ========================================================================== */
+.us-form{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:18px;
+  margin-top:36px;
+  font-family:var(--us-body);
+}
+.us-field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.us-field-wide{grid-column:1/-1}
+
+.us-label{
+  font-family:var(--us-display);font-weight:600;text-transform:uppercase;
+  letter-spacing:.2em;font-size:11.5px;line-height:1.3;
+  color:var(--muted,#9a9aa3);
+}
+.us-label em{font-style:normal;letter-spacing:.12em;opacity:.8}
+
+.us-input,.us-select,.us-textarea{
+  width:100%;min-height:52px;
+  padding:14px 16px;
+  font-family:var(--us-body);font-size:16px;line-height:1.5;
+  color:var(--text,#f3f3f5);
+  background:rgba(255,255,255,.035);
+  border:1px solid var(--line-strong,rgba(255,255,255,.16));
+  border-radius:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),inset 0 -1px 0 rgba(0,0,0,.35);
+  transition:border-color .2s var(--us-ease),background .2s var(--us-ease),box-shadow .2s var(--us-ease);
+  -webkit-appearance:none;appearance:none;
+}
+.us-input::placeholder,.us-textarea::placeholder{color:var(--muted,#9a9aa3);opacity:.72}
+.us-input:hover,.us-select:hover,.us-textarea:hover{
+  background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.26);
+}
+.us-input:focus,.us-select:focus,.us-textarea:focus{outline:none}
+.us-input:focus-visible,.us-select:focus-visible,.us-textarea:focus-visible{
+  outline:2px solid rgba(255,255,255,.88);outline-offset:2px;
+  border-color:rgba(255,255,255,.5);
+  background:rgba(255,255,255,.07);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 0 1px rgba(255,255,255,.12),0 10px 26px -14px rgba(0,0,0,.8);
+}
+.us-input[aria-invalid="true"],.us-select[aria-invalid="true"],.us-textarea[aria-invalid="true"],
+.us-input:user-invalid,.us-textarea:user-invalid{
+  border-color:rgba(255,157,139,.62);
+  background:rgba(255,157,139,.06);
+}
+.us-textarea{min-height:132px;resize:vertical;line-height:1.6}
+
+.us-select{
+  padding-right:46px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239a9aa3' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M5 9l7 7 7-7'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 16px center;
+  background-size:16px 16px;
+}
+.us-select option{background:var(--panel,#141417);color:var(--text,#f3f3f5)}
+
+.us-form-error{
+  display:block;
+  font-family:var(--us-body);font-size:13px;line-height:1.45;
+  color:#ff9d8b;
+}
+.us-form-error:empty{display:none}
+
+.us-form-state{
+  grid-column:1/-1;
+  display:flex;align-items:flex-start;gap:16px;
+  padding:20px 22px;
+  border:1px solid var(--line-strong,rgba(255,255,255,.16));
+  background:var(--panel,#141417);
+  box-shadow:var(--us-panelshadow);
+  font-family:var(--us-body);font-size:15px;line-height:1.6;
+  color:var(--muted,#9a9aa3);
+}
+.us-form-state[hidden]{display:none}
+.us-form-state p{margin:0}
+.us-form-state p + p{margin-top:8px}
+.us-form-state strong{
+  display:block;margin-bottom:4px;
+  font-family:var(--us-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;font-size:19px;line-height:1.1;color:var(--text,#f3f3f5);
+}
+.us-form-state::before{
+  content:"";flex:none;width:3px;align-self:stretch;margin:-20px 0 -20px -22px;
+  background:linear-gradient(180deg,transparent,var(--line-strong,rgba(255,255,255,.16)),transparent);
+}
+.us-form-state[data-state="ok"]::before{
+  background:linear-gradient(180deg,transparent,rgba(212,175,95,.8),transparent);
+}
+.us-form-state[data-state="error"]::before{
+  background:linear-gradient(180deg,transparent,rgba(255,157,139,.85),transparent);
+}
+
+/* Honeypot: removed from view and from the a11y tree, but NOT display:none, so
+   it is still rendered, still focusable by a script and still submitted. */
+.us-hp{
+  position:absolute !important;
+  width:1px;height:1px;
+  padding:0;margin:-1px;border:0;
+  overflow:hidden;
+  clip:rect(0 0 0 0);clip-path:inset(50%);
+  white-space:nowrap;
+  opacity:0;pointer-events:none;
+}
+
+@media (min-width:720px){
+  .us-form{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .us-form .us-field:has(.us-textarea){grid-column:1/-1}
+}
+
+
+/* ==========================================================================
+   8. MOBILE STICKY CONTACT BAR  -  spec 4.2
+   Hidden on desktop. Collapses to nothing when the *_LIVE flags left it empty,
+   so a flagged-off bar never ships as a bare strip.
+   ========================================================================== */
+.us-sticky-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  display:flex;gap:1px;
+  padding:8px max(8px,env(safe-area-inset-right,0px)) max(8px,env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));
+  background:rgba(10,10,11,.86);
+  -webkit-backdrop-filter:blur(14px) saturate(120%);
+  backdrop-filter:blur(14px) saturate(120%);
+  border-top:1px solid var(--line-strong,rgba(255,255,255,.16));
+  box-shadow:0 -1px 0 rgba(255,255,255,.04),0 -6px 18px rgba(0,0,0,.42),0 -24px 48px rgba(0,0,0,.44);
+  font-family:var(--us-body);
+}
+.us-sticky-bar:empty{display:none}
+.us-sticky-bar[hidden]{display:none}
+
+.us-sticky-btn{
+  flex:1 1 0;min-width:0;min-height:52px;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 10px;
+  font-family:var(--us-display);font-weight:600;text-transform:uppercase;
+  letter-spacing:.14em;font-size:14px;line-height:1;
+  color:var(--text,#f3f3f5);
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line,rgba(255,255,255,.09));
+  cursor:pointer;
+  transition:background .18s var(--us-ease),color .18s var(--us-ease);
+}
+.us-sticky-btn svg{width:18px;height:18px;flex:none}
+.us-sticky-btn:hover{background:rgba(255,255,255,.1)}
+.us-sticky-btn:active{background:rgba(255,255,255,.14)}
+.us-sticky-btn:focus-visible{outline:2px solid rgba(255,255,255,.92);outline-offset:-3px}
+.us-sticky-btn[data-primary]{background:var(--us-chrome);color:#0a0a0b;border-color:transparent}
+.us-sticky-btn[data-primary]:hover{filter:brightness(1.08)}
+
+/* keeps the bar from covering the last block of the page */
+.us-sticky-pad{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+
+@media (min-width:861px){
+  .us-sticky-bar{display:none}
+  .us-sticky-pad{padding-bottom:0}
+}
+
+
+/* ==========================================================================
+   9. FLORIDA LEGAL TINT LIMITS  -  spec 6.5
+   Real <table> or plain <div>s; stacked cards under 640px, never a side-scroller.
+   ========================================================================== */
+.us-vlt-table{
+  display:block;width:100%;margin-top:32px;border-collapse:collapse;
+  border:1px solid var(--line,rgba(255,255,255,.09));
+  background:linear-gradient(180deg,rgba(25,25,32,.5),rgba(20,20,23,.3));
+  font-family:var(--us-body);
+}
+.us-vlt-table thead,.us-vlt-table tbody,.us-vlt-table tfoot{display:block;width:100%}
+.us-vlt-table tr{
+  display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);
+  gap:18px;align-items:baseline;
+  padding:16px 24px;
+  border-bottom:1px solid var(--line,rgba(255,255,255,.09));
+  transition:background .2s var(--us-ease);
+}
+.us-vlt-table th,.us-vlt-table td{display:block;text-align:left;padding:0;min-width:0}
+.us-vlt-table tbody tr:last-child{border-bottom:0}
+.us-vlt-table tbody tr:hover{background:rgba(255,255,255,.025)}
+.us-vlt-table thead tr{
+  background:rgba(255,255,255,.03);
+  border-bottom:1px solid var(--line-strong,rgba(255,255,255,.16));
+}
+.us-vlt-table thead th{
+  font-family:var(--us-display);font-weight:600;text-transform:uppercase;
+  letter-spacing:.2em;font-size:11.5px;line-height:1.35;color:var(--muted,#9a9aa3);
+}
+.us-vlt-table tbody th,.us-vlt-table tbody td:first-child{
+  color:var(--text,#f3f3f5);font-size:14.5px;line-height:1.45;font-weight:500;
+}
+.us-vlt-table td{color:var(--muted,#9a9aa3);font-size:14.5px;line-height:1.45}
+.us-vlt-table td b,.us-vlt-table td strong{
+  font-family:var(--us-display);font-weight:700;font-size:19px;letter-spacing:.01em;
+  color:var(--text,#f3f3f5);
+}
+.us-vlt-table tfoot tr{
+  grid-template-columns:minmax(0,1fr);padding-top:14px;padding-bottom:16px;border-bottom:0;
+}
+.us-vlt-table tfoot td{font-size:13px;line-height:1.55;color:var(--muted,#9a9aa3)}
+
+@media (max-width:640px){
+  .us-vlt-table{border:0;background:none}
+  .us-vlt-table thead{display:none}
+  .us-vlt-table tr{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;padding:18px 18px 16px;margin-bottom:10px;
+    border:1px solid var(--line,rgba(255,255,255,.09));
+    background:var(--panel,#141417);
+    clip-path:polygon(0 0,100% 0,100% 100%,var(--us-cut-sm) 100%,0 calc(100% - var(--us-cut-sm)));
+  }
+  .us-vlt-table tbody tr:last-child{border-bottom:1px solid var(--line,rgba(255,255,255,.09))}
+  .us-vlt-table tbody th,.us-vlt-table tbody td:first-child{
+    grid-column:1/-1;font-family:var(--us-display);font-weight:700;
+    text-transform:uppercase;letter-spacing:.04em;font-size:19px;line-height:1.05;
+  }
+  .us-vlt-table td::before{
+    content:attr(data-label);display:block;margin-bottom:4px;
+    font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+    letter-spacing:.18em;font-size:10px;line-height:1.2;color:var(--muted,#9a9aa3);
+  }
+  .us-vlt-table tbody td:first-child::before{content:none}
+  .us-vlt-table tfoot tr{grid-template-columns:minmax(0,1fr)}
+  .us-vlt-table tfoot td::before{content:none}
+}
+
+
+/* ==========================================================================
+   10. SERVICES DROPDOWN  -  spec 4.2
+   Opens on hover, on :focus-within (keyboard) and on [data-open="true"] (JS).
+   ========================================================================== */
+.us-nav-drop{position:relative;display:inline-flex;align-items:center;font-family:var(--us-body)}
+.us-nav-drop > button,.us-nav-drop > a{
+  display:inline-flex;align-items:center;gap:8px;
+  min-height:44px;padding:10px 2px;
+  font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.16em;font-size:14px;line-height:1;
+  color:var(--muted,#9a9aa3);background:none;border:0;cursor:pointer;
+  transition:color .2s var(--us-ease);
+}
+.us-nav-drop > button:hover,.us-nav-drop > a:hover,
+.us-nav-drop:focus-within > button,.us-nav-drop:focus-within > a{color:var(--text,#f3f3f5)}
+.us-nav-drop > button:focus-visible,.us-nav-drop > a:focus-visible{
+  outline:2px solid rgba(255,255,255,.92);outline-offset:4px;color:var(--text,#f3f3f5);
+}
+.us-nav-drop > button svg,.us-nav-drop > a svg{
+  width:12px;height:12px;flex:none;
+  transition:transform .2s var(--us-ease);
+}
+.us-nav-drop:hover > button svg,
+.us-nav-drop:focus-within > button svg,
+.us-nav-drop[data-open="true"] > button svg,
+.us-nav-drop > [aria-expanded="true"] svg{transform:rotate(180deg)}
+
+.us-nav-drop-panel{
+  position:absolute;top:100%;left:-18px;z-index:70;
+  min-width:250px;margin:10px 0 0;padding:8px;
+  list-style:none;
+  background:rgba(20,20,23,.97);
+  -webkit-backdrop-filter:blur(16px) saturate(120%);
+  backdrop-filter:blur(16px) saturate(120%);
+  border:1px solid var(--line-strong,rgba(255,255,255,.16));
+  box-shadow:var(--us-panelshadow);
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .2s var(--us-ease),transform .2s var(--us-ease),visibility .2s var(--us-ease);
+}
+.us-nav-drop-panel::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:var(--us-hairline);opacity:.6;
+}
+.us-nav-drop:hover .us-nav-drop-panel,
+.us-nav-drop:focus-within .us-nav-drop-panel,
+.us-nav-drop[data-open="true"] .us-nav-drop-panel,
+.us-nav-drop-panel[data-open="true"]{
+  opacity:1;visibility:visible;transform:translateY(0);
+}
+.us-nav-drop-panel li{margin:0}
+.us-nav-drop-panel a{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  min-height:44px;padding:11px 14px;
+  font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.12em;font-size:14px;line-height:1.2;
+  color:var(--muted,#9a9aa3);
+  transition:background .18s var(--us-ease),color .18s var(--us-ease);
+}
+.us-nav-drop-panel a:hover{background:rgba(255,255,255,.06);color:var(--text,#f3f3f5)}
+.us-nav-drop-panel a:focus-visible{
+  outline:2px solid rgba(255,255,255,.92);outline-offset:-2px;color:var(--text,#f3f3f5);
+}
+.us-nav-drop-panel a[aria-current="page"]{color:var(--text,#f3f3f5);background:rgba(255,255,255,.04)}
+.us-nav-drop-panel a span{
+  font-family:var(--us-body);text-transform:none;letter-spacing:0;font-size:12px;
+  color:var(--muted,#9a9aa3);opacity:.85;
+}
+
+/* inside the mobile menu the panel is just a static, always-open list */
+@media (max-width:860px){
+  .us-nav-drop{display:block;width:100%}
+  .us-nav-drop-panel{
+    position:static;min-width:0;margin:6px 0 0;padding:0 0 0 14px;
+    background:none;border:0;border-left:1px solid var(--line,rgba(255,255,255,.09));
+    box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+    opacity:1;visibility:visible;transform:none;
+  }
+  .us-nav-drop-panel::before{content:none}
+}
+
+
+/* ==========================================================================
+   11. CERAMIC vs PPF vs BOTH  -  spec 6.4
+   .us-compare-col marks the cells of the emphasised column (the .col-pop idea).
+   ========================================================================== */
+.us-compare{
+  display:block;width:100%;margin-top:36px;border-collapse:collapse;
+  border:1px solid var(--line,rgba(255,255,255,.09));
+  background:rgba(20,20,23,.5);
+  font-family:var(--us-body);
+}
+.us-compare thead,.us-compare tbody,.us-compare tfoot{display:block;width:100%}
+.us-compare tr{
+  display:grid;grid-template-columns:minmax(0,1.15fr) repeat(3,minmax(0,1fr));
+  gap:16px;align-items:center;
+  padding:14px 22px;
+  border-bottom:1px solid var(--line,rgba(255,255,255,.09));
+  transition:background .2s var(--us-ease);
+}
+.us-compare th,.us-compare td{display:block;padding:0;min-width:0;text-align:center}
+.us-compare tbody tr:last-child{border-bottom:0}
+.us-compare tbody tr:hover{background:rgba(255,255,255,.025)}
+.us-compare thead tr{
+  background:rgba(255,255,255,.03);
+  border-bottom:1px solid var(--line-strong,rgba(255,255,255,.16));
+}
+.us-compare thead th{
+  font-family:var(--us-display);font-weight:600;text-transform:uppercase;
+  letter-spacing:.14em;font-size:12.5px;line-height:1.3;color:var(--text,#f3f3f5);
+}
+.us-compare thead th:first-child,
+.us-compare tbody th,.us-compare tbody td:first-child,
+.us-compare tfoot td:first-child{
+  text-align:left;
+  font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.18em;font-size:11.5px;line-height:1.35;color:var(--muted,#9a9aa3);
+}
+.us-compare tbody td{color:var(--muted,#9a9aa3);font-size:14px;line-height:1.45}
+.us-compare tfoot tr{border-bottom:0;padding-top:16px;padding-bottom:18px}
+.us-compare tfoot td{
+  font-family:var(--us-display);font-weight:700;font-size:19px;letter-spacing:.01em;
+  background:var(--us-chrome);-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+.us-compare tfoot td:first-child{
+  background:none;color:var(--muted,#9a9aa3);-webkit-text-fill-color:var(--muted,#9a9aa3);
+}
+.us-compare svg{width:17px;height:17px;display:inline-block;vertical-align:middle}
+.us-compare .us-compare-col{background:rgba(255,255,255,.045)}
+
+.us-compare-col{
+  position:relative;
+  margin:-14px 0;padding:14px 8px;
+  color:var(--text,#f3f3f5);
+}
+
+@media (max-width:640px){
+  .us-compare{border:0;background:none;margin-top:26px}
+  .us-compare thead{display:none}
+  .us-compare tr{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;padding:18px 16px 16px;margin-bottom:10px;
+    border:1px solid var(--line,rgba(255,255,255,.09));
+    background:var(--panel,#141417);
+    clip-path:polygon(0 0,100% 0,100% 100%,var(--us-cut-sm) 100%,0 calc(100% - var(--us-cut-sm)));
+  }
+  .us-compare tbody tr:last-child{border-bottom:1px solid var(--line,rgba(255,255,255,.09))}
+  .us-compare tbody th,.us-compare tbody td:first-child,.us-compare tfoot td:first-child{
+    grid-column:1/-1;font-size:11px;
+  }
+  .us-compare tbody td,.us-compare tfoot td{text-align:left;font-size:13.5px}
+  .us-compare td::before{
+    content:attr(data-label);display:block;margin-bottom:4px;
+    font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+    letter-spacing:.14em;font-size:10px;line-height:1.2;
+    background:none;color:var(--muted,#9a9aa3);-webkit-text-fill-color:var(--muted,#9a9aa3);
+  }
+  .us-compare tbody td:first-child::before,.us-compare tfoot td:first-child::before{content:none}
+  .us-compare tfoot td{font-size:16px}
+  .us-compare tr .us-compare-col{background:none;margin:0;padding:0}
+}
+
+
+/* ==========================================================================
+   12. LOCAL LANDER FACTS  -  spec 6.11 (drive time, roads, area served ...)
+   Works as a <dl> (dt/dd) or as a <ul> with .us-lander-k / .us-lander-v.
+   ========================================================================== */
+.us-lander-facts{
+  display:block;
+  margin:32px 0 0;padding:0;
+  border-top:1px solid var(--line,rgba(255,255,255,.09));
+  font-family:var(--us-body);
+}
+.us-lander-facts > div,.us-lander-facts > li{
+  display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);
+  gap:8px 20px;align-items:baseline;
+  padding:13px 0;
+  border-bottom:1px solid var(--line,rgba(255,255,255,.09));
+  list-style:none;
+}
+.us-lander-facts dt,.us-lander-k{
+  font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.2em;font-size:11.5px;line-height:1.4;
+  color:var(--muted,#9a9aa3);margin:0;
+}
+.us-lander-facts dd,.us-lander-v{
+  margin:0;color:var(--text,#f3f3f5);font-size:15px;line-height:1.5;text-wrap:pretty;
+}
+.us-lander-facts a{
+  color:var(--text,#f3f3f5);
+  border-bottom:1px solid var(--line-strong,rgba(255,255,255,.16));
+  transition:border-color .2s var(--us-ease);
+}
+.us-lander-facts a:hover{border-color:#fff}
+.us-lander-facts a:focus-visible{outline:2px solid rgba(255,255,255,.92);outline-offset:3px}
+@media (max-width:560px){
+  .us-lander-facts > div,.us-lander-facts > li{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+
+
+/* ==========================================================================
+   13. COUNTDOWN / OPENING BADGE  -  spec 5.3 (date comes from business.js)
+   ========================================================================== */
+.us-countdown{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:9px 16px 9px 14px;
+  background:linear-gradient(135deg,rgba(25,25,32,.95),rgba(20,20,23,.85));
+  border:1px solid var(--line-strong,rgba(255,255,255,.16));
+  clip-path:polygon(0 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 2px 5px rgba(0,0,0,.35),0 14px 30px -14px rgba(0,0,0,.7);
+  font-family:var(--us-display);font-weight:500;text-transform:uppercase;
+  letter-spacing:.2em;font-size:12px;line-height:1.3;
+  color:var(--muted,#9a9aa3);
+  white-space:nowrap;
+}
+.us-countdown::before{
+  content:"";flex:none;width:7px;height:7px;border-radius:50%;
+  background:rgba(212,175,95,.95);
+  box-shadow:0 0 0 0 rgba(212,175,95,.45);
+  animation:us-pulse 2.6s var(--us-ease) infinite;
+}
+@keyframes us-pulse{
+  0%{box-shadow:0 0 0 0 rgba(212,175,95,.45)}
+  70%{box-shadow:0 0 0 9px rgba(212,175,95,0)}
+  100%{box-shadow:0 0 0 0 rgba(212,175,95,0)}
+}
+.us-countdown b,.us-countdown strong,.us-countdown time{
+  font-family:var(--us-display);font-weight:700;font-size:17px;letter-spacing:.06em;
+  color:var(--text,#f3f3f5);
+}
+
+
+/* ==========================================================================
+   14. COOKIE NOTICE  -  spec 9 (dismissible, non-blocking)
+   ========================================================================== */
+.us-cookiebar{
+  position:fixed;left:0;right:0;bottom:0;z-index:80;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  padding:16px 22px max(16px,env(safe-area-inset-bottom,0px));
+  background:rgba(14,14,16,.96);
+  -webkit-backdrop-filter:blur(14px) saturate(120%);
+  backdrop-filter:blur(14px) saturate(120%);
+  border-top:1px solid var(--line-strong,rgba(255,255,255,.16));
+  box-shadow:0 -1px 0 rgba(255,255,255,.04),0 -8px 22px rgba(0,0,0,.45),0 -30px 60px rgba(0,0,0,.5);
+  font-family:var(--us-body);font-size:14px;line-height:1.55;
+  color:var(--muted,#9a9aa3);
+}
+.us-cookiebar[hidden]{display:none}
+.us-cookiebar p{margin:0;flex:1 1 320px;min-width:0;max-width:78ch}
+.us-cookiebar a{
+  color:var(--text,#f3f3f5);
+  border-bottom:1px solid var(--line-strong,rgba(255,255,255,.16));
+  transition:border-color .2s var(--us-ease);
+}
+.us-cookiebar a:hover{border-color:#fff}
+.us-cookiebar a:focus-visible{outline:2px solid rgba(255,255,255,.92);outline-offset:3px}
+.us-cookiebar button{
+  flex:none;min-height:44px;padding:11px 22px;
+  font-family:var(--us-display);font-weight:600;text-transform:uppercase;
+  letter-spacing:.14em;font-size:13px;line-height:1;
+  color:#0a0a0b;background:var(--us-chrome);border:0;cursor:pointer;
+  clip-path:polygon(0 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px));
+  transition:filter .2s var(--us-ease),transform .2s var(--us-ease);
+}
+.us-cookiebar button:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.us-cookiebar button:focus-visible{outline:2px solid rgba(255,255,255,.92);outline-offset:3px}
+/* when the mobile contact bar is rendered, the notice sits above it */
+.us-cookiebar[data-above-sticky]{bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+@media (min-width:861px){
+  .us-cookiebar[data-above-sticky]{bottom:0}
+}
+@media (max-width:560px){
+  .us-cookiebar{padding:16px 18px max(16px,env(safe-area-inset-bottom,0px));gap:14px}
+  .us-cookiebar button{width:100%}
+}
+
+
+/* ==========================================================================
+   15. TODO(owner) MARKER  -  content pending owner confirmation
+   Reads as a deliberate editorial note, never as a broken element.
+   ========================================================================== */
+.us-note{
+  display:block;
+  margin-top:20px;padding:14px 18px 14px 20px;
+  border:1px solid rgba(212,175,95,.22);
+  border-left:2px solid var(--us-gold);
+  background:linear-gradient(90deg,var(--us-gold-soft),rgba(212,175,95,.015) 60%,transparent);
+  font-family:var(--us-body);font-size:13.5px;line-height:1.6;
+  color:var(--muted,#9a9aa3);text-wrap:pretty;
+}
+.us-note strong,.us-note b{
+  display:inline-block;margin-right:8px;
+  font-family:var(--us-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:.18em;font-size:11px;line-height:1.5;
+  color:#e6cf9a;
+}
+.us-note a{color:#e6cf9a;border-bottom:1px solid rgba(212,175,95,.4)}
+.us-note a:hover{border-color:#e6cf9a}
+.us-note a:focus-visible{outline:2px solid rgba(255,255,255,.92);outline-offset:3px}
+.us-note p{margin:0}
+.us-note p + p{margin-top:8px}
+
+
+/* ==========================================================================
+   16. REDUCED MOTION
+   Transitions and animations off. Every element keeps its resting geometry and
+   the dropdown keeps its open/closed mechanism, so nothing shifts or breaks.
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  .us-tier-row,
+  .us-price-card,.us-price-card::before,
+  .us-pkg-card,
+  .us-input,.us-select,.us-textarea,
+  .us-sticky-btn,
+  .us-nav-drop > button,.us-nav-drop > a,
+  .us-nav-drop > button svg,.us-nav-drop > a svg,
+  .us-nav-drop-panel,.us-nav-drop-panel a,
+  .us-vlt-table tr,.us-compare tr,
+  .us-lander-facts a,
+  .us-cookiebar a,.us-cookiebar button,
+  .us-countdown,.us-countdown::before{
+    transition:none !important;
+    animation:none !important;
+  }
+  .us-price-card:hover,.us-pkg-card:hover,.us-cookiebar button:hover{transform:none}
+  .us-price-card::before{opacity:.6}
+  .us-nav-drop-panel{transform:none}
+  .us-countdown::before{box-shadow:0 0 0 3px rgba(212,175,95,.18)}
+}

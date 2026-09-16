@@ -620,7 +620,7 @@ function render(key){
         ? '<div class="t-price t-quote"><span class="t-quote-val chrome-text">'+T('On request')+'</span><span class="t-quote-note">'+T('Message us to calculate your price')+'</span></div>'
         : '<div class="t-price"><span class="t-from">'+T('From')+'</span><span class="t-val chrome-text" data-price="'+t.price+'">'+fmtEur(t.price)+'</span></div>')+
       '<ul>'+feats+'</ul>'+
-      '<div class="t-cta"><a class="btn'+(t.pop?'':' ghost')+'" href="../pages/'+WA+msg+'" target="_blank" rel="noopener">'+T(s.quote?'Request a quote':'Book via WhatsApp')+' <span class="arr">→</span></a></div>'+
+      '<div class="t-cta"><a class="btn'+(t.pop?'':' ghost')+'" href="'+WA+msg+'" target="_blank" rel="noopener">'+T(s.quote?'Request a quote':'Book via WhatsApp')+' <span class="arr">→</span></a></div>'+
       '<p class="t-note">'+T(t.note)+'</p>'+
     '</article>';
   }).join('');

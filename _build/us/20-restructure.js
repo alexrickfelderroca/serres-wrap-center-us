@@ -115,6 +115,11 @@ const htmlOld = [];
 const newSiteOf = old => ROUTES[old] || HARVEST_DEST[old] || old;
 const ATTR = /\b(href|src|content)="([^"]+)"/g;
 const SKIP = /^(https?:|\/\/|#|mailto:|tel:|sms:|data:|javascript:)/i;
+/* An href written INSIDE a JavaScript string is not a path. pages/prices.html builds
+   its cards with  '…href="'+WA+msg+'"…'  and the first run happily turned that into
+   href="../pages/'+WA+msg+'". Anything carrying JS concatenation or a template
+   placeholder is left exactly as found. */
+const NOT_A_PATH = /['"`+]|\$\{|\{\{|<%/;
 
 let rewritten = 0, unresolved = [];
 const staged = new Map();   // newSitePath -> file contents
@@ -133,6 +138,7 @@ for (const file of htmlOld) {
       return m;
     }
     if (attr === 'content') return m;                     // meta content is not a link
+    if (NOT_A_PATH.test(ref)) return m;                    // href built by JS, not a path
     const hashAt = ref.indexOf('#');
     const hash = hashAt >= 0 ? ref.slice(hashAt) : '';
     const bare = hashAt >= 0 ? ref.slice(0, hashAt) : ref;

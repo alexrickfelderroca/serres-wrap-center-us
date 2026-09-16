@@ -367,7 +367,9 @@
       burger.setAttribute('aria-expanded', 'true');
       document.documentElement.style.overflow = 'hidden';
       rowEls.forEach(function (a, i) { a.style.transitionDelay = (0.06 + i * 0.04) + 's'; });
-      if (closeBtn) closeBtn.focus();
+      /* next frame: the overlay is visibility:hidden until the class lands, and
+         an element inside a hidden subtree cannot take focus */
+      requestAnimationFrame(function () { if (closeBtn) closeBtn.focus(); });
     }
     function close() {
       if (!menu.classList.contains('open')) return;
