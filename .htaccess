@@ -108,8 +108,32 @@ FileETag MTime Size
   # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 </IfModule>
 
-# ── 8. Keep build tooling off the web ───────────────────────────────────────
-# _build/ is Node scripts and recon notes. It is never served.
+# ── 8. Keep everything that is not the website off the web ──────────────────
+# Deployment is a Git import of the whole repo, so the build tooling and the
+# internal documents land on the server too. None of them may be reachable.
+#
+#   _build/   Node scripts and ~9k lines of recon notes
+#   .git/     full history, including every commit message
+#   *.md      CLAUDE.md, README.md, and in particular TODO.md (which lists what
+#             is unverified and that the legal pages are not lawyer-reviewed) and
+#             SERRES-US-WEBSITE-SPEC_1.md (the client's brief, deadlines and
+#             commercial strategy). Publishing those would be a real leak.
 RedirectMatch 404 ^/_build(/|$)
 RedirectMatch 404 ^/\.git(/|$)
 RedirectMatch 404 ^/\.screenshots(/|$)
+RedirectMatch 404 ^/\.github(/|$)
+
+<FilesMatch "\.(md|bak|log|sh|ps1)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^(\.gitignore|\.gitattributes|\.env.*|package.*\.json)$">
+  Require all denied
+</FilesMatch>
+
+# Apache 2.2 fallback for the same two blocks
+<IfModule !mod_authz_core.c>
+  <FilesMatch "\.(md|bak|log|sh|ps1)$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>
