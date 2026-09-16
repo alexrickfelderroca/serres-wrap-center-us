@@ -111,6 +111,15 @@ will not be indexed in its place. To attach the domain: add a `CNAME` file conta
 
 ---
 
+### Consecuencia de las eliminaciones del 2026-09-16
+
+| # | Item | Detail |
+|---|---|---|
+| 34 | **Local landers are further from the home page** | The footer "PPF near you" column was the only site-wide link to the four  landers. It was removed at your request. They are still linked from each other and from , so they are not orphans, but they are now 3 clicks from home rather than 1. Spec §8.4 asks for every page within 2 clicks. If that matters for the local SEO, the cheapest fix is a row of city links on . |
+| 35 | **"Se habla español · Говорим по-русски" removed everywhere** | Footer, mobile menu and the contact page. The string is still in  as  if you ever want it back — nothing else references it now. |
+
+---
+
 ## Note on the spec's dates
 
 The spec was written 2026-08-25 with a **Sep 15, 2026** launch deadline and an Aug 27 –

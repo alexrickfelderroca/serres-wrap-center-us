@@ -310,10 +310,11 @@ function insertMarkers(src, page) {
     src = src.replace(RE_FOOTER, emptyRegion('footer'));
   }
 
-  /* --- trust bar: straight under the header ---------------------------- */
-  if (!hasRegion(src, 'trustbar')) {
-    src = src.replace(close('header'), close('header') + '\n\n' + emptyRegion('trustbar'));
-  }
+  /* --- trust bar: REMOVED at the owner's request (2026-09-16) -----------
+     The 3M / NAR / 1-year / Barcelona-proven strip used to be auto-inserted under the
+     header on every page. It no longer is, and any existing region is stripped below.
+     To bring it back: restore this insert and the renderer in regionHtml(). */
+  src = src.replace(/[ \t]*<!-- REGION:trustbar -->[\s\S]*?<!-- \/REGION:trustbar -->\r?\n?/g, '');
 
   /* --- CTA band: straight above the footer ----------------------------- */
   if (!hasRegion(src, 'ctaband')) {

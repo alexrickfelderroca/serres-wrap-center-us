@@ -10,7 +10,9 @@
     <div class="us-footer__brand">
       <a href="{{rel:}}" class="logo" aria-label="SERRES Wrap Center — home"><img src="{{rel:assets/serres-logo.png}}" alt="SERRES" width="600" height="55"></a>
       <p class="us-footer__tagline">Paint protection film, wraps, ceramic coating and detailing for South Florida.</p>
-      <p class="us-footer__langs">{{business:languages}}</p>
+      {{!-- languages line ("Se habla espanol / Govorim po-russki") removed at the
+            owner's request 2026-09-16. business.languages is still in business.js if
+            it is ever wanted back. --}}
     </div>
     <div class="us-footer__cols">
       <div class="us-footer__col">
@@ -24,17 +26,10 @@
           <a class="us-footer__link" href="{{rel:our-films/}}">Our Films</a>
         </div>
       </div>
-      <div class="us-footer__col">
-        <h2 class="us-footer__col-title">PPF near you</h2>
-        <div class="us-footer__links">
-          <a class="us-footer__link" href="{{rel:ppf-boca-raton/}}">PPF Boca Raton</a>
-          <a class="us-footer__link" href="{{rel:ppf-fort-lauderdale/}}">PPF Fort Lauderdale</a>
-          <a class="us-footer__link" href="{{rel:ppf-pompano-beach/}}">PPF Pompano Beach</a>
-          <a class="us-footer__link" href="{{rel:ppf-delray-beach/}}">PPF Delray Beach</a>
-          <a class="us-footer__link" href="{{rel:pricing/}}">Prices</a>
-          <a class="us-footer__link" href="{{rel:gallery/}}">Gallery</a>
-        </div>
-      </div>
+      {{!-- "PPF near you" column removed at the owner's request 2026-09-16.
+            NOTE: this was the only site-wide link to the four local landers. They are
+            still linked from each other and from /paint-protection-film, but they are
+            now further than 2 clicks from the home page — see TODO.md. --}}
       <div class="us-footer__col">
         <h2 class="us-footer__col-title">Studio</h2>
         <address class="us-footer__nap">

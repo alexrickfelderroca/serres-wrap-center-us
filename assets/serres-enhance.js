@@ -374,7 +374,7 @@
     if (telHref && B.phoneDisplay) {
       napBits.push('<a href="' + esc(telHref) + '" data-us-track="phone_click">' + esc(B.phoneDisplay) + '</a>');
     }
-    if (B.languages) napBits.push(esc(B.languages));
+    /* languages line removed at the owner request 2026-09-16 (was: Se habla espanol / Govorim po-russki) */
 
     menu.innerHTML =
       '<div class="srs-menu-bar">' +
