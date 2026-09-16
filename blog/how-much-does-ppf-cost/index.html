@@ -153,7 +153,9 @@
 
 
 
-<link rel="stylesheet" href="../../assets/serres-logo.css">
+<!-- TODO(owner): GA4. assets/business.js ga4Id is null, so ANALYTICS_LIVE is false and no
+     analytics snippet ships. The parent studio property id must never be reused here (business.js).
+     Insert the US GA4 snippet at this point once the property exists. -->
 <!-- data-us-assets -->
 <link rel="stylesheet" href="../../assets/serres-us.css">
 <script src="../../assets/business.js" defer></script>
@@ -224,7 +226,7 @@
 </section>
 <!-- /REGION:trustbar -->
 
-<!-- ===================== MIGAS DE PAN ===================== -->
+<!-- ===================== BREADCRUMB ===================== -->
 <nav class="crumbs" aria-label="Breadcrumb">
   <div class="wrap">
     <ol>
@@ -235,247 +237,294 @@
   </div>
 </nav>
 
-<!-- ===================== CABECERA ===================== -->
+<!-- ===================== HERO ===================== -->
 <main>
-<section class="post-hero">
+<section class="post-hero" data-i18n-skip>
   <div class="wrap">
     <span class="eyebrow">Blog · PPF</span>
-    <h1 class="display">¿Cuánto cuesta el <span class="chrome-text">PPF</span> para tu coche?</h1>
+    <h1 class="display">How much does <span class="chrome-text">PPF</span> cost for your car?</h1>
 
     <div class="post-meta" data-i18n-skip>
       <span class="author">
         <span class="avatar" aria-hidden="true">S</span>
-        <span>Por <b>Equipo SERRES</b></span>
+        <span>By <b>SERRES Team</b></span>
       </span>
-      <span>Publicado: <time datetime="2026-07-09">9 de julio de 2026</time></span>
-      <span>Actualizado: <time datetime="2026-07-09">9 de julio de 2026</time></span>
-      <span>Lectura: 8 min</span>
+      <span>Published: <time datetime="2026-09-02">September 2, 2026</time></span>
+      <span>Updated: <time datetime="2026-09-02">September 2, 2026</time></span>
+      <span>8 min read</span>
     </div>
 
+    <!-- TODO(build): the cover and og images still live in assets/blog/how-much-does-ppf-cost/.
+         That folder has to be renamed to assets/blog/how-much-does-ppf-cost/ (same rename the
+         other three articles and blog/index.html need) or this image 404s. -->
     <figure class="post-cover">
-      <img src="../../assets/blog/cuanto-cuesta-ppf-coche/cover.webp" width="1600" height="900"
+      <img src="../../assets/blog/how-much-does-ppf-cost/cover.webp" width="1600" height="900"
            fetchpriority="high"
-           alt="BMW M2 in frozen gray, front three-quarter view, parked on a quiet asphalt road with cypress trees behind it">
+           alt="Paint protection film being applied to the front end of a car at the SERRES Wrap Center studio in Boca Raton, Florida">
     </figure>
   </div>
 </section>
 
-<!-- ===================== TOC + CONTENIDO ===================== -->
+<!-- ===================== TOC + CONTENT ===================== -->
 <div class="wrap post-layout">
 
-  <aside class="toc" aria-label="Tabla de contenidos">
+  <aside class="toc" aria-label="Table of contents" data-i18n-skip>
     <h2>Contents</h2>
     <ol>
-      <li><a href="#que-es-ppf">Qué es el PPF y por qué varía</a></li>
-      <li><a href="#precio-tipo-cobertura">Precio por tipo de cobertura</a></li>
-      <li><a href="#ppf-frontal-precio">PPF frontal: precio</a></li>
-      <li><a href="#ppf-completo-precio">PPF coche completo</a></li>
-      <li><a href="#material-preparacion">Material y preparación</a></li>
-      <li><a href="#vale-pena-ppf">¿Vale la pena? Haz números</a></li>
-      <li><a href="#comparar-presupuestos">Cómo comparar presupuestos</a></li>
+      <li><a href="#what-is-ppf">What PPF is and why the price varies</a></li>
+      <li><a href="#price-by-coverage">PPF cost by coverage: four levels, two tiers</a></li>
+      <li><a href="#front-end-ppf">Partial Front vs Full Front</a></li>
+      <li><a href="#full-body-ppf">Track Pack and Full Body</a></li>
+      <li><a href="#film-and-prep">Essential or Signature: film and prep</a></li>
+      <li><a href="#is-ppf-worth-it">Is it worth it? Run the numbers</a></li>
+      <li><a href="#compare-quotes">How to compare quotes</a></li>
       <li><a href="#faq">Frequently asked questions</a></li>
     </ol>
   </aside>
 
   <article class="prose" data-i18n-skip>
 
-    <p>El PPF (Paint Protection Film) cuesta en España entre 600 € y 5.000 €, según la superficie
-       que cubras y la calidad del film. La horquilla habitual del mercado: un frontal parcial se
-       mueve entre 900 € y 1.700 €, un frontal completo entre 1.500 € y 2.500 €, y la carrocería
-       completa entre 3.100 € y 5.000 €. En <a href="../../">SERRES Wrap Center</a>
-       (Sant Cugat del Vallès, Barcelona) trabajamos con tarifas cerradas e IVA incluido:
-       frontal 890 €, frontal completo 1.190 € y carrocería completa 2.390 €, siempre con film de
-       poliuretano autorregenerable y 3 años de garantía del fabricante. En esta guía desglosamos
-       qué incluye cada opción, qué encarece un presupuesto y cómo calcular si te compensa.</p>
+    <p>What PPF (paint protection film) costs depends on how much of the car you cover, which
+       film you put on it, the size of the vehicle and the hours of preparation. At
+       <a href="../../">SERRES Wrap Center</a> in Boca Raton, paint protection film is
+       <!--P:STARTING:ppf-->from $1,000<!--/P-->, and every coverage level is published twice: once in Essential film and
+       once in Signature film. Full Front, the level most cars leave with, costs
+       <!--P:PRICE:full-front.essential-->$1,900<!--/P--> in Essential and <!--P:PRICE:full-front.signature-->$2,150<!--/P--> in
+       Signature. This guide breaks down the four coverage levels, the two film tiers, what
+       pushes a quote up, and how to work out whether it pays off on a car that lives between
+       I-95 and the ocean.</p>
 
-    <h2 id="que-es-ppf">Qué es el PPF y por qué su precio varía tanto</h2>
-    <p>El PPF es una lámina transparente de poliuretano termoplástico (TPU) que se aplica sobre la
-       pintura. Absorbe impactos de gravilla, roces de aparcamiento, arañazos de lavado y ataques
-       químicos como resina o excrementos de pájaro. Los films de gama alta, como los que
-       instalamos, son autorregenerables: los microarañazos desaparecen con calor.</p>
-    <p>El precio varía tanto porque no existe un único «PPF». Cambian cuatro variables: la
-       superficie cubierta, la marca y gama del film, el tamaño del coche y las horas de
-       preparación. Un frontal parcial en un compacto y una carrocería completa en un SUV son
-       trabajos distintos, con materiales y plazos distintos. De ahí que un mismo servicio pueda
-       costar 900 € o 5.000 €.</p>
+    <h2 id="what-is-ppf">What PPF is and why its price varies so much</h2>
+    <p>PPF is a clear thermoplastic polyurethane (TPU) film applied over the paint. It absorbs
+       stone chips, parking scuffs and wash scratches, and it takes the chemical hits that South
+       Florida throws at a car all year: love-bug residue in May and September, bird droppings,
+       tree sap and the mineral spots left behind by sprinklers and hard water. The films we
+       install are self-healing, so micro-scratches close up with heat, and a hood parked on
+       Glades Rd in August supplies that heat every afternoon.</p>
+    <p>The price varies so much because there is no single PPF. Four variables move it: the
+       surface covered, the film tier, the size of the car and the hours of preparation. A
+       partial front end on a compact and a full body on a three-row SUV are different jobs, with
+       different material counts and different studio times. That is why two quotes for the same
+       three letters can be so far apart.</p>
 
-    <h2 id="precio-tipo-cobertura">PPF coche: precio por tipo de cobertura</h2>
-    <p>Esta es la referencia rápida. Los rangos de mercado proceden de tarifas publicadas por
-       instaladores en España en 2026; la columna SERRES corresponde a nuestros
-       <a href="../../pricing/">precios de PPF</a>, con IVA incluido.</p>
+    <h2 id="price-by-coverage">PPF cost by coverage: four levels, two film tiers</h2>
+    <p>This is the quick reference. Every level is priced in both films, so the coverage decision
+       and the film decision stay separate. The same numbers sit on our
+       <a href="../../pricing/">pricing page</a> and on the
+       <a href="../../paint-protection-film/">PPF service page</a>; every car is confirmed with an
+       exact quote once we have the make, the model and the condition of the paint.</p>
 
+    <!-- TODO(owner): the "studio time" column is inherited operational copy, not spec data.
+         Confirm the real turnaround per coverage level for the Boca Raton studio. -->
     <div class="table-scroll">
       <table>
         <thead>
-          <tr><th>Cobertura</th><th>Qué protege</th><th>Precio SERRES (IVA incl.)</th><th>Rango de mercado</th><th>Plazo orientativo</th></tr>
+          <tr><th>Coverage</th><th>What it protects</th><th>Essential</th><th>Signature</th><th>Studio time</th></tr>
         </thead>
         <tbody>
-          <tr><td>Frontal</td><td>Paragolpes, tercio delantero del capó y aletas, retrovisores</td><td>890 €</td><td>900–1.700 €</td><td>1 día</td></tr>
-          <tr><td>Frontal completo</td><td>Capó y aletas íntegros, paragolpes, faros, retrovisores y pilares A</td><td>1.190 €</td><td>1.500–2.500 €</td><td>1–2 días</td></tr>
-          <tr><td>Carrocería completa</td><td>Todos los paneles pintados del vehículo</td><td>2.390 €</td><td>3.100–5.000 €</td><td>3–4 días</td></tr>
-          <tr><td>Zonas puntuales</td><td>Faros, zócalos, marcos de puerta, borde de maletero</td><td>desde 60–150 €</td><td>60–300 €</td><td>2–4 horas</td></tr>
+          <tr><td>Partial Front</td><td>Full bumper, partial hood and fenders, mirrors</td><td><!--P:PRICE:partial-front.essential-->$1,000<!--/P--></td><td><!--P:PRICE:partial-front.signature-->$1,150<!--/P--></td><td>From 1 day</td></tr>
+          <tr><td>Full Front <em>— most popular</em></td><td>Full hood, full fenders, bumper, mirrors</td><td><!--P:PRICE:full-front.essential-->$1,900<!--/P--></td><td><!--P:PRICE:full-front.signature-->$2,150<!--/P--></td><td>From 2 days</td></tr>
+          <tr><td>Track Pack</td><td>Full front plus rocker panels, A-pillars and the leading roof edge</td><td><!--P:PRICE:track-pack.essential-->$2,600<!--/P--></td><td><!--P:PRICE:track-pack.signature-->$2,900<!--/P--></td><td>From 3 days</td></tr>
+          <tr><td>Full Body</td><td>Every painted panel, edges tucked, door cups and sills included</td><td><!--P:PRICE:full-body.essential-->$4,995<!--/P--></td><td><!--P:PRICE:full-body.signature-->$5,600<!--/P--></td><td>From 5–8 days</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p>Dos apuntes sobre la tabla. Primero: la mayoría de talleres publica precios «desde» y sin
-       IVA; pide siempre la cifra final. Segundo: en coches de gran formato (SUV grandes,
-       furgonetas camperizadas) el material extra puede sumar entre un 10% y un 20%.</p>
+    <p><small>Essential is NAR H190 PPF, a self-healing 7.5-mil TPU with a 10-year
+       film warranty. Signature is 3M Scotchgard Pro Series 200, the 3M flagship, with up to a
+       10-year 3M warranty. Both carry a 1-year SERRES installation warranty. Prices exclude FL
+       sales tax. “From” pricing is the real price for a standard sedan in good condition — no
+       bait pricing.</small></p>
 
-    <h2 id="ppf-frontal-precio">PPF frontal precio: la zona que recibe el 80% de los impactos</h2>
-    <p>Si el presupuesto es limitado, el frontal es la inversión con mejor retorno. Paragolpes,
-       capó y aletas delanteras concentran la inmensa mayoría de los picotazos de gravilla en
-       autopista. Un capó con 20.000 km de peaje lo demuestra a simple vista.</p>
-    <p>Hay dos niveles:</p>
+    <p>Two notes on the table. First: plenty of shops publish a number that leaves out the prep,
+       the disassembly or the film brand, so always ask for the final, all-in figure and the film
+       by name. Second: large-format vehicles — full-size SUVs, pickups, three-row family cars —
+       use noticeably more film and more hours, so expect the quote to move up from the level's
+       starting price.</p>
+
+    <h2 id="front-end-ppf">Partial Front vs Full Front: the zone that takes the hits first</h2>
+    <p>If the budget is limited, the front end is the investment with the best return. Bumper,
+       hood and front fenders take the vast majority of the stone chips on I-95, and in South
+       Florida they also take wind-blown grit after every storm, construction debris along the
+       Federal Highway (US-1) corridor and the acidic residue of two love-bug seasons a year. A hood
+       with a few years of commuting between Boca Raton and Fort Lauderdale shows it at a
+       glance.</p>
+    <p>There are two levels:</p>
     <ul>
-      <li><strong>Frontal parcial (890 € en nuestro caso).</strong> Cubre paragolpes, el tercio
-          delantero del capó y las aletas, más los retrovisores. Protege donde más impacta la
-          gravilla, aunque deja una línea de corte visible en el capó.</li>
-      <li><strong>Frontal completo (1.190 €).</strong> Capó y aletas enteros, paragolpes, faros y
-          pilares A. Sin líneas de corte a media pieza: el acabado es invisible y es la opción que
-          recomendamos en coches nuevos.</li>
+      <li><strong>Partial Front</strong> — <!--P:PRICE:partial-front.essential-->$1,000<!--/P--> in Essential film,
+          <!--P:PRICE:partial-front.signature-->$1,150<!--/P--> in Signature. Full bumper, the leading section of the
+          hood and fenders, and the mirrors. It protects where gravel actually hits, at the cost
+          of a visible edge line across the hood.</li>
+      <li><strong>Full Front</strong> — <!--P:PRICE:full-front.essential-->$1,900<!--/P--> in Essential film,
+          <!--P:PRICE:full-front.signature-->$2,150<!--/P--> in Signature. Full hood, full fenders, bumper and
+          mirrors, with every edge wrapped around the panel. No cut line mid-panel: the finish is
+          invisible, and it is the level we recommend on a new car. It is also the level most
+          cars here leave with.</li>
     </ul>
-    <p>La diferencia de 300 € suele compensar. Repintar solo un capó dañado cuesta entre 400 € y
-       700 € en un chapista, y esa pieza deja de llevar pintura original, algo que cualquier
-       tasador detecta en la reventa.</p>
+    <p>The step up usually pays for itself. Repainting a chipped hood at a body shop means that
+       panel no longer carries factory paint, and any appraiser or informed buyer picks that up
+       at resale.</p>
 
-    <h2 id="ppf-completo-precio">PPF coche completo precio: cuándo tiene sentido</h2>
-    <p>La carrocería completa protege todos los paneles pintados: laterales, puertas, taloneras,
-       techo y portón. En el mercado español se factura entre 3.100 € y 5.000 €; nuestra tarifa es
-       de 2.390 € con film de poliuretano autorregenerable, posible porque todo el trabajo se hace
-       en nuestro taller propio de Sant Cugat del Vallès.</p>
-    <p>Tiene sentido en tres escenarios:</p>
+    <h2 id="full-body-ppf">Track Pack and Full Body: when the extra coverage pays</h2>
+    <p>Two levels sit above the front end. <strong>Track Pack</strong> —
+       <!--P:PRICE:track-pack.essential-->$2,600<!--/P--> in Essential, <!--P:PRICE:track-pack.signature-->$2,900<!--/P--> in Signature —
+       adds the rocker panels, the A-pillars and the leading roof edge to a full front. That is
+       the map of what gets sandblasted by the car in front of you at highway speed, and it is
+       the level for cars that see track days at Palm Beach or a lot of open road.</p>
+    <p><strong>Full Body</strong> — <!--P:PRICE:full-body.essential-->$4,995<!--/P--> in Essential,
+       <!--P:PRICE:full-body.signature-->$5,600<!--/P--> in Signature — protects every painted panel: sides, doors,
+       rocker panels, roof and trunk lid. It is the level for cars that live outdoors in Florida,
+       where horizontal panels take the full UV load, salt air reaches anything parked near the
+       coast, and a sun-faded clear coat on the roof or hood is the first thing that dates a
+       car.</p>
+    <p>It makes sense in three scenarios:</p>
     <ol>
-      <li><strong>Coche nuevo que piensas conservar 5 años o más.</strong> El film envejece en
-          lugar de la pintura, y se retira dejando el lacado original intacto.</li>
-      <li><strong>Colores especiales o acabados delicados.</strong> Pinturas mate, colores de
-          encargo o ediciones limitadas donde un repintado parcial nunca iguala el tono.</li>
-      <li><strong>Vehículos de alta depreciación estética.</strong> Deportivos y premium en los
-          que «pintura 100% original» se traduce en cientos o miles de euros al vender.</li>
+      <li><strong>A new car you plan to keep five years or more.</strong> The film ages instead
+          of the paint, and it comes off leaving the factory clear coat intact.</li>
+      <li><strong>Special colors or delicate finishes.</strong> Matte paint, custom colors or
+          limited editions where a partial repaint never matches the tone.</li>
+      <li><strong>Vehicles with high cosmetic depreciation.</strong> Sports and premium cars where
+          fully original paint is worth real money at sale time.</li>
     </ol>
-    <p>El trabajo completo exige desmontaje de tiradores, molduras y ópticas para envolver los
-       bordes del film. Son 3 o 4 días de taller. Si un presupuesto de carrocería completa promete
-       24 horas, los bordes irán cortados sobre la pieza, no envueltos, y se notará.</p>
+    <p>The full job requires removing handles, trim and lights to wrap the film around every
+       edge. That is 5 to 8 days in the studio. If a full-body quote promises 24 hours, the edges
+       will be cut on the panel rather than tucked, and it will show.</p>
 
-    <h2 id="material-preparacion">Lámina de protección de pintura: precio según material y preparación</h2>
-    <p>Detrás de dos presupuestos aparentemente iguales puede haber trabajos muy distintos. Estos
-       son los factores que mueven el precio de la lámina de protección de pintura:</p>
+    <h2 id="film-and-prep">Essential or Signature: what the film tier and the prep change</h2>
+    <p>Behind two apparently identical quotes there can be very different jobs. These are the
+       factors that move the price of paint protection film:</p>
     <ul>
-      <li><strong>Marca y gama del film.</strong> Los films de primera marca —3M, XPEL o SunTek—
-          con capa autorregenerable cuestan más que los films genéricos sin ella. La diferencia se
-          nota al tercer año: los films económicos amarillean y pierden brillo.</li>
-      <li><strong>Garantía real.</strong> Los films de primera marca ofrecen garantía escrita del
-          fabricante contra amarilleo, grietas y delaminación; en nuestro caso, 3 años de garantía
-          del fabricante. Un film sin marca declarada rara vez ofrece ninguna.</li>
-      <li><strong>Preparación de la superficie.</strong> El film sella lo que hay debajo. Un
-          descontaminado y pulido previo (en nuestro caso, con revisión documentada panel a panel
-          antes de la entrega) añade horas, pero evita encapsular arañazos y hologramas durante
-          toda la vida del film.</li>
-      <li><strong>Desmontajes y bordes envueltos.</strong> Envolver bordes exige desmontar piezas.
-          Es más caro que cortar el film sobre la carrocería, y es lo que separa un acabado
-          invisible de uno correcto.</li>
-      <li><strong>Tamaño y complejidad del coche.</strong> Un Porsche 911 y un Ford Kuga necesitan
-          cantidades de film distintas y curvas de dificultad distintas.</li>
+      <li><strong>The film tier.</strong> Essential is NAR H190 PPF: self-healing 7.5-mil TPU
+          with a 10-year film warranty, and it is the right answer for most daily drivers.
+          Signature is 3M Scotchgard Pro Series 200, the 3M flagship, with up to a 10-year 3M
+          warranty behind it. The gap between the two columns in the table above is the whole
+          film decision — nothing else changes.</li>
+      <li><strong>A real warranty.</strong> Both tiers come with a written manufacturer warranty
+          against yellowing, cracking and delamination, plus a 1-year SERRES installation
+          warranty on the work itself. A film with no declared brand rarely offers either.</li>
+      <li><strong>Surface preparation.</strong> The film seals whatever is underneath. A
+          decontamination and polish beforehand, with a documented panel-by-panel inspection
+          under controlled lighting before delivery, adds hours — but it stops swirls, holograms
+          and hard-water etching from being locked in for the life of the film.</li>
+      <li><strong>Disassembly and wrapped edges.</strong> Wrapping edges means removing parts. It
+          costs more than trimming the film on the body, and it is what separates an invisible
+          finish from a merely correct one.</li>
+      <li><strong>Size and complexity of the car.</strong> A Porsche 911 and a Ford Explorer need
+          different amounts of film and present different curves and difficulty, which is why the
+          published price is a starting point for a standard sedan.</li>
     </ul>
 
-    <h2 id="vale-pena-ppf">¿Vale la pena el PPF? Haz números</h2>
-    <p>Depende del coche y de cuánto tiempo lo vayas a conservar. El cálculo honesto:</p>
+    <h2 id="is-ppf-worth-it">Is PPF worth it in Florida? Run the numbers</h2>
+    <!-- TODO(build): the four cost-per-month figures in the list below are DERIVED, not
+         catalogue prices, so assets/pricing.js cannot produce them and _build/us/verify-prices.mjs
+         will fail this file with four "dollar amount is not producible from pricing.js" errors
+         once it ships into blog/. The arithmetic itself is correct — recomputed with node against
+         assets/pricing.js:
+           1900 / 60  = 31.666… -> 31.67  (Full Front Essential, 5 years)
+           1900 / 120 = 15.833… -> 15.83  (Full Front Essential, 10 years)
+           4995 / 120 = 41.625  -> 41.63  (Full Body Essential, 10 years)
+           1200 / 36  = 33.333… -> 33.33  (3-Year Ceramic Package, 3 years)
+         Fix is one of: (a) teach the price gate a DERIVED allowlist, (b) add a per-month token
+         (id + tier + months) to the resolver so these stay generated, or (c) reword without a
+         currency figure. Do NOT silently delete the numbers — they are verified and on-brief. -->
+    <p>It depends on the car and on how long you plan to keep it. The honest calculation:</p>
     <ul>
-      <li><strong>Coste anualizado.</strong> Un frontal completo de 1.190 € amortizado en cinco
-          años de uso sale a unos 240 € al año, unos 20 € al mes. Una carrocería completa de
-          2.390 €, a unos 40 € al mes.</li>
-      <li><strong>Coste de no protegerlo.</strong> Repintar capó y paragolpes ronda los
-          600–1.000 €. Un lateral rayado en un parking, 300–600 € por pieza. Y cada repintado
-          resta valor: un comprador informado paga menos por un coche con piezas repintadas.</li>
-      <li><strong>Valor de reventa.</strong> La pintura original con espesores de fábrica es un
-          argumento de venta medible. En segmentos premium, la diferencia entre «original» y
-          «repintado parcial» supera con frecuencia el coste del propio film.</li>
+      <li><strong>Cost per month of ownership.</strong> Divide the price by the months you will
+          actually own the car. Full Front in Essential film over five years works out at <!--P:PERMONTH:full-front.essential:5-->$31.67<!--/P-->
+          a month; over ten years, <!--P:PERMONTH:full-front.essential:10-->$15.83<!--/P-->. Full Body in Essential film over ten years is <!--P:PERMONTH:full-body.essential:10-->$41.63<!--/P--> a
+          month. Set that against a single body-shop repaint of hood and bumper.</li>
+      <li><strong>The cost of not protecting it.</strong> Repainting hood and bumper is a
+          body-shop bill. A door scraped in a parking garage off Atlantic Ave is another. And
+          every repaint subtracts value: an informed buyer pays less for a car with repainted
+          panels.</li>
+      <li><strong>Resale value.</strong> Original paint with factory thickness readings is a
+          measurable selling point. In premium segments, the difference between original paint
+          and a partial repaint can exceed the cost of the film itself.</li>
+      <li><strong>The Florida factor.</strong> Unprotected paint here works harder than the same
+          paint in a milder climate: the UV index and panel temperatures stay high most of the
+          year, humidity and salt air go to work on any chip, and love-bug residue etches the
+          clear coat if it bakes on for days. Protection that is optional up north is closer to
+          maintenance in Boca Raton.</li>
     </ul>
-    <p>¿Cuándo no compensa? En un coche con pintura ya deteriorada (el film no corrige daños
-       profundos, los conserva), en un renting a 2 años donde no capitalizas la reventa, o si el
-       presupuesto solo alcanza para un film genérico sin garantía. En ese caso, un Ceramic
-       Coating con corrección de pintura previa (desde 340 € en nuestro caso, con durabilidad de
-       hasta 5 años según el pack) protege menos contra impactos, pero mantiene el brillo y
-       facilita el lavado por la mitad de inversión.</p>
+    <p>When does it not pay off? On a car whose paint is already deteriorated — the film does not
+       fix deep damage, it preserves it — on a short two-year lease where you never capitalize on
+       the resale value, or if the budget only stretches to an unbranded film with no warranty.
+       In that case, the 3-Year Ceramic Package with paint correction beforehand costs
+       <!--P:PRICE:ceramic-3yr-->$1,200<!--/P-->, which is <!--P:PERMONTH:ceramic-3yr:3-->$33.33<!--/P--> a month over its three years. It protects far less
+       against impacts, but it keeps the gloss and makes washing easier for a smaller investment.
+       In this climate the hydrophobic layer earns its keep: afternoon thunderstorms, sprinkler
+       water and humidity bead up and sheet off instead of drying into mineral spots. Added over
+       fresh film or a wrap, that ceramic layer costs <!--P:PRICE:ceramic-topup-->$600<!--/P-->.</p>
 
-    <h2 id="comparar-presupuestos">Cómo comparar presupuestos de PPF sin sorpresas</h2>
-    <p>Antes de firmar, pide por escrito estos siete puntos:</p>
+    <h2 id="compare-quotes">How to compare PPF quotes without surprises</h2>
+    <p>Before you sign, ask for these seven points in writing:</p>
     <ol>
-      <li>Marca y modelo exacto del film, no solo «PPF de calidad».</li>
-      <li>Ficha técnica del film: capa autorregenerable y resistencia al amarilleo.</li>
-      <li>Precio final con IVA incluido.</li>
-      <li>Lista de paneles cubiertos y si se desmontan piezas para envolver bordes.</li>
-      <li>Garantía del fabricante y del taller, con años y coberturas concretas.</li>
-      <li>Quién instala el film y en qué taller se hace el trabajo.</li>
-      <li>Qué preparación incluye: descontaminado, pulido y revisión final documentada.</li>
+      <li>The exact brand and product name of the film, not just quality PPF. Ours are NAR H190
+          and 3M Scotchgard Pro Series 200.</li>
+      <li>The film's spec sheet: thickness, self-healing topcoat and resistance to yellowing,
+          ideally with the maker's rating for hot, high-UV climates.</li>
+      <li>The final, all-in price, with prep and disassembly included, and whether sales tax is
+          on top. Ours excludes FL sales tax and says so.</li>
+      <li>The list of panels covered and whether parts are removed to wrap the edges.</li>
+      <li>Manufacturer and installer warranty, with years and specific coverage. Ours is up to 10
+          years on the film plus 1 year on the installation.</li>
+      <li>Who installs the film and in which studio the work is done.</li>
+      <li>What preparation is included: decontamination, polish and a documented final
+          inspection.</li>
     </ol>
-    <p>Un taller serio responde a los siete sin rodeos. En nuestro caso, publicamos
-       <a href="../../paint-protection-film/">el servicio de PPF</a> con tarifas, film y garantía a la
-       vista, y entregamos cada coche con una revisión documentada panel a panel antes de la
-       entrega. Es el motivo de que el 98% de nuestros clientes nos recomiende.</p>
+    <p>A serious studio answers all seven without hedging. In our case, the
+       <a href="../../paint-protection-film/">PPF service page</a> publishes coverage levels, both
+       films and the warranty in plain view, and every car leaves after a documented
+       panel-by-panel inspection.</p>
 
     <!-- ===================== FAQ ===================== -->
     <section class="faq" id="faq">
-      <h2>Preguntas frecuentes sobre el precio del PPF</h2>
+      <h2>Frequently asked questions about PPF pricing</h2>
       <details>
-        <summary>¿Cuánto cuesta el PPF frontal de un coche?</summary>
-        <div class="faq-a"><p>En España, entre 900 € y 1.700 € el frontal parcial y hasta 2.500 €
-        el frontal completo. Nuestra tarifa es de 890 € el frontal y 1.190 € el frontal completo,
-        con IVA incluido, film de poliuretano autorregenerable y 3 años de garantía del
-        fabricante.</p></div>
+        <summary>How much does PPF cost in Boca Raton?</summary>
+        <div class="faq-a"><p>Paint protection film at SERRES is <!--P:STARTING:ppf-->from $1,000<!--/P-->. Partial Front costs <!--P:PRICE:partial-front.essential-->$1,000<!--/P--> in Essential film and <!--P:PRICE:partial-front.signature-->$1,150<!--/P--> in Signature. Full Front, the level most cars leave with, costs <!--P:PRICE:full-front.essential-->$1,900<!--/P--> Essential and <!--P:PRICE:full-front.signature-->$2,150<!--/P--> Signature. Track Pack costs <!--P:PRICE:track-pack.essential-->$2,600<!--/P--> Essential, and Full Body costs <!--P:PRICE:full-body.essential-->$4,995<!--/P--> Essential. Prices exclude FL sales tax, and the final figure depends on the make, the model and the condition of the paint.</p></div>
       </details>
       <details>
-        <summary>¿Cuánto dura el PPF una vez instalado?</summary>
-        <div class="faq-a"><p>Un film de primera marca bien instalado mantiene sus propiedades
-        durante años de uso. El film que instalamos está cubierto por 3 años de garantía del
-        fabricante contra amarilleo, grietas y delaminación. Los films genéricos suelen degradarse
-        a partir del segundo o tercer año.</p></div>
+        <summary>How long does PPF last in Florida?</summary>
+        <div class="faq-a"><p>Both film tiers carry a manufacturer warranty of up to 10 years against yellowing, cracking and delamination, and every job carries a 1-year SERRES installation warranty on top of it. Florida is harder on film than a milder climate: year-round UV, panel temperatures that stay high into the evening, and salt air on anything parked near the coast. How long a film really lasts here comes down to its rating for hot, high-UV climates and to how the car is washed and parked. Unbranded films are the first to yellow.</p></div>
       </details>
       <details>
-        <summary>¿El PPF daña la pintura al retirarlo?</summary>
-        <div class="faq-a"><p>No, si el film es de calidad y lo retira un profesional con calor
-        controlado. La pintura queda como estaba el día de la instalación, que es precisamente el
-        objetivo. El riesgo existe con films económicos muy envejecidos o sobre piezas repintadas
-        con mala adherencia.</p></div>
+        <summary>Does PPF damage the paint when it is removed?</summary>
+        <div class="faq-a"><p>No, as long as the film is a quality product and a professional removes it with controlled heat. The paint is left exactly as it was on installation day, which is the whole point. The risk sits with cheap films that have baked in the sun for years, or with repainted panels where the adhesion was poor to begin with.</p></div>
       </details>
       <details>
-        <summary>¿Qué es mejor, PPF o tratamiento cerámico?</summary>
-        <div class="faq-a"><p>Cumplen funciones distintas. El Ceramic Coating SiO₂ (de 340 € a
-        890 € en nuestro caso, con corrección de pintura incluida) aporta brillo, hidrofobicidad y
-        facilidad de lavado, pero no detiene un impacto de gravilla. El PPF protege físicamente la
-        pintura. La combinación habitual en coches premium: PPF en el frontal y Ceramic Coating en
-        el resto, o aplicado sobre el propio film.</p></div>
+        <summary>Is PPF or a ceramic coating the better buy?</summary>
+        <div class="faq-a"><p>They do different jobs. The 3-Year Ceramic Package costs <!--P:PRICE:ceramic-3yr-->$1,200<!--/P--> and adds gloss, hydrophobic behavior and easier washing, which matters against afternoon storms, sprinkler water and coastal humidity, but it does not stop a stone chip. PPF physically absorbs the impact. The usual combination on a premium car is PPF on the front end with ceramic applied over the film, which costs <!--P:PRICE:ceramic-topup-->$600<!--/P--> when it is added to a film or wrap job.</p></div>
       </details>
       <details>
-        <summary>¿Se puede instalar PPF en un coche usado?</summary>
-        <div class="faq-a"><p>Sí, siempre que la pintura esté en buen estado o se corrija antes.
-        Lo habitual es un pulido previo para eliminar arañazos superficiales, porque el film
-        conserva la superficie tal cual está debajo. En pinturas con daños profundos o repintados
-        de baja calidad conviene valorarlo pieza a pieza.</p></div>
+        <summary>Can PPF be installed on a used car?</summary>
+        <div class="faq-a"><p>Yes, as long as the paint is in good condition or is corrected first. The usual step is a polish to remove light scratches and water-spot etching, because the film preserves the surface exactly as it is underneath. On paint with deep damage, a sun-faded clear coat or a low-quality repaint, it is worth assessing panel by panel before committing to a coverage level.</p></div>
       </details>
     </section>
 
-    <!-- ===================== CTA WHATSAPP ===================== -->
+    <!-- ===================== CTA ===================== -->
+    <!-- TODO(owner): contact affordances. Every flag in assets/business.js is false
+         (PHONE_LIVE, SMS_LIVE, WHATSAPP_LIVE, EMAIL_LIVE), so no call, text or WhatsApp
+         button renders. The parent-studio number that used to sit here has been removed.
+         Once the US number lands, the buttons come back from business.js, not by hand. -->
     <section class="post-cta">
       <div>
-        <span class="eyebrow">Presupuesto en 24 h</span>
-        <h3>¿Quieres una cifra exacta para tu coche?</h3>
-        <p>Envíanos el modelo y unas fotos por WhatsApp y te preparamos un presupuesto cerrado de
-           PPF el mismo día. Con cita previa de lunes a sábado en Av. Can Fatjó dels Aurons, 15 ·
-           08174 Sant Cugat del Vallès (Barcelona).</p>
+        <span class="eyebrow">Exact quote within 2 hours</span>
+        <h3>Want an exact figure for your car?</h3>
+        <p>Send us the make, the model and a few photos, and we will come back with a fixed PPF
+           quote — coverage level, film tier and all-in price. By appointment at our Boca Raton
+           studio, serving Delray Beach, Pompano Beach, Deerfield Beach and Fort Lauderdale.</p>
       </div>
       <div class="cta-actions">
-        <a class="btn" target="_blank" rel="noopener"
-           href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20he%20le%C3%ADdo%20la%20gu%C3%ADa%20de%20precios%20de%20PPF%20y%20quiero%20un%20presupuesto%20para%20mi%20coche.">
-           WhatsApp <span class="arr">→</span></a>
-        <a class="btn ghost" href="tel:+34649663380">+34 649 66 33 80</a>
+        <a class="btn" href="../../contact/">Get a quote <span class="arr">→</span></a>
+        <a class="btn ghost" href="../../pricing/">See all prices</a>
       </div>
     </section>
 
   </article>
 </div>
 
-<!-- ===================== RELACIONADOS ===================== -->
+<!-- ===================== RELATED ===================== -->
 <section class="related">
   <div class="wrap">
     <div class="section-head">
@@ -486,22 +535,22 @@
     </div>
     <div class="rel-grid" data-i18n-skip>
       <a class="rel-card" href="../ppf-vs-ceramic-coating/">
-        <span class="rk">Blog · Protección</span>
-        <h3>¿PPF o cerámico? Qué elegir</h3>
-        <p>Qué protege cada uno, qué cuesta y cuándo conviene combinarlos.</p>
-        <span class="go">Leer artículo →</span>
+        <span class="rk">Blog · Protection</span>
+        <h3>PPF vs ceramic coating: which to choose</h3>
+        <p>What each one protects against, what it costs and when it makes sense to combine them.</p>
+        <span class="go">Read article →</span>
       </a>
       <a class="rel-card" href="../how-much-does-a-car-wrap-cost/">
         <span class="rk">Blog · Car Wrap</span>
-        <h3>¿Cuánto cuesta vinilar un coche?</h3>
-        <p>Precios reales de vinilado por piezas y coche completo en 2026.</p>
-        <span class="go">Leer artículo →</span>
+        <h3>How much does a car wrap cost?</h3>
+        <p>Chrome delete, full color change and Signature Wrap: what each one includes and what drives the price.</p>
+        <span class="go">Read article →</span>
       </a>
       <a class="rel-card" href="../../paint-protection-film/">
-        <span class="rk">Servicio</span>
-        <h3>PPF en SERRES</h3>
-        <p>Packs frontal y coche completo desde 890 €, con 3 años de garantía del fabricante.</p>
-        <span class="go">Ver servicio →</span>
+        <span class="rk">Service</span>
+        <h3>PPF at SERRES</h3>
+        <p>Four coverage levels in two films, <!--P:STARTING:ppf-->from $1,000<!--/P-->, with up to 10 years of film warranty.</p>
+        <span class="go">View service →</span>
       </a>
     </div>
   </div>

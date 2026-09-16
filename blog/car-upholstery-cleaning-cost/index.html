@@ -38,6 +38,7 @@
 <link rel="preload" as="font" type="font/woff2" href="../../assets/fonts/dm-sans-400-normal-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/fonts.css">
 <link rel="stylesheet" href="../../assets/blog.css">
+<link rel="stylesheet" href="../../assets/serres-logo.css">
 
 <!-- REGION:jsonld -->
 <script type="application/ld+json">
@@ -150,10 +151,13 @@
 }
 </script>
 <!-- /REGION:jsonld -->
+<!-- TODO(owner): add "telephone" to the publisher block once business.js phoneE164 is filled in
+     (the Barcelona number was removed — it must never ship on the US site). -->
 
 
 
-<link rel="stylesheet" href="../../assets/serres-logo.css">
+<!-- TODO(owner): GA4. The Barcelona property id was removed — business.js ga4Id is still null,
+     so no analytics snippet ships. The click tracker below is a no-op until gtag exists. -->
 <!-- data-us-assets -->
 <link rel="stylesheet" href="../../assets/serres-us.css">
 <script src="../../assets/business.js" defer></script>
@@ -224,252 +228,272 @@
 </section>
 <!-- /REGION:trustbar -->
 
-<!-- ===================== MIGAS DE PAN ===================== -->
+<!-- ===================== BREADCRUMB ===================== -->
 <nav class="crumbs" aria-label="Breadcrumb">
   <div class="wrap">
     <ol>
       <li><a href="../../">Home</a></li>
       <li><a href="../">Blog</a></li>
-      <li><span aria-current="page">Limpieza de tapicería del coche</span></li>
+      <li><span aria-current="page">Car upholstery cleaning</span></li>
     </ol>
   </div>
 </nav>
 
-<!-- ===================== CABECERA ===================== -->
+<!-- ===================== HERO ===================== -->
 <main>
-<section class="post-hero">
+<section class="post-hero" data-i18n-skip>
   <div class="wrap">
     <span class="eyebrow">Blog · Detailing</span>
-    <h1 class="display">Limpieza de <span class="chrome-text">tapicería</span> del coche: precios y qué incluye</h1>
+    <h1 class="display">Car <span class="chrome-text">interior detailing</span> in Boca Raton: what it costs and what you get</h1>
 
     <div class="post-meta" data-i18n-skip>
       <span class="author">
         <span class="avatar" aria-hidden="true">S</span>
-        <span>Por <b>Equipo SERRES</b></span>
+        <span>By <b>SERRES Team</b></span>
       </span>
-      <span>Publicado: <time datetime="2026-07-09">9 de julio de 2026</time></span>
-      <span>Actualizado: <time datetime="2026-07-09">9 de julio de 2026</time></span>
-      <span>Lectura: 7 min</span>
+      <span>Published: <time datetime="2026-09-02">September 2, 2026</time></span>
+      <span>Updated: <time datetime="2026-09-16">September 16, 2026</time></span>
+      <span>8 min read</span>
     </div>
 
+    <!-- TODO(build): the cover and og images still live in assets/blog/car-upholstery-cleaning-cost/.
+         That folder has to be renamed to assets/blog/car-upholstery-cleaning-cost/ (same rename the
+         other three articles need) or this image 404s. -->
     <figure class="post-cover">
-      <img src="../../assets/blog/limpieza-tapiceria-coche-precio/cover.webp" width="1600" height="900"
+      <img src="../../assets/blog/car-upholstery-cleaning-cost/cover.webp" width="1600" height="900"
            fetchpriority="high"
-           alt="Interior of an Audi SQ7 seen through the open door: gray dashboard, digital instrument cluster and steering wheel">
+           alt="Light-colored dashboard, vents and steering wheel of a car cabin after a full interior detail at SERRES">
     </figure>
   </div>
 </section>
 
-<!-- ===================== TOC + CONTENIDO ===================== -->
+<!-- ===================== TOC + CONTENT ===================== -->
 <div class="wrap post-layout">
 
-  <aside class="toc" aria-label="Tabla de contenidos">
+  <aside class="toc" aria-label="Table of contents" data-i18n-skip>
     <h2>Contents</h2>
     <ol>
-      <li><a href="#precio-limpieza-tapiceria">Cuánto cuesta en 2026</a></li>
-      <li><a href="#incluye-limpieza-profesional">Qué incluye el servicio</a></li>
-      <li><a href="#limpieza-interior-niveles">Precio por nivel de servicio</a></li>
-      <li><a href="#quitar-manchas-asientos">Cómo quitar manchas</a></li>
-      <li><a href="#factores-precio">Qué encarece el precio</a></li>
-      <li><a href="#compensa-cada-opcion">Cuándo compensa cada opción</a></li>
+      <li><a href="#how-much-does-it-cost">What it costs in Boca Raton</a></li>
+      <li><a href="#what-is-included">What the Interior Detail includes</a></li>
+      <li><a href="#what-drives-the-price">What moves the price</a></li>
+      <li><a href="#removing-stains-from-car-seats">Which stains come out</a></li>
+      <li><a href="#interior-or-paint-correction">Interior or paint correction</a></li>
+      <li><a href="#how-often">How often to book it</a></li>
       <li><a href="#faq">Frequently asked questions</a></li>
     </ol>
   </aside>
 
   <article class="prose" data-i18n-skip>
 
-    <p>La limpieza profesional de la tapicería de un coche cuesta entre 70 € y 150 € en la mayoría
-       de talleres de España. Los servicios básicos parten de 30-40 €, y un detallado interior
-       completo con vapor, extracción y tratamiento de cuero puede llegar a 400-500 €. En
-       <a href="../../">SERRES Wrap Center</a> trabajamos con tres niveles cerrados,
-       IVA incluido: Refresh por 35 €, Deep Clean por 150 € y Showroom Reset por 490 €. En esta
-       guía desglosamos qué incluye cada rango de precio, qué técnicas se usan y cuándo compensa
-       cada opción, con cifras reales y sin sorpresas en la factura.</p>
+    <p>Interior detailing is priced by the condition of the cabin, not by the length of a menu.
+       At <a href="../../">SERRES Wrap Center</a> there is one interior service — the Interior
+       Detail, <!--P:PRICE:interior-->$300<!--/P--> — and the figure moves with the vehicle, the upholstery material
+       and how hard the last two summers have been on it. This guide covers what that service
+       includes step by step, what pushes the price up, which stains come out and which never do,
+       and how often a car that lives between Boca Raton and Fort Lauderdale actually needs it.</p>
 
-    <h2 id="precio-limpieza-tapiceria">Cuánto cuesta limpiar la tapicería del coche en 2026</h2>
-    <p>El precio depende de tres variables: la superficie a tratar, el método de limpieza y el
-       estado del interior. No cuesta lo mismo aspirar y refrescar unos asientos de tela que
-       extraer manchas de café incrustadas durante dos años o recuperar un cuero agrietado.</p>
-    <p>Estas son las horquillas habituales del mercado español, comparadas con nuestros precios
-       cerrados:</p>
+    <h2 id="how-much-does-it-cost">What interior detailing costs in Boca Raton</h2>
+    <p>Three things set the price: how much surface there is to treat, what that surface is made
+       of, and the state it is in. Vacuuming and resetting a well-kept fabric cabin is not the same
+       job as extracting coffee that has been baking into the foam for two summers, or reviving
+       leather that has started to crack.</p>
+    <p>South Florida adds a fourth: heat. A car parked in the open off Glades Road in July reaches
+       dashboard temperatures that set spills into the fiber and dry leather out fast. Add beach
+       sand from Atlantic Avenue, sunscreen on light seats and the humidity that never fully
+       leaves, and an interior here ages faster than the same car up north. The longer a stain has
+       been cooking, the more passes it needs — and passes are what you pay for.</p>
+    <p>Our detailing menu is two published services, <!--P:STARTING:detailing-->from $300<!--/P-->:</p>
 
     <div class="table-scroll">
       <table>
         <thead>
-          <tr><th>Servicio</th><th>Precio de mercado</th><th>En SERRES (IVA incl.)</th><th>Qué incluye</th></tr>
+          <tr><th>Service</th><th>At SERRES</th><th>What it covers</th><th>Best for</th></tr>
         </thead>
         <tbody>
-          <tr><td>Limpieza básica interior</td><td>25-50 €</td><td>Refresh, 35 €</td><td>Aspirado completo, plásticos, cristales interiores, refresco de asientos</td></tr>
-          <tr><td>Limpieza parcial (2 asientos o una fila)</td><td>40-70 €</td><td>—</td><td>Solo la zona afectada, sin tratar el resto del habitáculo</td></tr>
-          <tr><td>Limpieza de tapicería completa</td><td>70-150 €</td><td>Deep Clean, 150 €</td><td>Vapor + inyección-extracción en asientos, moquetas, techo y maletero</td></tr>
-          <tr><td>Detallado interior premium</td><td>300-500 €</td><td>Showroom Reset, 490 €</td><td>Todo lo anterior + tratamiento de cuero, desinfección y acabado de exposición</td></tr>
+          <tr><td>Interior Detail</td><td><!--P:PRICE:interior-->$300<!--/P--></td><td>Full interior strip-down, extraction, leather clean and feed</td><td>Stains, odors, sand, pet hair, a cabin that has gone a year or more without a real clean</td></tr>
+          <tr><td>Paint Correction (1–2 stage)</td><td><!--P:PRICE:paint-correction-->$600<!--/P--></td><td>Compound and polish, swirl and hologram removal, gloss measured in and out</td><td>Outside work: swirls from automatic washes, dull paint, prep before ceramic or film</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p>La diferencia clave entre un lavadero de 25 € y un estudio de detailing no es el jabón.
-       Es el método: tiempo por vehículo, maquinaria de extracción, productos específicos por
-       material y una revisión final documentada antes de la entrega. Un asiento puede parecer
-       limpio en superficie y seguir sucio en la espuma interior.</p>
-    <p>Puedes consultar todas nuestras tarifas actualizadas en la
-       <a href="../../pricing/">página de precios</a>.</p>
+    <blockquote>
+      <p>How our pricing works: “from” pricing is the real price for a standard sedan in good
+         condition — no bait pricing. Prices exclude FL sales tax. Booking is secured with a 30%
+         deposit. Send your make and model and we come back with an exact quote within two
+         hours.</p>
+    </blockquote>
 
-    <h2 id="incluye-limpieza-profesional">Qué incluye una limpieza de tapicería profesional</h2>
-    <p>Un servicio serio sigue un proceso ordenado. Si el taller no puede explicarte estos pasos,
-       desconfía del precio, sea alto o bajo.</p>
+    <p>The difference between a quick wash bay and a detailing studio is not the soap. It is the
+       method: time per vehicle, extraction equipment, products chosen per material, and a
+       documented final check before handover. A seat can look clean on the surface and still be
+       dirty in the foam underneath — and in this humidity that hidden moisture turns into a musty
+       smell within a week.</p>
+    <p>Every current rate is on the <a href="../../pricing/">pricing page</a>.</p>
+
+    <h2 id="what-is-included">What the Interior Detail includes</h2>
+    <p>One service, one process, run in order. If a shop cannot walk you through these steps, be
+       wary of the price, whether it is high or low.</p>
     <ol>
-      <li><strong>Aspirado en profundidad.</strong> Asientos, raíles, moquetas, alfombrillas y
-          maletero. Se retira la suciedad sólida antes de aplicar cualquier producto.</li>
-      <li><strong>Pretratamiento de manchas.</strong> Cada mancha se identifica y se trata con el
-          químico adecuado: taninos (café, vino), grasas, tintes o restos orgánicos.</li>
-      <li><strong>Limpieza a vapor.</strong> El vapor a más de 100 °C disuelve la suciedad y
-          desinfecta sin empapar la espuma. Es el método de referencia para tela y alcántara.</li>
-      <li><strong>Inyección-extracción.</strong> La máquina inyecta solución limpiadora y la aspira
-          al instante junto con la suciedad disuelta. Es lo que diferencia una limpieza real de un
-          simple cepillado.</li>
-      <li><strong>Tratamiento específico del cuero.</strong> Limpieza con pH neutro y nutrición
-          posterior. El cuero sin hidratar se agrieta, y una grieta ya no tiene arreglo barato.</li>
-      <li><strong>Secado controlado.</strong> Un interior mal secado genera olor a humedad y moho
-          en 48 horas. El secado forzado con aire filtrado evita ese problema.</li>
+      <li><strong>Strip-down and deep vacuum.</strong> Seats moved on their rails, carpets, floor
+          mats, trunk. Solid dirt comes out before any product goes in; beach sand left in the
+          fiber works like sandpaper under every wet pass.</li>
+      <li><strong>Stain identification and pre-treatment.</strong> Each stain is matched to the
+          right chemistry: tannins (coffee, tea, soda), oils and sunscreen, dyes, or organic
+          residue. Guessing here is how a stain becomes permanent.</li>
+      <li><strong>Steam cleaning.</strong> Steam well above 212 °F dissolves dirt and disinfects
+          without soaking the foam. It is the reference method for fabric and Alcantara, and it
+          kills the mildew a damp Florida carpet breeds.</li>
+      <li><strong>Hot-water extraction.</strong> The machine injects cleaning solution and vacuums
+          it straight back out with the dissolved dirt. This is the step that separates a real
+          cleaning from a brushing, and it is the one home kits cannot replicate.</li>
+      <li><strong>Leather clean and feed.</strong> pH-neutral cleaning, then conditioner. Unfed
+          leather dries out and cracks, our sun speeds that up, and a crack has no cheap fix.</li>
+      <li><strong>Plastics, vents and glass.</strong> Dashboard, door cards, console and vents
+          cleaned, then a matte UV protectant — never a greasy shine that throws reflections onto
+          the windshield. Interior glass last, because the haze a hot dashboard leaves on it comes
+          back if it is done first.</li>
+      <li><strong>Controlled drying.</strong> A poorly dried interior smells of damp within a day
+          or two, and mildew follows. Forced drying with filtered air prevents it. In a climate
+          this humid it is the one step that cannot be skipped.</li>
     </ol>
-    <p>En un Deep Clean de 150 € este proceso lleva entre 3 y 5 horas de trabajo real. Ese tiempo
-       es el motivo de que ningún servicio de 25 € pueda incluirlo completo.</p>
+    <!-- TODO(owner): confirm studio turnaround for the Interior Detail. The copy says "the day"
+         and gives no hour count, because no turnaround has been confirmed for the US studio. -->
+    <p>That list does not change from car to car. What changes is how long each step takes — and
+       that is what the quote is actually measuring.</p>
+    <p>You can see the full service on the <a href="../../detailing/">detailing page</a>.</p>
 
-    <h2 id="limpieza-interior-niveles">Limpieza interior del coche: precio según el nivel de servicio</h2>
-    <p>La tapicería es la parte más visible, pero el interior es un conjunto. Estos son los tres
-       niveles que tienen sentido para la mayoría de conductores:</p>
+    <h2 id="what-drives-the-price">What moves the price up (or down)</h2>
+    <p>Before asking for a quote, it helps to know what moves the final figure:</p>
     <ul>
-      <li><strong>Mantenimiento (30-50 €).</strong> Cada 4-6 semanas. Aspirado, plásticos,
-          cristales y un repaso de asientos. Mantiene el coche presentable y evita que la suciedad
-          se fije.</li>
-      <li><strong>Limpieza profunda (100-150 €).</strong> Una o dos veces al año. Vapor e
-          inyección-extracción en toda la tapicería, techo incluido. Es el servicio que la mayoría
-          busca cuando pregunta por «limpiar la tapicería».</li>
-      <li><strong>Detallado completo (300-500 €).</strong> Antes de vender el coche, tras comprarlo
-          de segunda mano o cuando el interior lleva años sin un tratamiento serio. Incluye
-          desinfección, cuero, juntas, conductos de ventilación y acabado de exposición.</li>
+      <li><strong>Vehicle size.</strong> A three-row SUV, a pickup with a back seat full of gear or
+          a converted van is noticeably more surface and more time than a compact.</li>
+      <li><strong>Upholstery material.</strong> Leather needs different products, different
+          dwell times and a feeding step fabric does not. Alcantara needs more care still.</li>
+      <li><strong>How soiled it is.</strong> A smoker’s cabin, daily pets, sand ground into the
+          carpet or old set stains mean extra passes — the single biggest variable.</li>
+      <li><strong>The headliner.</strong> Many cheap quotes leave it out. It is the most delicate
+          surface in the car: excess moisture loosens it, and Florida heat and humidity already
+          work against the adhesive holding it up.</li>
+      <li><strong>Water, mold and storm damage.</strong> A cabin that took water during the wet
+          season is a different job from a dirty one. It needs drying, treatment and an honest
+          conversation about what is salvageable.</li>
+      <li><strong>Sanitizing extras.</strong> Ozone or certified disinfection add cost where they
+          are not included, and after a soaked cabin they are usually worth it.</li>
     </ul>
-    <p>Un dato útil para decidir: un interior degradado resta entre 300 € y 800 € al valor de
-       reventa de un coche medio. Un Showroom Reset de 490 € suele recuperarse en el precio de
-       venta, y un Deep Clean de 150 € casi siempre.</p>
-    <p>Dentro de nuestro servicio de <a href="../../detailing/">detailing</a>, la
-       limpieza interior a vapor está incluida en los tres niveles, con productos específicos para
-       tela, alcántara y cuero.</p>
+    <p>Our approach is the same one we apply to film and coatings: a published starting price, and
+       the exact figure confirmed before we start — never at pick-up. Send a few photos of the
+       interior with your make and model and you will have the number in writing within two hours.</p>
 
-    <h2 id="quitar-manchas-asientos">Cómo quitar manchas de los asientos del coche</h2>
-    <p>Las manchas son la consulta más frecuente. La regla general: cuanto antes se trate, más
-       barato sale. Una mancha fresca se elimina en el 95 % de los casos; una fijada por calor y
-       tiempo puede requerir varias pasadas o quedar como sombra permanente.</p>
-    <p>Por tipo de mancha:</p>
+    <h2 id="removing-stains-from-car-seats">Which stains come out, and which do not</h2>
+    <p>Stains are the most common question. The rule: the sooner it is treated, the cheaper it is.
+       A fresh stain almost always comes out; one set by heat and time may need several passes or
+       stay as a permanent shadow. In a cabin sitting in the Florida sun, “set by heat” happens in
+       days, not months.</p>
     <ul>
-      <li><strong>Café, té y refrescos.</strong> Taninos. Absorber sin frotar, agua tibia y
-          limpiador de tapicería con pH controlado. Nunca agua caliente directa: fija el tanino.</li>
-      <li><strong>Grasa y aceite.</strong> Requieren desengrasante específico. Los trucos caseros
-          con lavavajillas suelen dejar cerco.</li>
-      <li><strong>Vómito y manchas orgánicas.</strong> Además de la mancha hay bacterias y olor.
-          Aquí el vapor y la extracción no son opcionales, son la única solución real.</li>
-      <li><strong>Tinte de vaqueros en cuero claro.</strong> Muy común y delicado. Frotar con
-          productos agresivos daña el acabado del cuero. Es un caso de tratamiento profesional
-          casi obligado.</li>
-      <li><strong>Pelo de mascota.</strong> No es mancha, pero encarece el servicio 20-40 € en
-          muchos talleres porque exige herramientas de goma y el doble de tiempo de aspirado.</li>
+      <li><strong>Coffee, tea and soda.</strong> Tannins. Blot without rubbing, lukewarm water and
+          an upholstery cleaner with controlled pH. Never hot water straight onto it: that fixes
+          the tannin into the fiber.</li>
+      <li><strong>Grease, oil and sunscreen.</strong> Sunscreen is the South Florida classic — an
+          oily film that soaks into light leather and fabric and goes yellow in the sun. It needs a
+          dedicated degreaser; the dish-soap trick usually leaves a ring.</li>
+      <li><strong>Organic stains and odor.</strong> Beyond the mark there are bacteria and smell,
+          and heat makes both worse fast. Steam and extraction are the only real answer here.</li>
+      <li><strong>Jeans dye on light leather.</strong> Very common and very delicate. Rubbing with
+          aggressive products damages the finish, and a damaged finish is a repair, not a
+          cleaning.</li>
+      <li><strong>Salt, sand and pet hair.</strong> Not stains, but all three raise the price: they
+          demand rubber tools and roughly double the vacuuming time before any cleaning starts.</li>
     </ul>
-    <p>¿Y los productos de supermercado? Sirven para manchas superficiales recientes. Su límite es
-       físico: sin máquina de extracción, la suciedad disuelta se queda dentro de la espuma. Por
-       eso muchos asientos «limpiados» en casa sacan un cerco amarillento a los pocos días, cuando
-       la humedad interior sube a la superficie.</p>
+    <p>What about store-bought products? They work on fresh surface stains. Their limit is
+       physical: without an extraction machine, the dissolved dirt stays inside the foam. That is
+       why many seats cleaned at home show a yellowish ring a few days later, when the moisture
+       inside rises back to the surface — and in this humidity it usually brings a smell with it.</p>
 
-    <h2 id="factores-precio">Qué factores encarecen (o abaratan) el precio</h2>
-    <p>Antes de pedir presupuesto, conviene saber qué mueve la cifra final:</p>
+    <h2 id="interior-or-paint-correction">Interior Detail or Paint Correction?</h2>
+    <p>They are two separate services because they fix two different problems, and mixing them up
+       is the most expensive mistake on this page.</p>
     <ul>
-      <li><strong>Tamaño del vehículo.</strong> Un SUV de 7 plazas o una furgoneta camperizada
-          puede suponer un 30-50 % más que un compacto.</li>
-      <li><strong>Material de la tapicería.</strong> El cuero exige productos y tiempo distintos.
-          La alcántara, más aún.</li>
-      <li><strong>Nivel de suciedad.</strong> Interior de fumador, mascotas a diario o manchas
-          antiguas implican suplementos de 20-60 € en la mayoría de talleres.</li>
-      <li><strong>Techo interior.</strong> Muchos presupuestos baratos lo excluyen. Es la
-          superficie más delicada del habitáculo: un exceso de humedad lo despega.</li>
-      <li><strong>Extras de saneamiento.</strong> Ozono o desinfección certificada suman 30-50 €
-          donde no vienen incluidos.</li>
+      <li><strong>Interior Detail (<!--P:PRICE:interior-->$300<!--/P-->).</strong> Everything inside the cabin:
+          upholstery, carpets, leather, plastics, vents, headliner, odor. Nothing it does touches
+          the paint.</li>
+      <li><strong>Paint Correction (<!--P:PRICE:paint-correction-->$600<!--/P-->).</strong> Everything outside:
+          swirls from automatic washes on I-95 commutes, holograms from a previous polish, dull
+          clear coat. It is also the prep step before a coating or film.</li>
     </ul>
-    <p>Nuestro criterio en SERRES es distinto: precio cerrado por nivel de servicio, publicado
-       antes de que traigas el coche. El 98 % de nuestros clientes nos recomienda en parte por
-       eso: saben lo que van a pagar antes de entrar.</p>
+    <p>If the plan is to protect the car as well as clean it, the order matters: correct the paint
+       first, then protect it. That is either the
+       <a href="../../ceramic-coating/">3-Year Ceramic Package</a> (<!--P:PRICE:ceramic-3yr-->$1,200<!--/P-->) or
+       <a href="../../paint-protection-film/">paint protection film</a>, and a coating applied over
+       uncorrected paint just locks the swirls in. Neither of them does anything for the inside of
+       the car — that is what the Interior Detail is for.</p>
 
-    <h2 id="compensa-cada-opcion">Cuándo compensa cada opción</h2>
+    <h2 id="how-often">How often a South Florida interior needs it</h2>
     <ul>
-      <li><strong>Refresh (35 €):</strong> el coche está cuidado y quieres mantenerlo así. Ideal
-          como rutina mensual.</li>
-      <li><strong>Deep Clean (150 €):</strong> hay manchas, olores o más de un año sin limpieza
-          profunda. Es la mejor relación resultado-precio para la mayoría.</li>
-      <li><strong>Showroom Reset (490 €):</strong> vas a vender el coche, lo acabas de comprar
-          usado o quieres el interior al nivel del primer día, cuero incluido.</li>
+      <li><strong>Normal use:</strong> a full interior detail once or twice a year, ideally after
+          the wet season, when the humidity has done its worst.</li>
+      <li><strong>Kids, pets or smokers:</strong> every three to four months. Hair, crumbs and
+          smoke residue build up faster than any maintenance routine clears them.</li>
+      <li><strong>Beach car or always parked outside:</strong> the frequent end. Sand and salt are
+          abrasive, and a cabin that bakes all day on US-1 loses its leather faster than one that
+          sleeps in a garage.</li>
+      <li><strong>Before selling or after buying used:</strong> once, properly. A tired interior is
+          one of the first things a buyer or a trade-in appraiser marks down, and a sticky,
+          sun-faded cabin says neglect louder than a stone chip does.</li>
     </ul>
-    <p>Si dudas entre dos niveles, una foto por WhatsApp resuelve la consulta en minutos.
-       Evaluamos el estado real y te decimos con franqueza si el nivel inferior es suficiente.</p>
+    <p>Between details, the maintenance that actually helps is unglamorous: vacuum before the sand
+       gets ground in, blot spills the day they happen, and keep sunscreen off light leather. It
+       costs nothing and it is the difference between a detail and a rescue.</p>
+    <p>The Boca Raton studio opens for detailing on November 13, 2026, and we work across Boca
+       Raton, Delray Beach, Pompano Beach, Deerfield Beach and Fort Lauderdale. The studio is in
+       the Boca Raton – Pompano Beach area; the exact address is announced in October 2026.</p>
 
     <!-- ===================== FAQ ===================== -->
     <section class="faq" id="faq">
-      <h2>Preguntas frecuentes</h2>
+      <h2>Frequently asked questions</h2>
       <details>
-        <summary>¿Cuánto cuesta limpiar la tapicería de un coche completo?</summary>
-        <div class="faq-a"><p>Entre 70 € y 150 € en un servicio profesional con vapor e
-        inyección-extracción. Los servicios básicos de mantenimiento parten de 30-40 €. Un
-        detallado interior premium con tratamiento de cuero y desinfección se mueve entre
-        300 € y 500 €.</p></div>
+        <summary>How much does a full car interior detail cost in Boca Raton?</summary>
+        <div class="faq-a"><p>At SERRES the interior is one service: the Interior Detail, <!--P:PRICE:interior-->$300<!--/P-->. The exact figure depends on the size of the vehicle, the upholstery material and the condition of the cabin, and we confirm it before we start. Prices exclude FL sales tax.</p></div>
       </details>
       <details>
-        <summary>¿Cuánto tarda una limpieza de tapicería profesional?</summary>
-        <div class="faq-a"><p>Una limpieza profunda lleva entre 3 y 5 horas de trabajo, más
-        2-4 horas de secado según el clima. Un detallado completo puede requerir jornada entera.
-        Los servicios exprés de menos de una hora solo cubren limpieza superficial.</p></div>
+        <summary>How long does a professional interior detail take?</summary>
+        <div class="faq-a"><p>Plan on leaving the car with us for the day. A good part of that is controlled drying, which Florida humidity stretches, and skipping it is what leaves a cabin smelling musty a week later. Express services of under an hour only clean the surface.</p></div>
       </details>
       <details>
-        <summary>¿La limpieza a vapor daña los asientos?</summary>
-        <div class="faq-a"><p>No, si se aplica con el equipo y la técnica correctos. El vapor
-        controlado limpia y desinfecta sin empapar la espuma, y es más respetuoso que los métodos
-        con exceso de agua. El riesgo aparece con máquinas domésticas sin control de humedad,
-        sobre todo en el techo interior.</p></div>
+        <summary>Does steam cleaning damage the seats?</summary>
+        <div class="faq-a"><p>No, if it is applied with the right equipment and technique. Controlled steam cleans and disinfects without soaking the foam, and it is gentler than methods that flood the fabric with water. The risk comes with domestic machines without moisture control, especially on the headliner.</p></div>
       </details>
       <details>
-        <summary>¿Se pueden quitar todas las manchas de los asientos?</summary>
-        <div class="faq-a"><p>Las manchas recientes se eliminan casi siempre. Las antiguas fijadas
-        por calor y tiempo se atenúan en la mayoría de los casos, pero algunas —tintes, quemaduras
-        químicas, lejía— dejan marca permanente. Un profesional te dirá antes de empezar qué
-        resultado es realista.</p></div>
+        <summary>Can every stain be removed from car seats?</summary>
+        <div class="faq-a"><p>Fresh stains almost always come out. Old ones set by heat and time fade in most cases, but some, such as dyes, chemical burns and bleach, leave a permanent mark. In the Florida sun a spill sets within days. We tell you before we start what result is realistic.</p></div>
       </details>
       <details>
-        <summary>¿Cada cuánto conviene limpiar la tapicería del coche?</summary>
-        <div class="faq-a"><p>Una limpieza profunda una o dos veces al año es suficiente para un
-        uso normal. Con niños, mascotas o fumadores, cada 3-4 meses. El mantenimiento básico
-        mensual alarga el efecto de la limpieza profunda y sale más barato que recuperar un
-        interior degradado.</p></div>
+        <summary>How often should a car interior be detailed in South Florida?</summary>
+        <div class="faq-a"><p>A full interior detail once or twice a year is enough for normal use. With children, pets or smokers, every three to four months. A car that sees the beach most weekends or sits outside through the wet season belongs at the more frequent end. Basic maintenance between details extends the effect and costs less than recovering a degraded interior.</p></div>
       </details>
     </section>
 
-    <!-- ===================== CTA WHATSAPP ===================== -->
+    <!-- ===================== CTA ===================== -->
+    <!-- TODO(owner): business.js phoneE164 / whatsappDigits are still null, so this CTA points at
+         /contact instead of tel: and wa.me. Fill those in and the direct buttons come back. -->
     <section class="post-cta">
       <div>
-        <span class="eyebrow">Precio cerrado en el día</span>
-        <h3>¿Qué nivel necesita tu interior?</h3>
-        <p>Envíanos una foto del interior por WhatsApp y te decimos con franqueza qué nivel
-           necesita tu coche, con precio cerrado en el día. Estamos en Av. Can Fatjó dels
-           Aurons, 15 · 08174 Sant Cugat del Vallès (Barcelona), con cita previa de lunes
-           a sábado.</p>
+        <span class="eyebrow">Exact quote within two hours</span>
+        <h3>What shape is your interior in?</h3>
+        <p>Send us your make and model with a few photos of the cabin and we will tell you
+           straight what the Interior Detail will cost on your car, and what we can and cannot
+           get out. By appointment, across Boca Raton, Delray Beach, Pompano Beach, Deerfield
+           Beach and Fort Lauderdale.</p>
       </div>
       <div class="cta-actions">
-        <a class="btn" target="_blank" rel="noopener"
-           href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20he%20le%C3%ADdo%20el%20art%C3%ADculo%20sobre%20limpieza%20de%20tapicer%C3%ADa%20y%20quiero%20precio%20cerrado%20para%20el%20interior%20de%20mi%20coche.">
-           WhatsApp <span class="arr">→</span></a>
-        <a class="btn ghost" href="tel:+34649663380">+34 649 66 33 80</a>
+        <a class="btn" href="../../contact/">Get a Quote <span class="arr">→</span></a>
+        <a class="btn ghost" href="../../pricing/">See all prices</a>
       </div>
     </section>
 
   </article>
 </div>
 
-<!-- ===================== RELACIONADOS ===================== -->
+<!-- ===================== RELATED ===================== -->
 <section class="related">
   <div class="wrap">
     <div class="section-head">
@@ -479,23 +503,23 @@
       </div>
     </div>
     <div class="rel-grid" data-i18n-skip>
-      <a class="rel-card" href="../how-much-does-a-car-wrap-cost/">
-        <span class="rk">Blog · Car Wrap</span>
-        <h3>¿Cuánto cuesta vinilar un coche?</h3>
-        <p>Desde 250 € por piezas y desde 1.490 € el cambio de color completo, con tarifas cerradas.</p>
-        <span class="go">Leer artículo →</span>
+      <a class="rel-card" href="../how-much-does-ppf-cost/">
+        <span class="rk">Blog · PPF</span>
+        <h3>How much does PPF cost?</h3>
+        <p>Two film tiers on every coverage level. Full Front is the most popular: Essential <!--P:PRICE:full-front.essential-->$1,900<!--/P-->, Signature <!--P:PRICE:full-front.signature-->$2,150<!--/P-->.</p>
+        <span class="go">Read article →</span>
       </a>
       <a class="rel-card" href="../ppf-vs-ceramic-coating/">
-        <span class="rk">Blog · Protección</span>
-        <h3>¿PPF o cerámico? Qué elegir</h3>
-        <p>Qué protege cada uno, cuánto dura y cuándo tiene sentido combinarlos.</p>
-        <span class="go">Leer artículo →</span>
+        <span class="rk">Blog · Protection</span>
+        <h3>PPF vs Ceramic Coating: which to choose</h3>
+        <p>What each one protects against, how long it lasts in the Florida sun and when it makes sense to combine them.</p>
+        <span class="go">Read article →</span>
       </a>
       <a class="rel-card" href="../../detailing/">
-        <span class="rk">Servicio</span>
-        <h3>Detailing en SERRES</h3>
-        <p>Interior y exterior en tres niveles: Refresh 35 €, Deep Clean 150 € y Showroom Reset 490 €.</p>
-        <span class="go">Ver servicio →</span>
+        <span class="rk">Service</span>
+        <h3>Detailing at SERRES</h3>
+        <p>Interior Detail <!--P:PRICE:interior-->$300<!--/P--> and Paint Correction <!--P:PRICE:paint-correction-->$600<!--/P-->, with published starting prices.</p>
+        <span class="go">See service →</span>
       </a>
     </div>
   </div>

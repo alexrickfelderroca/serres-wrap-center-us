@@ -153,6 +153,10 @@
 
 
 
+<!-- TODO(owner): US GA4 property id (assets/business.js ga4Id, still null, so ANALYTICS_LIVE is
+     false and no snippet ships). The parent Barcelona property id that used to sit here has been
+     removed — business.js says it must NEVER be reused on the US site. The click tracker at the
+     bottom of this page is a no-op until a US gtag exists. -->
 <link rel="stylesheet" href="../../assets/serres-logo.css">
 <!-- data-us-assets -->
 <link rel="stylesheet" href="../../assets/serres-us.css">
@@ -224,239 +228,268 @@
 </section>
 <!-- /REGION:trustbar -->
 
-<!-- ===================== MIGAS DE PAN ===================== -->
+<!-- ===================== BREADCRUMB ===================== -->
 <nav class="crumbs" aria-label="Breadcrumb">
   <div class="wrap">
     <ol>
       <li><a href="../../">Home</a></li>
       <li><a href="../">Blog</a></li>
-      <li><span aria-current="page">How much does it cost to wrap a car</span></li>
+      <li><span aria-current="page">How much does a wrap cost</span></li>
     </ol>
   </div>
 </nav>
 
-<!-- ===================== CABECERA ===================== -->
+<!-- ===================== HERO ===================== -->
 <main>
-<section class="post-hero">
+<section class="post-hero" data-i18n-skip>
   <div class="wrap">
     <span class="eyebrow">Blog · Car Wrap</span>
-    <h1 class="display">¿Cuánto cuesta <span class="chrome-text">vinilar un coche</span>? Precios reales en España (2026)</h1>
+    <h1 class="display">How much does it cost to <span class="chrome-text">wrap a car</span>? Real prices in Boca Raton (2026)</h1>
 
     <div class="post-meta" data-i18n-skip>
       <span class="author">
         <span class="avatar" aria-hidden="true">S</span>
-        <span>Por <b>Equipo SERRES</b></span>
+        <span>By <b>SERRES Team</b></span>
       </span>
-      <span>Publicado: <time datetime="2026-07-09">9 de julio de 2026</time></span>
-      <span>Actualizado: <time datetime="2026-07-09">9 de julio de 2026</time></span>
-      <span>Lectura: 7 min</span>
+      <span>Published: <time datetime="2026-09-02">September 2, 2026</time></span>
+      <span>Updated: <time datetime="2026-09-16">September 16, 2026</time></span>
+      <span>8 min read</span>
     </div>
 
+    <!-- TODO(build): the cover and og images still live in
+         assets/blog/how-much-does-a-car-wrap-cost/. That folder has to be renamed to
+         assets/blog/how-much-does-a-car-wrap-cost/ (same rename the other three articles and
+         blog/index.html need) or this image 404s. -->
     <figure class="post-cover">
-      <img src="../../assets/blog/cuanto-cuesta-vinilar-un-coche/cover.webp" width="1600" height="900"
+      <img src="../../assets/blog/how-much-does-a-car-wrap-cost/cover.webp" width="1600" height="900"
            fetchpriority="high"
-           alt="BMW XM in a satin black Car Wrap, rear three-quarter view, parked on a tree-lined back road">
+           alt="BMW XM in a satin black car wrap, rear three-quarter view, parked on a tree-lined back road">
     </figure>
   </div>
 </section>
 
-<!-- ===================== TOC + CONTENIDO ===================== -->
+<!-- ===================== TOC + CONTENT ===================== -->
 <div class="wrap post-layout">
 
-  <aside class="toc" aria-label="Tabla de contenidos">
+  <aside class="toc" aria-label="Table of contents" data-i18n-skip>
     <h2>Contents</h2>
     <ol>
-      <li><a href="#precio-tipo-trabajo">Precio según el tipo de trabajo</a></li>
-      <li><a href="#vinilado-integral-incluye">Vinilado integral: qué incluye</a></li>
-      <li><a href="#car-wrapping-material">Precio según el material</a></li>
-      <li><a href="#vinilado-parcial-piezas">Vinilado parcial por piezas</a></li>
-      <li><a href="#vinilo-frente-pintar">Vinilar frente a pintar</a></li>
-      <li><a href="#evaluar-presupuesto">Cómo evaluar un presupuesto</a></li>
+      <li><a href="#cost-by-job-type">Cost by type of job</a></li>
+      <li><a href="#full-colour-change-includes">Full Color Change: what it includes</a></li>
+      <li><a href="#cost-by-film">Cost by film grade</a></li>
+      <li><a href="#partial-wrap-accents">Chrome delete and partial wraps</a></li>
+      <li><a href="#wrap-vs-repaint">Wrap versus repaint</a></li>
+      <li><a href="#how-to-judge-a-quote">How to judge a quote</a></li>
       <li><a href="#faq">Frequently asked questions</a></li>
     </ol>
   </aside>
 
   <article class="prose" data-i18n-skip>
 
-    <p>Vinilar un coche cuesta entre 250 € por piezas sueltas (techo, retrovisores, pilares)
-       y 3.500 € por un cambio de color integral en un SUV grande con vinilo premium. La horquilla
-       más habitual para un turismo medio con vinilo de fundición 3M o Avery Dennison se mueve
-       entre 1.400 y 2.000 €, IVA incluido. En <a href="../../">SERRES Wrap Center</a>
-       trabajamos con tarifas cerradas y publicadas: acentos desde 250 €, cambio de color completo
-       por 1.490 € y acabado Signature por 1.990 €. En esta guía desglosamos qué hay detrás de
-       cada cifra para que compares presupuestos con criterio.</p>
+    <p>A car wrap in Boca Raton can cost as little as a chrome delete on a daily driver or as much
+       as a Signature Wrap in a color-flip film on a full-size SUV, and two quotes for the same car
+       can sit surprisingly far apart. At <a href="../../">SERRES Wrap Center</a> we work with fixed,
+       published prices: Chrome Delete <!--P:PRICE:chrome-delete-->$450<!--/P-->, a Full Color Change
+       <!--P:PRICE:color-change-->$3,500<!--/P--> and the Signature Wrap <!--P:PRICE:signature-wrap-->$4,500<!--/P-->. We wrap cars from Boca
+       Raton, Delray Beach, Pompano Beach, Deerfield Beach and Fort Lauderdale. Below we break down
+       what sits behind each figure, from film grade and disassembly hours to the extra care a car
+       needs under the Florida sun, so you can compare quotes with a clear head.</p>
 
-    <h2 id="precio-tipo-trabajo">Vinilar un coche: precio según el tipo de trabajo</h2>
-    <p>La mayoría de talleres en España da presupuestos «a consultar». Nosotros preferimos publicar
-       los números. Esta tabla resume lo que vas a encontrar en el mercado y lo que cobramos en
-       nuestro taller de Sant Cugat del Vallès:</p>
+    <h2 id="cost-by-job-type">Car wrap cost by type of job</h2>
+    <p>Most shops answer the price question with a form. We prefer to publish the numbers. This
+       table summarises the wrap work we do at the Boca Raton studio and what each level covers:</p>
 
     <div class="table-scroll">
       <table>
         <thead>
-          <tr><th>Tipo de trabajo</th><th>Qué incluye</th><th>Mercado en España</th><th>Tarifa SERRES (IVA incl.)</th></tr>
+          <tr><th>Type of job</th><th>What it includes</th><th>SERRES price</th></tr>
         </thead>
         <tbody>
-          <tr><td>Acentos y detalles</td><td>Techo, retrovisores, pilares o molduras en negro brillo, mate o carbono</td><td>150 – 800 €</td><td>Desde 250 €</td></tr>
-          <tr><td>Cambio de color completo (turismo)</td><td>Carrocería completa, cantos retapados, desmontaje básico de piezas</td><td>1.200 – 2.500 €</td><td>1.490 €</td></tr>
-          <tr><td>Cambio de color completo (SUV / gran berlina)</td><td>Más superficie, más horas de desmontaje y ajuste</td><td>2.000 – 3.500 €</td><td>Presupuesto cerrado previo</td></tr>
-          <tr><td>Vinilado Signature</td><td>Colores especiales (color flip, satinados, texturas), desmontaje ampliado, interiores de puerta</td><td>2.500 – 5.000 €</td><td>1.990 €</td></tr>
+          <tr><td>Chrome Delete</td><td>Window trim, grille surround and badges in gloss black, satin or color</td><td><!--P:PRICE:chrome-delete-->$450<!--/P--></td></tr>
+          <tr><td>Full Color Change</td><td>Every painted panel wrapped, edges wrapped in, 3M 2080 or Avery SW900 in gloss, satin or matte</td><td><!--P:PRICE:color-change-->$3,500<!--/P--></td></tr>
+          <tr><td>Signature Wrap</td><td>Full color change in a premium or color-shift film: Inozetek, KPMF, color-flip</td><td><!--P:PRICE:signature-wrap-->$4,500<!--/P--></td></tr>
+          <tr><td>Roof / accents / custom</td><td>Roof, mirrors, spoiler, stripes and one-off requests</td><td><!--P:PRICE:accents-->on request<!--/P--></td></tr>
         </tbody>
       </table>
     </div>
 
-    <p>Los rangos de mercado salen de tarifas publicadas por talleres y rotulistas españoles en
-       2025-2026. La dispersión es real: por el mismo coche te pueden pedir 1.200 € o 3.000 €.
-       La diferencia casi nunca está en el color. Está en el material, las horas de trabajo y lo
-       que el taller entiende por «completo».</p>
+    <p><strong>The small print.</strong> Prices exclude FL sales tax. A published starting price is
+       the real price for a standard sedan in good condition, not bait pricing: a bigger body, deeper
+       disassembly and difficult panels move the figure, and you see the final number before any film
+       is cut. Every wrap carries the manufacturer film warranty plus a 1-year SERRES installation
+       warranty. Booking is secured with a 30% deposit. Wrap work overall: <!--P:STARTING:wraps-->from $450<!--/P-->.</p>
 
-    <h2 id="vinilado-integral-incluye">Precio del vinilado integral: qué incluye (y qué no)</h2>
-    <p>Un vinilado integral bien ejecutado no es forrar la chapa por encima. En un turismo medio
-       hablamos de 18 a 22 metros de material y de 25 a 40 horas de trabajo. El precio debe cubrir
-       estos pasos:</p>
+    <p>The gap between quotes is rarely about the color. It is about the film, the hours of labor
+       and what each shop means by a full wrap. A wrap that stops at the panel edge instead of
+       folding into the door shuts costs less to do, and in a climate with daily heat, afternoon
+       downpours and salt air off the coast, those exposed edges are exactly where the film starts
+       to lift first.</p>
+
+    <!-- TODO(owner): confirm US studio turnaround (3-4 days Full Color Change, 5-7 Signature Wrap,
+         1 day chrome delete). These figures came over from the ES studio schedule. -->
+
+    <h2 id="full-colour-change-includes">Full Color Change: what the price includes (and what it doesn't)</h2>
+    <p>A well-executed full wrap is not a matter of laying film over the bodywork. A Full Color
+       Change takes from three to four days in our studio, a Signature Wrap from five to seven, and
+       the price has to cover every one of these steps:</p>
     <ul>
-      <li><strong>Descontaminación completa de la pintura.</strong> Cualquier resto de cera o resina
-          levanta el vinilo en meses.</li>
-      <li><strong>Desmontaje de piezas.</strong> Manetas, ópticas, molduras y emblemas. Vinilar
-          alrededor de una pieza en lugar de debajo de ella se nota a un metro de distancia.</li>
-      <li><strong>Retapado de cantos.</strong> El vinilo debe doblar hacia el interior de puertas,
-          capó y portón. Es lo que diferencia un cambio de color de una rotulación.</li>
-      <li><strong>Revisión post-instalación.</strong> En nuestro caso, con revisión documentada
-          panel a panel antes de la entrega.</li>
+      <li><strong>Complete paint decontamination.</strong> Love-bug residue, tree sap, bird droppings
+          and the hard-water spots left by lawn sprinklers all have to come off before the film goes
+          on. Any trace of wax or sap underneath lifts a wrap within months.</li>
+      <li><strong>Trim removal.</strong> Door handles, lights, moldings and badges. Wrapping around
+          a part instead of underneath it is visible from a few feet away, and it leaves an edge for
+          heat and rain to work on.</li>
+      <li><strong>Wrapped edges.</strong> The film has to fold into the door, hood and tailgate shuts.
+          That is what separates a color change from a commercial graphic, and it is what keeps
+          humidity out from under the film.</li>
+      <li><strong>Post-installation inspection.</strong> In our case, a documented panel-by-panel
+          check before the car is handed back.</li>
     </ul>
-    <p>Cuando un presupuesto de vinilado integral baja de 1.000 €, alguno de estos pasos no está
-       incluido. Suele ser el desmontaje, el retapado de cantos o directamente la calidad del
-       material. Pide siempre el desglose por escrito.</p>
+    <p>When a full-wrap quote comes in far below our Full Color Change price, one of these steps is
+       missing. It is usually the disassembly, the wrapped edges or the quality of the film itself.
+       Always ask for the breakdown in writing.</p>
 
-    <h2 id="car-wrapping-material">¿Cuánto cuesta un car wrapping según el material?</h2>
-    <p>El material explica entre 400 y 900 € del precio final de un car wrapping completo. No todos
-       los vinilos sirven para envolver un coche:</p>
+    <h2 id="cost-by-film">Car wrap cost by film grade: 3M, Avery Dennison and Inozetek</h2>
+    <p>The film is one of the biggest lines in the final price of a full wrap, and not every vinyl
+       is fit to wrap a car:</p>
     <ul>
-      <li><strong>Vinilo de fundición (cast).</strong> Es el estándar para cambio de color:
-          3M serie 2080 o Avery Dennison Supreme Wrapping Film. Se adapta a curvas complejas sin
-          memoria de forma y dura de 5 a 7 años en exterior. Coste de material para un turismo:
-          500 – 900 €.</li>
-      <li><strong>Vinilo calandrado (polimérico).</strong> Pensado para rotulación comercial en
-          superficies planas. Cuesta la mitad, pero en un capó curvo encoge, deja ver juntas y dura
-          2 o 3 años. Si un presupuesto integral es sospechosamente bajo, casi siempre es por esto.</li>
-      <li><strong>Acabados especiales.</strong> Color flip, satinados metalizados, texturas brushed
-          o forged carbon encarecen el material entre un 20 y un 40 %. Por eso existe el escalón
-          Signature.</li>
+      <li><strong>Cast film.</strong> The standard for a color change: 3M 2080 series, Avery
+          Dennison Supreme Wrapping Film or Inozetek Super Gloss. It conforms to complex curves
+          without shrinking back, and it carries the maker's outdoor durability rating. In South
+          Florida that rating matters more than anywhere: year-round UV and hood temperatures that
+          climb well past the air temperature shorten the life of any film, and the exact figure
+          depends on the film maker's rating for this climate zone.</li>
+      <li><strong>Calendered film.</strong> Made for commercial signage on flat surfaces. It costs a
+          fraction of cast film, but on a curved hood it shrinks, shows seams and fades quickly under
+          Florida sun. If a full-wrap quote is suspiciously low, this is almost always why.</li>
+      <li><strong>Special finishes.</strong> Color-flip, satin metallics, brushed and forged-carbon
+          textures cost more per roll and take more hours to lay. That is why the Signature Wrap is
+          a level of its own: <!--P:PRICE:signature-wrap-->$4,500<!--/P-->.</li>
     </ul>
-    <p>En nuestro <a href="../../car-wraps/">servicio de vinilado</a> trabajamos únicamente
-       con film de fundición 3M (serie 2080), Avery Dennison e Inozetek, con más de 150 colores en
-       catálogo físico para verlos sobre curva real, no en pantalla.</p>
+    <!-- TODO(owner): "more than 150 colors in a physical swatch catalog" is inherited studio copy,
+         not spec §3 data. Confirm the swatch count the Boca Raton studio will actually stock, or
+         cut the number. The same claim sits on /car-wraps/ and on the home page. -->
+    <p>In our <a href="../../car-wraps/">car wrap service</a> we work only with cast film from
+       3M (2080 series), Avery Dennison and Inozetek, with more than 150 colors in a physical swatch
+       catalog so you can see them on a real curve in daylight rather than on a screen.</p>
+    <p>If you want the finish to stay slick and easy to wash, a ceramic top-up over fresh film is
+       <!--P:PRICE:ceramic-topup-->$600<!--/P--> — see <a href="../../ceramic-coating/">ceramic coating</a>. It adds
+       hydrophobics and makes love bugs and sprinkler spotting far easier to rinse off, without
+       touching the paint underneath.</p>
 
-    <h2 id="vinilado-parcial-piezas">Vinilado parcial: precio por piezas</h2>
-    <p>No necesitas envolver el coche entero para cambiar su presencia. El vinilado parcial es la
-       puerta de entrada más rentable y estos son los precios orientativos por pieza en España:</p>
+    <h2 id="partial-wrap-accents">Chrome delete and partial wraps: the cheapest way in</h2>
+    <p>You do not need to wrap the whole car to change its presence. A partial wrap is the most
+       cost-effective way in, and a chrome delete is <!--P:PRICE:chrome-delete-->$450<!--/P-->. The pieces we
+       wrap most often:</p>
     <ul>
-      <li>Techo completo: 150 – 300 €</li>
-      <li>Capó: 180 – 350 €</li>
-      <li>Retrovisores (par): 60 – 120 €</li>
-      <li>Pilares y marcos de ventana: 90 – 180 €</li>
-      <li>Difusor, splitter o molduras: 80 – 200 €</li>
+      <li><strong>Chrome delete.</strong> Window trim, grille surround and badges in gloss black or
+          satin. It is the single change that most modernises a car's outline, and the quickest way
+          to stop a car looking a decade older than it is.</li>
+      <li><strong>Roof.</strong> The classic gloss-black or satin roof, and also the panel that takes
+          the most sun in Florida, so the film choice matters.</li>
+      <li><strong>Hood.</strong> The second most-requested panel, and the one that meets love bugs and
+          I-95 grit head-on. If protection matters more than color here, PPF is the better tool.</li>
+      <li><strong>Mirror caps.</strong> Small, quick and effective in carbon-look or gloss black.</li>
+      <li><strong>Diffuser, splitter and trim.</strong> Small pieces that sharpen the lower body.</li>
     </ul>
-    <p>Un paquete de acentos bien elegido —techo, retrovisores y pilares en negro brillo, por
-       ejemplo— transforma un acabado de serie por 250 – 400 €. Es también la forma sensata de
-       probar cómo trabaja un taller antes de encargarle un integral.</p>
+    <p>Anything outside the three published levels — a roof, a set of mirror caps, a spoiler,
+       stripes — is priced <!--P:PRICE:accents-->on request<!--/P-->, because the panel count and the shapes decide the
+       hours. Send us the car and we quote it. A chrome delete is also the sensible way to see how a
+       shop works before trusting it with a full vinyl wrap.</p>
 
-    <h2 id="vinilo-frente-pintar">Vinilar el coche entero: precio frente a pintar</h2>
-    <p>La comparación que casi nadie te pone sobre la mesa:</p>
+    <h2 id="wrap-vs-repaint">Wrapping the whole car: cost versus a repaint</h2>
+    <p>The comparison almost nobody puts on the table:</p>
     <ul>
-      <li><strong>Pintura integral de calidad:</strong> 3.000 – 6.000 €, irreversible, y el coche
-          pierde el «pintura original» en cualquier tasación futura.</li>
-      <li><strong>Vinilo integral:</strong> 1.400 – 2.000 € en un turismo, reversible en un día de
-          trabajo, y la pintura original queda protegida debajo del propio film.</li>
+      <li><strong>Quality full repaint:</strong> irreversible, keeps the car in the body shop for
+          weeks of prep, paint and cure time, and the car loses its original-paint status at any
+          future appraisal.</li>
+      <li><strong>Full Color Change wrap:</strong> <!--P:PRICE:color-change-->$3,500<!--/P-->, reversible in a day of
+          work, and the factory paint sits protected underneath the film, shielded from the UV that
+          fades clear coat, from love-bug acid and from sap and sprinkler spotting.</li>
     </ul>
-    <p>Hay dos ventajas medibles más. La primera es el plazo: un vinilado integral se entrega en
-       3 a 5 días laborables; una pintura completa bien hecha rara vez baja de dos semanas.
-       La segunda es la reventa: retiras el vinilo y entregas el coche con la pintura de fábrica
-       intacta, algo que un comprador exigente valora en cientos o miles de euros.</p>
-    <p>Si tu prioridad no es cambiar el color sino proteger la pintura contra gravilla e impactos,
-       la alternativa correcta es el <a href="../../paint-protection-film/">PPF</a> (film de poliuretano
-       autorregenerable), desde 890 € el frontal y con 3 años de garantía del fabricante. Son
-       productos distintos para objetivos distintos, y conviene decidirlo antes de pedir presupuesto.</p>
+    <p>There are two more measurable advantages. The first is lead time: a Full Color Change is
+       delivered in three to four days in the studio, while a proper repaint rarely comes back that
+       quickly. The second is resale: you remove the wrap and hand over the car with its factory
+       paint intact, something a demanding buyer notices immediately. In South Florida, where the sun
+       starts working on an unprotected clear coat from day one, a wrapped car has spent those years
+       with its paint out of the sun.</p>
+    <p>If your priority is not a new color but protecting the paint from stone chips and road
+       debris, the right tool is <a href="../../paint-protection-film/">PPF</a>: a self-healing
+       polyurethane film, Full Front <!--P:PRICE:full-front.essential-->$1,900<!--/P--> in the Essential tier, covered by
+       the manufacturer film warranty of up to 10 years plus our 1-year installation warranty. Its
+       self-healing topcoat relaxes wash swirls and light scuffs out with the heat of the sun, which
+       in Florida is most of the year. Wrap and PPF are different products for different goals, and
+       it is worth deciding which one you need before asking for a quote.</p>
 
-    <h2 id="evaluar-presupuesto">Cómo evaluar un presupuesto de vinilado</h2>
-    <p>Cinco preguntas que separan un presupuesto serio de una sorpresa a los seis meses:</p>
+    <h2 id="how-to-judge-a-quote">How to judge a car wrap quote</h2>
+    <p>Five questions that separate a serious quote from a surprise six months later:</p>
     <ol>
-      <li><strong>¿Qué marca y referencia exacta de vinilo?</strong> «Vinilo de alta calidad» no es
-          una respuesta. 3M 2080-G12 sí lo es.</li>
-      <li><strong>¿Se desmontan piezas o se vinila alrededor?</strong> Pide que te lo confirmen por
-          escrito.</li>
-      <li><strong>¿Los cantos van retapados?</strong> Abre una puerta de un coche terminado y míralo
-          tú mismo.</li>
-      <li><strong>¿Qué garantía escrita ofrecen sobre instalación y material?</strong></li>
-      <li><strong>¿El precio incluye IVA?</strong> Buena parte de los rangos que verás publicados son
-          sin IVA; los nuestros lo incluyen.</li>
+      <li><strong>Which brand and exact film reference?</strong> High-quality vinyl is not an
+          answer. 3M 2080-G12 is.</li>
+      <li><strong>Are parts removed, or is the film wrapped around them?</strong> Ask for it in
+          writing.</li>
+      <li><strong>Are the edges wrapped?</strong> Open a door on a finished car and look for
+          yourself.</li>
+      <li><strong>What written warranty covers the installation and the film?</strong> Ours is the
+          manufacturer film warranty plus one year on the installation. And how does the film maker
+          rate that film for a hot, high-UV zone like South Florida?</li>
+      <li><strong>Is the figure fixed, or a starting price?</strong> Ours start at a published
+          number, every car gets a fixed quote after an in-person inspection, and FL sales tax is
+          shown separately rather than buried.</li>
     </ol>
-    <p>En SERRES Wrap Center todo el trabajo se hace en nuestro taller propio de Sant Cugat del
-       Vallès, con cita previa de lunes a sábado. Cada coche pasa una revisión documentada panel a
-       panel antes de la entrega, y el 98 % de nuestros clientes nos recomienda, con una valoración
-       media de 4,9. Puedes revisar todas las tarifas vigentes en nuestra
-       <a href="../../pricing/">página de precios</a>.</p>
+    <p>At SERRES Wrap Center every wrap is done in our own Boca Raton studio, by appointment, a
+       short drive from I-95 and US-1 and within easy reach of Glades Rd, Atlantic Ave and Federal
+       Highway. Each car goes through a documented panel-by-panel inspection before it is handed
+       back, and you can see all current prices on our <a href="../../pricing/">prices page</a>.</p>
 
     <!-- ===================== FAQ ===================== -->
     <section class="faq" id="faq">
-      <h2>Preguntas frecuentes sobre el precio de vinilar un coche</h2>
+      <h2>Frequently asked questions about car wrap cost</h2>
       <details>
-        <summary>¿Cuánto dura un vinilo de coche?</summary>
-        <div class="faq-a"><p>Un vinilo de fundición 3M o Avery Dennison dura de 5 a 7 años en
-        exterior con un mantenimiento normal. Los calandrados baratos aguantan 2 o 3 años antes de
-        encoger o perder color. Aparcar a cubierto y lavar a mano alargan la vida útil del film.</p></div>
+        <summary>How long does a car wrap last in Florida?</summary>
+        <div class="faq-a"><p>A cast film from 3M, Avery Dennison or Inozetek is rated by its maker for outdoor use, and that rating is shorter in a hot, high-UV zone like South Florida than in a temperate climate; the exact figure depends on the film and on the maker's rating for this zone. Cheap calendered film shrinks and fades much sooner. Parking under cover and washing by hand extend the life of any film.</p></div>
       </details>
       <details>
-        <summary>¿Vinilar el coche daña la pintura?</summary>
-        <div class="faq-a"><p>No, siempre que la pintura sea original o un repintado bien curado.
-        El adhesivo está diseñado para retirarse sin dejar residuo y el film protege la laca de
-        rayado leve y radiación UV. Sobre repintados de mala calidad sí existe riesgo de arrastre,
-        y un taller serio lo detecta antes de empezar.</p></div>
+        <summary>Does wrapping a car damage the paint?</summary>
+        <div class="faq-a"><p>No, as long as the paint is factory or a properly cured respray. The adhesive is designed to come off without residue, and the film shields the clear coat from light scratches and UV. On poor-quality resprays there is a real risk of the paint lifting with the film, and a serious shop spots that before starting.</p></div>
+      </details>
+      <!-- TODO(owner): verify with the FLHSMV what a vehicle color change requires on a Florida
+           registration before publish. This answer deliberately states no statute. -->
+      <details>
+        <summary>Do I need to tell anyone if I wrap my car a different color?</summary>
+        <div class="faq-a"><p>Tell your insurer about the color change so your policy matches how the car actually looks. A color change can also need to be reported to the state, so ask the FLHSMV or your local tag agency what your registration needs before you drive on it. Both take a few minutes and avoid confusion at a claim or a traffic stop.</p></div>
       </details>
       <details>
-        <summary>¿Hay que avisar a la DGT si vinilo el coche de otro color?</summary>
-        <div class="faq-a"><p>El color no consta en la ficha técnica del vehículo en España, así que
-        el cambio no exige homologación ni ITV extraordinaria. Sí conviene comunicarlo a tu
-        aseguradora para que la póliza refleje el aspecto real del coche. Es un trámite de minutos
-        y evita problemas en un parte.</p></div>
+        <summary>How long does it take to wrap a whole car?</summary>
+        <div class="faq-a"><p>From three to four days in the studio for a Full Color Change and from five to seven for a Signature Wrap, depending on disassembly and body complexity. A chrome delete or a roof is usually done in a day. Be wary of anyone promising a full wrap in a day: rushed work shows up at the edges and in bubbles, and a Boca Raton summer finds every one of them.</p></div>
       </details>
       <details>
-        <summary>¿Cuánto se tarda en vinilar un coche entero?</summary>
-        <div class="faq-a"><p>Entre 3 y 5 días laborables en un turismo, según desmontaje y
-        complejidad de la carrocería. Un vinilado parcial de techo o acentos se resuelve en una
-        jornada. Desconfía de quien promete un integral en un día: las prisas se pagan en cantos
-        y burbujas.</p></div>
-      </details>
-      <details>
-        <summary>¿Se puede lavar un coche vinilado en el túnel?</summary>
-        <div class="faq-a"><p>Mejor evitarlo: los rodillos y cepillos castigan los cantos del film.
-        Lo recomendable es lavado a mano con champú de pH neutro o lanza a presión a más de 30 cm
-        del panel. Con esa rutina, el vinilo conserva el acabado durante toda su vida útil.</p></div>
+        <summary>Can I take a wrapped car through an automatic car wash?</summary>
+        <div class="faq-a"><p>Better not: brushes and rollers punish the edges of the film. Wash by hand with a pH-neutral shampoo, or with a pressure washer kept at least a foot from the panel. In Florida, rinse off love-bug residue, bird droppings and sap as soon as you can, because heat bakes them into any finish, and dry the car after sprinkler contact to avoid hard-water spots.</p></div>
       </details>
     </section>
 
-    <!-- ===================== CTA WHATSAPP ===================== -->
+    <!-- ===================== CTA ===================== -->
+    <!-- TODO(owner): phone / SMS / WhatsApp are null in assets/business.js, so no call or chat
+         button renders here. Fill phoneE164 + whatsappDigits and this CTA gets its buttons back. -->
     <section class="post-cta">
       <div>
-        <span class="eyebrow">Presupuesto en 48 h</span>
-        <h3>Precio cerrado para tu coche</h3>
-        <p>Cada carrocería es distinta y los rangos solo sirven para orientarte. Envíanos el modelo
-           y dos fotos por WhatsApp y te devolvemos un presupuesto cerrado, con IVA incluido, en
-           menos de 48 horas. Estamos en Av. Can Fatjó dels Aurons, 15 · 08174 Sant Cugat del
-           Vallès (Barcelona), a 15 minutos de la ciudad.</p>
+        <span class="eyebrow">Exact quote within 2 hours</span>
+        <h3>A fixed price for your car</h3>
+        <p>Every body is different and a published price is only a starting point. Send us your car's
+           make, model and year with two photos and we send back a fixed quote, FL sales tax shown
+           separately. Boca Raton studio, by appointment.</p>
       </div>
       <div class="cta-actions">
-        <a class="btn" target="_blank" rel="noopener"
-           href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20he%20le%C3%ADdo%20el%20art%C3%ADculo%20sobre%20cu%C3%A1nto%20cuesta%20vinilar%20un%20coche%20y%20quiero%20un%20presupuesto%20cerrado%20para%20el%20m%C3%ADo.">
-           WhatsApp <span class="arr">→</span></a>
-        <a class="btn ghost" href="tel:+34649663380">+34 649 66 33 80</a>
+        <a class="btn" href="../../contact/">Get a quote <span class="arr">→</span></a>
+        <a class="btn ghost" href="../../pricing/">See all prices</a>
       </div>
     </section>
 
   </article>
 </div>
 
-<!-- ===================== RELACIONADOS ===================== -->
+<!-- ===================== RELATED ===================== -->
 <section class="related">
   <div class="wrap">
     <div class="section-head">
@@ -467,22 +500,22 @@
     </div>
     <div class="rel-grid" data-i18n-skip>
       <a class="rel-card" href="../ppf-vs-ceramic-coating/">
-        <span class="rk">Blog · Protección</span>
-        <h3>¿PPF o cerámico? Qué elegir</h3>
-        <p>Qué protege cada uno, cuánto dura y cuándo tiene sentido combinarlos.</p>
-        <span class="go">Leer artículo →</span>
+        <span class="rk">Blog · Protection</span>
+        <h3>PPF vs Ceramic Coating: which to choose?</h3>
+        <p>What each one protects against, how long it lasts and when it makes sense to combine them.</p>
+        <span class="go">Read article →</span>
       </a>
       <a class="rel-card" href="../how-much-does-ppf-cost/">
         <span class="rk">Blog · PPF</span>
-        <h3>¿Cuánto cuesta el PPF?</h3>
-        <p>Precios reales por pack, qué incluye cada cobertura y de qué depende la cifra final.</p>
-        <span class="go">Leer artículo →</span>
+        <h3>How much does PPF cost?</h3>
+        <p>Essential and Signature prices, what each level of coverage includes and what drives the final figure.</p>
+        <span class="go">Read article →</span>
       </a>
       <a class="rel-card" href="../../car-wraps/">
-        <span class="rk">Servicio</span>
-        <h3>Car Wrap en SERRES</h3>
-        <p>Cambio de color con film de fundición 3M, Avery Dennison e Inozetek desde 1.490 €.</p>
-        <span class="go">Ver servicio →</span>
+        <span class="rk">Service</span>
+        <h3>Car Wrap at SERRES</h3>
+        <p>Color change with 3M, Avery Dennison and Inozetek cast films, <!--P:STARTING:wraps-->from $450<!--/P-->.</p>
+        <span class="go">See service →</span>
       </a>
     </div>
   </div>

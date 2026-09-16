@@ -196,57 +196,66 @@
 
 <!-- ===================== LISTADO ===================== -->
 <div class="wrap">
-  <div class="post-grid" data-i18n-skip>
+  <!-- us-blog-cards -->
+<div class="post-grid us-post-grid" data-i18n-skip>
+<!-- TODO(build): cover images. assets/blog/ still holds the four Spanish folder names
+     (cuanto-cuesta-ppf-coche, cuanto-cuesta-vinilar-un-coche, ppf-o-ceramico-que-elegir,
+     limpieza-tapiceria-coche-precio). Rename each to its English slug, or every <img> below
+     and in the four articles 404. -->
+<!-- NOTE(build): hrefs are "<slug>/" — the articles ship at blog/<slug>/index.html (depth 2),
+     which is what blog/index.html already links to. The legacy _build/port/check-blog.js still
+     asserts the flat <slug>.html form from the dead flat-file port pipeline; that assertion is stale. -->
 
     <a class="post-card" href="how-much-does-a-car-wrap-cost/">
-      <img src="../assets/blog/cuanto-cuesta-vinilar-un-coche/cover.webp" width="1600" height="1000"
+      <img src="../assets/blog/how-much-does-a-car-wrap-cost/cover.webp" width="1600" height="1000"
            loading="lazy" decoding="async"
-           alt="BMW XM in a satin black Car Wrap parked on a tree-lined back road">
+           alt="BMW XM in a satin black car wrap, rear three-quarter view, parked on a tree-lined back road">
       <div class="pc-body">
-        <span class="pc-date">9 jul 2026 · Car Wrap</span>
-        <h2>¿Cuánto cuesta vinilar un coche?</h2>
-        <p>Tarifas reales 2026: acentos desde 250 € y cambio de color completo desde 1.490 €. Qué incluye cada precio y cómo comparar presupuestos.</p>
-        <span class="pc-more">Leer artículo →</span>
+        <span class="pc-date">Sep 2, 2026 · Car Wrap</span>
+        <h2>How much does it cost to wrap a car?</h2>
+        <p>Chrome Delete <!--P:PRICE:chrome-delete-->$450<!--/P-->, Full Color Change <!--P:PRICE:color-change-->$3,500<!--/P--> and Signature Wrap <!--P:PRICE:signature-wrap-->$4,500<!--/P-->: real 2026 Boca Raton prices, what each level includes and how to judge a quote.</p>
+        <span class="pc-more">Read article →</span>
       </div>
     </a>
 
     <a class="post-card" href="ppf-vs-ceramic-coating/">
-      <img src="../assets/blog/ppf-o-ceramico-que-elegir/cover.webp" width="1600" height="1000"
+      <img src="../assets/blog/ppf-vs-ceramic-coating/cover.webp" width="1600" height="1000"
            loading="lazy" decoding="async"
-           alt="Hexagon ceiling lights reflected on the roof of a car in the studio">
+           alt="PPF vs ceramic coating: paint protection compared on a car at the SERRES Wrap Center studio in Boca Raton">
       <div class="pc-body">
-        <span class="pc-date">9 jul 2026 · PPF · Ceramic</span>
-        <h2>PPF o cerámico: ¿qué elegir?</h2>
-        <p>Protección física frente a protección química: duración, precios reales y qué opción encaja con tu coche.</p>
-        <span class="pc-more">Leer artículo →</span>
+        <span class="pc-date">Sep 2, 2026 · PPF · Ceramic</span>
+        <h2>PPF vs ceramic coating: which does your car need?</h2>
+        <p>Physical protection versus chemical protection under the Florida sun: what each one actually does, what each one costs, and when running both is the right answer.</p>
+        <span class="pc-more">Read article →</span>
       </div>
     </a>
 
     <a class="post-card" href="how-much-does-ppf-cost/">
-      <img src="../assets/blog/cuanto-cuesta-ppf-coche/cover.webp" width="1600" height="1000"
+      <img src="../assets/blog/how-much-does-ppf-cost/cover.webp" width="1600" height="1000"
            loading="lazy" decoding="async"
-           alt="BMW M2 in frozen gray parked on a road lined with cypress trees">
+           alt="Paint protection film being applied to the front end of a car at the SERRES Wrap Center studio in Boca Raton, Florida">
       <div class="pc-body">
-        <span class="pc-date">9 jul 2026 · PPF</span>
-        <h2>¿Cuánto cuesta el PPF para tu coche?</h2>
-        <p>Frontal desde 890 €, frontal completo 1.190 € y carrocería completa 2.390 €, IVA incluido. Qué incluye cada cobertura.</p>
-        <span class="pc-more">Leer artículo →</span>
+        <span class="pc-date">Sep 2, 2026 · PPF</span>
+        <h2>How much does PPF cost for your car?</h2>
+        <p>Four coverage levels, each priced in two films. Full Front is the one most cars leave with: Essential <!--P:PRICE:full-front.essential-->$1,900<!--/P-->, Signature <!--P:PRICE:full-front.signature-->$2,150<!--/P-->.</p>
+        <span class="pc-more">Read article →</span>
       </div>
     </a>
 
     <a class="post-card" href="car-upholstery-cleaning-cost/">
-      <img src="../assets/blog/limpieza-tapiceria-coche-precio/cover.webp" width="1600" height="1000"
+      <img src="../assets/blog/car-upholstery-cleaning-cost/cover.webp" width="1600" height="1000"
            loading="lazy" decoding="async"
-           alt="Close-up of the Audi SQ7 dashboard and steering wheel through the open door">
+           alt="Light-colored dashboard, vents and steering wheel of a car cabin after a full interior detail at SERRES">
       <div class="pc-body">
-        <span class="pc-date">9 jul 2026 · Detailing</span>
-        <h2>Limpieza de tapicería del coche: precios</h2>
-        <p>De 35 € a 490 € según el nivel: qué incluye cada servicio, qué técnicas se usan y cuándo compensa cada opción.</p>
-        <span class="pc-more">Leer artículo →</span>
+        <span class="pc-date">Sep 2, 2026 · Detailing</span>
+        <h2>Car interior detailing: what it costs and what you get</h2>
+        <p>One interior service, one published starting price — the Interior Detail, <!--P:PRICE:interior-->$300<!--/P-->. What it includes step by step, what moves the price, and which stains actually come out.</p>
+        <span class="pc-more">Read article →</span>
       </div>
     </a>
+</div>
+<!-- /us-blog-cards -->
 
-  </div>
 </div>
 
 </main>

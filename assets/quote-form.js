@@ -45,7 +45,7 @@
   + '.us-qf{display:grid;gap:20px}'
   + '.us-qf-grid{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr))}'
   + '@media(max-width:700px){.us-qf-grid{grid-template-columns:1fr}}'
-  + '.us-qf-field{display:grid;gap:8px;min-width:0}'
+  + '.us-qf-field{display:grid;gap:8px;min-width:0;align-content:start}'
   + '.us-qf-field.us-qf-wide{grid-column:1/-1}'
   + '.us-qf-label{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;'
   +   'text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--muted,#9a9aa3)}'

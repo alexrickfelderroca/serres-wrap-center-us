@@ -107,10 +107,15 @@ for (const f of pages) {
   const s = fs.readFileSync(f, 'utf8');
   const rel = path.relative(root, f).split(path.sep).join('/');
   if (s.includes('G-1K6FYZ99GN')) problems.push(`${rel}: Barcelona GA4 property still present`);
-  for (const a of MANAGED.concat(['serres-us.css'])) {
-    const n = (s.match(new RegExp('assets\\/' + a.replace('.', '\\.'), 'g')) || []).length;
-    if (n !== 1) problems.push(`${rel}: ${a} referenced ${n} time(s), expected exactly 1`);
+  /* Count only real <script src>/<link href> references. Counting every occurrence of
+     the string "assets/pricing.js" also counted the TODO(build) comments the blog
+     authors wrote, which mention the file by path. */
+  for (const a of MANAGED) {
+    const n = (s.match(new RegExp('<script[^>]+src="[^"]*assets\\/' + a.replace('.', '\\.') + '"', 'g')) || []).length;
+    if (n !== 1) problems.push(`${rel}: <script src=...${a}> appears ${n} time(s), expected exactly 1`);
   }
+  const css = (s.match(/<link[^>]+href="[^"]*assets\/serres-us\.css"/g) || []).length;
+  if (css !== 1) problems.push(`${rel}: <link ...serres-us.css> appears ${css} time(s), expected exactly 1`);
 }
 if (problems.length) {
   console.error('\nFAIL:\n  ' + problems.join('\n  '));

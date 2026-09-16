@@ -39,6 +39,8 @@
 <link rel="stylesheet" href="../../assets/fonts.css">
 <link rel="stylesheet" href="../../assets/blog.css">
 
+<!-- TODO(owner): US GA4 property id (assets/business.js ga4Id). The parent studio's property
+     must never be reused here, so no analytics snippet ships until the US id exists. -->
 
 <!-- REGION:jsonld -->
 <script type="application/ld+json">
@@ -153,7 +155,6 @@
 <!-- /REGION:jsonld -->
 
 
-<link rel="stylesheet" href="../../assets/serres-logo.css">
 <!-- data-us-assets -->
 <link rel="stylesheet" href="../../assets/serres-us.css">
 <script src="../../assets/business.js" defer></script>
@@ -224,257 +225,285 @@
 </section>
 <!-- /REGION:trustbar -->
 
-<!-- ===================== MIGAS DE PAN ===================== -->
+<!-- ===================== BREADCRUMBS ===================== -->
 <nav class="crumbs" aria-label="Breadcrumb">
   <div class="wrap">
     <ol>
       <li><a href="../../">Home</a></li>
       <li><a href="../">Blog</a></li>
-      <li><span aria-current="page">PPF or ceramic</span></li>
+      <li><span aria-current="page">PPF vs Ceramic Coating</span></li>
     </ol>
   </div>
 </nav>
 
-<!-- ===================== CABECERA ===================== -->
+<!-- ===================== HEADER ===================== -->
 <main>
-<section class="post-hero">
+<section class="post-hero" data-i18n-skip>
   <div class="wrap">
     <span class="eyebrow">Blog · PPF · Ceramic Coating</span>
-    <h1 class="display">PPF o <span class="chrome-text">cerámico</span>: ¿qué elegir según tu coche y tu presupuesto?</h1>
+    <h1 class="display">PPF vs <span class="chrome-text">ceramic coating</span>: which does your car need in Boca Raton?</h1>
 
     <div class="post-meta" data-i18n-skip>
       <span class="author">
         <span class="avatar" aria-hidden="true">S</span>
-        <span>Por <b>Equipo SERRES</b></span>
+        <span>By <b>SERRES Team</b></span>
       </span>
-      <span>Publicado: <time datetime="2026-07-09">9 de julio de 2026</time></span>
-      <span>Actualizado: <time datetime="2026-07-09">9 de julio de 2026</time></span>
-      <span>Lectura: 8 min</span>
+      <span>Published: <time datetime="2026-09-02">September 2, 2026</time></span>
+      <span>Updated: <time datetime="2026-09-16">September 16, 2026</time></span>
+      <span>8 min read</span>
     </div>
 
+    <!-- TODO(build): the cover and og images still live in assets/blog/ppf-vs-ceramic-coating/.
+         That folder has to be renamed to assets/blog/ppf-vs-ceramic-coating/ (same rename the
+         other three articles and blog/index.html need) or this image 404s. -->
     <figure class="post-cover">
-      <img src="../../assets/blog/ppf-o-ceramico-que-elegir/cover.webp" width="1600" height="900"
+      <img src="../../assets/blog/ppf-vs-ceramic-coating/cover.webp" width="1600" height="900"
            fetchpriority="high"
-           alt="Hexagon ceiling lights in the SERRES studio, their reflection on the roof of a car below">
+           alt="PPF vs ceramic coating: paint protection compared on a car at the SERRES Wrap Center studio in Boca Raton">
     </figure>
   </div>
 </section>
 
-<!-- ===================== TOC + CONTENIDO ===================== -->
+<!-- ===================== TOC + CONTENT ===================== -->
 <div class="wrap post-layout">
 
-  <aside class="toc" aria-label="Tabla de contenidos">
+  <aside class="toc" aria-label="Table of contents" data-i18n-skip>
     <h2>Contents</h2>
     <ol>
-      <li><a href="#diferencia-30-segundos">La diferencia en 30 segundos</a></li>
-      <li><a href="#tabla-comparativa">Tabla comparativa</a></li>
-      <li><a href="#ventajas-ppf">Qué hace el PPF</a></li>
-      <li><a href="#ventajas-ceramico">Qué hace el cerámico</a></li>
-      <li><a href="#cuatro-escenarios">Cuatro escenarios</a></li>
-      <li><a href="#opciones-proteccion">Todas las opciones</a></li>
-      <li><a href="#criterio-taller">Cómo decidimos en el taller</a></li>
+      <li><a href="#the-difference-in-30-seconds">The difference in 30 seconds</a></li>
+      <li><a href="#comparison-table">Comparison table</a></li>
+      <li><a href="#what-ppf-does">What PPF does</a></li>
+      <li><a href="#what-ceramic-does">What a ceramic coating does</a></li>
+      <li><a href="#four-scenarios">Four scenarios</a></li>
+      <li><a href="#all-the-options">All the options</a></li>
+      <li><a href="#how-we-decide">How we decide at the studio</a></li>
+      <li><a href="#next-step">The next step</a></li>
       <li><a href="#faq">Frequently asked questions</a></li>
-      <li><a href="#siguiente-paso">El siguiente paso</a></li>
     </ol>
   </aside>
 
   <article class="prose" data-i18n-skip>
 
-    <p>Respuesta directa: si tu prioridad es evitar daños físicos —gravilla, roces de parking,
-       arañazos de lavado—, elige PPF: en nuestro taller cuesta desde 890 € el frontal y 2.390 €
-       la carrocería completa, con 3 años de garantía del fabricante. Si buscas brillo profundo,
-       lavados más rápidos y protección química y UV, el tratamiento cerámico va de 340 € a 890 €
-       y dura de 2 a 5 años según el pack. Y si el coche lo merece, la combinación de ambos es la
-       protección más completa que existe hoy. A continuación tienes los datos para decidir con
-       criterio, no con marketing.</p>
+    <p>Straight answer: if the problem is physical damage — gravel off I-95, construction grit on
+       Glades Road, a cart scuff in a Federal Highway parking lot — you want PPF. Full Front is the
+       coverage most cars here take: Essential <!--P:PRICE:full-front.essential-->$1,900<!--/P-->, Signature
+       <!--P:PRICE:full-front.signature-->$2,150<!--/P-->. If the problem is what Florida does to paint that is already
+       intact — UV fade, love bug season, sprinkler spotting, salt air — you want ceramic: the
+       3-Year Ceramic Package, <!--P:PRICE:ceramic-3yr-->$1,200<!--/P-->. The two do different jobs, and running both is
+       the complete answer. Below, the data to decide with.</p>
 
-    <h2 id="diferencia-30-segundos">PPF vs cerámico: la diferencia en 30 segundos</h2>
+    <h2 id="the-difference-in-30-seconds">PPF vs ceramic coating: the difference in 30 seconds</h2>
     <ul>
-      <li>El <strong>PPF</strong> (Paint Protection Film) es una lámina transparente de poliuretano
-          autorregenerable. Es una barrera física: absorbe impactos de piedras, roces y arañazos
-          antes de que lleguen a la pintura.</li>
-      <li>El <strong>cerámico</strong> es un recubrimiento líquido de SiO₂ que cristaliza sobre el
-          barniz en una capa de 1 a 2 micras. Es una barrera química: repele agua, suciedad, savia,
-          excrementos de pájaro y radiación UV.</li>
+      <li><strong>PPF</strong> (paint protection film) is a transparent, self-healing polyurethane
+          film, 7.5 mil thick — a physical barrier that absorbs rock chips, scuffs and scratches
+          before they reach the paint.</li>
+      <li>A <strong>ceramic coating</strong> is a liquid SiO₂ treatment that cures on the clear coat
+          into a layer 1 to 2 microns thick — a chemical barrier that repels water, dirt, tree sap,
+          bird droppings, bug residue and UV.</li>
     </ul>
-    <p>Dicho de otra forma: el PPF protege la pintura de golpes, el cerámico la protege de la
-       intemperie y la mantiene con aspecto de recién detallada. No compiten en lo mismo, y por eso
-       la pregunta correcta no es cuál es mejor, sino cuál resuelve tu problema.</p>
+    <p>Put another way: PPF protects the paint from hits, a ceramic coating protects it from the
+       elements. In Boca Raton the elements are not an abstraction — near year-round UV, panels too
+       hot to touch by noon, an afternoon storm most of the summer, sprinkler water on every driveway
+       and salt air a couple of miles off the beach. The two products do not compete for the same
+       job, so the question is not which is better. It is which one solves your problem.</p>
 
-    <h2 id="tabla-comparativa">Diferencia entre PPF y tratamiento cerámico: tabla comparativa</h2>
+    <h2 id="comparison-table">PPF vs ceramic coating: comparison table</h2>
     <div class="table-scroll">
       <table>
         <thead>
-          <tr><th>Criterio</th><th>PPF</th><th>Ceramic Coating SiO₂</th></tr>
+          <tr><th>Criterion</th><th>PPF</th><th>Ceramic coating (SiO₂)</th></tr>
         </thead>
         <tbody>
-          <tr><td>Qué es</td><td>Lámina de poliuretano autorregenerable</td><td>Recubrimiento líquido de 1-2 µm</td></tr>
-          <tr><td>Impactos de gravilla</td><td>Los absorbe</td><td>No protege</td></tr>
-          <tr><td>Arañazos y roces</td><td>Los detiene; los leves se autorregeneran con calor</td><td>Solo microarañazos de lavado muy leves</td></tr>
-          <tr><td>Químicos, UV, pájaros</td><td>Protege</td><td>Protege</td></tr>
-          <tr><td>Hidrofobia y facilidad de lavado</td><td>Media (alta si se aplica cerámico encima)</td><td>Muy alta</td></tr>
-          <tr><td>Brillo</td><td>Neutro, respeta el acabado original</td><td>Aumenta la profundidad del brillo a la vista</td></tr>
-          <tr><td>Duración</td><td>Años de servicio · 3 años de garantía del fabricante</td><td>De 2 a 5 años según pack</td></tr>
-          <tr><td>Garantía en SERRES</td><td>3 años del fabricante</td><td>Durabilidad hasta 5 años según pack</td></tr>
-          <tr><td>Precio orientativo (IVA incl.)</td><td>Frontal 890 € · Pro 1.190 € · carrocería completa 2.390 €</td><td>Esencial 340 € · Signature 590 € · Concours 890 €</td></tr>
-          <tr><td>Ideal para</td><td>Coches nuevos, frontales castigados, pintura que quieres conservar intacta</td><td>Mantenimiento estético, coches de uso diario, presupuestos ajustados</td></tr>
+          <tr><td>What it is</td><td>Self-healing polyurethane film, 7.5 mil</td><td>Liquid coating, 1–2 µm once cured</td></tr>
+          <tr><td>Rock chips and road debris</td><td>Absorbs them</td><td>No protection</td></tr>
+          <tr><td>Scratches and scuffs</td><td>Stops them; light ones self-heal</td><td>Only very light wash marring</td></tr>
+          <tr><td>UV, love bugs, bird droppings, sap</td><td>Protects</td><td>Protects</td></tr>
+          <tr><td>Hydrophobics and washing</td><td>Medium — high with ceramic on top</td><td>Very high</td></tr>
+          <tr><td>Gloss</td><td>Neutral; keeps the factory finish</td><td>Visibly deeper after the prep stage</td></tr>
+          <tr><td>Films / products</td><td>Essential: NAR H190, self-healing TPU · Signature: 3M Scotchgard Pro Series 200</td><td>One coating package, applied over paint, PPF or wrap</td></tr>
+          <tr><td>What you get in writing</td><td>Manufacturer film warranty up to 10 years + 1-year SERRES installation warranty</td><td>3-Year Ceramic Package + 1-year SERRES installation warranty</td></tr>
+          <tr><td>Price</td><td>Partial Front <!--P:PRICE:partial-front.essential-->$1,000<!--/P--> · Full Front <!--P:PRICE:full-front.essential-->$1,900<!--/P--> · Track Pack <!--P:PRICE:track-pack.essential-->$2,600<!--/P--> · Full Body <!--P:PRICE:full-body.essential-->$4,995<!--/P--></td><td>3-Year Package <!--P:PRICE:ceramic-3yr-->$1,200<!--/P--> · Top-up over PPF or wrap <!--P:PRICE:ceramic-topup-->$600<!--/P--></td></tr>
+          <tr><td>Best for</td><td>New cars, hard-worked front ends, highway miles</td><td>Daily drivers, gloss and fast washes, cars already wearing film</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Una nota sobre los precios: en España el PPF frontal suele moverse entre 1.500 € y 3.000 €,
-       y el coche completo entre 4.000 € y 8.000 € según la publicación que consultes. Nuestras
-       tarifas están por debajo de esa horquilla porque trabajamos en nuestro taller propio de
-       Sant Cugat del Vallès, sin intermediarios.</p>
+    <p>Every PPF figure in that row is the Essential tier; Signature, in 3M Scotchgard Pro Series
+       200, runs higher on the same coverage and we quote both every time. Prices exclude Florida
+       sales tax. “From” means the real price for a standard sedan in good condition — no bait
+       pricing: a three-row SUV, a car with paint that needs correcting first or a bumper full of
+       sensors is quoted after we see it. Send the make and model and you have an exact number
+       within two hours.</p>
 
-    <h2 id="ventajas-ppf">Qué hace el PPF que el cerámico no puede hacer</h2>
-    <p>El PPF es la única protección real contra daño físico. La lámina de poliuretano es cientos
-       de veces más gruesa que un recubrimiento cerámico. Eso se traduce en cosas concretas:</p>
+    <h2 id="what-ppf-does">What PPF does that a ceramic coating cannot</h2>
+    <p>PPF is the only real protection against physical damage. At 7.5 mil the film is roughly a
+       hundred times thicker than a cured coating, and that thickness buys concrete things:</p>
     <ul>
-      <li><strong>Chinazos en autopista.</strong> La piedra rebota en la lámina. Sin PPF, cada
-          impacto es un punto de pintura saltada en el capó o el paragolpes.</li>
-      <li><strong>Roces de parking y de maletero.</strong> Carritos, mochilas, perros que suben al
-          coche. La lámina lo asume.</li>
-      <li><strong>Autorregeneración.</strong> Los arañazos superficiales del lavado desaparecen con
-          el calor del sol o con agua templada. La superficie vuelve a quedar lisa.</li>
-      <li><strong>Reversibilidad.</strong> Se retira sin dañar el barniz. En un coche de leasing o
-          pensado para reventa, la pintura queda como el día de la instalación.</li>
+      <li><strong>Rock chips at highway speed.</strong> The stone hits the film and stops there.
+          Without it, every mile of I-95 between Deerfield Beach and Fort Lauderdale is a lottery,
+          and the truck lanes on US-1 throw grit all day long.</li>
+      <li><strong>Sand and storm debris.</strong> Blown sand near the coast and the grit a summer
+          storm drops on every road behave like a mild blast cabinet on a leading edge. Film takes
+          the abrasion instead of the clear coat.</li>
+      <li><strong>Parking-lot and trunk-lip scuffs.</strong> Shopping carts, bags, dog claws on the
+          rear bumper. The film absorbs it.</li>
+      <li><strong>Self-healing.</strong> Light wash marks close up with heat — and in Boca Raton the
+          panel is already at healing temperature most afternoons, so the car does it by itself.</li>
+      <li><strong>Reversibility.</strong> It comes off without harming the clear coat. On a lease
+          return or a resale, the paint underneath is still factory.</li>
     </ul>
-    <p>El límite del PPF es económico, no técnico. Proteger el coche completo cuesta más que
-       cualquier cerámico. Por eso la instalación más demandada es el frontal: capó, paragolpes,
-       aletas y retrovisores, que reciben cerca del 90 % de los impactos.</p>
-    <p>En SERRES trabajamos con films de 3M (serie 2080), Avery Dennison e Inozetek. Si quieres ver
-       coberturas y acabados, en la página de <a href="../../paint-protection-film/">protección PPF</a>
-       están las tres configuraciones con lo que incluye cada una.</p>
+    <p>The limit of PPF is financial, not technical: covering every painted panel costs more than
+       any coating, which is why the most requested install is the front end — bumper, hood, fenders
+       and mirrors — where the large majority of impacts land. The coverage ladder runs Partial
+       Front <!--P:PRICE:partial-front.essential-->$1,000<!--/P-->, Full Front <!--P:PRICE:full-front.essential-->$1,900<!--/P--> (the most
+       popular), Track Pack <!--P:PRICE:track-pack.essential-->$2,600<!--/P--> and Full Body
+       <!--P:PRICE:full-body.essential-->$4,995<!--/P-->, each available in Essential (NAR H190) or Signature (3M
+       Scotchgard Pro Series 200). What each one covers is on the
+       <a href="../../paint-protection-film/">paint protection film</a> page.</p>
 
-    <h2 id="ventajas-ceramico">Qué hace el cerámico que el PPF no puede hacer</h2>
-    <p>El cerámico transforma el comportamiento diario de la pintura. Después de un pulido de
-       corrección y la aplicación del recubrimiento:</p>
+    <h2 id="what-ceramic-does">What a ceramic coating does that PPF cannot</h2>
+    <p>A ceramic coating changes how the paint behaves every single day. After the decon and gloss
+       prep stage, and once the coating has cured:</p>
     <ul>
-      <li><strong>El agua no se queda.</strong> El ángulo de contacto hidrofóbico hace que las gotas
-          rueden y arrastren la suciedad. Un lavado pasa de 40 minutos a 15.</li>
-      <li><strong>El brillo sube a la vista.</strong> Tras la corrección de pintura, el acabado gana
-          una profundidad evidente, y en SERRES el resultado pasa una revisión documentada panel a
-          panel antes de la entrega.</li>
-      <li><strong>La suciedad agresiva no muerde.</strong> Excrementos de pájaro, savia, resina y
-          contaminación industrial atacan el barniz en horas. Sobre cerámico, se retiran sin marca.</li>
-      <li><strong>El coste de entrada es bajo.</strong> Desde 340 € tienes pulido de un paso más
-          recubrimiento con 2 años de durabilidad. La gama alta, con corrección completa y hasta
-          5 años, queda en 890 €.</li>
+      <li><strong>Water does not sit on the car.</strong> Drops roll off and take the dirt with
+          them. With an afternoon storm most of the summer and sprinklers hitting the driveway at
+          dawn, that is the difference between hard-water spots etching into the clear coat and
+          rinsing off with a hose.</li>
+      <li><strong>Love bugs stop being an emergency.</strong> Two seasons a year, May and September,
+          they arrive in sheets. Their residue is acidic and in Florida heat it can etch unprotected
+          clear coat within days. On a coated panel it wipes off.</li>
+      <li><strong>UV fade slows down.</strong> Near year-round sun is what chalks a red or black
+          roof and hood on a car parked outside. A coating filters part of that and buys the paint
+          years of looking new.</li>
+      <li><strong>The gloss visibly goes up.</strong> The prep stage removes the haze first, so the
+          finish gains real depth rather than a film of shine.</li>
+      <li><strong>Washing takes a fraction of the time.</strong> Less dwell, less contact, less
+          marring — which matters, because most swirl marks come from washing, not from the road.</li>
     </ul>
-    <p>Lo que el cerámico no hará nunca es parar una piedra. La «dureza extrema» de la que presume
-       el sector se refiere a la escala de lápices, no a la de minerales: resiste microarañazos de
-       lavado, no gravilla a 120 km/h. Cualquier taller que te venda lo contrario te está vendiendo
-       humo.</p>
-    <p>El detalle de cada programa está en la página de
-       <a href="../../ceramic-coating/">Ceramic Coating</a>.</p>
+    <p>The ceramic catalogue here is two lines, not a tier ladder:</p>
+    <ul>
+      <li><strong>3-Year Ceramic Package, <!--P:PRICE:ceramic-3yr-->$1,200<!--/P-->.</strong> Decon, single-stage gloss
+          prep, coating and cure — the standard treatment for paint in good condition.</li>
+      <li><strong>Top-up over PPF / wrap, <!--P:PRICE:ceramic-topup-->$600<!--/P-->.</strong> The same hydrophobics
+          laid over fresh film or vinyl, without touching the paint underneath. This is the layer
+          that fixes PPF's one weak point.</li>
+    </ul>
+    <p>If the paint arrives swirled or oxidized, correction comes first and is quoted separately —
+       Paint Correction (1–2 stage), <!--P:PRICE:paint-correction-->$600<!--/P-->, on the
+       <a href="../../detailing/">detailing</a> page. Coating over defects locks them in.</p>
+    <p>What a ceramic coating will never do is stop a stone. The “9H hardness” the industry
+       advertises is the pencil scale, not the mineral one: it resists wash marring, not gravel at
+       70 mph. Any shop that tells you otherwise is selling smoke. The full program is on the
+       <a href="../../ceramic-coating/">ceramic coating</a> page.</p>
 
-    <h2 id="cuatro-escenarios">¿Qué es mejor, PPF o cerámico? Depende de estos cuatro escenarios</h2>
-    <p><strong>1. Coche nuevo o premium que quieres conservar años.</strong> PPF frontal como mínimo
-       (890 €). Es el momento óptimo: la pintura está intacta y la lámina la congela en ese estado.
-       Si el valor del coche lo justifica, carrocería completa (2.390 €).</p>
-    <p><strong>2. Coche de uso diario con presupuesto contenido.</strong> Cerámico Esencial o
-       Signature (340-590 €). Recuperas brillo, reduces el tiempo de lavado y proteges el barniz de
-       la degradación química. Es la mejor relación coste-resultado.</p>
-    <p><strong>3. Muchos kilómetros de autopista.</strong> PPF frontal sin dudarlo. La estadística
-       es tozuda: la mayoría de los impactos de gravilla entran por capó y paragolpes. Un repintado
-       de capó en un coche premium cuesta 600-900 € y nunca iguala la pintura de fábrica.</p>
-    <p><strong>4. Leasing, renting o reventa a corto plazo.</strong> PPF frontal si el contrato
-       penaliza desperfectos; cerámico si solo quieres que luzca bien en la devolución o en las
-       fotos de venta. El PPF se retira y deja la pintura original perfecta, algo que ningún
-       repintado consigue.</p>
+    <h2 id="four-scenarios">Which is better, PPF or ceramic? It depends on these four scenarios</h2>
+    <p><strong>1. A new or nearly new car you plan to keep.</strong> Full Front at minimum —
+       Essential <!--P:PRICE:full-front.essential-->$1,900<!--/P-->, Signature <!--P:PRICE:full-front.signature-->$2,150<!--/P-->. The paint
+       is intact and the film freezes it in that state. If it sleeps outside, add the ceramic top-up
+       over the film, <!--P:PRICE:ceramic-topup-->$600<!--/P-->, or take the New Car package (<!--P:PRICE:new-car-->$2,990<!--/P-->), which
+       bundles full front PPF, ceramic and tint.</p>
+    <p><strong>2. A daily driver on a contained budget.</strong> The 3-Year Ceramic Package,
+       <!--P:PRICE:ceramic-3yr-->$1,200<!--/P-->. You get the gloss back, cut the wash time and protect the clear coat
+       from UV and chemical attack — the best result per dollar. If the front end is already taking
+       hits, the Daily Driver package (<!--P:PRICE:daily-driver-->$1,990<!--/P-->) pairs partial front PPF with
+       ceramic.</p>
+    <p><strong>3. Lots of highway miles.</strong> Full Front, no hesitation, and Track Pack
+       (<!--P:PRICE:track-pack.essential-->$2,600<!--/P-->) if the car spends real time at speed: it adds rocker panels,
+       A-pillars and the leading roof edge, which is exactly where sand and gravel land once you are
+       past 60. A respray never matches factory paint, and a chipped hood is visible from ten
+       feet.</p>
+    <p><strong>4. Lease or short-term resale.</strong> Full Front if the contract penalizes damage —
+       the film comes off clean at hand-back. A ceramic coating if you only need the car to look
+       right at return or in the listing photos.</p>
 
-    <h2 id="opciones-proteccion">Protección de pintura del coche: todas las opciones ordenadas</h2>
-    <p>Para situar PPF y cerámico en el mapa completo, estas son las opciones reales de protección
-       de pintura, de menor a mayor inversión:</p>
+    <h2 id="all-the-options">Car paint protection: all the options, ranked</h2>
+    <p>To put both products on the full map — PPF <!--P:STARTING:ppf-->from $1,000<!--/P-->, ceramic <!--P:STARTING:ceramic-->from $600<!--/P--> —
+       here is the ladder from smallest investment to largest:</p>
     <ol>
-      <li><strong>Cera o sellante tradicional</strong> (30-80 €): 2-3 meses de duración. Punto de
-          partida, no protección real.</li>
-      <li><strong>Tratamiento cerámico</strong> (340-890 €): de 2 a 5 años según pack. Protección
-          química, UV y estética.</li>
-      <li><strong>PPF frontal</strong> (890-1.190 €): protección física donde más se necesita, con
-          3 años de garantía del fabricante.</li>
-      <li><strong>PPF carrocería completa</strong> (2.390 €): toda la pintura queda sellada frente
-          a la carretera.</li>
-      <li><strong>PPF + cerámico encima</strong>: la combinación definitiva. La lámina para los
-          golpes; el cerámico aporta hidrofobia y facilidad de lavado sobre la propia lámina.</li>
+      <li><strong>Wax or sealant</strong>: a few months at best, less under Florida sun. A starting
+          point, not protection.</li>
+      <li><strong>Ceramic coating</strong> — the 3-Year Ceramic Package, <!--P:PRICE:ceramic-3yr-->$1,200<!--/P-->:
+          chemical, UV and aesthetic protection for three years. No defense against impacts.</li>
+      <li><strong>PPF on the front end</strong> — Partial Front <!--P:PRICE:partial-front.essential-->$1,000<!--/P--> or
+          Full Front <!--P:PRICE:full-front.essential-->$1,900<!--/P-->: physical protection exactly where the damage
+          happens.</li>
+      <li><strong>PPF with the highway panels added</strong> — Track Pack
+          <!--P:PRICE:track-pack.essential-->$2,600<!--/P-->: front end plus rockers, A-pillars and the leading roof
+          edge.</li>
+      <li><strong>Full Body PPF</strong> — <!--P:PRICE:full-body.essential-->$4,995<!--/P-->: every painted panel sealed
+          against the road.</li>
+      <li><strong>PPF with a ceramic coating over it</strong>: the definitive combination — film for
+          the hits, coating for the hydrophobics and the easy washing, on the film itself.</li>
     </ol>
-    <p>La opción 5 es la que montan los coleccionistas y la que casi ninguna web explica: el
-       cerámico se adhiere perfectamente sobre el PPF y resuelve su único punto débil, que es una
-       hidrofobia media. En SERRES Wrap Center la configuramos a medida según cobertura y uso del
-       coche.</p>
+    <p>Option 6 is what collectors run, and it is why the top-up exists — <!--P:PRICE:ceramic-topup-->$600<!--/P-->
+       over fresh film: a coating bonds to PPF and fixes its only weak point, medium water
+       behavior. The packages
+       bundle the same idea — Daily Driver <!--P:PRICE:daily-driver-->$1,990<!--/P-->, New Car <!--P:PRICE:new-car-->$2,990<!--/P-->,
+       Collector <!--P:PRICE:collector-->$5,990<!--/P--> — and every one of them is on the
+       <a href="../../pricing/">pricing</a> page with what it includes. In this climate that second
+       layer earns its keep: salt air, storm water and bug residue land on film exactly as they land
+       on paint.</p>
 
-    <h2 id="criterio-taller">Cómo decidimos en el taller</h2>
-    <p>Nuestro criterio con cada cliente es el mismo: primero el daño probable, después la estética.
-       Si el coche hace autopista o duerme en la calle, la conversación empieza por el PPF. Si vive
-       en garaje y hace ciudad, el cerámico suele ser suficiente.</p>
-    <p>Y nada sale sin control: cada trabajo pasa una revisión documentada panel a panel antes de la
-       entrega, con el coche bajo luz directa. Es parte del método que nos mantiene en 4,9 de
-       valoración con un 98 % de clientes que nos recomiendan. Puedes ver el resto de servicios en
-       la <a href="../../">portada de SERRES Wrap Center</a>.</p>
+    <h2 id="how-we-decide">How we decide at the studio</h2>
+    <p>Our criterion never changes: probable damage first, looks second. If the car does highway
+       miles on I-95 or sleeps outside under the Florida sun, the conversation starts with PPF. If
+       it lives in a garage and runs errands between Atlantic Avenue and Glades Road, a ceramic
+       coating is usually enough — and often the better buy, because you feel it at every wash.</p>
+    <p>Nothing leaves without a check: paint thickness measured at intake, panel-by-panel inspection
+       under direct light before delivery, and the work photographed. That protocol is the reason
+       customers come back with their second car, and it crossed the Atlantic unchanged with the
+       <a href="../../about/">team</a>.</p>
+
+    <h2 id="next-step">The next step</h2>
+    <p>If you are torn between the two, the fastest way to settle it is to look at the actual car:
+       how you use it, the miles, where it parks, what you want to protect. Send the make, model and
+       a few photos through the <a href="../../contact/">contact page</a> and you get a fixed quote
+       within two hours — no fine print, no bait pricing. We work by appointment at the Boca Raton
+       studio and take cars from Delray Beach, Pompano Beach, Deerfield Beach and Fort
+       Lauderdale.</p>
 
     <!-- ===================== FAQ ===================== -->
     <section class="faq" id="faq">
-      <h2>Preguntas frecuentes</h2>
+      <h2>Frequently asked questions</h2>
       <details>
-        <summary>¿Se puede aplicar cerámico encima del PPF?</summary>
-        <div class="faq-a"><p>Sí, y es la combinación más completa. El cerámico aporta al PPF la
-        hidrofobia y la facilidad de lavado que la lámina no tiene de serie. Es el estándar en
-        coches de alta gama y de colección.</p></div>
+        <summary>Can you apply a ceramic coating on top of PPF?</summary>
+        <div class="faq-a"><p>Yes, and it is the most complete combination there is. The coating gives the film the hydrophobic behavior and the easy washing it does not have on its own, and it goes over fresh film without touching the paint underneath. That is the Top-up over PPF / wrap, <!--P:PRICE:ceramic-topup-->$600<!--/P-->. It is also bundled into our Daily Driver, New Car and Collector packages.</p></div>
       </details>
       <details>
-        <summary>¿Cuánto dura el PPF y cuánto el cerámico?</summary>
-        <div class="faq-a"><p>Un PPF de calidad bien mantenido protege durante años; en SERRES
-        trabajamos con films de 3M (serie 2080), Avery Dennison e Inozetek con 3 años de garantía
-        del fabricante. El Ceramic Coating dura de 2 a 5 años según el pack y el mantenimiento.
-        Lavar sin rodillos y sin químicos agresivos alarga la vida de ambos.</p></div>
+        <summary>How long do PPF and a ceramic coating last in South Florida?</summary>
+        <div class="faq-a"><p>PPF carries the manufacturer film warranty — up to 10 years on the films we install — plus a 1-year SERRES installation warranty. Ceramic is sold as the 3-Year Ceramic Package. Boca Raton sun, heat and salt air make both work harder than they would inland, so the real figure depends on where the car sleeps and how it is washed: no brush car washes, no harsh chemicals.</p></div>
       </details>
       <details>
-        <summary>¿El cerámico protege contra piedras y arañazos?</summary>
-        <div class="faq-a"><p>No contra impactos. Su capa de 1-2 micras resiste microarañazos leves
-        de lavado, pero una piedra en autopista o un roce de llave llegan a la pintura. Para daño
-        físico, la única protección efectiva es el PPF.</p></div>
+        <summary>Does a ceramic coating protect against rock chips and scratches?</summary>
+        <div class="faq-a"><p>Not against impacts. A cured coating is 1 to 2 microns thick and resists light wash marring, but a stone off I-95 or a key scrape goes straight through it to the paint. For physical damage the only effective protection is PPF.</p></div>
       </details>
       <details>
-        <summary>¿Merece la pena poner PPF solo en el frontal?</summary>
-        <div class="faq-a"><p>En la mayoría de los casos, sí. Capó, paragolpes, aletas y
-        retrovisores concentran la gran mayoría de los impactos de gravilla. Por 890 € proteges la
-        zona crítica y dejas el resto para un cerámico si buscas estética.</p></div>
+        <summary>Is it worth putting PPF only on the front end?</summary>
+        <div class="faq-a"><p>In most cases, yes. The hood, bumper, fenders and mirrors take the large majority of gravel impacts, which is why Full Front is the coverage most cars here get: Essential <!--P:PRICE:full-front.essential-->$1,900<!--/P-->, Signature <!--P:PRICE:full-front.signature-->$2,150<!--/P-->. You protect the critical zone and leave the rest of the car to a ceramic coating if looks and easy washing are the goal.</p></div>
       </details>
       <details>
-        <summary>¿El PPF daña la pintura al retirarlo?</summary>
-        <div class="faq-a"><p>No, si la instalación y la retirada las hace un profesional. La lámina
-        se despega dejando el barniz original intacto, sin restos de adhesivo. Es precisamente su
-        ventaja en leasing y reventa: debajo, la pintura sigue como el día que se protegió.</p></div>
+        <summary>Does PPF damage the paint when it is removed?</summary>
+        <div class="faq-a"><p>No, as long as a professional installs and removes it. The film peels away leaving the original clear coat intact, with no adhesive residue. That is its advantage on a lease or at resale: underneath, the paint is as it was on day one.</p></div>
       </details>
     </section>
 
-    <h2 id="siguiente-paso">El siguiente paso</h2>
-    <p>Si dudas entre las dos opciones, la forma más rápida de resolverlo es una valoración sobre tu
-       coche: uso, kilómetros, dónde duerme y qué quieres proteger. Escríbenos por WhatsApp al
-       +34 649 66 33 80 con el modelo y te damos presupuesto cerrado, sin visitas comerciales ni
-       letra pequeña. Atendemos con cita previa de lunes a sábado en Sant Cugat del Vallès, a 15
-       minutos de Barcelona.</p>
-
-    <!-- ===================== CTA WHATSAPP ===================== -->
+    <!-- ===================== QUOTE CTA ===================== -->
     <section class="post-cta">
       <div>
-        <span class="eyebrow">Presupuesto en 24 h</span>
-        <h3>¿PPF, cerámico o los dos?</h3>
-        <p>Envíanos el modelo, el uso que le das y unas fotos por WhatsApp y te decimos qué
-           protección encaja con tu coche, con precio cerrado y sin compromiso.</p>
+        <span class="eyebrow">Exact quote within 2 hours</span>
+        <h3>PPF, ceramic, or both?</h3>
+        <p>Send the make and model, how you use the car and a few photos. We tell you which
+           protection fits it, with a fixed price and no obligation.</p>
       </div>
       <div class="cta-actions">
-        <a class="btn" target="_blank" rel="noopener"
-           href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20he%20le%C3%ADdo%20el%20art%C3%ADculo%20sobre%20PPF%20o%20cer%C3%A1mico%20y%20quiero%20un%20presupuesto%20para%20mi%20coche.">
-           WhatsApp <span class="arr">→</span></a>
-        <a class="btn ghost" href="tel:+34649663380">+34 649 66 33 80</a>
+        <a class="btn" href="../../contact/">Get a quote <span class="arr">→</span></a>
+        <a class="btn ghost" href="../../pricing/">See all prices</a>
       </div>
     </section>
 
   </article>
 </div>
 
-<!-- ===================== RELACIONADOS ===================== -->
+<!-- ===================== RELATED ===================== -->
 <section class="related">
   <div class="wrap">
     <div class="section-head">
@@ -486,21 +515,21 @@
     <div class="rel-grid" data-i18n-skip>
       <a class="rel-card" href="../how-much-does-ppf-cost/">
         <span class="rk">Blog · PPF</span>
-        <h3>¿Cuánto cuesta el PPF?</h3>
-        <p>Precios reales por pack: frontal desde 890 € y carrocería completa 2.390 €.</p>
-        <span class="go">Leer artículo →</span>
+        <h3>How much does PPF cost?</h3>
+        <p>Every coverage level in both film tiers — Partial Front <!--P:PRICE:partial-front.essential-->$1,000<!--/P-->, Full Body <!--P:PRICE:full-body.essential-->$4,995<!--/P--> — and what moves the number.</p>
+        <span class="go">Read article →</span>
       </a>
       <a class="rel-card" href="../how-much-does-a-car-wrap-cost/">
         <span class="rk">Blog · Car Wrap</span>
-        <h3>¿Cuánto cuesta vinilar un coche?</h3>
-        <p>Tarifas de vinilado: desde acentos por 250 € hasta el cambio de color completo.</p>
-        <span class="go">Leer artículo →</span>
+        <h3>How much does a car wrap cost?</h3>
+        <p>Chrome delete, full color change and Signature wrap pricing: <!--P:STARTING:wraps-->from $450<!--/P-->.</p>
+        <span class="go">Read article →</span>
       </a>
       <a class="rel-card" href="../../ceramic-coating/">
-        <span class="rk">Servicio</span>
-        <h3>Ceramic Coating en SERRES</h3>
-        <p>Packs Esencial, Signature y Concours con durabilidad de hasta 5 años.</p>
-        <span class="go">Ver servicio →</span>
+        <span class="rk">Service</span>
+        <h3>Ceramic coating in Boca Raton</h3>
+        <p>The 3-Year Ceramic Package <!--P:PRICE:ceramic-3yr-->$1,200<!--/P--> and the top-up over PPF or wrap <!--P:PRICE:ceramic-topup-->$600<!--/P-->.</p>
+        <span class="go">View service →</span>
       </a>
     </div>
   </div>
