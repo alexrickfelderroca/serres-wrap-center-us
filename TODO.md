@@ -71,7 +71,7 @@ page, every JSON-LD `PostalAddress`, the footer and the contact page in one comm
 |---|---|---|
 | 21 | **Photo / video pack** | Every image on the site is Barcelona work. That is legitimate as "proven in Barcelona" evidence, but see 22 |
 | 22 | **Two images show a readable Spanish licence plate** (`2383 MRZ`) and a `movento.es` dealer frame, in `assets/detailing/`. Several others show an EU plate band | Replace or crop before a US launch |
-| 23 | **Hero video** `assets/serres-hero.mp4` is ~10 MB against the spec's 4 MB budget (§11) | Needs re-encoding; there is no system ffmpeg on this machine |
+| 23 | ~~Hero video over budget~~ — **done.** Re-encoded 9.77 MB → 1.01 MB (plus a 765 KB WebM), poster 106 KB. SSIM 0.982 vs the original, audio track dropped from a muted autoplay loop | Nothing needed. Command is in README.md if you ever want to redo it |
 | 24 | **Barcelona Google review screenshots** | Spec §6.1.7 wants these on the home page. They cannot be manufactured, and the 5 Spanish testimonials must not be re-badged as US reviews. The review strip is absent until you supply them |
 
 ## 7. November 2026 — Founders Club (`/reserve`)
