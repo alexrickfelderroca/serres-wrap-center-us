@@ -376,7 +376,7 @@
     "blog/how-much-does-ppf-cost/": {
       "title": "How Much Does PPF Cost? Boca Raton Prices",
       "description": "What paint protection film really costs in Boca Raton: full front {{price:full-front.essential}} in NAR H190 or {{price:full-front.signature}} in 3M, full body {{price:full-body.essential}}, and what moves the number.",
-      "ogImage": "assets/blog/cuanto-cuesta-ppf-coche/og.jpg",
+      "ogImage": "assets/blog/how-much-does-ppf-cost/og.jpg",
       "ogType": "article",
       "priority": "0.6",
       "hasPrices": true,
@@ -402,7 +402,7 @@
     "blog/how-much-does-a-car-wrap-cost/": {
       "title": "How Much Does a Car Wrap Cost in Florida?",
       "description": "What a vinyl wrap really costs in Boca Raton: chrome delete {{price:chrome-delete}}, full color change {{price:color-change}}, premium color-shift film {{price:signature-wrap}} — and what drives the price.",
-      "ogImage": "assets/blog/cuanto-cuesta-vinilar-un-coche/og.jpg",
+      "ogImage": "assets/blog/how-much-does-a-car-wrap-cost/og.jpg",
       "ogType": "article",
       "priority": "0.6",
       "hasPrices": true,
@@ -428,7 +428,7 @@
     "blog/ppf-vs-ceramic-coating/": {
       "title": "PPF vs Ceramic Coating: Which Do You Need?",
       "description": "Paint protection film stops stone chips, a ceramic coating adds gloss and beading. What each one does, what they cost from {{startingAtAmount:ceramic}}, and when to combine them.",
-      "ogImage": "assets/blog/ppf-o-ceramico-que-elegir/og.jpg",
+      "ogImage": "assets/blog/ppf-vs-ceramic-coating/og.jpg",
       "ogType": "article",
       "priority": "0.6",
       "hasPrices": true,
@@ -454,7 +454,7 @@
     "blog/car-upholstery-cleaning-cost/": {
       "title": "Car Upholstery Cleaning Cost in Boca Raton",
       "description": "What interior cleaning really costs and what it includes: extraction, leather clean and feed, from {{price:interior}} at the SERRES studio in Boca Raton, Florida.",
-      "ogImage": "assets/blog/limpieza-tapiceria-coche-precio/og.jpg",
+      "ogImage": "assets/blog/car-upholstery-cleaning-cost/og.jpg",
       "ogType": "article",
       "priority": "0.6",
       "hasPrices": true,

@@ -198,10 +198,6 @@
 <div class="wrap">
   <!-- us-blog-cards -->
 <div class="post-grid us-post-grid" data-i18n-skip>
-<!-- TODO(build): cover images. assets/blog/ still holds the four Spanish folder names
-     (cuanto-cuesta-ppf-coche, cuanto-cuesta-vinilar-un-coche, ppf-o-ceramico-que-elegir,
-     limpieza-tapiceria-coche-precio). Rename each to its English slug, or every <img> below
-     and in the four articles 404. -->
 <!-- NOTE(build): hrefs are "<slug>/" — the articles ship at blog/<slug>/index.html (depth 2),
      which is what blog/index.html already links to. The legacy _build/port/check-blog.js still
      asserts the flat <slug>.html form from the dead flat-file port pipeline; that assertion is stale. -->
@@ -213,7 +209,7 @@
       <div class="pc-body">
         <span class="pc-date">Sep 2, 2026 · Car Wrap</span>
         <h2>How much does it cost to wrap a car?</h2>
-        <p>Chrome Delete <!--P:PRICE:chrome-delete-->$450<!--/P-->, Full Color Change <!--P:PRICE:color-change-->$3,500<!--/P--> and Signature Wrap <!--P:PRICE:signature-wrap-->$4,500<!--/P-->: real 2026 Boca Raton prices, what each level includes and how to judge a quote.</p>
+        <p>Chrome Delete {{PRICE:chrome-delete}}, Full Color Change {{PRICE:color-change}} and Signature Wrap {{PRICE:signature-wrap}}: real 2026 Boca Raton prices, what each level includes and how to judge a quote.</p>
         <span class="pc-more">Read article →</span>
       </div>
     </a>
@@ -237,7 +233,7 @@
       <div class="pc-body">
         <span class="pc-date">Sep 2, 2026 · PPF</span>
         <h2>How much does PPF cost for your car?</h2>
-        <p>Four coverage levels, each priced in two films. Full Front is the one most cars leave with: Essential <!--P:PRICE:full-front.essential-->$1,900<!--/P-->, Signature <!--P:PRICE:full-front.signature-->$2,150<!--/P-->.</p>
+        <p>Four coverage levels, each priced in two films. Full Front is the one most cars leave with: Essential {{PRICE:full-front.essential}}, Signature {{PRICE:full-front.signature}}.</p>
         <span class="pc-more">Read article →</span>
       </div>
     </a>
@@ -249,7 +245,7 @@
       <div class="pc-body">
         <span class="pc-date">Sep 2, 2026 · Detailing</span>
         <h2>Car interior detailing: what it costs and what you get</h2>
-        <p>One interior service, one published starting price — the Interior Detail, <!--P:PRICE:interior-->$300<!--/P-->. What it includes step by step, what moves the price, and which stains actually come out.</p>
+        <p>One interior service, one published starting price — the Interior Detail, {{PRICE:interior}}. What it includes step by step, what moves the price, and which stains actually come out.</p>
         <span class="pc-more">Read article →</span>
       </div>
     </a>
