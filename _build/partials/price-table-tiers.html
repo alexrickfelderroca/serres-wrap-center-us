@@ -1,0 +1,26 @@
+{{!--
+  REGION:prices:ppf — the two-tier PPF table. Every row carries an Essential and
+  a Signature price, exactly as spec §3 requires ("Essential from $X ·
+  Signature from $Y"), here as two labelled columns plus a tier legend.
+  Rows come from price-row-tiers.html. Syntax + classes: see header.html.
+--}}
+<div class="us-prices" data-us-region="prices" data-group="{{group}}">
+  <table class="us-prices__table">
+    <caption class="us-prices__caption">{{groupLabel}}</caption>
+    <thead class="us-prices__head">
+      <tr>
+        <th scope="col" class="us-prices__col">Coverage</th>
+        <th scope="col" class="us-prices__col">What it covers</th>
+        <th scope="col" class="us-prices__col">{{tier1Label}}</th>
+        <th scope="col" class="us-prices__col">{{tier2Label}}</th>
+      </tr>
+    </thead>
+    <tbody>
+{{{rows}}}
+    </tbody>
+  </table>
+  <ul class="us-prices__legend">
+    <li class="us-prices__legend-item"><span class="us-prices__legend-label">{{tier1Label}}</span> {{tier1Film}} — {{tier1Note}}</li>
+    <li class="us-prices__legend-item"><span class="us-prices__legend-label">{{tier2Label}}</span> {{tier2Film}} — {{tier2Note}}</li>
+  </ul>
+</div>

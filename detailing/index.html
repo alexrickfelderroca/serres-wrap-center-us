@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SERRES — Paint Correction</title>
-<meta name="description" content="SERRES Paint Correction — multi-stage machine polishing that removes swirls, holograms and oxidation to restore true, mirror-clear depth to your paint.">
-<link rel="canonical" href="https://serreswrapcenter.es/services/paint-correction.html">
+<title>SERRES — Detailing</title>
+<meta name="description" content="SERRES Detailing — deep interior steam-cleaning and exterior decontamination that takes your car from neglected to showroom-fresh, inside and out.">
+<link rel="canonical" href="https://serreswrapcenter.es/services/detailing.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SERRES Wrap Center">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="SERRES — Paint Correction">
-<meta property="og:description" content="SERRES Paint Correction — multi-stage machine polishing that removes swirls, holograms and oxidation to restore true, mirror-clear depth to your paint.">
-<meta property="og:url" content="https://serreswrapcenter.es/services/paint-correction.html">
-<meta property="og:image" content="https://serreswrapcenter.es/assets/og/paint-correction.jpg">
+<meta property="og:title" content="SERRES — Detailing">
+<meta property="og:description" content="SERRES Detailing — deep interior steam-cleaning and exterior decontamination that takes your car from neglected to showroom-fresh, inside and out.">
+<meta property="og:url" content="https://serreswrapcenter.es/services/detailing.html">
+<meta property="og:image" content="https://serreswrapcenter.es/assets/og/detailing.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SERRES — Paint Correction">
-<meta name="twitter:description" content="SERRES Paint Correction — multi-stage machine polishing that removes swirls, holograms and oxidation to restore true, mirror-clear depth to your paint.">
-<meta name="twitter:image" content="https://serreswrapcenter.es/assets/og/paint-correction.jpg">
+<meta name="twitter:title" content="SERRES — Detailing">
+<meta name="twitter:description" content="SERRES Detailing — deep interior steam-cleaning and exterior decontamination that takes your car from neglected to showroom-fresh, inside and out.">
+<meta name="twitter:image" content="https://serreswrapcenter.es/assets/og/detailing.jpg">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -99,6 +99,9 @@
   .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.03em}
   .hero h1 .ln span{display:block}
   @keyframes rise{from{transform:translateY(108%)}to{transform:translateY(0)}}
+  .hero h1 .ln-kw{margin-top:20px}
+  .hero h1 .h1-kw{display:inline-block;font-weight:500;font-size:clamp(12px,1.35vw,16px);
+    letter-spacing:.22em;color:var(--muted);background:none;-webkit-text-fill-color:currentColor}
   .hero .lead{margin-top:26px;max-width:52ch;color:var(--muted);font-size:clamp(16px,1.5vw,19px)}
   @keyframes fade{from{opacity:0}to{opacity:1}}
   .hero-stats{display:flex;gap:46px;flex-wrap:wrap;margin-bottom:8px}
@@ -109,6 +112,7 @@
   @media(prefers-reduced-motion:no-preference){
     .hero h1 .ln span{transform:translateY(108%);animation:rise 1s var(--ease) .05s forwards}
     .hero h1 .ln:nth-child(2) span{animation-delay:.16s}
+    .hero h1 .ln:nth-child(3) span{animation-delay:.27s}
     .hero .eyebrow{opacity:0;animation:fade .9s var(--ease) .2s forwards}
     .hero .lead{opacity:0;animation:fade .9s var(--ease) .42s forwards}
     .hero-stats{opacity:0;animation:fade .9s var(--ease) .55s forwards}
@@ -168,6 +172,24 @@
     border:1px solid rgba(255,255,255,.16);transition:opacity .4s var(--ease)}
   .compare.touched .cmp-hint{opacity:0}
 
+  /* ---------- BEFORE / AFTER DUO (two framed shots) ---------- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:42px}
+  .duo-cell{position:relative;aspect-ratio:3/4;overflow:hidden;background:#000;
+    border:1px solid var(--line-strong);
+    clip-path:polygon(0 0,100% 0,100% 100%,20px 100%,0 calc(100% - 20px))}
+  .duo-cell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;
+    transform:scale(1.02);transition:transform 1.1s var(--ease)}
+  .duo-cell:hover img{transform:scale(1.06)}
+  .duo-cell::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,transparent 52%,rgba(8,8,9,.62) 100%)}
+  .duo-tag{position:absolute;bottom:16px;left:16px;z-index:2;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
+    font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:#fff;
+    background:rgba(8,8,9,.6);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);
+    padding:7px 13px;display:flex;flex-direction:column;gap:1px;line-height:1.2}
+  .duo-tag small{font-weight:500;letter-spacing:.14em;font-size:10px;color:var(--muted)}
+  .duo-cell.aft .duo-tag{border-color:rgba(255,255,255,.32)}
+  .duo-cell.aft .duo-tag small{color:#cfcfd6}
+
   /* ---------- PROCESS / MULTI-STAGE ---------- */
   .process{padding:96px 0 30px}
   .proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:46px;
@@ -185,23 +207,7 @@
     font-size:11.5px;color:var(--muted-2)}
   .stage p{color:var(--muted);font-size:14.5px;line-height:1.5;text-wrap:pretty;margin-top:auto}
 
-  /* gloss results */
-  .gloss{margin-top:64px;display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center}
-  .gloss .gl-copy h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
-    font-size:clamp(26px,3vw,42px);line-height:.98;letter-spacing:.01em;margin-bottom:18px;text-wrap:balance}
-  .gloss .gl-copy p{color:var(--muted);font-size:15.5px;max-width:40ch;text-wrap:pretty}
-  .gl-meter{display:flex;flex-direction:column;gap:26px}
-  .gbar{display:flex;flex-direction:column;gap:10px}
-  .gbar .gb-top{display:flex;align-items:baseline;justify-content:space-between}
-  .gbar .gb-label{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.16em;
-    font-size:13px;color:var(--muted)}
-  .gbar .gb-val{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:30px;line-height:1}
-  .gbar .gb-track{height:6px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
-  .gbar .gb-fill{position:absolute;left:0;top:0;height:100%;width:0;transition:width 1.3s var(--ease)}
-  .gbar.before .gb-fill{background:rgba(255,255,255,.22)}
-  .gbar.before .gb-val{color:var(--muted)}
-  .gbar.after .gb-fill{background:var(--chrome);box-shadow:0 0 16px rgba(255,255,255,.4)}
-  .gbar.after .gb-val{color:var(--text)}
+
 
   /* ---------- CTA ---------- */
   .cta{position:relative;margin-top:80px;padding:104px 0;text-align:center;background:var(--bg-2)}
@@ -220,11 +226,45 @@
   .reveal-up{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
   .reveal-up.in{opacity:1;transform:none}
 
+  /* ---------- BREADCRUMBS ---------- */
+  .crumbs{background:var(--bg);border-bottom:1px solid var(--line)}
+  .crumbs .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    padding-top:12px;padding-bottom:12px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;
+    letter-spacing:.18em;font-size:12px;color:var(--muted-2)}
+  .crumbs a{color:var(--muted);transition:color .25s var(--ease)}
+  .crumbs a:hover{color:var(--text)}
+  .crumbs .c-sep{color:var(--muted-2)}
+  .crumbs [aria-current]{color:var(--text)}
+
+  /* ---------- RELATED SERVICES ---------- */
+  .rel-links{margin-top:34px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:14px}
+  .rel-links .rl-label{color:var(--muted-2);letter-spacing:.22em;font-size:12px}
+  .rel-links a{color:var(--muted);border-bottom:1px solid var(--line-strong);padding-bottom:3px;
+    transition:color .25s var(--ease),border-color .25s var(--ease)}
+  .rel-links a:hover{color:var(--text);border-color:#fff}
+  .rel-links .rl-dot{color:var(--muted-2)}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:96px 0 30px}
+  .faq-list{margin-top:46px;border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;
+    justify-content:space-between;gap:24px;padding:24px 0;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.04em;font-size:22px;line-height:1.1;transition:color .25s var(--ease)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary:hover{color:#fff}
+  .faq-item summary .fq-ico{flex:none;font-weight:400;color:var(--muted-2);
+    transition:transform .3s var(--ease)}
+  .faq-item[open] summary .fq-ico{transform:rotate(45deg);color:var(--text)}
+  .faq-item .fq-a{padding:0 0 26px;color:var(--muted);font-size:15.5px;max-width:72ch;text-wrap:pretty}
+
   @media(max-width:980px){
     .xform-grid{grid-template-columns:1fr;gap:34px;max-width:520px}
     .xtext p{max-width:100%}
     .proc-grid{grid-template-columns:1fr}
-    .gloss{grid-template-columns:1fr;gap:30px}
   }
   @media(max-width:760px){
     .wrap,.nav-inner{padding-left:22px;padding-right:22px}
@@ -241,53 +281,6 @@
     .scroll-cue{opacity:1}
     .reveal-up{opacity:1;transform:none}
     .gbar .gb-fill{transition:none}
-  }
-
-  /* ---------- H1 keyword kicker ---------- */
-  .hero h1 .h1-kw{display:inline-block;font-weight:500;font-size:clamp(13px,1.4vw,17px);
-    line-height:1.5;letter-spacing:.24em;color:var(--muted);margin-top:20px;
-    background:none;-webkit-text-fill-color:currentColor}
-  @media(prefers-reduced-motion:no-preference){
-    .hero h1 .ln:nth-child(3) span{animation-delay:.27s}
-  }
-
-  /* ---------- BREADCRUMBS ---------- */
-  .crumbs{position:absolute;left:40px;right:40px;top:24px;z-index:3;display:flex;align-items:center;
-    flex-wrap:wrap;row-gap:6px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;
-    letter-spacing:.22em;font-size:12px;color:var(--muted)}
-  .crumbs a{color:var(--muted);transition:color .25s var(--ease)}
-  .crumbs a:hover{color:var(--text)}
-  .crumbs a::after{content:"/";margin:0 12px;color:var(--muted-2)}
-  .crumbs span{color:var(--text)}
-
-  /* ---------- FAQ ---------- */
-  .faq{padding:96px 0 30px}
-  .faq-list{margin-top:46px;border-top:1px solid var(--line)}
-  .faq-item{border-bottom:1px solid var(--line)}
-  .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;
-    justify-content:space-between;gap:24px;padding:24px 0;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.04em;font-size:22px;line-height:1.1;transition:color .25s var(--ease)}
-  .faq-item summary::-webkit-details-marker{display:none}
-  .faq-item summary::after{content:"+";font-weight:400;font-size:26px;color:var(--muted-2);
-    flex:none;transition:transform .3s var(--ease)}
-  .faq-item[open] summary::after{transform:rotate(45deg)}
-  .faq-item summary:hover{color:#fff}
-  .faq-item .faq-a{padding:0 0 26px;color:var(--muted);font-size:15.5px;max-width:70ch;text-wrap:pretty}
-  .faq-links{margin-top:38px;display:flex;gap:14px 38px;flex-wrap:wrap}
-  .faq-links a{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.14em;font-size:15px;color:var(--text);display:inline-flex;align-items:center;gap:9px;
-    border-bottom:1px solid var(--line-strong);padding-bottom:6px;
-    transition:border-color .25s var(--ease),color .25s var(--ease)}
-  .faq-links a:hover{border-color:#fff}
-  .faq-links a .arr{transition:transform .3s var(--ease)}
-  .faq-links a:hover .arr{transform:translateX(4px)}
-
-  @media(max-width:760px){
-    .hero h1 .h1-kw{font-size:12px;letter-spacing:.14em;margin-top:14px}
-    .crumbs{left:22px;right:22px;top:18px;font-size:11px;letter-spacing:.18em}
-    .crumbs a::after{margin:0 9px}
-    .faq-item summary{font-size:19px}
   }
 </style>
 <script type="application/ld+json">
@@ -310,140 +303,8 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Car polishing",
-      "item": "https://serreswrapcenter.es/services/paint-correction.html"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://serreswrapcenter.es/services/paint-correction.html#service",
-  "name": "Car polishing and paint correction",
-  "serviceType": "Paint correction and Ceramic Coating",
-  "description": "Multi-stage machine polishing that removes scratches, swirls and holograms, sealed with Ceramic Coating SiO₂ and inspected panel by panel under controlled hexagonal lighting before delivery.",
-  "url": "https://serreswrapcenter.es/services/paint-correction.html",
-  "provider": {
-    "@type": "AutoBodyShop",
-    "name": "SERRES Wrap Center",
-    "telephone": "+34649663380",
-    "url": "https://serreswrapcenter.es/",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Av. Can Fatjó dels Aurons, 15",
-      "addressLocality": "Sant Cugat del Vallès",
-      "addressRegion": "Barcelona",
-      "postalCode": "08174",
-      "addressCountry": "ES"
-    }
-  },
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Sant Cugat del Vallès"
-    },
-    {
-      "@type": "City",
-      "name": "Barcelona"
-    }
-  ],
-  "offers": [
-    {
-      "@type": "Offer",
-      "name": "Correction + Ceramic Coating Essential",
-      "price": "340",
-      "priceCurrency": "EUR",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "price": "340",
-        "priceCurrency": "EUR",
-        "valueAddedTaxIncluded": true
-      },
-      "availability": "https://schema.org/InStock"
-    },
-    {
-      "@type": "Offer",
-      "name": "Correction + Ceramic Coating Signature",
-      "price": "590",
-      "priceCurrency": "EUR",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "price": "590",
-        "priceCurrency": "EUR",
-        "valueAddedTaxIncluded": true
-      },
-      "availability": "https://schema.org/InStock"
-    },
-    {
-      "@type": "Offer",
-      "name": "Correction + Ceramic Coating Concours",
-      "price": "890",
-      "priceCurrency": "EUR",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "price": "890",
-        "priceCurrency": "EUR",
-        "valueAddedTaxIncluded": true
-      },
-      "availability": "https://schema.org/InStock"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does car polishing cost in Boca Raton?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "At SERRES Wrap Center polishing with a SiO₂ Ceramic Coating starts at 340 € (Essential, VAT included). The Signature level, with multi-stage correction, costs 590 €, and the Concours, with a show-grade finish, 890 €. The exact price depends on the condition of the paint: we confirm it during the initial panel-by-panel inspection, before starting."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does paint correction take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An Essential is completed in one or two days; a Signature or Concours multi-stage correction takes 2 to 4 days depending on the size of the car and the hardness of the clear coat. We work by appointment Monday to Saturday and give you a firm delivery date before starting."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does polishing remove all scratches?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We completely remove swirls, holograms and surface scratches that don't go through the clear coat; deeper ones are reduced until they are nearly invisible. Before polishing we assess the condition of the clear coat panel by panel so we only remove the material that's strictly necessary and never compromise it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the process like and how do I know the result is real?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We work in three stages: cutting to remove the defects, refining and final finishing. We review the car panel by panel under controlled hexagonal lighting and, if anything falls short of our standard, it is redone before delivery. Everything is done at our own workshop in Boca Raton."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the result guaranteed? How long does it last?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The SiO₂ Ceramic Coating protects the corrected paint for up to 5 years depending on the chosen pack and maintenance. If you want to shield the result against new scratches, self-healing PPF (from 890 € for the front end) includes a 3-year film warranty."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I book an appointment, and do I need to leave the car all day?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Message us on WhatsApp at +34 649 66 33 80 or call us and we'll book you in Monday to Saturday. We are at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès, 20 minutes from Barcelona. For corrections taking more than one day we can coordinate pick-up and delivery with you."
-      }
+      "name": "Detailing",
+      "item": "https://serreswrapcenter.es/services/detailing.html"
     }
   ]
 }
@@ -472,179 +333,179 @@
   </div>
 </header>
 
+<nav class="crumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <a href="../">Home</a><span class="c-sep">/</span><a href="../#services">Services</a><span class="c-sep">/</span><span aria-current="page">Detailing</span>
+  </div>
+</nav>
+
 <!-- ===================== HERO ===================== -->
-<section class="hero" data-screen-label="Correction — Intro">
-  <video autoplay muted loop playsinline preload="metadata" poster="../assets/correction/poster-opt.jpg">
-    <source src="../assets/correction/correction.mp4" type="video/mp4">
+<section class="hero" data-screen-label="Detailing — Intro">
+  <video autoplay muted loop playsinline preload="metadata" poster="../assets/detailing/poster-opt.jpg">
+    <source src="../assets/detailing/detailing.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-grain"></div>
-  <nav class="crumbs" aria-label="Breadcrumb">
-    <a href="../">Home</a><a href="../#services">Services</a><span>Car polishing</span>
-  </nav>
   <div class="wrap">
     <div class="hero-top">
       <div>
-        <span class="eyebrow">Service 04 · Paint Correction</span>
+        <span class="eyebrow">Service 05 · Detailing</span>
         <h1 class="display">
-          <span class="ln"><span>Staged</span></span>
-          <span class="ln"><span class="chrome-text">polishing</span></span>
-          <span class="ln"><span class="h1-kw">Car polishing in Boca Raton — paint correction</span></span>
+          <span class="ln"><span>Showroom</span></span>
+          <span class="ln"><span class="chrome-text">Fresh</span></span>
+          <span class="ln ln-kw"><span class="h1-kw">Car detailing in Boca Raton</span></span>
         </h1>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><b class="chrome-text">3</b><span>Stage Polish</span></div>
-        <div class="hstat"><b class="chrome-text">95%</b><span>Defect Removal</span></div>
-        <div class="hstat"><b class="chrome-text">0</b><span>Holograms</span></div>
+        <div class="hstat"><b class="chrome-text">2</b><span>In &amp; Out</span></div>
+        <div class="hstat"><b class="chrome-text">100%</b><span>Hand Finished</span></div>
+        <div class="hstat"><b class="chrome-text">0</b><span>Cut Corners</span></div>
       </div>
     </div>
-    <p class="lead">SERRES car polishing in Boca Raton is a multi-stage machine paint correction that removes micro-scratches, holograms and oxidation, restoring the true gloss and depth of your paint. We work from our own studio, by appointment.</p>
+    <p class="lead">Car detailing in Boca Raton, Florida: steam cleaning, decontamination and hand finishing, inside and out, at our own studio. Deep Clean from €150.</p>
   </div>
   <div class="scroll-cue"><span class="bar"></span> Scroll</div>
 </section>
 
-<!-- ===================== TRANSFORMATION ===================== -->
-<section class="xform" data-screen-label="Correction — Transformation">
+<!-- ===================== INTERIOR TRANSFORMATION ===================== -->
+<section class="xform" data-screen-label="Detailing — Interior">
   <div class="wrap">
     <div class="section-head reveal-up">
       <div>
-        <span class="eyebrow">The Transformation</span>
-        <h2>From hazy<br>to mirror.</h2>
+        <span class="eyebrow">Interior Detailing</span>
+        <h2>Lived-in<br>to like-new.</h2>
+      </div>
+      <p class="sh-note">Ground-in dust, dull plastics and tired leather — steam-cleaned, conditioned and reset until the cabin feels factory again.</p>
+    </div>
+    <div class="duo reveal-up">
+      <div class="duo-cell bef">
+        <img src="../assets/detailing/int-before.webp" alt="Audi SQ7 interior before — dust and grime in the footwell area" width="1290" height="2300" loading="lazy" decoding="async" draggable="false">
+        <div class="duo-tag"><small>Before</small>Dust &amp; Grime</div>
+      </div>
+      <div class="duo-cell aft">
+        <img src="../assets/detailing/int-after.webp" alt="Audi SQ7 interior after — the cabin steam-cleaned and fully conditioned" width="1290" height="2256" loading="lazy" decoding="async" draggable="false">
+        <div class="duo-tag"><small>After</small>Steam-Cleaned</div>
       </div>
     </div>
-    <div class="xform-grid">
-      <div class="xtext reveal-up">
-        <p>This BMW arrived with years of wash-induced swirls and micro-marring dulling its gloss black — light scattering in every direction instead of reflecting cleanly.</p>
-        <p>We assessed the clear coat, then cut, refined and finished the paint by machine until the defects were gone. The hex lighting now mirrors back razor-sharp, with deep, wet-looking reflections restored.</p>
-        <div class="xspecs">
-          <div class="row"><span class="k">Vehicle</span><span class="v">BMW Coupé · Gloss Black</span></div>
-          <div class="row"><span class="k">Process</span><span class="v">Stage polishing · Stage 3</span></div>
-          <div class="row"><span class="k">Defects</span><span class="v">Swirls · holograms · oxidation</span></div>
-          <div class="row"><span class="k">Finish</span><span class="v">Sealed &amp; protected</span></div>
-        </div>
+  </div>
+</section>
+
+<!-- ===================== EXTERIOR TRANSFORMATION ===================== -->
+<section class="xform" data-screen-label="Detailing — Exterior" style="padding-top:64px">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Exterior Detailing</span>
+        <h2>Dust-caked<br>to deep gloss.</h2>
       </div>
-      <div class="reveal-up">
-        <div class="compare touched" id="compare">
-          <img class="after" src="../assets/correction/after.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="BMW after — SERRES paint correction, mirror gloss" draggable="false">
-          <img class="before" id="beforeImg" src="../assets/correction/before.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="BMW before — hazy paint with micro-scratches" draggable="false">
-          <div class="cmp-tag bef" id="tagBef"><small>Before</small>Swirled &amp; Hazy</div>
-          <div class="cmp-tag aft" id="tagAft"><small>After</small>Corrected Gloss</div>
-          <div class="cmp-divider" id="divider"></div>
-          <button class="cmp-handle" id="handle" aria-label="Drag to compare before and after">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg>
-          </button>
-          <div class="cmp-hint">Drag to reveal</div>
-        </div>
+      <p class="sh-note">A full decontamination wash lifts road film and fallout, then we dry and dress every panel until the paint reads wet under the lights.</p>
+    </div>
+    <div class="duo reveal-up">
+      <div class="duo-cell bef">
+        <img src="../assets/detailing/ext-before.webp" alt="Audi SQ7 exterior before — dusty, dull and faded paint" width="1290" height="1997" loading="lazy" decoding="async" draggable="false">
+        <div class="duo-tag"><small>Before</small>Dusty &amp; Dull</div>
+      </div>
+      <div class="duo-cell aft">
+        <img src="../assets/detailing/ext-after.webp" alt="Audi SQ7 exterior after — a deep, mirror-like gloss" width="1290" height="1693" loading="lazy" decoding="async" draggable="false">
+        <div class="duo-tag"><small>After</small>Deep Gloss</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===================== PROCESS ===================== -->
-<section class="process" data-screen-label="Correction — Process">
+<section class="process" data-screen-label="Detailing — Process">
   <div class="wrap">
     <div class="section-head reveal-up">
       <div>
         <span class="eyebrow">The Process</span>
-        <h2>Stage 1. Stage 2.<br>Stage 3.</h2>
+        <h2>Strip. Clean.<br>Protect.</h2>
       </div>
-      <p class="sh-note">No two paints are alike: the polish adapts to the condition of your paint and the level of correction needed — from a one-stage enhancement to a full three-stage correction.</p>
+      <p class="sh-note">A full inside-and-out reset — we remove what's built up, clean down to the surface, then dress and protect every finish.</p>
     </div>
 
     <div class="proc-grid reveal-up">
       <div class="stage">
         <span class="st-no">01</span>
-        <h3>Stage 1 · Cut</h3>
-        <span class="st-tool">Cutting pad · heavy compound</span>
-        <p>The aggressive stage — levelling deeper scratches, swirls and oxidation by removing a precise micron-thin layer of clear coat.</p>
+        <h3>Decontaminate</h3>
+        <span class="st-tool">Foam wash · clay · fallout</span>
+        <p>A pH-neutral foam bath lifts loose grime, then clay and iron remover pull out the bonded road film and brake fallout a wash leaves behind.</p>
       </div>
       <div class="stage">
         <span class="st-no">02</span>
-        <h3>Stage 2 · Refine</h3>
-        <span class="st-tool">Polishing pad · medium polish</span>
-        <p>The haze and micro-marring left by cutting are refined away, building back clarity and lifting gloss across the panel.</p>
+        <h3>Deep Clean</h3>
+        <span class="st-tool">Steam · extraction · brushes</span>
+        <p>Inside, every panel, vent and seam is steamed and agitated; carpets and leather are extracted and wiped down until the cabin is truly clean.</p>
       </div>
       <div class="stage">
         <span class="st-no">03</span>
-        <h3>Stage 3 · Finish</h3>
-        <span class="st-tool">Finishing pad · fine polish</span>
-        <p>The final mirror-finish (jewelling) pass eliminates holograms and brings the paint to a true, defect-free gloss before it's sealed in.</p>
+        <h3>Dress &amp; Protect</h3>
+        <span class="st-tool">Sealant · conditioner · UV</span>
+        <p>Paint is sealed for gloss and beading, trim and leather are conditioned and UV-protected, and the glass gets a rain-repellent treatment and is left streak-free.</p>
       </div>
     </div>
 
-    <div class="gloss reveal-up" id="glossSection">
-      <div class="gl-copy">
-        <h3>The numbers,<br>not just the shine.</h3>
-        <p>Gloss is expressed in GU (gloss units): the higher the number, the deeper and sharper the reflection. Typical results on neglected paint:</p>
-      </div>
-      <div class="gl-meter">
-        <div class="gbar before">
-          <div class="gb-top">
-            <span class="gb-label">On arrival</span>
-            <span class="gb-val">42<small style="font-size:14px;color:var(--muted-2);letter-spacing:.1em"> GU</small></span>
-          </div>
-          <div class="gb-track"><div class="gb-fill" data-w="44"></div></div>
-        </div>
-        <div class="gbar after">
-          <div class="gb-top">
-            <span class="gb-label">After correction</span>
-            <span class="gb-val chrome-text">94<small style="font-size:14px;letter-spacing:.1em"> GU</small></span>
-          </div>
-          <div class="gb-track"><div class="gb-fill" data-w="96"></div></div>
-        </div>
-      </div>
+    <div class="rel-links reveal-up">
+      <span class="rl-label">Pair it with:</span>
+      <a href="../paint-protection-film/">PPF paint protection</a>
+      <span class="rl-dot">·</span>
+      <a href="../ceramic-coating/">Ceramic Coating SiO₂</a>
     </div>
   </div>
 </section>
 
 <!-- ===================== FAQ ===================== -->
-<section class="faq" id="faq" data-screen-label="Correction — FAQ">
+<section class="faq" data-screen-label="Detailing — FAQ" id="faq">
   <div class="wrap">
     <div class="section-head reveal-up">
       <div>
         <span class="eyebrow">Frequently asked questions</span>
-        <h2>Before booking<br>your correction</h2>
+        <h2>Before you book.</h2>
       </div>
-      <p class="sh-note">Straight answers on price, timing, warranty and process. If your case is different, message us on WhatsApp.</p>
+      <p class="sh-note">What people ask before a detail — prices, timings and how we work in Boca Raton.</p>
     </div>
+
     <div class="faq-list reveal-up">
-      <details class="faq-item" open>
-        <summary>How much does car polishing cost in Boca Raton?</summary>
-        <p class="faq-a">At SERRES Wrap Center polishing with a SiO₂ Ceramic Coating starts at 340 € (Essential, VAT included). The Signature level, with multi-stage correction, costs 590 €, and the Concours, with a show-grade finish, 890 €. The exact price depends on the condition of the paint: we confirm it during the initial panel-by-panel inspection, before starting.</p>
-      </details>
+
       <details class="faq-item">
-        <summary>How long does paint correction take?</summary>
-        <p class="faq-a">An Essential is completed in one or two days; a Signature or Concours multi-stage correction takes 2 to 4 days depending on the size of the car and the hardness of the clear coat. We work by appointment Monday to Saturday and give you a firm delivery date before starting.</p>
+        <summary>How much does a full detail cost? <span class="fq-ico">+</span></summary>
+        <p class="fq-a">We work with three fixed tiers, VAT included: Refresh from €35, Deep Clean with steam interior cleaning from €150 and Showroom Reset — the full inside-and-out reset — from €490. The exact price depends on the size of the vehicle and its condition; we confirm it before starting, with no surprises at pick-up.</p>
       </details>
+
       <details class="faq-item">
-        <summary>Does polishing remove all scratches?</summary>
-        <p class="faq-a">We completely remove swirls, holograms and surface scratches that don't go through the clear coat; deeper ones are reduced until they are nearly invisible. Before polishing we assess the condition of the clear coat panel by panel so we only remove the material that's strictly necessary and never compromise it.</p>
+        <summary>How long does the service take? <span class="fq-ico">+</span></summary>
+        <p class="fq-a">A Refresh takes 1–2 hours and a Deep Clean with steam and upholstery extraction usually takes half a day. The Showroom Reset needs a full day, because every panel, seam and surface is finished by hand. We give you the delivery time when we confirm the appointment and we stick to it.</p>
       </details>
+
       <details class="faq-item">
-        <summary>What is the process like and how do I know the result is real?</summary>
-        <p class="faq-a">We work in three stages: cutting to remove the defects, refining and final finishing. We review the car panel by panel under controlled hexagonal lighting and, if anything falls short of our standard, it is redone before delivery. Everything is done at our own workshop in Boca Raton.</p>
+        <summary>What does the steam interior cleaning include? <span class="fq-ico">+</span></summary>
+        <p class="fq-a">We steam-treat every panel, vent and seam of the cabin, extract carpets and upholstery, and clean and condition the leather with UV protection. Steam disinfects without harsh chemicals and removes odours at the source instead of masking them. It is included from the Deep Clean tier (from €150).</p>
       </details>
+
       <details class="faq-item">
-        <summary>Is the result guaranteed? How long does it last?</summary>
-        <p class="faq-a">The SiO₂ Ceramic Coating protects the corrected paint for up to 5 years depending on the chosen pack and maintenance. If you want to shield the result against new scratches, self-healing PPF (from 890 € for the front end) includes a 3-year film warranty.</p>
+        <summary>Do you remove stains from upholstery and leather? <span class="fq-ico">+</span></summary>
+        <p class="fq-a">Yes, it is a core part of the Deep Clean: fabric extraction and dedicated leather cleaning with conditioning afterwards. We remove the vast majority of everyday stains — coffee, seat marks, ground-in dirt — and we tell you honestly if an old stain has damaged the fiber and will not come out 100%.</p>
       </details>
+
       <details class="faq-item">
-        <summary>How do I book an appointment, and do I need to leave the car all day?</summary>
-        <p class="faq-a">Message us on WhatsApp at +34 649 66 33 80 or call us and we'll book you in Monday to Saturday. We are at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès, 20 minutes from Barcelona. For corrections taking more than one day we can coordinate pick-up and delivery with you.</p>
+        <summary>Is the result guaranteed? How do you check it? <span class="fq-ico">+</span></summary>
+        <p class="fq-a">We don't work by eye alone: we review the finish panel by panel under controlled hexagonal lighting, at our Sant Cugat del Vallès workshop. If anything falls short of our standard, it is redone before delivery. Nothing leaves the studio until it meets that standard.</p>
       </details>
-    </div>
-    <div class="faq-links reveal-up">
-      <a href="../ceramic-coating/">Ceramic Coating to seal the gloss <span class="arr">→</span></a>
-      <a href="../paint-protection-film/">PPF to protect the corrected paint <span class="arr">→</span></a>
+
+      <details class="faq-item">
+        <summary>How do I book and where are you located? <span class="fq-ico">+</span></summary>
+        <p class="fq-a">We work by appointment only, Monday to Saturday, at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès (Barcelona). Message us on WhatsApp or call +34 649 66 33 80 with your car's model and condition and we confirm a fixed price and date, usually the same day.</p>
+      </details>
+
     </div>
   </div>
 </section>
 
 <!-- ===================== CTA ===================== -->
-<section class="cta" data-screen-label="Correction — CTA">
+<section class="cta" data-screen-label="Detailing — CTA">
   <div class="wrap">
-    <span class="eyebrow">Restore the depth</span>
-    <h2 class="display">Bring back the <span class="chrome-text">gloss.</span></h2>
+    <span class="eyebrow">Inside &amp; out</span>
+    <h2 class="display">Make it feel <span class="chrome-text">new again.</span></h2>
     <div class="actions">
       <a href="../contact/" class="btn">Get a Quote <span class="arr">→</span></a>
       <a href="../gallery/" class="btn ghost">See Projects</a>
@@ -653,7 +514,7 @@
   </div>
 </section>
 
-<footer>© 2026 SERRES. All rights reserved. &nbsp;·&nbsp; Multi-Stage Machine Polishing</footer>
+<footer>© 2026 SERRES. All rights reserved. &nbsp;·&nbsp; Interior &amp; Exterior Detailing</footer>
 
 <script>
 /* ---------- reveal-on-scroll ---------- */
@@ -667,87 +528,147 @@
 })();
 </script>
 
-<script>
-/* ---------- gloss bars fill on view ---------- */
-(function(){
-  const sec=document.getElementById('glossSection');
-  if(!sec)return;
-  const fills=[...sec.querySelectorAll('.gb-fill')];
-  const io=new IntersectionObserver((ents)=>{
-    ents.forEach(en=>{
-      if(en.isIntersecting){
-        fills.forEach(f=>f.style.width=f.dataset.w+'%');
-        io.disconnect();
-      }
-    });
-  },{threshold:.4});
-  io.observe(sec);
-})();
-</script>
-
-<script>
-/* ---------- Before / After comparison slider ---------- */
-(function(){
-  const box=document.getElementById('compare');
-  const before=document.getElementById('beforeImg');
-  const divider=document.getElementById('divider');
-  const handle=document.getElementById('handle');
-  const tagBef=document.getElementById('tagBef');
-  const tagAft=document.getElementById('tagAft');
-  if(!box)return;
-  let pos=50,dragging=false;
-  function set(p){
-    pos=Math.max(0,Math.min(100,p));
-    before.style.clipPath='inset(0 '+(100-pos)+'% 0 0)';
-    divider.style.left=pos+'%';
-    handle.style.left=pos+'%';
-    tagBef.style.opacity=pos<14?'0':'1';
-    tagAft.style.opacity=pos>86?'0':'1';
-  }
-  function fromEvent(e){
-    const r=box.getBoundingClientRect();
-    const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
-    set(x/r.width*100);
-  }
-  function start(e){dragging=true;box.classList.add('touched');fromEvent(e);if(e.cancelable)e.preventDefault();}
-  function move(e){if(!dragging)return;fromEvent(e);if(e.cancelable&&e.touches)e.preventDefault();}
-  function end(){dragging=false;}
-  handle.addEventListener('mousedown',start);
-  box.addEventListener('mousedown',start);
-  window.addEventListener('mousemove',move);
-  window.addEventListener('mouseup',end);
-  handle.addEventListener('touchstart',start,{passive:false});
-  box.addEventListener('touchstart',start,{passive:false});
-  window.addEventListener('touchmove',move,{passive:false});
-  window.addEventListener('touchend',end);
-  handle.addEventListener('keydown',e=>{
-    if(e.key==='ArrowLeft')set(pos-3);
-    else if(e.key==='ArrowRight')set(pos+3);
-  });
-  set(50);
-  if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
-    const io=new IntersectionObserver((ents)=>{
-      ents.forEach(en=>{
-        if(en.isIntersecting){
-          io.disconnect();
-          const seq=[50,66,34,50];let i=0;
-          const iv=setInterval(()=>{i++;if(i>=seq.length){clearInterval(iv);return;}animate(pos,seq[i]);},560);
-        }
-      });
-    },{threshold:.4});
-    io.observe(box);
-  }
-  function animate(from,to){
-    const t0=performance.now(),dur=460;
-    function fr(t){const k=Math.min(1,(t-t0)/dur);const e=k*k*(3-2*k);
-      set(from+(to-from)*e);if(k<1)requestAnimationFrame(fr);}
-    requestAnimationFrame(fr);
-  }
-})();
-</script>
 
 
 <script src="../assets/serres-enhance.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a full detail cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We work with three fixed tiers, VAT included: Refresh from €35, Deep Clean with steam interior cleaning from €150 and Showroom Reset — the full inside-and-out reset — from €490. The exact price depends on the size of the vehicle and its condition; we confirm it before starting, with no surprises at pick-up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the service take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Refresh takes 1–2 hours and a Deep Clean with steam and upholstery extraction usually takes half a day. The Showroom Reset needs a full day, because every panel, seam and surface is finished by hand. We give you the delivery time when we confirm the appointment and we stick to it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the steam interior cleaning include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We steam-treat every panel, vent and seam of the cabin, extract carpets and upholstery, and clean and condition the leather with UV protection. Steam disinfects without harsh chemicals and removes odours at the source instead of masking them. It is included from the Deep Clean tier (from €150)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you remove stains from upholstery and leather?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, it is a core part of the Deep Clean: fabric extraction and dedicated leather cleaning with conditioning afterwards. We remove the vast majority of everyday stains — coffee, seat marks, ground-in dirt — and we tell you honestly if an old stain has damaged the fiber and will not come out 100%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the result guaranteed? How do you check it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We don't work by eye alone: we review the finish panel by panel under controlled hexagonal lighting, at our Sant Cugat del Vallès workshop. If anything falls short of our standard, it is redone before delivery. Nothing leaves the studio until it meets that standard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I book and where are you located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We work by appointment only, Monday to Saturday, at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès (Barcelona). Message us on WhatsApp or call +34 649 66 33 80 with your car's model and condition and we confirm a fixed price and date, usually the same day."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://serreswrapcenter.es/services/detailing.html#service",
+  "name": "Car detailing and interior cleaning",
+  "serviceType": "Car detailing",
+  "description": "Premium interior and exterior detailing: cabin steam cleaning, upholstery extraction, leather care, paint decontamination and protection. Three tiers: Refresh, Deep Clean and Showroom Reset.",
+  "url": "https://serreswrapcenter.es/services/detailing.html",
+  "provider": {
+    "@type": "AutoDetailing",
+    "name": "SERRES Wrap Center",
+    "url": "https://serreswrapcenter.es/",
+    "telephone": "+34649663380",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Can Fatjó dels Aurons 15",
+      "postalCode": "08174",
+      "addressLocality": "Sant Cugat del Vallès",
+      "addressRegion": "Barcelona",
+      "addressCountry": "ES"
+    }
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Sant Cugat del Vallès"
+    },
+    {
+      "@type": "City",
+      "name": "Barcelona"
+    }
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Detailing Refresh",
+      "price": "35",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "35",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": true,
+        "minPrice": "35"
+      },
+      "availability": "https://schema.org/InStock",
+      "url": "https://serreswrapcenter.es/services/detailing.html"
+    },
+    {
+      "@type": "Offer",
+      "name": "Detailing Deep Clean — steam interior cleaning",
+      "price": "150",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "150",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": true,
+        "minPrice": "150"
+      },
+      "availability": "https://schema.org/InStock",
+      "url": "https://serreswrapcenter.es/services/detailing.html"
+    },
+    {
+      "@type": "Offer",
+      "name": "Detailing Showroom Reset — full interior and exterior",
+      "price": "490",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "490",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": true,
+        "minPrice": "490"
+      },
+      "availability": "https://schema.org/InStock",
+      "url": "https://serreswrapcenter.es/services/detailing.html"
+    }
+  ]
+}
+</script>
 <script>
 (function () {
   function track(name, params) {

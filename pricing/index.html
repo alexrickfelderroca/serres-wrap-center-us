@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SERRES — Body Kits</title>
-<meta name="description" content="SERRES Body Kits — aggressive aero, custom rims and exhaust tips fitted to factory standards. We install all types of body kits to transform stance and presence.">
-<link rel="canonical" href="https://serreswrapcenter.es/services/body-kits.html">
+<title>SERRES — Prices</title>
+<meta name="description" content="PPF from €890, Car Wrap from €250, Ceramic Coating from €340 and detailing from €35, VAT included. Ask SERRES for your exact quote.">
+<link rel="canonical" href="https://serreswrapcenter.es/pages/prices.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SERRES Wrap Center">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="SERRES — Body Kits">
-<meta property="og:description" content="SERRES Body Kits — aggressive aero, custom rims and exhaust tips fitted to factory standards. We install all types of body kits to transform stance and presence.">
-<meta property="og:url" content="https://serreswrapcenter.es/services/body-kits.html">
-<meta property="og:image" content="https://serreswrapcenter.es/assets/og/body-kits.jpg">
+<meta property="og:title" content="SERRES — Prices">
+<meta property="og:description" content="PPF from €890, Car Wrap from €250, Ceramic Coating from €340 and detailing from €35, VAT included. Ask SERRES for your exact quote.">
+<meta property="og:url" content="https://serreswrapcenter.es/pages/prices.html">
+<meta property="og:image" content="https://serreswrapcenter.es/assets/og/prices.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SERRES — Body Kits">
-<meta name="twitter:description" content="SERRES Body Kits — aggressive aero, custom rims and exhaust tips fitted to factory standards. We install all types of body kits to transform stance and presence.">
-<meta name="twitter:image" content="https://serreswrapcenter.es/assets/og/body-kits.jpg">
+<meta name="twitter:title" content="SERRES — Prices">
+<meta name="twitter:description" content="PPF from €890, Car Wrap from €250, Ceramic Coating from €340 and detailing from €35, VAT included. Ask SERRES for your exact quote.">
+<meta name="twitter:image" content="https://serreswrapcenter.es/assets/og/prices.jpg">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -43,13 +43,25 @@
     background-image:radial-gradient(90% 60% at 50% -8%,rgba(46,50,63,.26),transparent 66%);}
   ::selection{background:#e7e7ec;color:#0a0a0b}
   a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
 
   .display{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;line-height:.92;
     letter-spacing:.01em;text-transform:uppercase;}
   .chrome-text{background:var(--chrome);-webkit-background-clip:text;background-clip:text;
     color:transparent;-webkit-text-fill-color:transparent;}
+  /* gold identity for the Exclusivo program */
+  .gold-text{
+    background:linear-gradient(105deg,#8a6d2f 0%,#c9a44f 20%,#f3e0ac 38%,#d4af5f 52%,#8a6d2f 70%,#e9d194 88%,#b28f41 100%);
+    background-size:220% 100%;background-position:0% 0;
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;
+    transition:filter .35s var(--ease),background-position .9s var(--ease);
+  }
+  .gold-text:hover,a:hover > .gold-text,a:focus-visible > .gold-text{
+    background-position:100% 0;
+    filter:drop-shadow(0 0 6px rgba(212,175,95,.5)) drop-shadow(0 0 18px rgba(212,175,95,.22));
+  }
+  @media(prefers-reduced-motion:reduce){.gold-text{transition:none}}
   .eyebrow{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
     letter-spacing:.34em;font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:14px;}
   .eyebrow::before{content:"";width:30px;height:1px;background:linear-gradient(90deg,transparent,var(--line-strong));}
@@ -80,319 +92,243 @@
   .back:hover{color:var(--text)}
   .nav-right{display:flex;align-items:center;gap:20px}
 
-  /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:90vh;min-height:90svh;display:flex;align-items:flex-end;
-    padding:130px 0 62px;overflow:hidden;background:#000}
-  .hero video,.hero .hero-poster{position:absolute;inset:0;width:100%;height:100%;
-    object-fit:cover;object-position:center 42%;z-index:0}
-  .hero .hero-poster{z-index:0}
-  /* cinematic wash: darken for legibility, vignette the edges, and melt the bottom
-     into the page background so the clip reads as part of the studio, not a panel */
-  .hero .hero-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-    linear-gradient(180deg,rgba(10,10,11,.60) 0%,rgba(10,10,11,.26) 30%,rgba(10,10,11,.50) 64%,var(--bg) 100%),
-    radial-gradient(125% 95% at 50% 30%,transparent 38%,rgba(10,10,11,.62) 100%);}
-  .hero .hero-grain{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:overlay;opacity:.5;
-    background:repeating-linear-gradient(125deg,rgba(255,255,255,.025) 0 2px,transparent 2px 5px)}
-  .hero .wrap{position:relative;z-index:2;width:100%}
-  .hero-top{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
-  .hero h1{font-size:clamp(52px,10.5vw,150px);margin:20px 0 0}
-  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.03em}
-  .hero h1 .ln span{display:block}
-  .hero h1 .ln-kw{margin-top:20px}
-  .hero h1 .ln .h1-kw{display:inline-block;font-weight:500;font-size:clamp(12px,1.3vw,16px);
-    letter-spacing:.18em;line-height:1.4;color:var(--muted);
-    background:none;-webkit-text-fill-color:currentColor}
-  .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
-    font-weight:500;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--muted-2);
-    margin-bottom:14px}
+  /* ---------- BREADCRUMBS ---------- */
+  .crumbs{background:var(--bg);border-bottom:1px solid var(--line)}
+  .crumbs .wrap{display:flex;align-items:center;gap:12px;padding-top:12px;padding-bottom:12px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.18em;
+    font-size:12.5px;color:var(--muted-2)}
   .crumbs a{color:var(--muted);transition:color .25s var(--ease)}
   .crumbs a:hover{color:var(--text)}
-  .crumbs .sep{opacity:.6}
-  .crumbs [aria-current="page"]{color:var(--text)}
+  .crumbs .here{color:var(--text)}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 30px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;left:50%;top:-20%;transform:translateX(-50%);
+    width:min(120vw,1500px);height:480px;z-index:0;pointer-events:none;
+    background:radial-gradient(46% 52% at 50% 50%,rgba(54,58,72,.3),rgba(10,10,11,0) 72%);}
+  .hero .wrap{position:relative;z-index:1}
+  .hero h1{font-size:clamp(54px,10.5vw,150px);margin:20px 0 0}
+  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.03em}
+  .hero h1 .ln span{display:block}
+  .hero h1 .ln-kw{margin-top:18px}
+  .hero h1 .ln .h1-kw{font-weight:500;font-size:clamp(13px,1.4vw,17px);letter-spacing:.24em;
+    line-height:1.5;color:var(--muted)}
   @keyframes rise{from{transform:translateY(108%)}to{transform:translateY(0)}}
-  .hero .lead{margin-top:26px;max-width:52ch;color:var(--muted);font-size:clamp(16px,1.5vw,19px)}
+  .hero .lead{margin-top:24px;max-width:54ch;color:var(--muted);font-size:clamp(16px,1.5vw,19px)}
+  .lead-links{margin-top:18px;display:flex;gap:10px 28px;flex-wrap:wrap}
+  .lead-links a{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.18em;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line-strong);
+    padding-bottom:2px;transition:color .25s var(--ease),border-color .25s var(--ease)}
+  .lead-links a:hover{color:var(--text);border-color:#fff}
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  .hero-stats{display:flex;gap:46px;flex-wrap:wrap;margin-bottom:8px}
-  .hstat{display:flex;flex-direction:column;gap:3px}
-  .hstat b{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:.01em}
-  .hstat span{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.2em;
-    font-size:11.5px;color:var(--muted-2)}
   @media(prefers-reduced-motion:no-preference){
     .hero h1 .ln span{transform:translateY(108%);animation:rise 1s var(--ease) .05s forwards}
-    .hero h1 .ln:nth-child(2) span{animation-delay:.16s}
-    .hero h1 .ln:nth-child(3) span{animation-delay:.26s}
-    .hero .crumbs{opacity:0;animation:fade .9s var(--ease) .12s forwards}
     .hero .eyebrow{opacity:0;animation:fade .9s var(--ease) .2s forwards}
     .hero .lead{opacity:0;animation:fade .9s var(--ease) .42s forwards}
-    .hero-stats{opacity:0;animation:fade .9s var(--ease) .55s forwards}
+    .lead-links{opacity:0;animation:fade .9s var(--ease) .5s forwards}
+    .svc-tabs{opacity:0;animation:fade .9s var(--ease) .55s forwards}
   }
-  .scroll-cue{position:absolute;left:40px;bottom:30px;z-index:3;display:flex;align-items:center;gap:14px;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.28em;font-size:12px;
-    color:var(--muted);opacity:0;animation:fade 1s var(--ease) 1s forwards}
-  .scroll-cue .bar{width:46px;height:1px;background:var(--muted-2);position:relative;overflow:hidden}
-  .scroll-cue .bar::after{content:"";position:absolute;inset:0;background:#fff;transform:translateX(-100%);
-    animation:slide 2.4s var(--ease) infinite}
-  @keyframes slide{0%{transform:translateX(-100%)}55%{transform:translateX(100%)}100%{transform:translateX(100%)}}
 
-  /* ---------- SECTION SHELL ---------- */
-  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
-  .section-head h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
-    line-height:.94;letter-spacing:.012em;font-size:clamp(34px,5vw,64px);margin-top:16px;text-wrap:balance}
-  .section-head .sh-note{color:var(--muted);font-size:15px;max-width:36ch;margin-top:14px}
+  /* ---------- SERVICE TABS ---------- */
+  .svc-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px}
+  .stab{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.16em;font-size:13.5px;color:var(--muted);background:transparent;
+    border:1px solid var(--line-strong);padding:11px 21px;cursor:pointer;border-radius:999px;
+    transition:color .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease);}
+  .stab:hover{color:var(--text);border-color:#fff}
+  .stab.on{background:var(--chrome);color:#0a0a0b;border-color:transparent}
 
-  /* ---------- TRANSFORMATION ---------- */
-  .xform{padding:30px 0 30px}
-  .xform-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center;margin-top:40px}
-  .xtext h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
-    line-height:.94;letter-spacing:.012em;font-size:clamp(36px,4.4vw,64px);margin:18px 0 0;text-wrap:balance}
-  .xtext p{margin-top:22px;color:var(--muted);font-size:17px;max-width:46ch;text-wrap:pretty}
-  .xspecs{margin-top:30px;display:flex;flex-direction:column;border-top:1px solid var(--line)}
-  .xspecs .row{display:flex;gap:18px;padding:13px 0;border-bottom:1px solid var(--line)}
-  .xspecs .k{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.2em;
-    font-size:12.5px;color:var(--muted-2);width:128px;flex:none;padding-top:2px}
-  .xspecs .v{color:var(--text);font-size:15.5px}
+  /* ---------- TIER CARDS ---------- */
+  .tiers-sec{padding:44px 0 10px}
+  .svc-intro{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+  .svc-intro h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:clamp(30px,4.4vw,54px);line-height:.94;letter-spacing:.012em}
+  .svc-intro p{color:var(--muted);font-size:15.5px;max-width:44ch}
 
-  .compare{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;
-    border:1px solid var(--line-strong);background:#000;user-select:none;touch-action:pan-y;
-    clip-path:polygon(0 0,100% 0,100% 100%,20px 100%,0 calc(100% - 20px))}
-  .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;
-    pointer-events:none}
-  .compare .after{z-index:1}
-  .compare .before{z-index:2;clip-path:inset(0 50% 0 0)}
-  .cmp-tag{position:absolute;bottom:16px;z-index:4;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
-    font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:#fff;
-    background:rgba(8,8,9,.6);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);
-    padding:7px 13px;display:flex;flex-direction:column;gap:1px;line-height:1.2;
-    transition:opacity .3s var(--ease)}
-  .cmp-tag small{font-weight:500;letter-spacing:.14em;font-size:10px;color:var(--muted)}
-  .cmp-tag.bef{left:16px}
-  .cmp-tag.aft{right:16px;text-align:right;align-items:flex-end}
-  .cmp-divider{position:absolute;top:0;bottom:0;z-index:5;width:2px;left:50%;margin-left:-1px;
-    background:linear-gradient(180deg,transparent,rgba(255,255,255,.85) 12%,rgba(255,255,255,.85) 88%,transparent);
-    box-shadow:0 0 16px rgba(255,255,255,.4)}
-  .cmp-handle{position:absolute;top:50%;left:50%;z-index:6;width:52px;height:52px;margin:-26px 0 0 -26px;
-    border-radius:50%;background:var(--chrome);color:#0a0a0b;display:grid;place-items:center;
-    cursor:ew-resize;box-shadow:0 10px 30px rgba(0,0,0,.55);transition:transform .25s var(--ease)}
-  .compare:hover .cmp-handle{transform:scale(1.06)}
-  .cmp-handle svg{width:24px;height:24px}
-  .cmp-hint{position:absolute;left:50%;top:16px;transform:translateX(-50%);z-index:4;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.24em;font-size:11px;
-    color:#fff;background:rgba(8,8,9,.55);backdrop-filter:blur(6px);padding:6px 13px;border-radius:999px;
-    border:1px solid rgba(255,255,255,.16);transition:opacity .4s var(--ease)}
-  .compare.touched .cmp-hint{opacity:0}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+  .tier{position:relative;display:flex;flex-direction:column;background:var(--panel);
+    border:1px solid var(--line);padding:30px 28px 28px;
+    clip-path:polygon(0 0,100% 0,100% 100%,18px 100%,0 calc(100% - 18px));
+    transition:border-color .3s var(--ease),transform .3s var(--ease);}
+  .tier:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+  .tier.popular{background:var(--panel-2);border:1px solid rgba(255,255,255,.34)}
+  .tier .pop-tag{position:absolute;top:18px;right:18px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
+    font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;
+    background:var(--chrome);color:#0a0a0b;padding:5px 12px;border-radius:999px}
+  .tier h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.04em;font-size:24px;line-height:1.05}
+  .tier .t-desc{margin-top:8px;color:var(--muted);font-size:14px;line-height:1.5;min-height:42px}
+  .tier .t-price{margin-top:20px;display:flex;align-items:baseline;gap:8px}
+  .tier .t-from{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;
+    letter-spacing:.2em;font-size:11px;color:var(--muted-2);white-space:nowrap;flex:none}
+  .tier .t-val{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:46px;line-height:1;
+    letter-spacing:.01em}
+  .tier .t-price.t-quote{flex-direction:column;align-items:flex-start;gap:6px}
+  .tier .t-quote-val{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:34px;line-height:1;letter-spacing:.01em}
+  .tier .t-quote-note{font-family:"DM Sans",sans-serif;font-size:13px;line-height:1.45;color:var(--muted);text-transform:none;letter-spacing:0}
+  .tier ul{list-style:none;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);
+    display:flex;flex-direction:column;gap:9px;flex:1}
+  .tier li{display:flex;gap:11px;font-size:14px;color:var(--text);align-items:flex-start}
+  .tier li.off{color:var(--muted-2)}
+  .tier li .ic{flex:none;width:16px;height:16px;margin-top:3px}
+  .tier li .ic.ok{color:#e7e7ec}
+  .tier li .ic.no{color:var(--muted-2);opacity:.55}
+  .tier .t-cta{margin-top:24px}
+  .tier .t-cta .btn{width:100%;justify-content:center}
+  .tier .t-note{margin-top:12px;text-align:center;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
+    text-transform:uppercase;letter-spacing:.18em;font-size:10.5px;color:var(--muted-2)}
 
-  /* ---------- PROCESS / MULTI-STAGE ---------- */
-  .process{padding:96px 0 30px}
-  .proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:46px;
-    background:var(--line);border:1px solid var(--line)}
-  .stage{background:var(--bg);padding:38px 30px 42px;display:flex;flex-direction:column;gap:18px;
-    position:relative;transition:background .3s var(--ease)}
-  .stage:hover{background:var(--panel)}
-  .stage .st-no{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:52px;line-height:.8;
-    letter-spacing:.01em;color:transparent;-webkit-text-stroke:1px var(--line-strong);}
-  .stage:hover .st-no{-webkit-text-stroke:1px transparent;background:var(--chrome);
-    -webkit-background-clip:text;background-clip:text;}
-  .stage h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.04em;font-size:25px;line-height:1.02}
-  .stage .st-tool{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.18em;
-    font-size:11.5px;color:var(--muted-2)}
-  .stage p{color:var(--muted);font-size:14.5px;line-height:1.5;text-wrap:pretty;margin-top:auto}
+  .price-note{margin-top:26px;display:flex;align-items:center;gap:14px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.18em;
+    font-size:11.5px;color:var(--muted-2);text-align:center;justify-content:center}
+  .price-note::before,.price-note::after{content:"";height:1px;background:var(--line);flex:1}
 
-  /* ---------- RELATED LINKS ---------- */
-  .xtext .xlinks{margin-top:24px;color:var(--muted);font-size:15px;max-width:100%}
-  .xtext .xlinks a{color:var(--text);border-bottom:1px solid var(--line-strong);padding-bottom:2px;
-    transition:border-color .25s var(--ease),color .25s var(--ease)}
-  .xtext .xlinks a:hover{border-color:#fff}
+  /* ---------- COMPARISON TABLE ---------- */
+  .cmp-sec{padding:60px 0 20px}
+  .cmp-sec h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:clamp(26px,3.2vw,40px);letter-spacing:.012em;line-height:1;margin-bottom:26px;text-align:center}
+  .cmp-wrap{border:1px solid var(--line);overflow-x:auto;-webkit-overflow-scrolling:touch;background:rgba(20,20,23,.5)}
+  table.cmp{width:100%;border-collapse:collapse;min-width:640px}
+  .cmp th,.cmp td{padding:13px 20px;border-bottom:1px solid var(--line);font-size:14px}
+  .cmp thead th{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.14em;font-size:13.5px;text-align:center;color:var(--text);
+    background:rgba(255,255,255,.03);padding:16px 20px}
+  .cmp thead th:first-child{text-align:left;color:var(--muted-2);letter-spacing:.2em;font-size:11.5px}
+  .cmp tbody td:first-child{color:var(--muted);text-align:left;font-size:13.5px}
+  .cmp tbody td{text-align:center;color:var(--text)}
+  .cmp tbody tr:hover{background:rgba(255,255,255,.025)}
+  .cmp td.col-pop,.cmp th.col-pop{background:rgba(255,255,255,.045)}
+  .cmp .ic{width:17px;height:17px;display:inline-block;vertical-align:-3px}
+  .cmp .ic.ok{color:#e7e7ec}
+  .cmp .dash{color:var(--muted-2);opacity:.6}
+  .cmp tfoot td{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:19px;
+    letter-spacing:.02em;padding:16px 20px}
+  .cmp tfoot td:first-child{font-weight:500;font-size:11.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted-2)}
+  @media(max-width:880px){.cmp th,.cmp td{padding:12px 14px}.cmp thead th{padding:14px 14px}}
 
-  /* ---------- FAQ ---------- */
-  .faq{padding:96px 0 30px}
-  .faq-list{margin-top:46px;border-top:1px solid var(--line)}
-  .faq-item{border-bottom:1px solid var(--line)}
-  .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;
-    gap:24px;padding:24px 0;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.04em;font-size:22px;line-height:1.1;transition:color .25s var(--ease)}
-  .faq-item summary::-webkit-details-marker{display:none}
-  .faq-item summary:hover{color:#fff}
-  .faq-ico{position:relative;flex:none;width:34px;height:34px;border:1px solid var(--line-strong);border-radius:50%}
-  .faq-ico::before,.faq-ico::after{content:"";position:absolute;top:50%;left:50%;background:var(--text);
-    transition:transform .3s var(--ease)}
-  .faq-ico::before{width:12px;height:1px;transform:translate(-50%,-50%)}
-  .faq-ico::after{width:1px;height:12px;transform:translate(-50%,-50%)}
-  .faq-item[open] .faq-ico::after{transform:translate(-50%,-50%) scaleY(0)}
-  .faq-body{padding:0 0 26px;max-width:70ch}
-  .faq-body p{color:var(--muted);font-size:15.5px;line-height:1.65;text-wrap:pretty}
-  @media(max-width:640px){.faq-item summary{font-size:19px}}
-
-
-
-  /* ---------- CTA ---------- */
-  .cta{position:relative;margin-top:80px;padding:104px 0;text-align:center;background:var(--bg-2)}
-  .cta::before,.cta::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line)}
-  .cta::before{top:0}.cta::after{bottom:0}
-  .cta .eyebrow{justify-content:center}
-  .cta h2{font-size:clamp(38px,6vw,82px);margin:20px auto 0;max-width:15ch}
-  .cta .actions{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  .cta .phone{margin-top:28px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;letter-spacing:.2em;
-    text-transform:uppercase;font-size:14px;color:var(--muted)}
-  .cta .phone strong{color:var(--text);font-weight:600}
+  /* ---------- EXCLUSIVO TEASER ---------- */
+  .teaser{margin:70px 0 0;padding:84px 0;position:relative;text-align:center;background:var(--bg-2)}
+  .teaser::before,.teaser::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line)}
+  .teaser::before{top:0}.teaser::after{bottom:0}
+  .teaser .eyebrow{justify-content:center}
+  .teaser .eyebrow::after{content:"";width:30px;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent)}
+  .teaser h2{font-size:clamp(34px,5.4vw,72px);margin:18px auto 0;max-width:18ch}
+  .teaser p{margin:18px auto 0;max-width:52ch;color:var(--muted);font-size:16px}
+  .teaser .actions{margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
   footer{padding:30px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
     letter-spacing:.04em;text-align:center}
 
-  .reveal-up{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-  .reveal-up.in{opacity:1;transform:none}
-
   @media(max-width:980px){
-    .xform-grid{grid-template-columns:1fr;gap:34px;max-width:520px}
-    .xtext p{max-width:100%}
-    .proc-grid{grid-template-columns:1fr}
+    .tier-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+    .tier .t-desc{min-height:0}
   }
   @media(max-width:760px){
     .wrap,.nav-inner{padding-left:22px;padding-right:22px}
     .nav-right .btn{display:none}
     .back span.lbl{display:none}
-    .hero-top{align-items:flex-start}
-    .hero-stats{gap:30px}
-    .scroll-cue{display:none}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important}
     .hero h1 .ln span{transform:none}
-    .hero .lead,.hero-stats,.hero .eyebrow,.hero .crumbs{opacity:1}
-    .scroll-cue{opacity:1}
-    .reveal-up{opacity:1;transform:none}
-      }
+    .hero .lead,.hero .eyebrow,.svc-tabs,.lead-links{opacity:1}
+  }
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Body kit fitting",
-  "serviceType": "Body kit, spoiler and widebody installation and painting",
-  "url": "https://serreswrapcenter.es/services/body-kits.html",
-  "description": "Installation, OEM-level fitment and painting of body kits, splitters, diffusers and widebody kits at our Boca Raton workshop. From 450 € IVA incluido.",
+  "name": "PPF, Car Wrap, Ceramic Coating & Detailing prices",
+  "serviceType": "Vehicle protection and customization (PPF, Car Wrap, Ceramic Coating, detailing, body kits)",
+  "description": "Guide prices (IVA incluido) for all SERRES Wrap Center services in Boca Raton, Florida.",
+  "url": "https://serreswrapcenter.es/pages/prices.html",
+  "image": "https://serreswrapcenter.es/assets/og/prices.jpg",
+  "areaServed": "Barcelona",
   "provider": {
-    "@type": "AutoBodyShop",
+    "@type": "LocalBusiness",
     "name": "SERRES Wrap Center",
-    "telephone": "+34649663380",
-    "url": "https://serreswrapcenter.es",
+    "telephone": "+34 649 66 33 80",
+    "url": "https://serreswrapcenter.es/",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Av. Can Fatjó dels Aurons 15",
+      "streetAddress": "Av. Can Fatjó dels Aurons, 15",
+      "postalCode": "08174",
       "addressLocality": "Sant Cugat del Vallès",
       "addressRegion": "Barcelona",
-      "postalCode": "08174",
       "addressCountry": "ES"
-    }
-  },
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Sant Cugat del Vallès"
     },
-    {
-      "@type": "City",
-      "name": "Barcelona"
-    }
-  ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "14:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/serres.wrap.center/",
+      "https://wa.me/34649663380"
+    ]
+  },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Body kit fitting prices",
+    "name": "SERRES services — starting prices",
     "itemListElement": [
       {
         "@type": "Offer",
-        "name": "Aero add-ons (splitter, diffuser, spoiler)",
+        "name": "Car Wrap — color change",
+        "description": "From 250 €, IVA incluido",
+        "price": "250",
+        "priceCurrency": "EUR",
+        "url": "https://serreswrapcenter.es/services/vinyl.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "PPF — paint protection film",
+        "description": "From 890 €, IVA incluido",
+        "price": "890",
+        "priceCurrency": "EUR",
+        "url": "https://serreswrapcenter.es/services/ppf.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "Correction + Ceramic Coating",
+        "description": "From 340 €, IVA incluido",
+        "price": "340",
+        "priceCurrency": "EUR",
+        "url": "https://serreswrapcenter.es/services/ceramic.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "Detailing",
+        "description": "From 35 €, IVA incluido",
+        "price": "35",
+        "priceCurrency": "EUR",
+        "url": "https://serreswrapcenter.es/services/detailing.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "Body kits",
+        "description": "From 450 €, IVA incluido",
         "price": "450",
         "priceCurrency": "EUR",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "minPrice": "450",
-          "priceCurrency": "EUR",
-          "valueAddedTaxIncluded": true
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "Complete kit with fitting and paint",
-        "price": "1490",
-        "priceCurrency": "EUR",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "minPrice": "1490",
-          "priceCurrency": "EUR",
-          "valueAddedTaxIncluded": true
-        }
-      },
-      {
-        "@type": "Offer",
-        "name": "Full transformation / widebody",
-        "price": "3490",
-        "priceCurrency": "EUR",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "minPrice": "3490",
-          "priceCurrency": "EUR",
-          "valueAddedTaxIncluded": true
-        }
+        "url": "https://serreswrapcenter.es/services/body-kits.html"
       }
     ]
   }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does it cost to fit a body kit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Aero add-ons —splitter, diffuser or spoiler— start at €450. A complete kit with fitting and paint starts at €1,490, and a full widebody transformation from €3,490, VAT included. Once we've seen the car and the kit, we lock in a fixed written quote before starting."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the installation take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A lip or diffuser is fitted the same day. A complete kit with prep and paint takes 3 to 5 working days, and a widebody project 1 to 3 weeks depending on the bodywork. We give you a firm delivery date when you confirm the job."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the fitting guaranteed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. We guarantee the mounting, the panel-gap fitment and the paint finish of the installed kit. All the work is done at our own Boca Raton workshop, so we answer directly for every part we fit. The exact terms depend on the kit's material and are detailed in the quote."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What does the fitting process look like?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "First we do a dry test fit and correct panel gaps piece by piece until we reach OEM-level tolerances. Then we prep, prime and paint the kit to match the vehicle's color, and secure it with structural anchors and adhesives. Before delivery we check the fit and finish panel by panel under controlled hexagon lighting; if anything falls short of our standard, it gets redone."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I bring my own kit, or do you order it?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Both. We can work with a kit you already have or source proven manufacturers in fibreglass, ABS or polyurethane for your model. If you bring your own, we inspect it before quoting to catch warping or molding defects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I book, and where are you?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We work by appointment Monday to Saturday at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès, 20 minutes from Barcelona. Message us on WhatsApp or call +34 649 66 33 80 with your model and the kit you have in mind, and we'll give you a quote and a date the same day."
-      }
-    }
-  ]
 }
 </script>
 <script type="application/ld+json">
@@ -409,14 +345,8 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Services",
-      "item": "https://serreswrapcenter.es/index.html#services"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Body Kits",
-      "item": "https://serreswrapcenter.es/services/body-kits.html"
+      "name": "Prices",
+      "item": "https://serreswrapcenter.es/pages/prices.html"
     }
   ]
 }
@@ -437,7 +367,7 @@
   <div class="nav-inner">
     <div class="nav-left">
       <a href="../" class="logo"><img src="../assets/serres-logo.png" alt="SERRES" width="600" height="55"></a>
-      <a href="../#services" class="back">← <span class="lbl">All services</span></a>
+      <a href="../" class="back">← <span class="lbl">Back to site</span></a>
     </div>
     <div class="nav-right">
       <a href="../contact/" class="btn">Get a Quote <span class="arr">→</span></a>
@@ -445,255 +375,289 @@
   </div>
 </header>
 
+<nav class="crumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <a href="../">Home</a>
+    <span aria-hidden="true">/</span>
+    <span class="here">Prices</span>
+  </div>
+</nav>
+
 <!-- ===================== HERO ===================== -->
-<section class="hero" data-screen-label="Body Kits — Intro">
-  <img class="hero-poster" src="../assets/svc/bodykit.webp" width="1200" height="896" loading="eager" fetchpriority="high" decoding="async" alt="Carbon fiber body kit components laid out under the hexagon studio lighting">
-  <div class="hero-overlay"></div>
-  <div class="hero-grain"></div>
+<section class="hero" data-screen-label="Prices — Intro">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb">
-      <a href="../">Home</a><span class="sep">/</span><a href="../#services">Services</a><span class="sep">/</span><span aria-current="page">Body Kits</span>
+    <span class="eyebrow">Transparent Pricing</span>
+    <h1 class="display">
+      <span class="ln"><span>Pick your</span></span>
+      <span class="ln"><span class="chrome-text">level.</span></span>
+      <span class="ln ln-kw"><span class="h1-kw">PPF, Car Wrap, Ceramic Coating &amp; Detailing prices in Boca Raton</span></span>
+    </h1>
+    <p class="lead">PPF (from €890), Car Wrap (from €250), Ceramic Coating (from €340) and detailing (from €35), VAT included. Three levels per service; every car is confirmed with an exact quote in person.</p>
+
+    <nav class="lead-links" aria-label="Related services">
+      <a href="../paint-protection-film/">PPF paint protection</a>
+      <a href="../car-wraps/">Car Wrap &amp; vinyl wrapping</a>
+      <a href="../detailing/">Car detailing</a>
     </nav>
-    <div class="hero-top">
-      <div>
-        <span class="eyebrow">Service 06 · Body Kits</span>
-        <h1 class="display">
-          <span class="ln"><span>Built for</span></span>
-          <span class="ln"><span class="chrome-text">Presence</span></span>
-          <span class="ln ln-kw"><span class="h1-kw">Body kit fitting in Boca Raton</span></span>
-        </h1>
-      </div>
-      <div class="hero-stats">
-        <div class="hstat"><b class="chrome-text">All</b><span>Kit Types</span></div>
-        <div class="hstat"><b class="chrome-text">OEM</b><span>Fitment</span></div>
-        <div class="hstat"><b class="chrome-text">360°</b><span>Transformation</span></div>
-      </div>
-    </div>
-    <p class="lead">We fit body kits at our own workshop in Boca Raton, Florida: installation, painting and OEM-level fitment of lips, diffusers, spoilers and widebody conversions, from €450. Custom rims and exhaust tips too, to completely transform your car.</p>
-  </div>
-  <div class="scroll-cue"><span class="bar"></span> Scroll</div>
-</section>
 
-<!-- ===================== TRANSFORMATION ===================== -->
-<section class="xform" data-screen-label="Body Kits — Transformation">
-  <div class="wrap">
-    <div class="section-head reveal-up">
-      <div>
-        <span class="eyebrow">The Transformation</span>
-        <h2>Stock to<br>street weapon.</h2>
-      </div>
-    </div>
-    <div class="xform-grid">
-      <div class="xtext reveal-up">
-        <p>This Mk7 GTI came in on its standard rear end — clean, but conservative. The owner wanted real road presence without touching the paint.</p>
-        <p>We fitted a full rear aero package: an aggressive diffuser, extended roof spoiler, side and rear splitters and gloss-black exhaust tips — all colour-matched and mounted to factory standards.</p>
-        <div class="xspecs">
-          <div class="row"><span class="k">Vehicle</span><span class="v">VW Golf GTI Mk7 · Tornado Red</span></div>
-          <div class="row"><span class="k">Kit</span><span class="v">Rear diffuser · spoiler · splitters</span></div>
-          <div class="row"><span class="k">Finish</span><span class="v">Gloss-black exhaust tips</span></div>
-          <div class="row"><span class="k">Fitment</span><span class="v">Bolt-on · OEM-grade</span></div>
-        </div>
-        <p class="xlinks">Related: <a href="../car-wraps/">Car Wrap and color change in Boca Raton</a> · <a href="../paint-protection-film/">PPF paint protection</a></p>
-      </div>
-      <div class="reveal-up">
-        <div class="compare touched" id="compare">
-          <img class="after" src="../assets/bodykit/after.webp" width="600" height="896" loading="lazy" decoding="async" alt="Golf GTI after — full body kit, diffuser, spoiler and black exhaust tips" draggable="false">
-          <img class="before" id="beforeImg" src="../assets/bodykit/before.webp" width="600" height="896" loading="lazy" decoding="async" alt="Golf GTI before — factory rear end" draggable="false">
-          <div class="cmp-tag bef" id="tagBef"><small>Before</small>Factory Rear</div>
-          <div class="cmp-tag aft" id="tagAft"><small>After</small>Full Aero Kit</div>
-          <div class="cmp-divider" id="divider"></div>
-          <button class="cmp-handle" id="handle" aria-label="Drag to compare before and after">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg>
-          </button>
-          <div class="cmp-hint">Drag to reveal</div>
-        </div>
-      </div>
-    </div>
+    <div class="svc-tabs" id="svcTabs" role="tablist" aria-label="Elige un servicio" data-i18n-skip><button class="stab on" data-key="wrap" role="tab">Car Wrap</button><button class="stab" data-key="ppf" role="tab">PPF</button><button class="stab" data-key="ceramic" role="tab">Pulido + Cerámica</button><button class="stab" data-key="detailing" role="tab">Detailing</button><button class="stab" data-key="bodykits" role="tab">Body Kits</button></div>
   </div>
 </section>
 
-<!-- ===================== WHAT WE FIT ===================== -->
-<section class="process" data-screen-label="Body Kits — What We Fit">
+<!-- ===================== TIERS ===================== -->
+<section class="tiers-sec" data-screen-label="Prices — Tiers">
   <div class="wrap">
-    <div class="section-head reveal-up">
-      <div>
-        <span class="eyebrow">What We Fit</span>
-        <h2>Kits, rims<br>&amp; tips.</h2>
-      </div>
-    </div>
-
-    <div class="proc-grid reveal-up">
-      <div class="stage">
-        <span class="st-no">01</span>
-        <h3>Body Kits</h3>
-        <span class="st-tool">All types · OEM &amp; aftermarket</span>
-        <p>Front lips, splitters, side skirts, rear diffusers, spoilers and full widebody conversions — dry-fitted, colour-matched and mounted to factory standards.</p>
-      </div>
-      <div class="stage">
-        <span class="st-no">02</span>
-        <h3>Custom Rims</h3>
-        <span class="st-tool">Sizing · finishes · fitment</span>
-        <p>The right wheel changes everything. We spec diameter, ET (offset) and finish to fill the arches and lock in the stance — then fit and balance them properly.</p>
-      </div>
-      <div class="stage">
-        <span class="st-no">03</span>
-        <h3>Exhaust Tips</h3>
-        <span class="st-tool">Gloss black · chrome · carbon</span>
-        <p>The finishing detail at the rear — blacked-out, polished or carbon tips, sized and aligned to sit clean against the bumper and diffuser.</p>
-      </div>
-    </div>
+    <div class="svc-intro" id="svcIntro" data-i18n-skip><h2>Car Wrap <span class="chrome-text">precios</span></h2><p>Cambio de color con films de varias marcas profesionales — desde acentos sutiles hasta un cambio de identidad completo.</p></div>
+    <div class="tier-grid" id="tierGrid" data-i18n-skip><article class="tier"><h3>Acentos</h3><p class="t-desc">Techo, retrovisores y piezas de detalle — cambia la actitud, no el coche entero.</p><div class="t-price"><span class="t-from">Desde</span><span class="t-val chrome-text" data-price="250">250 €</span></div><ul><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Cobertura — Techo · retrovisores · acentos</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Films de marcas profesionales</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Servicio según configuración del vehículo</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Films premium y camaleón</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Consulta de diseño</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Kit de mantenimiento</span></li></ul><div class="t-cta"><a class="btn ghost" href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20quer%C3%ADa%20presupuesto%20del%20pack%20Acentos%20de%20Car%20Wrap%20para%20mi%20coche." target="_blank" rel="noopener">Reserva por WhatsApp <span class="arr">→</span></a></div><p class="t-note">Desde 1 día en el taller</p></article><article class="tier popular"><span class="pop-tag">Más elegido</span><h3>Cambio de color completo</h3><p class="t-desc">Cada panel exterior vinilado de borde a borde en el color que de verdad querías.</p><div class="t-price"><span class="t-from">Desde</span><span class="t-val chrome-text" data-price="1490">1.490 €</span></div><ul><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Cobertura — Exterior completo</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Films de marcas profesionales</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Servicio según configuración del vehículo</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Films premium y camaleón</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Consulta de diseño</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Kit de mantenimiento</span></li></ul><div class="t-cta"><a class="btn" href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20quer%C3%ADa%20presupuesto%20del%20pack%20Cambio%20de%20color%20completo%20de%20Car%20Wrap%20para%20mi%20coche." target="_blank" rel="noopener">Reserva por WhatsApp <span class="arr">→</span></a></div><p class="t-note">Desde 3–4 días en el taller</p></article><article class="tier"><h3>Car Wrap Signature</h3><p class="t-desc">Films premium y camaleón — servicio según configuración del vehículo.</p><div class="t-price"><span class="t-from">Desde</span><span class="t-val chrome-text" data-price="1990">1.990 €</span></div><ul><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Cobertura — Exterior completo + marcos</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Films de marcas profesionales</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Servicio según configuración del vehículo</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Films premium y camaleón</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Consulta de diseño</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Kit de mantenimiento</span></li></ul><div class="t-cta"><a class="btn ghost" href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20quer%C3%ADa%20presupuesto%20del%20pack%20Car%20Wrap%20Signature%20de%20Car%20Wrap%20para%20mi%20coche." target="_blank" rel="noopener">Reserva por WhatsApp <span class="arr">→</span></a></div><p class="t-note">Desde 5–7 días en el taller</p></article></div>
+    <p class="price-note">Guide prices · final quote depends on vehicle size, condition &amp; film choice · no maintenance kit included</p>
   </div>
 </section>
 
-<!-- ===================== FAQ ===================== -->
-<section class="faq" id="faq" data-screen-label="Body Kits — FAQ">
+<!-- ===================== COMPARISON ===================== -->
+<section class="cmp-sec" data-screen-label="Prices — Comparison">
   <div class="wrap">
-    <div class="section-head reveal-up">
-      <div>
-        <span class="eyebrow">Frequently asked questions</span>
-        <h2>Before fitting<br>your body kit.</h2>
-      </div>
-      <p class="sh-note">What we get asked every week at the Boca Raton workshop. If your question isn't here, message us on WhatsApp.</p>
-    </div>
-
-    <div class="faq-list reveal-up">
-      <details class="faq-item">
-        <summary>How much does it cost to fit a body kit?<span class="faq-ico"></span></summary>
-        <div class="faq-body">
-          <p>Aero add-ons —splitter, diffuser or spoiler— start at €450. A complete kit with fitting and paint starts at €1,490, and a full widebody transformation from €3,490, VAT included. Once we've seen the car and the kit, we lock in a fixed written quote before starting.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How long does the installation take?<span class="faq-ico"></span></summary>
-        <div class="faq-body">
-          <p>A lip or diffuser is fitted the same day. A complete kit with prep and paint takes 3 to 5 working days, and a widebody project 1 to 3 weeks depending on the bodywork. We give you a firm delivery date when you confirm the job.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Is the fitting guaranteed?<span class="faq-ico"></span></summary>
-        <div class="faq-body">
-          <p>Yes. We guarantee the mounting, the panel-gap fitment and the paint finish of the installed kit. All the work is done at our own Boca Raton workshop, so we answer directly for every part we fit. The exact terms depend on the kit's material and are detailed in the quote.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What does the fitting process look like?<span class="faq-ico"></span></summary>
-        <div class="faq-body">
-          <p>First we do a dry test fit and correct panel gaps piece by piece until we reach OEM-level tolerances. Then we prep, prime and paint the kit to match the vehicle's color, and secure it with structural anchors and adhesives. Before delivery we check the fit and finish panel by panel under controlled hexagon lighting; if anything falls short of our standard, it gets redone.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can I bring my own kit, or do you order it?<span class="faq-ico"></span></summary>
-        <div class="faq-body">
-          <p>Both. We can work with a kit you already have or source proven manufacturers in fibreglass, ABS or polyurethane for your model. If you bring your own, we inspect it before quoting to catch warping or molding defects.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How do I book, and where are you?<span class="faq-ico"></span></summary>
-        <div class="faq-body">
-          <p>We work by appointment Monday to Saturday at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès, 20 minutes from Barcelona. Message us on WhatsApp or call +34 649 66 33 80 with your model and the kit you have in mind, and we'll give you a quote and a date the same day.</p>
-        </div>
-      </details>
-    </div>
+    <h3>Compare <span class="chrome-text" id="cmpName" data-i18n-skip>Car Wrap</span> levels</h3>
+    <div class="cmp-wrap"><table class="cmp" id="cmpTable" data-i18n-skip><thead><tr><th>Característica</th><th class="">Acentos</th><th class="col-pop">Cambio de color completo</th><th class="">Car Wrap Signature</th></tr></thead><tbody><tr><td>Cobertura</td><td class="">Techo · retrovisores · acentos</td><td class="col-pop">Exterior completo</td><td class="">Exterior completo + marcos</td></tr><tr><td>Films de marcas profesionales</td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td><td class="col-pop"><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td></tr><tr><td>Servicio según configuración del vehículo</td><td class=""><span class="dash">—</span></td><td class="col-pop"><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td></tr><tr><td>Films premium y camaleón</td><td class=""><span class="dash">—</span></td><td class="col-pop"><span class="dash">—</span></td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td></tr><tr><td>Consulta de diseño</td><td class=""><span class="dash">—</span></td><td class="col-pop"><span class="dash">—</span></td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td></tr><tr><td>Kit de mantenimiento</td><td class=""><span class="dash">—</span></td><td class="col-pop"><span class="dash">—</span></td><td class=""><span class="dash">—</span></td></tr></tbody><tfoot><tr><td>Precio orientativo</td><td class=""><span class="chrome-text">desde 250 €</span></td><td class="col-pop"><span class="chrome-text">desde 1.490 €</span></td><td class=""><span class="chrome-text">desde 1.990 €</span></td></tr></tfoot></table></div>
   </div>
 </section>
 
-<!-- ===================== CTA ===================== -->
-<section class="cta" data-screen-label="Body Kits — CTA">
+<!-- ===================== EXCLUSIVO TEASER ===================== -->
+<section class="teaser" data-screen-label="Prices — Exclusivo teaser">
   <div class="wrap">
-    <span class="eyebrow">Change the stance</span>
-    <h2 class="display">Give it real <span class="chrome-text">presence.</span></h2>
+    <span class="eyebrow">Want everything?</span>
+    <h2 class="display">The full build is a <span class="gold-text">Exclusive.</span></h2>
+    <p>PPF, wrap, correction, ceramic, interior and body work — one car, one vision, priced as a single project. We take on a limited number each year.</p>
     <div class="actions">
-      <a href="../contact/" class="btn">Get a Quote <span class="arr">→</span></a>
-      <a href="../gallery/" class="btn ghost">See Projects</a>
+      <a href="../about/" class="btn">About the Exclusive <span class="arr">→</span></a>
+      <a href="../contact/" class="btn ghost">Talk to the Studio</a>
     </div>
-    <p class="phone">Sant Cugat del Vallès, Barcelona &nbsp;·&nbsp; <strong>+34 649 66 33 80</strong></p>
   </div>
 </section>
 
-<footer>© 2026 SERRES. All rights reserved. &nbsp;·&nbsp; Body Kits · Custom Rims · Exhaust Tips</footer>
+<footer>© 2026 SERRES. All rights reserved. &nbsp;·&nbsp; Guide prices in EUR, VAT included</footer>
 
 <script>
-/* ---------- reveal-on-scroll ---------- */
-(function(){
-  const els=[...document.querySelectorAll('.reveal-up')];
-  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}
-  const io=new IntersectionObserver((ents)=>{
-    ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-  els.forEach(e=>io.observe(e));
-})();
-</script>
-
-
-
-<script>
-/* ---------- Before / After comparison slider ---------- */
-(function(){
-  const box=document.getElementById('compare');
-  const before=document.getElementById('beforeImg');
-  const divider=document.getElementById('divider');
-  const handle=document.getElementById('handle');
-  const tagBef=document.getElementById('tagBef');
-  const tagAft=document.getElementById('tagAft');
-  if(!box)return;
-  let pos=50,dragging=false;
-  function set(p){
-    pos=Math.max(0,Math.min(100,p));
-    before.style.clipPath='inset(0 '+(100-pos)+'% 0 0)';
-    divider.style.left=pos+'%';
-    handle.style.left=pos+'%';
-    tagBef.style.opacity=pos<14?'0':'1';
-    tagAft.style.opacity=pos>86?'0':'1';
+/* =====================================================================
+   PRICING DATA — three levels per service.
+   vals: true = included, false = not included, string = detail value
+   ===================================================================== */
+var PRICING={
+  wrap:{
+    label:'Car Wrap',
+    blurb:'Color change with films from several professional brands — from subtle accents to a full identity change.',
+    tiers:[
+      {name:'Accents',desc:'Roof, mirrors and detail pieces — change the attitude, not the whole car.',price:250,
+       note:'From 1 day in the studio'},
+      {name:'Full Color Change',desc:'Every exterior panel wrapped edge-to-edge in the color you actually wanted.',price:1490,pop:true,
+       note:'From 3–4 days in the studio'},
+      {name:'Signature Wrap',desc:'Premium and colour-flip films, with the service tailored to the vehicle configuration.',price:1990,
+       note:'From 5–7 days in the studio'}
+    ],
+    rows:[
+      ['Coverage','Roof · mirrors · accents','Full exterior','Full exterior + door shuts'],
+      ['Films from professional brands',true,true,true],
+      ['Service per vehicle configuration',false,true,true],
+      ['Premium & colour-flip films',false,false,true],
+      ['Design consultation',false,false,true],
+      ['Maintenance kit',false,false,false]
+    ]
+  },
+  ppf:{
+    label:'PPF',
+    blurb:'Self-healing paint protection film — 50+ colors from several professional brands — over the areas the road attacks first, or the whole car.',
+    tiers:[
+      {name:'Front Pack',desc:'Bumper, partial hood and mirrors — the high-impact essentials covered.',price:890,
+       note:'From 1 day in the studio'},
+      {name:'Pro',desc:'Full hood, fenders, bumper, mirrors and headlights — seamless coverage, sealed with a Ceramic Coating over the film.',price:1190,pop:true,
+       note:'From 2–3 days in the studio'},
+      {name:'Full Body',desc:'Every painted panel protected, edges tucked — invisible armor, total peace of mind.',price:2390,
+       note:'From 5–8 days in the studio'}
+    ],
+    rows:[
+      ['Coverage','Bumper + partial hood','Full front end','Every painted panel'],
+      ['Self-healing topcoat',true,true,true],
+      ['Headlight protection',false,true,true],
+      ['Wrapped edges — no visible lines',false,true,true],
+      ['Door cups & sill protection',false,false,true],
+      ['Ceramic Coating over film','Optional',true,true],
+      ['Film warranty','3 yr','3 yr','3 yr'],
+      ['Maintenance kit',false,false,false]
+    ]
+  },
+  ceramic:{
+    label:'Correction + Ceramic',
+    blurb:'Stage polishing to remove the swirls, then a Ceramic Coating to lock the gloss in — the two steps that belong together.',
+    tiers:[
+      {name:'Essential',desc:'Stage 1 polish to revive the gloss, then one ceramic layer to seal it — real protection, entry price.',price:340,
+       note:'1–2 days in the studio'},
+      {name:'Signature',desc:'Stage 2 correction plus a two-layer ceramic coat and rain-repellent glass — our standard.',price:590,pop:true,
+       note:'2–3 days in the studio'},
+      {name:'Concours',desc:'Full Stage 3 correction under hex lighting, then a multi-layer ceramic stack and interior protection.',price:890,
+       note:'3–4 days in the studio'}
+    ],
+    rows:[
+      ['Polishing stages','Stage 1 — enhance','Stage 2 — cut & refine','Stage 3 — full correction'],
+      ['Coating layers','1','2','3+'],
+      ['Rain-repellent glass treatment',false,true,true],
+      ['Interior leather & fabric',false,false,true],
+      ['Maintenance kit',false,false,false],
+      ['Rated durability','2 yr','3 yr','5 yr']
+    ]
+  },
+  detailing:{
+    label:'Detailing',
+    blurb:'From a proper reset wash to a full showroom revival, inside and out.',
+    tiers:[
+      {name:'Refresh',desc:'Exterior decontamination wash plus interior vacuum and wipe-down.',price:35,
+       note:'Approx. 3 hours'},
+      {name:'Deep Clean',desc:'Steam-cleaned interior, extracted carpets, decontaminated exterior, sealed paint.',price:150,pop:true,
+       note:'1 day in the studio'},
+      {name:'Showroom Reset',desc:'Everything — engine bay, trim restoration, leather conditioning, 12-month sealant.',price:490,
+       note:'1–2 days in the studio'}
+    ],
+    rows:[
+      ['Exterior decon wash',true,true,true],
+      ['Interior vacuum & wipe-down',true,true,true],
+      ['Steam clean & carpet extraction',false,true,true],
+      ['Leather cleaned & conditioned',false,true,true],
+      ['Engine bay detail',false,false,true],
+      ['Trim & plastics restored',false,false,true],
+      ['Paint sealant',false,'6 months','12 months']
+    ]
+  },
+  bodykits:{
+    label:'Body Kits',
+    blurb:'Aero and body work sourced, fitted and finished like it left the factory that way.',
+    quote:true,
+    tiers:[
+      {name:'Aero Parts',desc:'Splitters, spoilers and diffusers — supplied and fitted with OEM-level care.',price:450,
+       note:'From 1 day in the studio'},
+      {name:'Full Kit Fitted',desc:'A complete body kit installed and paint-matched to your car.',price:1490,pop:true,
+       note:'From 3–5 days in the studio'},
+      {name:'Transformation',desc:'Kit, wheels, stance and arch work — a different car when it rolls out.',price:3490,
+       note:'2–4 weeks · by consultation'}
+    ],
+    rows:[
+      ['Scope','Splitter · spoiler · diffuser','Complete body kit','Kit + wheels + stance'],
+      ['Supply & professional fitting',true,true,true],
+      ['Paint-matched finish',false,true,true],
+      ['Fitment & clearance check',true,true,true],
+      ['Arch & clearance work',false,false,true],
+      ['Wrap / PPF integration',false,false,true],
+      ['Sourcing consultation',false,true,true]
+    ]
   }
-  function fromEvent(e){
-    const r=box.getBoundingClientRect();
-    const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
-    set(x/r.width*100);
-  }
-  function start(e){dragging=true;box.classList.add('touched');fromEvent(e);if(e.cancelable)e.preventDefault();}
-  function move(e){if(!dragging)return;fromEvent(e);if(e.cancelable&&e.touches)e.preventDefault();}
-  function end(){dragging=false;}
-  handle.addEventListener('mousedown',start);
-  box.addEventListener('mousedown',start);
-  window.addEventListener('mousemove',move);
-  window.addEventListener('mouseup',end);
-  handle.addEventListener('touchstart',start,{passive:false});
-  box.addEventListener('touchstart',start,{passive:false});
-  window.addEventListener('touchmove',move,{passive:false});
-  window.addEventListener('touchend',end);
-  handle.addEventListener('keydown',e=>{
-    if(e.key==='ArrowLeft')set(pos-3);
-    else if(e.key==='ArrowRight')set(pos+3);
+};
+
+var WA='https://wa.me/34649663380?text=';
+/* translation helper — uses the shared dictionary once i18n has loaded,
+   otherwise renders English (a langchange event re-renders afterwards) */
+function T(s){return (window.SERRES_I18N&&window.SERRES_I18N.t)?window.SERRES_I18N.t(s):s;}
+var OK='<svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg>';
+var NO='<svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg>';
+
+/* ---------- render tabs ---------- */
+var tabsEl=document.getElementById('svcTabs');
+tabsEl.innerHTML='';
+Object.keys(PRICING).forEach(function(key,i){
+  var b=document.createElement('button');
+  b.className='stab'+(i===0?' on':'');
+  b.textContent=T(PRICING[key].label);
+  b.dataset.key=key;
+  b.setAttribute('role','tab');
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.stab').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    render(key);
   });
-  set(50);
-  if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
-    const io=new IntersectionObserver((ents)=>{
-      ents.forEach(en=>{
-        if(en.isIntersecting){
-          io.disconnect();
-          const seq=[50,66,34,50];let i=0;
-          const iv=setInterval(()=>{i++;if(i>=seq.length){clearInterval(iv);return;}animate(pos,seq[i]);},560);
-        }
-      });
-    },{threshold:.4});
-    io.observe(box);
-  }
-  function animate(from,to){
-    const t0=performance.now(),dur=460;
-    function fr(t){const k=Math.min(1,(t-t0)/dur);const e=k*k*(3-2*k);
-      set(from+(to-from)*e);if(k<1)requestAnimationFrame(fr);}
-    requestAnimationFrame(fr);
-  }
-})();
-</script>
+  tabsEl.appendChild(b);
+});
 
+/* ---------- price count-up (interval-driven, premium ease) ---------- */
+var REDUCE=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function fmtEur(n){return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' \u20AC';}
+function animatePrice(el,target){
+  if(REDUCE){el.textContent=fmtEur(target);return;}
+  var dur=1500,start=Date.now();
+  el.textContent=fmtEur(0);
+  var iv=setInterval(function(){
+    var p=Math.min(1,(Date.now()-start)/dur);
+    var e=1-Math.pow(1-p,4);
+    el.textContent=fmtEur(target*e);
+    if(p>=1)clearInterval(iv);
+  },16);
+}
+
+/* ---------- render a service ---------- */
+function cellHTML(v,extra){
+  if(v===true)return '<td class="'+extra+'">'+OK+'</td>';
+  if(v===false)return '<td class="'+extra+'"><span class="dash">—</span></td>';
+  return '<td class="'+extra+'">'+T(v)+'</td>';
+}
+function render(key){
+  var s=PRICING[key];
+  currentKey=key;
+
+  /* intro */
+  document.getElementById('svcIntro').innerHTML=
+    '<h2>'+T(s.label)+' <span class="chrome-text">'+T('pricing')+'</span></h2><p>'+T(s.blurb)+'</p>';
+
+  /* cards — features derived from comparison rows */
+  var grid=document.getElementById('tierGrid');
+  grid.innerHTML=s.tiers.map(function(t,i){
+    var feats=s.rows.slice(0,7).map(function(r){
+      var v=r[i+1];
+      var on=v!==false;
+      var label=(typeof v==='string')?T(r[0])+' — '+T(v):T(r[0]);
+      return '<li class="'+(on?'':'off')+'">'+(on?OK:NO)+'<span>'+label+'</span></li>';
+    }).join('');
+    var msg=encodeURIComponent("Hola SERRES, quería presupuesto del pack "+T(t.name)+" de "+T(s.label)+" para mi coche.");
+    return '<article class="tier'+(t.pop?' popular':'')+'">'+
+      (t.pop?'<span class="pop-tag">'+T('Most chosen')+'</span>':'')+
+      '<h3>'+T(t.name)+'</h3>'+
+      '<p class="t-desc">'+T(t.desc)+'</p>'+
+      (s.quote
+        ? '<div class="t-price t-quote"><span class="t-quote-val chrome-text">'+T('On request')+'</span><span class="t-quote-note">'+T('Message us to calculate your price')+'</span></div>'
+        : '<div class="t-price"><span class="t-from">'+T('From')+'</span><span class="t-val chrome-text" data-price="'+t.price+'">'+fmtEur(t.price)+'</span></div>')+
+      '<ul>'+feats+'</ul>'+
+      '<div class="t-cta"><a class="btn'+(t.pop?'':' ghost')+'" href="../pages/'+WA+msg+'" target="_blank" rel="noopener">'+T(s.quote?'Request a quote':'Book via WhatsApp')+' <span class="arr">→</span></a></div>'+
+      '<p class="t-note">'+T(t.note)+'</p>'+
+    '</article>';
+  }).join('');
+
+  /* animate prices */
+  grid.querySelectorAll('[data-price]').forEach(function(el){
+    animatePrice(el,parseInt(el.dataset.price,10));
+  });
+
+  /* comparison table */
+  document.getElementById('cmpName').textContent=T(s.label);
+  var popIdx=s.tiers.findIndex(function(t){return t.pop;});
+  var thead='<thead><tr><th>'+T('Feature')+'</th>'+s.tiers.map(function(t,i){
+    return '<th class="'+(i===popIdx?'col-pop':'')+'">'+T(t.name)+'</th>';}).join('')+'</tr></thead>';
+  var tbody='<tbody>'+s.rows.map(function(r){
+    return '<tr><td>'+T(r[0])+'</td>'+r.slice(1).map(function(v,i){
+      return cellHTML(v,i===popIdx?'col-pop':'');}).join('')+'</tr>';
+  }).join('')+'</tbody>';
+  var tfoot='<tfoot><tr><td>'+T('Guide price')+'</td>'+s.tiers.map(function(t,i){
+    return '<td class="'+(i===popIdx?'col-pop':'')+'"><span class="chrome-text">'+(s.quote?T('On request'):T('from')+' '+fmtEur(t.price))+'</span></td>';}).join('')+'</tr></tfoot>';
+  document.getElementById('cmpTable').innerHTML=thead+tbody+tfoot;
+}
+
+var currentKey='wrap';
+render('wrap');
+
+/* re-render data-driven content (tabs + tiers + table) on language change */
+window.addEventListener('serres:langchange',function(){
+  document.querySelectorAll('#svcTabs .stab').forEach(function(b){
+    b.textContent=T(PRICING[b.dataset.key].label);
+  });
+  render(currentKey);
+});
+</script>
 
 <script src="../assets/serres-enhance.js" defer></script>
+
 <script>
 (function () {
   function track(name, params) {
@@ -710,5 +674,6 @@
   }, true);
 })();
 </script>
+
 </body>
 </html>

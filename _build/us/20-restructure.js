@@ -37,8 +37,16 @@ const ROUTES = {
   '/blog/limpieza-tapiceria-coche-precio.html': '/blog/car-upholstery-cleaning-cost/index.html',
 };
 
-/* moved out of the shipped tree; links pointing at them are redirected to LINK_FALLBACK */
-const HARVEST = {
+/* Pages that leave the shipped tree. TWO different things, deliberately kept apart —
+   conflating them silently overwrote /pricing and /detailing on the first run:
+     HARVEST_DEST  = where the FILE is moved to (kept for agents to mine)
+     LINK_FALLBACK = where LINKS that pointed at it are redirected */
+const HARVEST_DEST = {
+  '/services/paint-correction.html': '/_build/us/harvest/paint-correction.html',
+  '/services/body-kits.html': '/_build/us/harvest/body-kits.html',
+  '/pages/projects.html': '/_build/us/harvest/projects.html',
+};
+const LINK_FALLBACK = {
   '/services/paint-correction.html': '/detailing/index.html',   // spec folds paint correction into /detailing
   '/services/body-kits.html': '/pricing/index.html',            // no body-kit SKU exists in the spec at any tier
   '/pages/projects.html': '/about/index.html',                  // "Exclusivo" folds into /about
@@ -83,8 +91,8 @@ for (const [from, to] of Object.entries(ROUTES)) {
   if (from === to) continue;
   moves.push({ from, to, kind: 'route' });
 }
-for (const from of Object.keys(HARVEST)) {
-  moves.push({ from, to: '/_build/us/harvest' + from.replace(/^\/(services|pages)/, ''), kind: 'harvest' });
+for (const [from, to] of Object.entries(HARVEST_DEST)) {
+  moves.push({ from, to, kind: 'harvest' });
 }
 
 console.log('planned moves:');
@@ -104,7 +112,7 @@ const htmlOld = [];
   }
 })(root);
 
-const newSiteOf = old => ROUTES[old] || HARVEST[old] || old;
+const newSiteOf = old => ROUTES[old] || HARVEST_DEST[old] || old;
 const ATTR = /\b(href|src|content)="([^"]+)"/g;
 const SKIP = /^(https?:|\/\/|#|mailto:|tel:|sms:|data:|javascript:)/i;
 
@@ -139,7 +147,7 @@ for (const file of htmlOld) {
     }
 
     // a page: map it through the route table
-    let mapped = ROUTES[target] || HARVEST[target];
+    let mapped = ROUTES[target] || LINK_FALLBACK[target];
     if (!mapped) {
       if (ALL_NEW.has(target)) mapped = target;
       else { unresolved.push(`${oldSite} -> ${ref}`); return m; }
@@ -153,7 +161,16 @@ for (const file of htmlOld) {
     return `${attr}="${relLink(newSite, mapped)}${hash}"`;
   });
 
-  staged.set(newSite, out);
+  // Two sources staging to one destination silently destroys a page: on the first run
+  // paint-correction overwrote /detailing and body-kits overwrote /pricing, and nothing
+  // said a word. Never again.
+  if (staged.has(newSite)) {
+    console.error(`\nDESTINATION COLLISION: ${newSite} would be written by two sources.`);
+    console.error(`  already staged by: ${staged.get(newSite).from}`);
+    console.error(`  also claimed by:   ${oldSite}`);
+    process.exit(1);
+  }
+  staged.set(newSite, { from: oldSite, content: out });
 }
 
 if (unresolved.length) {
@@ -163,7 +180,7 @@ if (unresolved.length) {
 }
 
 /* ------------------------------------------------------- 3. write & delete */
-for (const [newSite, content] of staged) {
+for (const [newSite, { content }] of staged) {
   const dest = path.join(root, newSite.slice(1));
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.writeFileSync(dest, content);
