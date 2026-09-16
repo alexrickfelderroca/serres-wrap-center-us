@@ -1,0 +1,13 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "How much does paint protection film cost in Boca Raton?",
+      "a": "A partial front is {{price:partial-front.essential}} in NAR H190 or {{price:partial-front.signature}} in 3M Scotchgard Pro Series 200. A full front is {{price:full-front.essential}} or {{price:full-front.signature}}, and full body is {{price:full-body.essential}} or {{price:full-body.signature}}. Boca Raton pays the same published list as every other city we cover. {{terms:fromMeaning}} {{terms:tax}}"
+    },
+    {
+      "q": "Where in Boca Raton is the studio, and how do I get there?",
+      "a": "The studio is in the Boca Raton to Pompano Beach area and the exact location is announced in October 2026, at which point it is published on this site. From the Town Center side it is Glades Road onto I-95 south; from Mizner Park it is Palmetto Park Road west to the same ramp; from north Boca it is Yamato Road. Federal Highway, US-1, runs the whole way parallel if you would rather stay off the interstate. {{terms:warranty}}"
+    }
+  ]
+}

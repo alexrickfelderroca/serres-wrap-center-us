@@ -43,9 +43,17 @@ for (const f of html) {
   }
 }
 
-/* classes DEFINED in the stylesheet */
-const css = fs.readFileSync(path.join(root, 'assets', 'serres-us.css'), 'utf8')
-  .replace(/\/\*[\s\S]*?\*\//g, '');            // strip comments so prose can't count
+/* Classes DEFINED — in the shared stylesheet AND in each page's own inline <style>.
+   Page-specific "us-<page>-" classes are supposed to live in the page's inline block
+   (a page author may not edit the shared file), so reading only serres-us.css reported
+   the whole gallery filter as unstyled when it was styled correctly. */
+const strip = t => t.replace(/\/\*[\s\S]*?\*\//g, '');   // so prose in comments can't count
+let css = strip(fs.readFileSync(path.join(root, 'assets', 'serres-us.css'), 'utf8'));
+for (const f of html) {
+  for (const m of fs.readFileSync(f, 'utf8').matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)) {
+    css += '\n' + strip(m[1]);
+  }
+}
 const defined = new Set([...css.matchAll(/\.(us-[A-Za-z0-9_-]+)/g)].map(m => m[1]));
 
 const undefinedClasses = [...used.keys()].filter(c => !defined.has(c)).sort();

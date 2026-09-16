@@ -1,0 +1,25 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "How much does a ceramic coating cost in Boca Raton?",
+      "a": "Two prices, both published. The 3-Year Ceramic Package on bare paint starts at {{price:ceramic-3yr}}. Over fresh paint protection film or a wrap, the top-up starts at {{price:ceramic-topup}}. {{terms:fromMeaning}} {{terms:tax}}"
+    },
+    {
+      "q": "What does the 3-Year Ceramic Package include?",
+      "a": "Decon, single-stage gloss prep, coating, cure. The prep is the part that decides the result: a coating locks in whatever is under it, so the paint is cleaned and corrected before anything is sealed onto it. The car goes back to you once the coating has cured, not straight off the bench."
+    },
+    {
+      "q": "Can a ceramic coating go over PPF or a wrap?",
+      "a": "Yes, and it is the usual pairing. Ceramic over fresh film gives you the beading and the easier washing without touching the paint underneath, and it makes the whole car behave the same way instead of half film and half bare panel. That is the top-up, from {{price:ceramic-topup}}."
+    },
+    {
+      "q": "Does a ceramic coating replace paint protection film?",
+      "a": "No. A coating adds gloss, water beading and easier washing, but it is microns thick and it will not stop a stone chip. For impact protection you need film: {{startingAt:ppf}}. Film on the front end and ceramic over the rest is how most cars leave the studio."
+    },
+    {
+      "q": "Do I need paint correction before the coating?",
+      "a": "Some, always. The 3-Year Ceramic Package includes a single-stage gloss prep for exactly that reason. Heavier swirls, holograms or etching are a separate paint correction job, from {{price:paint-correction}}, and it is worth doing first because a coating seals in every defect it goes over."
+    }
+  ]
+}

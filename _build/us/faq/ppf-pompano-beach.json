@@ -1,0 +1,13 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "How far is the studio from Pompano Beach?",
+      "a": "Closer than anywhere else we cover. The studio is in the Boca Raton and Pompano Beach area, so the run in is I-95 north from the Atlantic Boulevard or Copans Road ramp, or Federal Highway the whole way. The exact address and a measured drive time are published in October 2026."
+    },
+    {
+      "q": "Which PPF coverage suits a Pompano Beach car?",
+      "a": "It depends which road the car lives on. An I-95 commuter past Copans Road collects chips on the hood and fender tops, so Full Front at {{price:full-front.essential}} is the honest answer. A car that mostly does Federal Highway plazas and the Citi Centre lot picks up bumper corners and mirror caps, and Partial Front at {{price:partial-front.essential}} covers that."
+    }
+  ]
+}

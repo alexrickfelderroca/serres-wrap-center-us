@@ -1,0 +1,21 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "How much is window tint in Boca Raton?",
+      "a": "A full car in ceramic film is {{startingAt:tint}} — every side window plus the rear glass. {{terms:fromMeaning}} {{terms:tax}}"
+    },
+    {
+      "q": "What tint is legal in Florida?",
+      "a": "On a sedan the front side windows have to let at least 28% of light through, and the back sides and rear window at least 15%. On an SUV or van the front sides are the same 28%, while the back sides and rear window can go down to 6%. The windshield takes non-reflective film above the AS-1 line only, and a state medical exemption exists for drivers who need darker. We have not yet verified these figures against the current Florida statute, so confirm the law before you choose a shade."
+    },
+    {
+      "q": "Is ceramic film worth it over a cheap dyed tint?",
+      "a": "Ceramic film rejects infrared — the part of sunlight you feel as heat — without having to be darker, and it carries no metal, so GPS, cell signal and a toll transponder are unaffected. A dyed film only darkens the glass, and it fades. That is why the one tint we fit is ceramic."
+    },
+    {
+      "q": "When can I roll the windows down after a tint?",
+      "a": "Not straight away. The film has to bond to the glass first, and moving a window before it has set can lift an edge. We give you the exact window at hand-back. Light haze or small pockets of moisture while it cures are normal and clear on their own. {{terms:warranty}}"
+    }
+  ]
+}

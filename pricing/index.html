@@ -41,7 +41,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;
-    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100dvh;
     display:flex;flex-direction:column;overflow-x:hidden;
     background-image:radial-gradient(90% 60% at 50% -8%,rgba(46,50,63,.26),transparent 66%);}
   ::selection{background:#e7e7ec;color:#0a0a0b}
@@ -52,33 +52,21 @@
     letter-spacing:.01em;text-transform:uppercase;}
   .chrome-text{background:var(--chrome);-webkit-background-clip:text;background-clip:text;
     color:transparent;-webkit-text-fill-color:transparent;}
-  /* gold identity for the Exclusivo program */
-  .gold-text{
-    background:linear-gradient(105deg,#8a6d2f 0%,#c9a44f 20%,#f3e0ac 38%,#d4af5f 52%,#8a6d2f 70%,#e9d194 88%,#b28f41 100%);
-    background-size:220% 100%;background-position:0% 0;
-    -webkit-background-clip:text;background-clip:text;
-    color:transparent;-webkit-text-fill-color:transparent;
-    transition:filter .35s var(--ease),background-position .9s var(--ease);
-  }
-  .gold-text:hover,a:hover > .gold-text,a:focus-visible > .gold-text{
-    background-position:100% 0;
-    filter:drop-shadow(0 0 6px rgba(212,175,95,.5)) drop-shadow(0 0 18px rgba(212,175,95,.22));
-  }
-  @media(prefers-reduced-motion:reduce){.gold-text{transition:none}}
   .eyebrow{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
     letter-spacing:.34em;font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:14px;}
   .eyebrow::before{content:"";width:30px;height:1px;background:linear-gradient(90deg,transparent,var(--line-strong));}
 
   .btn{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.14em;font-size:15px;display:inline-flex;align-items:center;gap:11px;
-    padding:14px 26px;border:none;cursor:pointer;background:var(--chrome);color:#0a0a0b;
+    letter-spacing:.14em;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:11px;
+    padding:15px 26px;border:none;cursor:pointer;background:var(--chrome);color:#0a0a0b;
     clip-path:polygon(0 0,100% 0,100% 100%,12px 100%,0 calc(100% - 12px));
-    transition:transform .3s var(--ease),filter .3s var(--ease);}
+    transition:transform .22s var(--ease),filter .22s var(--ease);}
   .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
-  .btn .arr{transition:transform .3s var(--ease)}
+  .btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  .btn .arr{transition:transform .22s var(--ease)}
   .btn:hover .arr{transform:translateX(4px)}
   .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line-strong);
-    clip-path:none;padding:13px 26px;}
+    clip-path:none;padding:14px 26px;}
   .btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.04)}
 
   /* ---------- NAV ---------- */
@@ -89,153 +77,181 @@
   .nav-left{display:flex;align-items:center;gap:30px}
   .logo{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-style:italic;font-weight:700;font-size:28px;
     letter-spacing:.16em;text-transform:uppercase;padding:0 .28em 0 .04em;white-space:nowrap}
-  .back{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:500;text-transform:uppercase;
-    letter-spacing:.16em;font-size:14px;color:var(--muted);display:inline-flex;align-items:center;gap:10px;
-    transition:color .25s var(--ease);}
-  .back:hover{color:var(--text)}
   .nav-right{display:flex;align-items:center;gap:20px}
 
   /* ---------- BREADCRUMBS ---------- */
   .crumbs{background:var(--bg);border-bottom:1px solid var(--line)}
-  .crumbs .wrap{display:flex;align-items:center;gap:12px;padding-top:12px;padding-bottom:12px;
+  .crumbs .wrap{display:flex;align-items:center;gap:12px;
     font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.18em;
-    font-size:12.5px;color:var(--muted-2)}
+    font-size:12.5px;color:var(--muted)}
+  .crumbs a,.crumbs .here{display:inline-flex;align-items:center;min-height:44px}
   .crumbs a{color:var(--muted);transition:color .25s var(--ease)}
   .crumbs a:hover{color:var(--text)}
+  .crumbs a:focus-visible{outline:2px solid #fff;outline-offset:2px}
   .crumbs .here{color:var(--text)}
 
+  /* ---------- SECTION HEAD ---------- */
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .section-head h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;font-size:clamp(32px,4.8vw,60px);line-height:.94;letter-spacing:.012em;margin-top:18px}
+  .section-head .sh-note{color:var(--muted);font-size:15px;max-width:38ch;margin-top:14px}
+
+  /* ---------- REVEAL (gated on .has-js so no-JS never hides content) ---------- */
+  .reveal-up{opacity:1;transform:none}
+  html.has-js .reveal-up{opacity:0;transform:translateY(24px);
+    transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  html.has-js .reveal-up.in{opacity:1;transform:none}
+
   /* ---------- HERO ---------- */
-  .hero{padding:88px 0 30px;position:relative;overflow:hidden}
+  .hero{padding:80px 0 26px;position:relative;overflow:hidden}
   .hero::after{content:"";position:absolute;left:50%;top:-20%;transform:translateX(-50%);
     width:min(120vw,1500px);height:480px;z-index:0;pointer-events:none;
     background:radial-gradient(46% 52% at 50% 50%,rgba(54,58,72,.3),rgba(10,10,11,0) 72%);}
   .hero .wrap{position:relative;z-index:1}
-  .hero h1{font-size:clamp(54px,10.5vw,150px);margin:20px 0 0}
+  .hero h1{font-size:clamp(48px,9.4vw,136px);margin:20px 0 0;max-width:16ch}
   .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.03em}
   .hero h1 .ln span{display:block}
   .hero h1 .ln-kw{margin-top:18px}
   .hero h1 .ln .h1-kw{font-weight:500;font-size:clamp(13px,1.4vw,17px);letter-spacing:.24em;
     line-height:1.5;color:var(--muted)}
   @keyframes rise{from{transform:translateY(108%)}to{transform:translateY(0)}}
-  .hero .lead{margin-top:24px;max-width:54ch;color:var(--muted);font-size:clamp(16px,1.5vw,19px)}
-  .lead-links{margin-top:18px;display:flex;gap:10px 28px;flex-wrap:wrap}
-  .lead-links a{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.18em;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line-strong);
-    padding-bottom:2px;transition:color .25s var(--ease),border-color .25s var(--ease)}
-  .lead-links a:hover{color:var(--text);border-color:#fff}
   @keyframes fade{from{opacity:0}to{opacity:1}}
+  .hero .lead{margin-top:26px;max-width:56ch;color:var(--muted);font-size:clamp(16px,1.5vw,19px)}
   @media(prefers-reduced-motion:no-preference){
     .hero h1 .ln span{transform:translateY(108%);animation:rise 1s var(--ease) .05s forwards}
     .hero .eyebrow{opacity:0;animation:fade .9s var(--ease) .2s forwards}
     .hero .lead{opacity:0;animation:fade .9s var(--ease) .42s forwards}
-    .lead-links{opacity:0;animation:fade .9s var(--ease) .5s forwards}
-    .svc-tabs{opacity:0;animation:fade .9s var(--ease) .55s forwards}
+    .prc-jump{opacity:0;animation:fade .9s var(--ease) .52s forwards}
   }
 
-  /* ---------- SERVICE TABS ---------- */
-  .svc-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px}
-  .stab{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.16em;font-size:13.5px;color:var(--muted);background:transparent;
-    border:1px solid var(--line-strong);padding:11px 21px;cursor:pointer;border-radius:999px;
-    transition:color .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease);}
-  .stab:hover{color:var(--text);border-color:#fff}
-  .stab.on{background:var(--chrome);color:#0a0a0b;border-color:transparent}
+  /* ---------- JUMP NAV ---------- */
+  .prc-jump{margin-top:34px;display:flex;flex-wrap:wrap;gap:8px}
+  .prc-jump a{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.16em;font-size:12.5px;color:var(--muted);
+    border:1px solid var(--line-strong);padding:11px 18px;min-height:44px;display:inline-flex;align-items:center;
+    transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease)}
+  .prc-jump a:hover{color:var(--text);border-color:#fff;background:rgba(255,255,255,.04)}
+  .prc-jump a:focus-visible{outline:2px solid #fff;outline-offset:2px}
 
-  /* ---------- TIER CARDS ---------- */
-  .tiers-sec{padding:44px 0 10px}
-  .svc-intro{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
-  .svc-intro h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
-    font-size:clamp(30px,4.4vw,54px);line-height:.94;letter-spacing:.012em}
-  .svc-intro p{color:var(--muted);font-size:15.5px;max-width:44ch}
+  /* ---------- NO-BAIT BANNER ---------- */
+  .prc-banner{margin-top:44px;padding:34px 0;position:relative;
+    background:linear-gradient(180deg,rgba(10,10,11,0) 0%,rgba(16,16,19,.7) 24%,rgba(20,20,24,.92) 50%,rgba(16,16,19,.7) 76%,rgba(10,10,11,0) 100%);}
+  .prc-banner::before,.prc-banner::after{content:"";position:absolute;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--line-strong) 22%,var(--line-strong) 78%,transparent)}
+  .prc-banner::before{top:0}
+  .prc-banner::after{bottom:0}
+  .prc-banner__inner{display:flex;align-items:baseline;gap:14px 30px;flex-wrap:wrap}
+  .prc-banner__flag{flex:none;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;letter-spacing:.14em;font-size:clamp(20px,2.4vw,27px);line-height:1;
+    background:var(--chrome);-webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;}
+  .prc-banner__text{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:74ch;text-wrap:pretty}
+  .prc-banner__text b{color:var(--text);font-weight:500}
 
-  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
-  .tier{position:relative;display:flex;flex-direction:column;background:var(--panel);
-    border:1px solid var(--line);padding:30px 28px 28px;
-    clip-path:polygon(0 0,100% 0,100% 100%,18px 100%,0 calc(100% - 18px));
-    transition:border-color .3s var(--ease),transform .3s var(--ease);}
-  .tier:hover{border-color:var(--line-strong);transform:translateY(-4px)}
-  .tier.popular{background:var(--panel-2);border:1px solid rgba(255,255,255,.34)}
-  .tier .pop-tag{position:absolute;top:18px;right:18px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
-    font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;
-    background:var(--chrome);color:#0a0a0b;padding:5px 12px;border-radius:999px}
-  .tier h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.04em;font-size:24px;line-height:1.05}
-  .tier .t-desc{margin-top:8px;color:var(--muted);font-size:14px;line-height:1.5;min-height:42px}
-  .tier .t-price{margin-top:20px;display:flex;align-items:baseline;gap:8px}
-  .tier .t-from{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;
-    letter-spacing:.2em;font-size:11px;color:var(--muted-2);white-space:nowrap;flex:none}
-  .tier .t-val{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:46px;line-height:1;
-    letter-spacing:.01em}
-  .tier .t-price.t-quote{flex-direction:column;align-items:flex-start;gap:6px}
-  .tier .t-quote-val{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:34px;line-height:1;letter-spacing:.01em}
-  .tier .t-quote-note{font-family:"DM Sans",sans-serif;font-size:13px;line-height:1.45;color:var(--muted);text-transform:none;letter-spacing:0}
-  .tier ul{list-style:none;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);
-    display:flex;flex-direction:column;gap:9px;flex:1}
-  .tier li{display:flex;gap:11px;font-size:14px;color:var(--text);align-items:flex-start}
-  .tier li.off{color:var(--muted-2)}
-  .tier li .ic{flex:none;width:16px;height:16px;margin-top:3px}
-  .tier li .ic.ok{color:#e7e7ec}
-  .tier li .ic.no{color:var(--muted-2);opacity:.55}
-  .tier .t-cta{margin-top:24px}
-  .tier .t-cta .btn{width:100%;justify-content:center}
-  .tier .t-note{margin-top:12px;text-align:center;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
-    text-transform:uppercase;letter-spacing:.18em;font-size:10.5px;color:var(--muted-2)}
+  /* ---------- MAIN LIST + STICKY RAIL ---------- */
+  .prc-main{padding:64px 0 10px}
+  .prc-main__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:56px}
 
-  .price-note{margin-top:26px;display:flex;align-items:center;gap:14px;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.18em;
-    font-size:11.5px;color:var(--muted-2);text-align:center;justify-content:center}
-  .price-note::before,.price-note::after{content:"";height:1px;background:var(--line);flex:1}
+  .prc-group + .prc-group{margin-top:72px;padding-top:64px;
+    border-top:1px solid var(--line)}
+  .prc-group__head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px 40px;flex-wrap:wrap}
+  .prc-group__head h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;font-size:clamp(30px,3.8vw,46px);line-height:.96;letter-spacing:.012em;margin-top:14px}
+  .prc-group__note{color:var(--muted);font-size:15px;line-height:1.6;max-width:44ch;text-wrap:pretty}
+  .prc-legend{list-style:none;margin:22px 0 0;padding:20px 22px;display:grid;gap:10px;
+    border:1px solid var(--line);background:rgba(20,20,23,.5);
+    color:var(--muted);font-size:14px;line-height:1.55}
+  .prc-legend b{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;color:var(--text);margin-right:8px}
+  .prc-more{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px 26px}
+  .prc-more a{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--muted);
+    border-bottom:1px solid var(--line-strong);padding:10px 0 4px;min-height:44px;display:inline-flex;align-items:center;
+    transition:color .2s var(--ease),border-color .2s var(--ease)}
+  .prc-more a:hover{color:var(--text);border-color:#fff}
+  .prc-more a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  .prc-more a .arr-in{margin-left:10px}
+  .prc-solo{max-width:600px}
 
-  /* ---------- COMPARISON TABLE ---------- */
-  .cmp-sec{padding:60px 0 20px}
-  .cmp-sec h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
-    font-size:clamp(26px,3.2vw,40px);letter-spacing:.012em;line-height:1;margin-bottom:26px;text-align:center}
-  .cmp-wrap{border:1px solid var(--line);overflow-x:auto;-webkit-overflow-scrolling:touch;background:rgba(20,20,23,.5)}
-  table.cmp{width:100%;border-collapse:collapse;min-width:640px}
-  .cmp th,.cmp td{padding:13px 20px;border-bottom:1px solid var(--line);font-size:14px}
-  .cmp thead th{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.14em;font-size:13.5px;text-align:center;color:var(--text);
-    background:rgba(255,255,255,.03);padding:16px 20px}
-  .cmp thead th:first-child{text-align:left;color:var(--muted-2);letter-spacing:.2em;font-size:11.5px}
-  .cmp tbody td:first-child{color:var(--muted);text-align:left;font-size:13.5px}
-  .cmp tbody td{text-align:center;color:var(--text)}
-  .cmp tbody tr:hover{background:rgba(255,255,255,.025)}
-  .cmp td.col-pop,.cmp th.col-pop{background:rgba(255,255,255,.045)}
-  .cmp .ic{width:17px;height:17px;display:inline-block;vertical-align:-3px}
-  .cmp .ic.ok{color:#e7e7ec}
-  .cmp .dash{color:var(--muted-2);opacity:.6}
-  .cmp tfoot td{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:19px;
-    letter-spacing:.02em;padding:16px 20px}
-  .cmp tfoot td:first-child{font-weight:500;font-size:11.5px;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--muted-2)}
-  @media(max-width:880px){.cmp th,.cmp td{padding:12px 14px}.cmp thead th{padding:14px 14px}}
+  /* anchored jump targets must clear the sticky header */
+  #ppf,#wraps,#ceramic,#tint,#detailing,#packages,#faq{scroll-margin-top:104px}
 
-  /* ---------- EXCLUSIVO TEASER ---------- */
-  .teaser{margin:70px 0 0;padding:84px 0;position:relative;text-align:center;background:var(--bg-2)}
-  .teaser::before,.teaser::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line)}
-  .teaser::before{top:0}.teaser::after{bottom:0}
-  .teaser .eyebrow{justify-content:center}
-  .teaser .eyebrow::after{content:"";width:30px;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent)}
-  .teaser h2{font-size:clamp(34px,5.4vw,72px);margin:18px auto 0;max-width:18ch}
-  .teaser p{margin:18px auto 0;max-width:52ch;color:var(--muted);font-size:16px}
-  .teaser .actions{margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .prc-rail__card{padding:30px 28px 28px;background:var(--panel);
+    border:1px solid var(--line);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 2px 4px rgba(0,0,0,.3),
+      0 12px 26px -12px rgba(0,0,0,.58),0 34px 70px -30px rgba(0,0,0,.74);}
+  .prc-rail__title{font-size:clamp(30px,3.4vw,40px);margin-top:14px}
+  .prc-rail__note{margin-top:14px;color:var(--muted);font-size:14.5px;line-height:1.6;text-wrap:pretty}
+  .prc-rail .us-form{margin-top:24px}
+  .prc-submit{width:100%;grid-column:1/-1;margin-top:4px}
 
-  footer{padding:30px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
-    letter-spacing:.04em;text-align:center}
-
-  @media(max-width:980px){
-    .tier-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
-    .tier .t-desc{min-height:0}
+  @media(min-width:1100px){
+    .prc-main__grid{grid-template-columns:minmax(0,1fr) 392px;gap:72px;align-items:start}
+    /* A sticky rail taller than the viewport would pin its top and put the submit
+       button permanently out of reach, so it scrolls inside itself when it cannot fit. */
+    .prc-rail{position:sticky;top:104px;max-height:calc(100dvh - 132px);
+      overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;
+      scrollbar-color:var(--line-strong) transparent;padding-right:2px}
+    .prc-rail .us-form{grid-template-columns:minmax(0,1fr)}
   }
+
+  /* ---------- PROOF BAND ---------- */
+  .prc-proof{margin-top:96px;padding:96px 0;
+    background:linear-gradient(180deg,var(--bg) 0%,#0b0b0d 16%,var(--bg-2) 44%,#0c0c0e 78%,var(--bg) 100%)}
+  .prc-proof__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:center}
+  .prc-proof figure{margin:0;position:relative;overflow:hidden;
+    clip-path:polygon(0 0,100% 0,100% 100%,26px 100%,0 calc(100% - 26px));
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.4)) drop-shadow(0 18px 34px rgba(0,0,0,.44)) drop-shadow(0 48px 84px rgba(0,0,0,.5))}
+  .prc-proof img{display:block;width:100%;height:auto}
+  .prc-proof__text h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;font-size:clamp(32px,4.4vw,56px);line-height:.94;letter-spacing:.012em;margin-top:18px}
+  .prc-proof__text p{margin-top:20px;color:var(--muted);font-size:16px;max-width:52ch;text-wrap:pretty}
+  .prc-steps{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:11px}
+  .prc-steps li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:14.5px;line-height:1.55}
+  .prc-steps li::before{content:"";flex:none;width:7px;height:7px;margin-top:8px;background:var(--chrome);
+    clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+  @media(min-width:960px){
+    .prc-proof__grid{grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:64px}
+  }
+
+  /* ---------- PACKAGES ---------- */
+  .prc-packages{padding:16px 0 96px}
+  .prc-packages .section-head h2{font-size:clamp(34px,5.2vw,68px)}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:88px 0 20px}
+  .faq-list{margin-top:44px;border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;
+    justify-content:space-between;gap:24px;padding:22px 0;min-height:44px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.04em;font-size:clamp(18px,2.2vw,23px);line-height:1.08;
+    transition:color .22s var(--ease)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary:hover{color:#fff}
+  .faq-item summary:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  .faq-item summary .fq-x{flex:none;width:14px;height:14px;position:relative;opacity:.6}
+  .faq-item summary .fq-x::before,.faq-item summary .fq-x::after{content:"";position:absolute;
+    left:0;top:6px;width:14px;height:2px;background:currentColor;transition:transform .3s var(--ease)}
+  .faq-item summary .fq-x::after{transform:rotate(90deg)}
+  .faq-item[open] summary .fq-x::after{transform:rotate(0)}
+  .faq-item p{color:var(--muted);font-size:16px;max-width:66ch;padding:0 0 24px;text-wrap:pretty}
+
+  footer{color:var(--muted);font-size:13px;letter-spacing:.04em}
+
   @media(max-width:760px){
     .wrap,.nav-inner{padding-left:22px;padding-right:22px}
     .nav-right .btn{display:none}
-    .back span.lbl{display:none}
+    .prc-main{padding-top:48px}
+    .prc-group + .prc-group{margin-top:56px;padding-top:48px}
+    .prc-proof{margin-top:72px;padding:72px 0}
+    .prc-rail__card{padding:26px 22px 24px}
   }
   @media(prefers-reduced-motion:reduce){
-    *{animation:none!important}
+    *{animation:none!important;transition:none!important}
     .hero h1 .ln span{transform:none}
-    .hero .lead,.hero .eyebrow,.svc-tabs,.lead-links{opacity:1}
+    .hero .lead,.hero .eyebrow,.prc-jump{opacity:1}
+    html.has-js .reveal-up{opacity:1;transform:none}
   }
 </style>
 <!-- REGION:jsonld -->
@@ -705,60 +721,423 @@
   <div class="wrap">
     <a href="../">Home</a>
     <span aria-hidden="true">/</span>
-    <span class="here">Prices</span>
+    <span class="here" aria-current="page">Prices</span>
   </div>
 </nav>
+
+<main id="main">
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" data-screen-label="Prices — Intro">
   <div class="wrap">
-    <span class="eyebrow">Transparent Pricing</span>
+    <span class="eyebrow">Transparent pricing</span>
     <h1 class="display">
-      <span class="ln"><span>Pick your</span></span>
-      <span class="ln"><span class="chrome-text">level.</span></span>
-      <span class="ln ln-kw"><span class="h1-kw">PPF, Car Wrap, Ceramic Coating &amp; Detailing prices in Boca Raton</span></span>
+      <span class="ln"><span>Every price,</span></span>
+      <span class="ln"><span class="chrome-text">in writing.</span></span>
+      <span class="ln ln-kw"><span class="h1-kw">PPF, wrap, ceramic, tint and detailing prices in Boca Raton, FL</span></span>
     </h1>
-    <p class="lead">PPF (from €890), Car Wrap (from €250), Ceramic Coating (from €340) and detailing (from €35), VAT included. Three levels per service; every car is confirmed with an exact quote in person.</p>
+    <!-- TODO(owner): spec §6.7 asks for the line "The only studio in Boca Raton with full
+         transparent pricing." and flags it itself with "confirm claim wording". It is an
+         unverified competitive superlative about every other studio in the city, so it is
+         NOT published here. The line below says what we can stand behind. Confirm before
+         any superlative goes live. -->
+    <p class="lead">Every service we sell is on this page, with the number we actually charge. Nothing is held back for a phone call.</p>
 
-    <nav class="lead-links" aria-label="Related services">
-      <a href="../paint-protection-film/">PPF paint protection</a>
-      <a href="../car-wraps/">Car Wrap &amp; vinyl wrapping</a>
-      <a href="../detailing/">Car detailing</a>
+    <nav class="prc-jump" aria-label="Jump to a price group">
+      <a href="#ppf">Paint protection film</a>
+      <a href="#wraps">Car wraps</a>
+      <a href="#ceramic">Ceramic coating</a>
+      <a href="#tint">Window tint</a>
+      <a href="#detailing">Detailing</a>
+      <a href="#packages">Packages</a>
     </nav>
-
-    <div class="svc-tabs" id="svcTabs" role="tablist" aria-label="Elige un servicio" data-i18n-skip><button class="stab on" data-key="wrap" role="tab">Car Wrap</button><button class="stab" data-key="ppf" role="tab">PPF</button><button class="stab" data-key="ceramic" role="tab">Pulido + Cerámica</button><button class="stab" data-key="detailing" role="tab">Detailing</button><button class="stab" data-key="bodykits" role="tab">Body Kits</button></div>
   </div>
 </section>
 
-<!-- ===================== TIERS ===================== -->
-<section class="tiers-sec" data-screen-label="Prices — Tiers">
-  <div class="wrap">
-    <div class="svc-intro" id="svcIntro" data-i18n-skip><h2>Car Wrap <span class="chrome-text">precios</span></h2><p>Cambio de color con films de varias marcas profesionales — desde acentos sutiles hasta un cambio de identidad completo.</p></div>
-    <div class="tier-grid" id="tierGrid" data-i18n-skip><article class="tier"><h3>Acentos</h3><p class="t-desc">Techo, retrovisores y piezas de detalle — cambia la actitud, no el coche entero.</p><div class="t-price"><span class="t-from">Desde</span><span class="t-val chrome-text" data-price="250">250 €</span></div><ul><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Cobertura — Techo · retrovisores · acentos</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Films de marcas profesionales</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Servicio según configuración del vehículo</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Films premium y camaleón</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Consulta de diseño</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Kit de mantenimiento</span></li></ul><div class="t-cta"><a class="btn ghost" href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20quer%C3%ADa%20presupuesto%20del%20pack%20Acentos%20de%20Car%20Wrap%20para%20mi%20coche." target="_blank" rel="noopener">Reserva por WhatsApp <span class="arr">→</span></a></div><p class="t-note">Desde 1 día en el taller</p></article><article class="tier popular"><span class="pop-tag">Más elegido</span><h3>Cambio de color completo</h3><p class="t-desc">Cada panel exterior vinilado de borde a borde en el color que de verdad querías.</p><div class="t-price"><span class="t-from">Desde</span><span class="t-val chrome-text" data-price="1490">1.490 €</span></div><ul><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Cobertura — Exterior completo</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Films de marcas profesionales</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Servicio según configuración del vehículo</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Films premium y camaleón</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Consulta de diseño</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Kit de mantenimiento</span></li></ul><div class="t-cta"><a class="btn" href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20quer%C3%ADa%20presupuesto%20del%20pack%20Cambio%20de%20color%20completo%20de%20Car%20Wrap%20para%20mi%20coche." target="_blank" rel="noopener">Reserva por WhatsApp <span class="arr">→</span></a></div><p class="t-note">Desde 3–4 días en el taller</p></article><article class="tier"><h3>Car Wrap Signature</h3><p class="t-desc">Films premium y camaleón — servicio según configuración del vehículo.</p><div class="t-price"><span class="t-from">Desde</span><span class="t-val chrome-text" data-price="1990">1.990 €</span></div><ul><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Cobertura — Exterior completo + marcos</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Films de marcas profesionales</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Servicio según configuración del vehículo</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Films premium y camaleón</span></li><li class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg><span>Consulta de diseño</span></li><li class="off"><svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>Kit de mantenimiento</span></li></ul><div class="t-cta"><a class="btn ghost" href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20quer%C3%ADa%20presupuesto%20del%20pack%20Car%20Wrap%20Signature%20de%20Car%20Wrap%20para%20mi%20coche." target="_blank" rel="noopener">Reserva por WhatsApp <span class="arr">→</span></a></div><p class="t-note">Desde 5–7 días en el taller</p></article></div>
-    <p class="price-note">Guide prices · final quote depends on vehicle size, condition &amp; film choice · no maintenance kit included</p>
+<!-- ===================== NO BAIT BANNER ===================== -->
+<section class="prc-banner" aria-label="How our pricing works" data-screen-label="Prices — No bait pricing">
+  <div class="wrap prc-banner__inner">
+    <p class="prc-banner__flag">No bait pricing</p>
+    <p class="prc-banner__text"><b>“From” pricing = real price for a standard sedan in good condition — no bait pricing.</b> Vehicle size, panel shape and paint condition move the figure, and you get the exact one for your car before anything is booked.</p>
   </div>
 </section>
 
-<!-- ===================== COMPARISON ===================== -->
-<section class="cmp-sec" data-screen-label="Prices — Comparison">
-  <div class="wrap">
-    <h3>Compare <span class="chrome-text" id="cmpName" data-i18n-skip>Car Wrap</span> levels</h3>
-    <div class="cmp-wrap"><table class="cmp" id="cmpTable" data-i18n-skip><thead><tr><th>Característica</th><th class="">Acentos</th><th class="col-pop">Cambio de color completo</th><th class="">Car Wrap Signature</th></tr></thead><tbody><tr><td>Cobertura</td><td class="">Techo · retrovisores · acentos</td><td class="col-pop">Exterior completo</td><td class="">Exterior completo + marcos</td></tr><tr><td>Films de marcas profesionales</td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td><td class="col-pop"><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td></tr><tr><td>Servicio según configuración del vehículo</td><td class=""><span class="dash">—</span></td><td class="col-pop"><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td></tr><tr><td>Films premium y camaleón</td><td class=""><span class="dash">—</span></td><td class="col-pop"><span class="dash">—</span></td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td></tr><tr><td>Consulta de diseño</td><td class=""><span class="dash">—</span></td><td class="col-pop"><span class="dash">—</span></td><td class=""><svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg></td></tr><tr><td>Kit de mantenimiento</td><td class=""><span class="dash">—</span></td><td class="col-pop"><span class="dash">—</span></td><td class=""><span class="dash">—</span></td></tr></tbody><tfoot><tr><td>Precio orientativo</td><td class=""><span class="chrome-text">desde 250 €</span></td><td class="col-pop"><span class="chrome-text">desde 1.490 €</span></td><td class=""><span class="chrome-text">desde 1.990 €</span></td></tr></tfoot></table></div>
+<!-- ===================== PRICE LIST + QUOTE RAIL ===================== -->
+<section class="prc-main" data-screen-label="Prices — Price list">
+  <div class="wrap prc-main__grid">
+
+    <div class="prc-list">
+
+      <!-- ---------- PPF ---------- -->
+      <article class="prc-group reveal-up" id="ppf">
+        <div class="prc-group__head">
+          <div>
+            <span class="eyebrow">01 — Paint protection film</span>
+            <h2>Paint protection film</h2>
+          </div>
+          <p class="prc-group__note">Two film tiers on every coverage level. Same prep, same installers, same installation warranty — the film is the difference.</p>
+        </div>
+
+        <table class="us-tier-table">
+          <thead>
+            <tr class="us-tier-row">
+              <th scope="col">Coverage</th>
+              <th scope="col">What it covers</th>
+              <th scope="col">Essential — from</th>
+              <th scope="col">Signature — from</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="us-tier-row">
+              <th scope="row" class="us-tier-name">Partial Front</th>
+              <td class="us-tier-cov">Full bumper, partial hood &amp; fenders, mirrors</td>
+              <td class="us-tier-price" data-tier="Essential — from"><!--P:PRICE:partial-front.essential-->$1,000<!--/P--></td>
+              <td class="us-tier-price" data-tier="Signature — from"><!--P:PRICE:partial-front.signature-->$1,150<!--/P--></td>
+            </tr>
+            <tr class="us-tier-row">
+              <th scope="row" class="us-tier-name">Full Front <span class="us-tier-badge">Most popular</span></th>
+              <td class="us-tier-cov">Full hood, full fenders, bumper, mirrors</td>
+              <td class="us-tier-price" data-tier="Essential — from"><!--P:PRICE:full-front.essential-->$1,900<!--/P--></td>
+              <td class="us-tier-price" data-tier="Signature — from"><!--P:PRICE:full-front.signature-->$2,150<!--/P--></td>
+            </tr>
+            <tr class="us-tier-row">
+              <th scope="row" class="us-tier-name">Track Pack</th>
+              <td class="us-tier-cov">Full front + rocker panels + A-pillars + leading roof edge</td>
+              <td class="us-tier-price" data-tier="Essential — from"><!--P:PRICE:track-pack.essential-->$2,600<!--/P--></td>
+              <td class="us-tier-price" data-tier="Signature — from"><!--P:PRICE:track-pack.signature-->$2,900<!--/P--></td>
+            </tr>
+            <tr class="us-tier-row">
+              <th scope="row" class="us-tier-name">Full Body</th>
+              <td class="us-tier-cov">Every painted panel</td>
+              <td class="us-tier-price" data-tier="Essential — from"><!--P:PRICE:full-body.essential-->$4,995<!--/P--></td>
+              <td class="us-tier-price" data-tier="Signature — from"><!--P:PRICE:full-body.signature-->$5,600<!--/P--></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ul class="prc-legend">
+          <li><b>Essential</b> NAR H190 PPF — self-healing 7.5-mil TPU, 10-yr film warranty.</li>
+          <li><b>Signature</b> 3M Scotchgard Pro Series 200 — 3M flagship PPF, up to 10-yr 3M warranty.</li>
+        </ul>
+
+        <p class="prc-more">
+          <a href="../paint-protection-film/">What PPF covers <span class="arr-in" aria-hidden="true">→</span></a>
+          <a href="../our-films/">Why these two films <span class="arr-in" aria-hidden="true">→</span></a>
+        </p>
+      </article>
+
+      <!-- ---------- WRAPS ---------- -->
+      <article class="prc-group reveal-up" id="wraps">
+        <div class="prc-group__head">
+          <div>
+            <span class="eyebrow">02 — Car wraps</span>
+            <h2>Car wraps</h2>
+          </div>
+          <p class="prc-group__note">Cast vinyl over the paint: a finish change you can reverse, and a layer the paint never had.</p>
+        </div>
+
+        <div class="us-price-grid">
+          <article class="us-price-card">
+            <h3 class="us-price-name">Chrome Delete</h3>
+            <p class="us-price-amt"><small>From</small><!--P:PRICE:chrome-delete-->$450<!--/P--></p>
+            <p class="us-price-cov">Window trim, grille surround, badges — gloss black, satin or color.</p>
+          </article>
+          <article class="us-price-card">
+            <h3 class="us-price-name">Full Color Change</h3>
+            <p class="us-price-amt"><small>From</small><!--P:PRICE:color-change-->$3,500<!--/P--></p>
+            <p class="us-price-cov">Every painted panel wrapped, edges wrapped in.</p>
+            <p class="us-price-note">3M 2080 / Avery SW900, gloss·satin·matte.</p>
+          </article>
+          <article class="us-price-card">
+            <h3 class="us-price-name">Signature Wrap</h3>
+            <p class="us-price-amt"><small>From</small><!--P:PRICE:signature-wrap-->$4,500<!--/P--></p>
+            <p class="us-price-cov">Full color change in a premium or color-shift film.</p>
+            <p class="us-price-note">Premium films: Inozetek, KPMF, color-flip.</p>
+          </article>
+          <article class="us-price-card">
+            <h3 class="us-price-name">Roof / accents / custom</h3>
+            <p class="us-price-amt"><!--P:PRICE:accents-->on request<!--/P--></p>
+            <p class="us-price-cov">Roof, mirrors, spoiler, stripes, one-off requests.</p>
+            <p class="us-price-note">Panel count and shape set the price — send photos and the car, and we quote it.</p>
+          </article>
+        </div>
+
+        <p class="prc-more">
+          <a href="../car-wraps/">Wrap finishes and films <span class="arr-in" aria-hidden="true">→</span></a>
+          <a href="../gallery/">See wrapped cars <span class="arr-in" aria-hidden="true">→</span></a>
+        </p>
+      </article>
+
+      <!-- ---------- CERAMIC ---------- -->
+      <article class="prc-group reveal-up" id="ceramic">
+        <div class="prc-group__head">
+          <div>
+            <span class="eyebrow">03 — Ceramic coating</span>
+            <h2>Ceramic coating</h2>
+          </div>
+          <p class="prc-group__note">Gloss, water beading and an easier wash. It is not impact protection — that is film.</p>
+        </div>
+
+        <div class="us-price-grid">
+          <article class="us-price-card">
+            <h3 class="us-price-name">3-Year Ceramic Package</h3>
+            <p class="us-price-amt"><small>From</small><!--P:PRICE:ceramic-3yr-->$1,200<!--/P--></p>
+            <p class="us-price-cov">Decon, single-stage gloss prep, coating, cure.</p>
+          </article>
+          <article class="us-price-card">
+            <h3 class="us-price-name">Top-up over PPF / wrap</h3>
+            <p class="us-price-amt"><small>From</small><!--P:PRICE:ceramic-topup-->$600<!--/P--></p>
+            <p class="us-price-cov">Ceramic applied over fresh film — hydrophobics without touching the paint.</p>
+          </article>
+        </div>
+
+        <p class="prc-more">
+          <a href="../ceramic-coating/">How the coating is applied <span class="arr-in" aria-hidden="true">→</span></a>
+        </p>
+      </article>
+
+      <!-- ---------- TINT ---------- -->
+      <article class="prc-group reveal-up" id="tint">
+        <div class="prc-group__head">
+          <div>
+            <span class="eyebrow">04 — Window tint</span>
+            <h2>Window tint</h2>
+          </div>
+          <p class="prc-group__note">Ceramic film that rejects infrared, not just light. Florida VLT limits decide how dark we can legally go.</p>
+        </div>
+
+        <div class="us-price-grid prc-solo">
+          <article class="us-price-card">
+            <h3 class="us-price-name">Full Car — Ceramic Film</h3>
+            <p class="us-price-amt"><small>From</small><!--P:PRICE:tint-full-->$500<!--/P--></p>
+            <p class="us-price-cov">All side windows + rear glass, ceramic IR-rejecting film.</p>
+            <p class="us-price-note">FL-legal VLT options.</p>
+          </article>
+        </div>
+
+        <p class="prc-more">
+          <a href="../window-tint/">Florida tint limits <span class="arr-in" aria-hidden="true">→</span></a>
+        </p>
+      </article>
+
+      <!-- ---------- DETAILING ---------- -->
+      <article class="prc-group reveal-up" id="detailing">
+        <div class="prc-group__head">
+          <div>
+            <span class="eyebrow">05 — Detailing &amp; paint correction</span>
+            <h2>Detailing &amp; paint correction</h2>
+          </div>
+          <p class="prc-group__note">The work that happens before any coating, and the work a used car needs on its own.</p>
+        </div>
+
+        <div class="us-price-grid">
+          <article class="us-price-card">
+            <h3 class="us-price-name">Interior Detail</h3>
+            <p class="us-price-amt"><small>From</small><!--P:PRICE:interior-->$300<!--/P--></p>
+            <p class="us-price-cov">Full interior strip-down, extraction, leather clean &amp; feed.</p>
+          </article>
+          <article class="us-price-card">
+            <h3 class="us-price-name">Paint Correction (1–2 stage)</h3>
+            <p class="us-price-amt"><small>From</small><!--P:PRICE:paint-correction-->$600<!--/P--></p>
+            <p class="us-price-cov">Compound + polish, swirl and hologram removal, gloss measured in and out.</p>
+          </article>
+        </div>
+
+        <p class="prc-more">
+          <a href="../detailing/">What a detail includes <span class="arr-in" aria-hidden="true">→</span></a>
+        </p>
+      </article>
+
+    </div><!-- /.prc-list -->
+
+    <aside class="prc-rail" aria-labelledby="prc-quote-title">
+      <div class="prc-rail__card">
+        <span class="eyebrow">Exact quote</span>
+        <h2 class="display prc-rail__title" id="prc-quote-title">Price your car.</h2>
+        <p class="prc-rail__note">Tell us the car and the service and we price that exact vehicle — size, panel shape and paint condition included.</p>
+
+        <form data-us-quote class="us-form">
+          <div class="us-field">
+            <label class="us-label" for="prc-name">Your name</label>
+            <input class="us-input" id="prc-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="us-field">
+            <label class="us-label" for="prc-phone">Phone</label>
+            <input class="us-input" id="prc-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+          </div>
+          <div class="us-field us-field-wide">
+            <label class="us-label" for="prc-email">Email <em>(optional)</em></label>
+            <input class="us-input" id="prc-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="us-field us-field-wide">
+            <label class="us-label" for="prc-vehicle">Car — make, model, year</label>
+            <input class="us-input" id="prc-vehicle" name="vehicle" type="text" autocomplete="off" required>
+          </div>
+          <div class="us-field us-field-wide">
+            <label class="us-label" for="prc-service">Service</label>
+            <select class="us-select" id="prc-service" name="service" required>
+              <option value="" selected disabled>Select a service</option>
+            </select>
+          </div>
+          <div class="us-field us-field-wide">
+            <label class="us-label" for="prc-message">Anything else? <em>(optional)</em></label>
+            <textarea class="us-textarea" id="prc-message" name="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn prc-submit">Get my quote <span class="arr" aria-hidden="true">→</span></button>
+        </form>
+      </div>
+    </aside>
+
   </div>
 </section>
 
-<!-- ===================== EXCLUSIVO TEASER ===================== -->
-<section class="teaser" data-screen-label="Prices — Exclusivo teaser">
-  <div class="wrap">
-    <span class="eyebrow">Want everything?</span>
-    <h2 class="display">The full build is a <span class="gold-text">Exclusive.</span></h2>
-    <p>PPF, wrap, correction, ceramic, interior and body work — one car, one vision, priced as a single project. We take on a limited number each year.</p>
-    <div class="actions">
-      <a href="../about/" class="btn">About the Exclusive <span class="arr">→</span></a>
-      <a href="../contact/" class="btn ghost">Talk to the Studio</a>
+<!-- ===================== WHAT THE NUMBER BUYS ===================== -->
+<section class="prc-proof" data-screen-label="Prices — What the number buys">
+  <div class="wrap prc-proof__grid">
+    <figure class="reveal-up">
+      <img src="../assets/gallery/gts-quarter-s.jpg" width="598" height="900" loading="lazy" decoding="async" alt="Porsche 911 Carrera GTS in a satin sand Car Wrap, front three-quarter view under the studio's hexagon lights">
+    </figure>
+    <div class="prc-proof__text reveal-up">
+      <span class="eyebrow">What the number buys</span>
+      <h2 class="display">One protocol.<br>Every car.</h2>
+      <p>The price does not change with the badge on the hood. Each car goes through the same sequence in the same bay, and the film or coating is the only variable you choose.</p>
+      <ul class="prc-steps">
+        <li>Paint thickness gauge at intake</li>
+        <li>HEPA-filtered bay</li>
+        <li>Anti-static prep</li>
+        <li>Filtered-air dry</li>
+        <li>Gloss measurement</li>
+        <li>Photo documentation</li>
+      </ul>
+      <p>Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty.</p>
     </div>
   </div>
 </section>
+
+<!-- ===================== PACKAGES ===================== -->
+<section class="prc-packages" id="packages" data-screen-label="Prices — Packages">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Packages</span>
+        <h2 class="display">Booked together,<br>priced together.</h2>
+      </div>
+      <p class="sh-note">Three combinations we install most often. One visit, one price, one warranty conversation.</p>
+    </div>
+
+    <div class="us-pkg-grid reveal-up">
+      <article class="us-pkg-card">
+        <h3 class="us-pkg-name">Daily Driver</h3>
+        <ul class="us-pkg-incl">
+          <li>Partial front PPF</li>
+          <li>Ceramic coating</li>
+        </ul>
+        <p class="us-pkg-price"><small>Package price</small><!--P:PRICE:daily-driver-->$1,990<!--/P--></p>
+      </article>
+
+      <article class="us-pkg-card us-price-popular">
+        <span class="us-price-popular">Most popular</span>
+        <h3 class="us-pkg-name">New Car</h3>
+        <ul class="us-pkg-incl">
+          <li>Full front PPF</li>
+          <li>Ceramic coating</li>
+          <li>Window tint</li>
+        </ul>
+        <p class="us-pkg-price"><small>Package price</small><!--P:PRICE:new-car-->$2,990<!--/P--></p>
+      </article>
+
+      <article class="us-pkg-card">
+        <h3 class="us-pkg-name">Collector</h3>
+        <ul class="us-pkg-incl">
+          <li>Full body PPF</li>
+          <li>Ceramic coating</li>
+        </ul>
+        <p class="us-pkg-price"><small>Package price</small><!--P:PRICE:collector-->$5,990<!--/P--></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq" id="faq" data-screen-label="Prices — FAQ">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Frequently asked questions</span>
+        <h2 class="display">About the <span class="chrome-text">numbers.</span></h2>
+      </div>
+      <p class="sh-note">What people ask before they book, answered with the same figures printed above.</p>
+    </div>
+
+    <div class="faq-list reveal-up">
+      <!-- REGION:faq:pricing/ -->
+      <details class="faq-item">
+        <summary>Are these the real prices, or a starting point to get me on the phone?<span class="fq-x"></span></summary>
+        <p>Real prices. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why does PPF have two prices on every line?<span class="fq-x"></span></summary>
+        <p>Because you choose the film. Essential is NAR H190 PPF: self-healing 7.5-mil TPU with a 10-year film warranty. Signature is 3M Scotchgard Pro Series 200, the 3M flagship. Partial Front is $1,000 in Essential and $1,150 in Signature; Full Front is $1,900 and $2,150. Same prep, same installers, same installation warranty — the film is the only difference.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What would move my quote away from the number on this page?<span class="fq-x"></span></summary>
+        <p>Vehicle size, panel shape and paint condition. A large SUV takes more film than a sedan, deep contours take longer to lay, and paint that needs correction before a coating adds work. Send the make, model and year and you get the exact figure for that car.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is not priced on this page?<span class="fq-x"></span></summary>
+        <p>Roof, mirrors, spoilers, stripes and one-off requests are quoted per car, because the panel count and the shapes decide the price. Everything else we sell today is listed above, grouped by service: paint protection film from $1,000, wraps from $450, ceramic coating from $600, window tint from $500, detailing from $300.</p>
+      </details>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://serreswrap.com/pricing/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Are these the real prices, or a starting point to get me on the phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Real prices. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does PPF have two prices on every line?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because you choose the film. Essential is NAR H190 PPF: self-healing 7.5-mil TPU with a 10-year film warranty. Signature is 3M Scotchgard Pro Series 200, the 3M flagship. Partial Front is $1,000 in Essential and $1,150 in Signature; Full Front is $1,900 and $2,150. Same prep, same installers, same installation warranty — the film is the only difference."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What would move my quote away from the number on this page?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vehicle size, panel shape and paint condition. A large SUV takes more film than a sedan, deep contours take longer to lay, and paint that needs correction before a coating adds work. Send the make, model and year and you get the exact figure for that car."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is not priced on this page?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Roof, mirrors, spoilers, stripes and one-off requests are quoted per car, because the panel count and the shapes decide the price. Everything else we sell today is listed above, grouped by service: paint protection film from $1,000, wraps from $450, ceramic coating from $600, window tint from $500, detailing from $300."
+            }
+          }
+        ]
+      }
+      </script>
+      <!-- /REGION:faq:pricing/ -->
+    </div>
+  </div>
+</section>
+
+</main>
 
 <!-- REGION:terms -->
 <div class="us-terms" data-us-region="terms">
@@ -849,223 +1228,8 @@
 <!-- /REGION:footer -->
 
 <script>
-/* =====================================================================
-   PRICING DATA — three levels per service.
-   vals: true = included, false = not included, string = detail value
-   ===================================================================== */
-var PRICING={
-  wrap:{
-    label:'Car Wrap',
-    blurb:'Color change with films from several professional brands — from subtle accents to a full identity change.',
-    tiers:[
-      {name:'Accents',desc:'Roof, mirrors and detail pieces — change the attitude, not the whole car.',price:250,
-       note:'From 1 day in the studio'},
-      {name:'Full Color Change',desc:'Every exterior panel wrapped edge-to-edge in the color you actually wanted.',price:1490,pop:true,
-       note:'From 3–4 days in the studio'},
-      {name:'Signature Wrap',desc:'Premium and colour-flip films, with the service tailored to the vehicle configuration.',price:1990,
-       note:'From 5–7 days in the studio'}
-    ],
-    rows:[
-      ['Coverage','Roof · mirrors · accents','Full exterior','Full exterior + door shuts'],
-      ['Films from professional brands',true,true,true],
-      ['Service per vehicle configuration',false,true,true],
-      ['Premium & colour-flip films',false,false,true],
-      ['Design consultation',false,false,true],
-      ['Maintenance kit',false,false,false]
-    ]
-  },
-  ppf:{
-    label:'PPF',
-    blurb:'Self-healing paint protection film — 50+ colors from several professional brands — over the areas the road attacks first, or the whole car.',
-    tiers:[
-      {name:'Front Pack',desc:'Bumper, partial hood and mirrors — the high-impact essentials covered.',price:890,
-       note:'From 1 day in the studio'},
-      {name:'Pro',desc:'Full hood, fenders, bumper, mirrors and headlights — seamless coverage, sealed with a Ceramic Coating over the film.',price:1190,pop:true,
-       note:'From 2–3 days in the studio'},
-      {name:'Full Body',desc:'Every painted panel protected, edges tucked — invisible armor, total peace of mind.',price:2390,
-       note:'From 5–8 days in the studio'}
-    ],
-    rows:[
-      ['Coverage','Bumper + partial hood','Full front end','Every painted panel'],
-      ['Self-healing topcoat',true,true,true],
-      ['Headlight protection',false,true,true],
-      ['Wrapped edges — no visible lines',false,true,true],
-      ['Door cups & sill protection',false,false,true],
-      ['Ceramic Coating over film','Optional',true,true],
-      ['Film warranty','3 yr','3 yr','3 yr'],
-      ['Maintenance kit',false,false,false]
-    ]
-  },
-  ceramic:{
-    label:'Correction + Ceramic',
-    blurb:'Stage polishing to remove the swirls, then a Ceramic Coating to lock the gloss in — the two steps that belong together.',
-    tiers:[
-      {name:'Essential',desc:'Stage 1 polish to revive the gloss, then one ceramic layer to seal it — real protection, entry price.',price:340,
-       note:'1–2 days in the studio'},
-      {name:'Signature',desc:'Stage 2 correction plus a two-layer ceramic coat and rain-repellent glass — our standard.',price:590,pop:true,
-       note:'2–3 days in the studio'},
-      {name:'Concours',desc:'Full Stage 3 correction under hex lighting, then a multi-layer ceramic stack and interior protection.',price:890,
-       note:'3–4 days in the studio'}
-    ],
-    rows:[
-      ['Polishing stages','Stage 1 — enhance','Stage 2 — cut & refine','Stage 3 — full correction'],
-      ['Coating layers','1','2','3+'],
-      ['Rain-repellent glass treatment',false,true,true],
-      ['Interior leather & fabric',false,false,true],
-      ['Maintenance kit',false,false,false],
-      ['Rated durability','2 yr','3 yr','5 yr']
-    ]
-  },
-  detailing:{
-    label:'Detailing',
-    blurb:'From a proper reset wash to a full showroom revival, inside and out.',
-    tiers:[
-      {name:'Refresh',desc:'Exterior decontamination wash plus interior vacuum and wipe-down.',price:35,
-       note:'Approx. 3 hours'},
-      {name:'Deep Clean',desc:'Steam-cleaned interior, extracted carpets, decontaminated exterior, sealed paint.',price:150,pop:true,
-       note:'1 day in the studio'},
-      {name:'Showroom Reset',desc:'Everything — engine bay, trim restoration, leather conditioning, 12-month sealant.',price:490,
-       note:'1–2 days in the studio'}
-    ],
-    rows:[
-      ['Exterior decon wash',true,true,true],
-      ['Interior vacuum & wipe-down',true,true,true],
-      ['Steam clean & carpet extraction',false,true,true],
-      ['Leather cleaned & conditioned',false,true,true],
-      ['Engine bay detail',false,false,true],
-      ['Trim & plastics restored',false,false,true],
-      ['Paint sealant',false,'6 months','12 months']
-    ]
-  },
-  bodykits:{
-    label:'Body Kits',
-    blurb:'Aero and body work sourced, fitted and finished like it left the factory that way.',
-    quote:true,
-    tiers:[
-      {name:'Aero Parts',desc:'Splitters, spoilers and diffusers — supplied and fitted with OEM-level care.',price:450,
-       note:'From 1 day in the studio'},
-      {name:'Full Kit Fitted',desc:'A complete body kit installed and paint-matched to your car.',price:1490,pop:true,
-       note:'From 3–5 days in the studio'},
-      {name:'Transformation',desc:'Kit, wheels, stance and arch work — a different car when it rolls out.',price:3490,
-       note:'2–4 weeks · by consultation'}
-    ],
-    rows:[
-      ['Scope','Splitter · spoiler · diffuser','Complete body kit','Kit + wheels + stance'],
-      ['Supply & professional fitting',true,true,true],
-      ['Paint-matched finish',false,true,true],
-      ['Fitment & clearance check',true,true,true],
-      ['Arch & clearance work',false,false,true],
-      ['Wrap / PPF integration',false,false,true],
-      ['Sourcing consultation',false,true,true]
-    ]
-  }
-};
-
-var WA='https://wa.me/34649663380?text=';
-/* translation helper — uses the shared dictionary once i18n has loaded,
-   otherwise renders English (a langchange event re-renders afterwards) */
-function T(s){return (window.SERRES_I18N&&window.SERRES_I18N.t)?window.SERRES_I18N.t(s):s;}
-var OK='<svg class="ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 12.5l5 5L19.5 7"></path></svg>';
-var NO='<svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg>';
-
-/* ---------- render tabs ---------- */
-var tabsEl=document.getElementById('svcTabs');
-tabsEl.innerHTML='';
-Object.keys(PRICING).forEach(function(key,i){
-  var b=document.createElement('button');
-  b.className='stab'+(i===0?' on':'');
-  b.textContent=T(PRICING[key].label);
-  b.dataset.key=key;
-  b.setAttribute('role','tab');
-  b.addEventListener('click',function(){
-    document.querySelectorAll('.stab').forEach(function(x){x.classList.remove('on');});
-    b.classList.add('on');
-    render(key);
-  });
-  tabsEl.appendChild(b);
-});
-
-/* ---------- price count-up (interval-driven, premium ease) ---------- */
-var REDUCE=matchMedia('(prefers-reduced-motion:reduce)').matches;
-function fmtEur(n){return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' \u20AC';}
-function animatePrice(el,target){
-  if(REDUCE){el.textContent=fmtEur(target);return;}
-  var dur=1500,start=Date.now();
-  el.textContent=fmtEur(0);
-  var iv=setInterval(function(){
-    var p=Math.min(1,(Date.now()-start)/dur);
-    var e=1-Math.pow(1-p,4);
-    el.textContent=fmtEur(target*e);
-    if(p>=1)clearInterval(iv);
-  },16);
-}
-
-/* ---------- render a service ---------- */
-function cellHTML(v,extra){
-  if(v===true)return '<td class="'+extra+'">'+OK+'</td>';
-  if(v===false)return '<td class="'+extra+'"><span class="dash">—</span></td>';
-  return '<td class="'+extra+'">'+T(v)+'</td>';
-}
-function render(key){
-  var s=PRICING[key];
-  currentKey=key;
-
-  /* intro */
-  document.getElementById('svcIntro').innerHTML=
-    '<h2>'+T(s.label)+' <span class="chrome-text">'+T('pricing')+'</span></h2><p>'+T(s.blurb)+'</p>';
-
-  /* cards — features derived from comparison rows */
-  var grid=document.getElementById('tierGrid');
-  grid.innerHTML=s.tiers.map(function(t,i){
-    var feats=s.rows.slice(0,7).map(function(r){
-      var v=r[i+1];
-      var on=v!==false;
-      var label=(typeof v==='string')?T(r[0])+' — '+T(v):T(r[0]);
-      return '<li class="'+(on?'':'off')+'">'+(on?OK:NO)+'<span>'+label+'</span></li>';
-    }).join('');
-    var msg=encodeURIComponent("Hola SERRES, quería presupuesto del pack "+T(t.name)+" de "+T(s.label)+" para mi coche.");
-    return '<article class="tier'+(t.pop?' popular':'')+'">'+
-      (t.pop?'<span class="pop-tag">'+T('Most chosen')+'</span>':'')+
-      '<h3>'+T(t.name)+'</h3>'+
-      '<p class="t-desc">'+T(t.desc)+'</p>'+
-      (s.quote
-        ? '<div class="t-price t-quote"><span class="t-quote-val chrome-text">'+T('On request')+'</span><span class="t-quote-note">'+T('Message us to calculate your price')+'</span></div>'
-        : '<div class="t-price"><span class="t-from">'+T('From')+'</span><span class="t-val chrome-text" data-price="'+t.price+'">'+fmtEur(t.price)+'</span></div>')+
-      '<ul>'+feats+'</ul>'+
-      '<div class="t-cta"><a class="btn'+(t.pop?'':' ghost')+'" href="'+WA+msg+'" target="_blank" rel="noopener">'+T(s.quote?'Request a quote':'Book via WhatsApp')+' <span class="arr">→</span></a></div>'+
-      '<p class="t-note">'+T(t.note)+'</p>'+
-    '</article>';
-  }).join('');
-
-  /* animate prices */
-  grid.querySelectorAll('[data-price]').forEach(function(el){
-    animatePrice(el,parseInt(el.dataset.price,10));
-  });
-
-  /* comparison table */
-  document.getElementById('cmpName').textContent=T(s.label);
-  var popIdx=s.tiers.findIndex(function(t){return t.pop;});
-  var thead='<thead><tr><th>'+T('Feature')+'</th>'+s.tiers.map(function(t,i){
-    return '<th class="'+(i===popIdx?'col-pop':'')+'">'+T(t.name)+'</th>';}).join('')+'</tr></thead>';
-  var tbody='<tbody>'+s.rows.map(function(r){
-    return '<tr><td>'+T(r[0])+'</td>'+r.slice(1).map(function(v,i){
-      return cellHTML(v,i===popIdx?'col-pop':'');}).join('')+'</tr>';
-  }).join('')+'</tbody>';
-  var tfoot='<tfoot><tr><td>'+T('Guide price')+'</td>'+s.tiers.map(function(t,i){
-    return '<td class="'+(i===popIdx?'col-pop':'')+'"><span class="chrome-text">'+(s.quote?T('On request'):T('from')+' '+fmtEur(t.price))+'</span></td>';}).join('')+'</tr></tfoot>';
-  document.getElementById('cmpTable').innerHTML=thead+tbody+tfoot;
-}
-
-var currentKey='wrap';
-render('wrap');
-
-/* re-render data-driven content (tabs + tiers + table) on language change */
-window.addEventListener('serres:langchange',function(){
-  document.querySelectorAll('#svcTabs .stab').forEach(function(b){
-    b.textContent=T(PRICING[b.dataset.key].label);
-  });
-  render(currentKey);
-});
+/* ---------- progressive-enhancement gate ---------- */
+document.documentElement.classList.add('has-js');
 </script>
 
 <script src="../assets/serres-enhance.js" defer></script>
@@ -1073,6 +1237,37 @@ window.addEventListener('serres:langchange',function(){
 <script src="../assets/quote-form.js" defer></script>
 <script src="../assets/cookie-notice.js" defer></script>
 <!-- /data-us-assets-tail -->
+
+<script>
+/* ---------- reveal-on-scroll: observer + rect check + timed failsafe ----------
+   Content must never be permanently invisible, so three independent paths can
+   reveal it and the failsafe fires even if the observer never does. */
+(function () {
+  var els = Array.prototype.slice.call(document.querySelectorAll('.reveal-up'));
+  if (!els.length) return;
+  function show(el) { el.classList.add('in'); }
+  function showAll() { els.forEach(show); }
+
+  function byRect() {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    els.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.92 && r.bottom > 0) show(el);
+    });
+  }
+
+  if (!('IntersectionObserver' in window)) { showAll(); return; }
+  var io = new IntersectionObserver(function (ents) {
+    ents.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (el) { io.observe(el); });
+
+  byRect();
+  window.addEventListener('scroll', byRect, { passive: true });
+  setTimeout(showAll, 3500);
+})();
+</script>
 
 <script>
 (function () {

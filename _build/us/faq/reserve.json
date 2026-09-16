@@ -1,0 +1,17 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "What exactly do the first thirty cars get?",
+      "a": "Three things: 15% off any paint protection film or wrap, a free ceramic top-up over the fresh film, normally {{price:ceramic-topup}}, and Founding Member status, which is 10% off detailing for life. The discount is locked to the price list in force on the day you book. {{terms:fromMeaning}}"
+    },
+    {
+      "q": "Is the deposit refundable, and what happens to it?",
+      "a": "It is refundable in full until work begins on your car, and it is applied to your final invoice rather than charged on top. The amount is {{business:depositUsd}} US dollars. No card details are taken on this site: we send a secure deposit link by text or email once your slot is confirmed. {{terms:tax}}"
+    },
+    {
+      "q": "Can I reserve more than one car?",
+      "a": "One car per reservation, so thirty slots stay thirty cars. If you want a second car in the Founders Club, send a second reservation and we will confirm whether a slot is still open for it. Every car booked this way carries the same cover as any other job here: {{terms:warranty}}"
+    }
+  ]
+}

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- DEPTH 0. This file is served from the site root for every missing URL, whatever
+     folder that URL pretended to be in, so every link and asset path here must be
+     root-relative without a leading slash ("pricing/", "assets/...").
+     It deliberately carries no SEO or JSON-LD region: _build/data/seo.json has no
+     route entry for "404.html", and regen.mjs throws on either of those regions
+     without one. Title, description and robots are therefore hand-written here —
+     the one page on the site where that is correct. -->
+<title>Page Not Found | SERRES Wrap Center</title>
+<meta name="description" content="That page is not here. Links to paint protection film, wraps, ceramic coating, window tint, detailing and the price list at SERRES Wrap Center, Boca Raton.">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/barlow-condensed-700-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-sans-400-normal-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+  :root{
+    --bg:#0a0a0b;--bg-2:#0e0e10;--panel:#141417;--panel-2:#191920;
+    --line:rgba(255,255,255,0.09);--line-strong:rgba(255,255,255,0.16);
+    --text:#f3f3f5;--muted:#9a9aa3;--muted-2:#6e6e77;
+    --chrome:linear-gradient(176deg,#fdfdfe 0%,#cfcfd6 32%,#8d8d97 52%,#f0f0f4 72%,#a6a6b0 100%);
+    --ease:cubic-bezier(.22,.61,.36,1);--maxw:1280px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100dvh;
+    display:flex;flex-direction:column;overflow-x:hidden;
+    background-image:radial-gradient(85% 55% at 50% -12%,rgba(46,50,63,.26),transparent 62%);}
+  ::selection{background:#e7e7ec;color:#0a0a0b}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+
+  .display{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;line-height:.92;
+    letter-spacing:.01em;text-transform:uppercase;}
+  .chrome-text{background:var(--chrome);-webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent;}
+  .eyebrow{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.34em;font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:14px;}
+  .eyebrow::before{content:"";width:30px;height:1px;background:linear-gradient(90deg,transparent,var(--line-strong));}
+
+  .btn{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.14em;font-size:15px;display:inline-flex;align-items:center;gap:11px;
+    padding:14px 26px;border:none;cursor:pointer;background:var(--chrome);color:#0a0a0b;
+    clip-path:polygon(0 0,100% 0,100% 100%,12px 100%,0 calc(100% - 12px));
+    transition:transform .3s var(--ease),filter .3s var(--ease);}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .btn .arr{transition:transform .3s var(--ease)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line-strong);
+    clip-path:none;padding:13px 26px;}
+  .btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.04)}
+  .btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+  /* ---------- NAV (base geometry; assets/serres-us.css skins .us-nav) ------ */
+  header.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);
+    background:rgba(10,10,11,.82);backdrop-filter:blur(14px) saturate(120%);}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:18px 40px;display:flex;align-items:center;
+    justify-content:space-between;gap:30px;}
+  .logo{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-style:italic;font-weight:700;font-size:28px;
+    letter-spacing:.16em;text-transform:uppercase;padding:0 .28em 0 .04em;white-space:nowrap}
+  .nav-right{display:flex;align-items:center;gap:20px}
+
+  footer{padding:30px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
+    letter-spacing:.04em;text-align:center}
+
+  /* ==========================================================================
+     PAGE-LOCAL COMPONENTS — prefix "nf-" (not found).
+     Deliberately NOT prefixed "us-": _build/us/verify-css-contract.js requires
+     every "us-" class in the markup to be defined in assets/serres-us.css, and
+     this page may not write to that shared file. "nf-" appears nowhere else in
+     the repo. Same convention as "cc-" on ceramic-coating/index.html.
+     ========================================================================== */
+
+  .nf-hero{position:relative;padding:74px 0 10px;overflow:hidden}
+  /* the 404 sits BEHIND the headline as studio signage, not as a decorative blob */
+  .nf-ghost{position:absolute;right:0;top:-6px;z-index:0;pointer-events:none;user-select:none;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    font-size:clamp(190px,34vw,460px);line-height:.78;letter-spacing:.02em;
+    color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.085);
+    background:linear-gradient(180deg,rgba(255,255,255,.05),transparent 72%);
+    -webkit-background-clip:text;background-clip:text;}
+  .nf-hero .wrap{position:relative;z-index:1}
+  .nf-hero h1{font-size:clamp(50px,9vw,124px);margin:20px 0 0;max-width:15ch;text-wrap:balance}
+  .nf-lead{margin-top:26px;max-width:54ch;color:var(--muted);font-size:clamp(16px,1.5vw,19px);text-wrap:pretty}
+  .nf-code{margin-top:22px;display:inline-flex;align-items:center;gap:12px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
+    text-transform:uppercase;letter-spacing:.24em;font-size:12px;color:var(--muted);
+    border:1px solid var(--line-strong);padding:8px 14px}
+  .nf-code b{color:var(--text);font-weight:600;letter-spacing:.2em}
+  .nf-actions{margin-top:34px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+
+  .nf-body{padding:72px 0 64px}
+  .nf-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:56px;align-items:start}
+  .nf-title{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.2em;font-size:12px;color:var(--muted);
+    padding-bottom:14px;border-bottom:1px solid var(--line-strong)}
+
+  .nf-svc{list-style:none;counter-reset:svc}
+  .nf-svc li{counter-increment:svc;border-bottom:1px solid var(--line)}
+  .nf-svc a{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:18px;align-items:baseline;
+    padding:20px 8px 20px 0;min-height:44px;transition:background .25s var(--ease),padding .25s var(--ease)}
+  .nf-svc a:hover{background:var(--panel);padding-left:14px}
+  .nf-svc a:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+  .nf-svc .n{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    font-size:22px;letter-spacing:.14em;color:transparent;-webkit-text-stroke:1px var(--line-strong)}
+  .nf-svc a:hover .n{-webkit-text-stroke:1px transparent;background:var(--chrome);
+    -webkit-background-clip:text;background-clip:text}
+  .nf-svc .t{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.04em;font-size:clamp(21px,2.2vw,27px);line-height:1.05}
+  .nf-svc .d{display:block;margin-top:5px;font-family:"DM Sans",system-ui,sans-serif;font-weight:400;
+    text-transform:none;letter-spacing:0;font-size:14.5px;line-height:1.5;color:var(--muted);text-wrap:pretty}
+  .nf-svc .go{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-size:19px;
+    color:var(--muted);transition:transform .25s var(--ease),color .25s var(--ease)}
+  .nf-svc a:hover .go{color:var(--text);transform:translateX(5px)}
+
+  .nf-links{list-style:none;margin-top:4px}
+  .nf-links li{border-bottom:1px solid var(--line)}
+  .nf-links a{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:15px 2px;min-height:44px;color:var(--muted);
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.14em;font-size:15px;
+    transition:color .22s var(--ease),padding .22s var(--ease)}
+  .nf-links a:hover{color:var(--text);padding-left:8px}
+  .nf-links a:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+  .nf-links a span{font-size:17px}
+  .nf-aside-note{margin-top:26px;color:var(--muted);font-size:14.5px;line-height:1.6;text-wrap:pretty}
+  .nf-aside-note a{color:var(--text);border-bottom:1px solid var(--line-strong);padding-bottom:1px}
+  .nf-aside-note a:hover{border-color:#fff}
+  .nf-aside-note a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+  @media(max-width:980px){
+    .nf-grid{grid-template-columns:1fr;gap:44px}
+    .nf-body{padding:60px 0 76px}
+  }
+  @media(max-width:760px){
+    .wrap,.nav-inner{padding-left:22px;padding-right:22px}
+    .nav-right .btn{display:none}
+    .nf-hero{padding-top:56px}
+    .nf-ghost{right:-6vw;top:8px;font-size:clamp(150px,44vw,300px)}
+    .nf-svc a{grid-template-columns:40px minmax(0,1fr) auto;gap:14px;padding:18px 4px 18px 0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+<link rel="stylesheet" href="assets/serres-logo.css">
+<!-- data-us-assets -->
+<link rel="stylesheet" href="assets/serres-us.css">
+<script src="assets/business.js" defer></script>
+<script src="assets/pricing.js" defer></script>
+<script src="assets/analytics.js" defer></script>
+<!-- /data-us-assets -->
+</head>
+<body>
+
+<!-- REGION:header -->
+<header class="nav us-nav" data-us-region="header">
+  <div class="nav-inner">
+    <a href="./" class="logo" aria-label="SERRES Wrap Center — home"><img src="assets/serres-logo.png" alt="SERRES" width="600" height="55"></a>
+    <nav class="nav-links us-nav__links" aria-label="Main">
+      <details class="us-nav__drop" data-us-close-on-esc>
+        <summary class="us-nav__drop-summary">Services<span class="us-nav__caret" aria-hidden="true"></span></summary>
+        <div class="us-nav__panel">
+          <a class="us-nav__panel-link" href="paint-protection-film/">Paint Protection Film</a>
+          <a class="us-nav__panel-link" href="car-wraps/">Car Wraps</a>
+          <a class="us-nav__panel-link" href="ceramic-coating/">Ceramic Coating</a>
+          <a class="us-nav__panel-link" href="window-tint/">Window Tint</a>
+          <a class="us-nav__panel-link" href="detailing/">Detailing</a>
+        </div>
+      </details>
+      <a class="us-nav__link" href="pricing/">Pricing</a>
+      <a class="us-nav__link" href="our-films/">Our Films</a>
+      <a class="us-nav__link" href="about/">About</a>
+      <a class="us-nav__link" href="contact/">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn us-nav__cta" href="contact/">Get a Quote <span class="arr">→</span></a>
+      <details class="us-nav__mobile" data-us-close-on-esc>
+        <summary class="us-nav__burger" aria-label="Menu"><span class="us-nav__burger-bars" aria-hidden="true"></span></summary>
+        <nav class="us-nav__mobile-panel" aria-label="Mobile">
+          <div class="us-nav__mobile-group">
+            <span class="us-nav__mobile-label">Services</span>
+            <a class="us-nav__mobile-link" href="paint-protection-film/">Paint Protection Film</a>
+            <a class="us-nav__mobile-link" href="car-wraps/">Car Wraps</a>
+            <a class="us-nav__mobile-link" href="ceramic-coating/">Ceramic Coating</a>
+            <a class="us-nav__mobile-link" href="window-tint/">Window Tint</a>
+            <a class="us-nav__mobile-link" href="detailing/">Detailing</a>
+          </div>
+          <div class="us-nav__mobile-group">
+            <span class="us-nav__mobile-label">SERRES</span>
+            <a class="us-nav__mobile-link" href="pricing/">Pricing</a>
+            <a class="us-nav__mobile-link" href="our-films/">Our Films</a>
+            <a class="us-nav__mobile-link" href="gallery/">Gallery</a>
+            <a class="us-nav__mobile-link" href="about/">About</a>
+            <a class="us-nav__mobile-link" href="blog/">Blog</a>
+            <a class="us-nav__mobile-link" href="contact/">Contact</a>
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+<!-- /REGION:header -->
+
+<!-- REGION:trustbar -->
+<section class="us-trustbar" aria-label="Why SERRES" data-us-region="trustbar">
+  <ul class="wrap us-trustbar__list">
+    <li class="us-trustbar__item"><span class="us-trustbar__label">3M</span><span class="us-trustbar__note">3M Scotchgard Pro Series 200</span></li>
+    <li class="us-trustbar__item"><span class="us-trustbar__label">NAR</span><span class="us-trustbar__note">NAR H190 PPF</span></li>
+    <li class="us-trustbar__item"><span class="us-trustbar__label">1-year</span><span class="us-trustbar__note">SERRES installation warranty</span></li>
+    <li class="us-trustbar__item"><span class="us-trustbar__label">Barcelona-proven</span><span class="us-trustbar__note">The same protocol as our Barcelona studio</span></li>
+  </ul>
+</section>
+<!-- /REGION:trustbar -->
+
+<main id="main">
+
+<!-- ===================== HERO ===================== -->
+<section class="nf-hero" data-screen-label="404 — Intro">
+  <span class="nf-ghost display" aria-hidden="true">404</span>
+  <div class="wrap">
+    <span class="eyebrow">Page not found</span>
+    <h1 class="display">This one took a <span class="chrome-text">wrong turn.</span></h1>
+    <p class="nf-lead">The page you asked for is not here — moved, renamed, or never existed. Nothing is broken on your side. Everything the studio does is one link away below.</p>
+    <p class="nf-code"><b>Error 404</b> <span>·</span> The address did not match a page</p>
+    <div class="nf-actions">
+      <a class="btn" href="./">Back to the home page <span class="arr">→</span></a>
+      <a class="btn ghost" href="pricing/">See the price list</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== USEFUL LINKS ===================== -->
+<section class="nf-body" data-screen-label="404 — Where to go">
+  <div class="wrap">
+    <div class="nf-grid">
+
+      <div>
+        <h2 class="nf-title">The five services</h2>
+        <ul class="nf-svc">
+          <li>
+            <a href="paint-protection-film/">
+              <span class="n">01</span>
+              <span class="t">Paint Protection Film
+                <span class="d">Self-healing film over the panels the road attacks. Four coverage levels, two film tiers.</span>
+              </span>
+              <span class="go" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="car-wraps/">
+              <span class="n">02</span>
+              <span class="t">Car Wraps
+                <span class="d">Chrome delete, full colour change or a premium colour-shift film, edges wrapped in.</span>
+              </span>
+              <span class="go" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="ceramic-coating/">
+              <span class="n">03</span>
+              <span class="t">Ceramic Coating
+                <span class="d">Gloss, beading and easier washing — on bare paint, or as a top-up over fresh film.</span>
+              </span>
+              <span class="go" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="window-tint/">
+              <span class="n">04</span>
+              <span class="t">Window Tint
+                <span class="d">Ceramic IR-rejecting film in Florida-legal shades, all side glass and the rear.</span>
+              </span>
+              <span class="go" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="detailing/">
+              <span class="n">05</span>
+              <span class="t">Detailing &amp; Paint Correction
+                <span class="d">Interior strip-down and extraction, or compound and polish to take the swirls out.</span>
+              </span>
+              <span class="go" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <aside>
+        <h2 class="nf-title">Everything else</h2>
+        <ul class="nf-links">
+          <li><a href="pricing/">Pricing <span aria-hidden="true">→</span></a></li>
+          <li><a href="our-films/">Our Films <span aria-hidden="true">→</span></a></li>
+          <li><a href="gallery/">Gallery <span aria-hidden="true">→</span></a></li>
+          <li><a href="about/">About <span aria-hidden="true">→</span></a></li>
+          <li><a href="blog/">Blog <span aria-hidden="true">→</span></a></li>
+          <li><a href="contact/">Contact <span aria-hidden="true">→</span></a></li>
+        </ul>
+        <p class="nf-aside-note">Landed here from a link on another site? Tell us where it pointed and we will fix it. If you were after a price, the whole list is published on the <a href="pricing/">pricing page</a> — no forms, no gate.</p>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- REGION:ctaband -->
+<section class="us-ctaband" aria-labelledby="us-ctaband-title" data-us-region="ctaband">
+  <div class="wrap us-ctaband__inner">
+    <div class="us-ctaband__text">
+      <h2 class="display us-ctaband__title" id="us-ctaband-title">Get an exact quote in 2 hours</h2>
+      <p class="us-ctaband__note">Send your make &amp; model — exact quote within 2 hours.</p>
+    </div>
+    <a class="btn us-ctaband__cta" href="contact/">Get a Quote <span class="arr">→</span></a>
+  </div>
+</section>
+<!-- /REGION:ctaband -->
+
+<!-- REGION:footer -->
+<footer class="us-footer" data-us-region="footer">
+  <div class="wrap us-footer__inner">
+    <div class="us-footer__brand">
+      <a href="./" class="logo" aria-label="SERRES Wrap Center — home"><img src="assets/serres-logo.png" alt="SERRES" width="600" height="55"></a>
+      <p class="us-footer__tagline">Paint protection film, wraps, ceramic coating and detailing for South Florida.</p>
+      <p class="us-footer__langs">Se habla español · Говорим по-русски</p>
+    </div>
+    <div class="us-footer__cols">
+      <div class="us-footer__col">
+        <h2 class="us-footer__col-title">Services</h2>
+        <div class="us-footer__links">
+          <a class="us-footer__link" href="paint-protection-film/">Paint Protection Film</a>
+          <a class="us-footer__link" href="car-wraps/">Car Wraps</a>
+          <a class="us-footer__link" href="ceramic-coating/">Ceramic Coating</a>
+          <a class="us-footer__link" href="window-tint/">Window Tint</a>
+          <a class="us-footer__link" href="detailing/">Detailing</a>
+          <a class="us-footer__link" href="our-films/">Our Films</a>
+        </div>
+      </div>
+      <div class="us-footer__col">
+        <h2 class="us-footer__col-title">PPF near you</h2>
+        <div class="us-footer__links">
+          <a class="us-footer__link" href="ppf-boca-raton/">PPF Boca Raton</a>
+          <a class="us-footer__link" href="ppf-fort-lauderdale/">PPF Fort Lauderdale</a>
+          <a class="us-footer__link" href="ppf-pompano-beach/">PPF Pompano Beach</a>
+          <a class="us-footer__link" href="ppf-delray-beach/">PPF Delray Beach</a>
+          <a class="us-footer__link" href="pricing/">Prices</a>
+          <a class="us-footer__link" href="gallery/">Gallery</a>
+        </div>
+      </div>
+      <div class="us-footer__col">
+        <h2 class="us-footer__col-title">Studio</h2>
+        <address class="us-footer__nap">
+          <span class="us-footer__nap-line">SERRES Wrap Center</span>
+          <span class="us-footer__nap-line">Boca Raton — Pompano Beach area · exact location announced October 2026</span>
+          <span class="us-footer__nap-line">Boca Raton, FL</span>
+        </address>
+        <p class="us-footer__hours">Mon–Sat 9:00 AM – 6:00 PM</p>
+        <div class="us-footer__links">
+          <a class="us-footer__link" href="https://www.instagram.com/serres.wrap.center/" target="_blank" rel="noopener">Instagram</a>
+          <a class="us-footer__link" href="contact/">Contact</a>
+        </div>
+      </div>
+      <div class="us-footer__col">
+        <h2 class="us-footer__col-title">Company</h2>
+        <div class="us-footer__links">
+          <a class="us-footer__link" href="about/">About</a>
+          <a class="us-footer__link" href="blog/">Blog</a>
+          <a class="us-footer__link" href="contact/">Get a quote</a>
+          <a class="us-footer__link" href="https://serreswrapcenter.es/" target="_blank" rel="noopener">SERRES Barcelona</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap us-footer__bottom">
+    <span class="us-footer__copy">© 2026 SERRES Wrap Center</span>
+    <nav class="us-footer__legal" aria-label="Legal">
+      <a class="us-footer__link" href="privacy/">Privacy</a>
+      <a class="us-footer__link" href="terms/">Terms</a>
+    </nav>
+  </div>
+</footer>
+<!-- /REGION:footer -->
+
+<script src="assets/serres-enhance.js" defer></script>
+<!-- data-us-assets-tail -->
+<script src="assets/quote-form.js" defer></script>
+<script src="assets/cookie-notice.js" defer></script>
+<!-- /data-us-assets-tail -->
+</body>
+</html>

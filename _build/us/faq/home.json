@@ -1,0 +1,21 @@
+{
+ "style": "panel",
+ "items": [
+  {
+   "q": "When does SERRES Wrap Center open in Boca Raton?",
+   "a": "Detailing and paint correction start on {{business:openingSoftLabel}}. The full paint protection film launch follows on {{business:openingFullLabel}}. The exact studio location is announced in October 2026."
+  },
+  {
+   "q": "How much does paint protection film cost?",
+   "a": "Paint protection film starts at {{price:partial-front.essential}} for a partial front in NAR H190 and {{price:full-front.essential}} for a full front. The 3M Scotchgard Pro Series 200 tier is a step up from there. {{terms:fromMeaning}} {{terms:tax}}"
+  },
+  {
+   "q": "What warranty do I get?",
+   "a": "{{terms:warranty}} The installation warranty covers lifting, bubbling or edge failure caused by the fit, and it is ours, not the film maker's."
+  },
+  {
+   "q": "Can I get a quote before you open?",
+   "a": "Yes. Send your make, model and the coverage you are after through the quote form and we come back with the exact number. {{terms:deposit}} The studio address and phone line go live in October 2026, so the form is the way in until then."
+  }
+ ]
+}

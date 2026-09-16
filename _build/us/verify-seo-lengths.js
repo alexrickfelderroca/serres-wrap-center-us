@@ -42,10 +42,14 @@ for (const r of rows) {
   const tBad = r.title.length === 0 || r.title.length > 60;
   const dBad = r.desc.length < 140 || r.desc.length > 155;
   const hBad = r.h1n !== 1;
+  /* A noindex page (404) must NOT carry a canonical — pointing one at itself asks Google
+     to index the very URL the robots tag is telling it to skip. So the canonical rule is
+     skipped where robots says noindex. */
+  const noindex = /noindex/i.test(fs.readFileSync(path.join(root, r.rel), 'utf8').match(/<meta\s+name="robots"[^>]*>/i)?.[0] || '');
   if (tBad) problems.push(`${r.rel}: title ${r.title.length} chars (max 60) — ${JSON.stringify(r.title)}`);
   if (dBad) problems.push(`${r.rel}: description ${r.desc.length} chars (want 140-155)`);
   if (hBad) problems.push(`${r.rel}: ${r.h1n} <h1> elements (want exactly 1)`);
-  if (!r.canon) problems.push(`${r.rel}: no canonical`);
+  if (!r.canon && !noindex) problems.push(`${r.rel}: no canonical`);
   console.log(
     (tBad ? 'T!' : 'ok') + String(r.title.length).padStart(4) +
     (dBad ? ' D!' : ' ok') + String(r.desc.length).padStart(4) +

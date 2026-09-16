@@ -38,6 +38,8 @@ const GATES = [
   ['titles / descriptions / h1', ['_build/us/verify-seo-lengths.js', '.']],
   ['every us- class is styled', ['_build/us/verify-css-contract.js', '.']],
   ['no Barcelona leftovers', ['_build/count-terms.js', '.']],
+  ['landers unique (spec P3-2)', ['_build/us/verify-landers.js', '.']],
+  ['OG, JSON-LD, visible FAQ === schema', ['_build/verify-seo.js']],
 ];
 
 function run(label, args) {

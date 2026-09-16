@@ -1,0 +1,17 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "Why is a Barcelona studio opening in Boca Raton?",
+      "a": "Because South Florida is harder on paint than Barcelona is: year-round UV, salt air, love bugs and rock chips off I-95. The protocol we built in Barcelona was designed for exactly that kind of punishment, so we are bringing it over intact instead of starting again. Same two films, same warranty terms: {{terms:warranty}}"
+    },
+    {
+      "q": "When does the Boca Raton studio open?",
+      "a": "In two stages. Detailing services open on {{business:openingSoftLabel}}, and the full paint protection film launch follows on {{business:openingFullLabel}}. The exact street address is announced in October 2026."
+    },
+    {
+      "q": "What does the SERRES protocol actually change?",
+      "a": "Six fixed steps on every car, whatever it costs: paint thickness gauged at intake, a HEPA-filtered bay, anti-static prep, a filtered-air dry, gloss measured before and after correction, and a photo record of every stage. None of it is an optional extra and none of it is reserved for expensive cars."
+    }
+  ]
+}

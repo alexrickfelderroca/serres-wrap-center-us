@@ -16,9 +16,21 @@ const OUT = opt('out'); const PASS = opt('pass', '2'); const LANG = opt('lang', 
 if (!OUT) { console.error('usage: node screenshots.js --root <site> --out <dir> --pass 1|2 [--lang en|es] [--pages ...] [--viewport both]'); process.exit(2); }
 const VIEWPORTS = { desktop: { width: 1440, height: 900, mobile: false }, mobile: { width: 390, height: 844, mobile: true, scale: 2 } };
 const VP = opt('viewport', 'both') === 'both' ? ['desktop', 'mobile'] : [opt('viewport')];
-const STATIC = ['index.html', 'pages/gallery.html', 'pages/prices.html', 'pages/projects.html', 'pages/why-serres.html', 'services/body-kits.html', 'services/ceramic.html', 'services/detailing.html', 'services/paint-correction.html', 'services/ppf.html', 'services/vinyl.html', 'blog/index.html'];
-const blog = fs.readdirSync(path.join(ROOT, 'blog')).filter(f => f.endsWith('.html') && f !== 'index.html').map(f => 'blog/' + f).sort();
-const PAGES = opt('pages', '') ? opt('pages').split(',') : STATIC.concat(blog);
+/* Discovered, not hardcoded. The inherited list named the Barcelona files
+   (pages/*.html, services/*.html, flat blog/*.html) — every one of which has moved.
+   A run with no --pages would have captured 16 error pages. */
+const SKIP_DIRS = new Set(['_build', '.git', 'assets', '.screenshots', 'node_modules']);
+const discovered = [];
+(function walk(dir) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (SKIP_DIRS.has(e.name)) continue;
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) walk(p);
+    else if (e.name.endsWith('.html')) discovered.push(path.relative(ROOT, p).split(path.sep).join('/'));
+  }
+})(ROOT);
+discovered.sort();
+const PAGES = opt('pages', '') ? opt('pages').split(',') : discovered;
 const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\..+/, '').replace('T', '-');
 
 (async () => {

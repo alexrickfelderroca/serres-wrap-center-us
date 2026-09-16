@@ -1,0 +1,21 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "Which paint protection films do you actually install?",
+      "a": "Two, and both are named on every quote. Signature is {{film:signature.film}} - {{film:signature.note}}. Essential is {{film:essential.film}} - {{film:essential.note}}. Both are self-healing TPU and both go on to the same protocol, in the same bay, by the same installer."
+    },
+    {
+      "q": "Is NAR a worse film than 3M?",
+      "a": "It is a different price, not a different class of film. Both are self-healing TPU with a manufacturer warranty behind them. Full Front is {{price:full-front.essential}} in NAR against {{price:full-front.signature}} in 3M, and that difference comes off your invoice rather than into our margin. {{terms:fromMeaning}}"
+    },
+    {
+      "q": "Why will you not fit a cheaper film?",
+      "a": "Because we would be the ones refitting it. Budget paint protection film is usually TPH, a hybrid material engineered down to a price rather than the TPU both of our films are made from. Under sustained Florida sun and heat that category is reported to haze, lift at the edges and turn amber within roughly 6 to 18 months, and there is rarely a manufacturer left standing behind the warranty."
+    },
+    {
+      "q": "What does the warranty actually cover?",
+      "a": "{{terms:warranty}} The manufacturer warranty covers the film itself against defects such as yellowing, cracking and delamination, under that manufacturer's own published terms. The SERRES installation warranty covers our work for a year: lifting edges, trapped debris, alignment. Bring the car back and we refit the affected panel."
+    }
+  ]
+}

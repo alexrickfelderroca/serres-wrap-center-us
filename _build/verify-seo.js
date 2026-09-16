@@ -8,19 +8,34 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 
-const PAGES = [
-  'index.html',
-  'pages/gallery.html', 'pages/prices.html', 'pages/projects.html', 'pages/why-serres.html',
-  'services/body-kits.html', 'services/ceramic.html', 'services/detailing.html',
-  'services/paint-correction.html', 'services/ppf.html', 'services/vinyl.html',
-  'blog/index.html',
-  'blog/cuanto-cuesta-vinilar-un-coche.html', 'blog/ppf-o-ceramico-que-elegir.html',
-  'blog/cuanto-cuesta-ppf-coche.html', 'blog/limpieza-tapiceria-coche-precio.html',
-];
+/* Discovered, not hardcoded. The inherited list named the 16 Barcelona files
+   (pages/, services/, blog/cuanto-cuesta-*.html); every one of them has moved or gone,
+   so the verifier reported 4 MISSING pages and silently checked none of the new ones. */
+const SKIP_DIRS = new Set(['_build', '.git', 'assets', '.screenshots', 'node_modules']);
+const PAGES = [];
+(function walk(dir) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (SKIP_DIRS.has(e.name)) continue;
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) walk(p);
+    else if (e.name.endsWith('.html')) PAGES.push(path.relative(ROOT, p).split(path.sep).join('/'));
+  }
+})(ROOT);
+PAGES.sort();
 
+/* Claims this site may not make. The inherited list was Spanish-market copy; these are
+   the US ones. Warranty wording is fixed by spec section 3: manufacturer film warranty up
+   to 10 years PLUS a 1-year SERRES installation warranty — so a bare "3-year film
+   warranty" (the Barcelona claim) must never reappear, and neither may the Barcelona
+   Google-listing figures. */
 const BANNED = [
-  /10 años/i, /200 ?micras/i, /200 ?µm/i, /\b9H\b/, /subcontrat/i,
-  /cristal líquido/i, /\b1080\b/, /medidor de brillo/i, /medidor de espesor/i,
+  /3-year film warranty/i,
+  /\b4[.,]9\s*(?:\/\s*5|stars|rating)/i,
+  /\b98\s?%\s+of\s+(?:our\s+)?clients/i,
+  /aggregateRating/,
+  /lifetime warranty/i,
+  /\bIVA\b/, /VAT included/i,
+  /10 años/i, /200 ?micras/i, /subcontrat/i, /cristal líquido/i,
 ];
 
 let fail = 0;
@@ -30,23 +45,30 @@ for (const rel of PAGES) {
   if (!fs.existsSync(file)) { console.log(`MISSING  ${rel}`); fail++; continue; }
   const html = fs.readFileSync(file, 'utf8');
 
-  // OG / Twitter
-  ['og:title', 'og:description', 'og:image', 'og:url', 'og:type', 'twitter:card'].forEach(t => {
-    if (!html.includes(t)) problems.push('no ' + t);
-  });
-  if (!html.includes('rel="canonical"')) problems.push('no canonical');
+  /* A noindex page (404) is never indexed and never shared, so social cards and a
+     canonical are not just unnecessary — a self-canonical on a noindex URL asks Google to
+     index the very page robots is telling it to skip. Skip both checks there. */
+  const noindex = /<meta\s+name="robots"[^>]*noindex/i.test(html);
+  if (!noindex) {
+    ['og:title', 'og:description', 'og:image', 'og:url', 'og:type', 'twitter:card'].forEach(t => {
+      if (!html.includes(t)) problems.push('no ' + t);
+    });
+    if (!html.includes('rel="canonical"')) problems.push('no canonical');
+  }
 
   // JSON-LD parse
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
-  if (!ld.length) problems.push('no JSON-LD');
+  /* noindex pages (404) carry no structured data on purpose — there is no entity to
+     describe and nothing will ever read it. */
+  if (!ld.length && !noindex) problems.push('no JSON-LD');
   ld.forEach((m, i) => { try { JSON.parse(m[1]); } catch (e) { problems.push(`JSON-LD #${i + 1} parse error: ${e.message.slice(0, 60)}`); } });
 
-  // GA4
-  const gtagHead = (html.match(/googletagmanager\.com\/gtag\/js\?id=G-1K6FYZ99GN/g) || []).length;
-  const gtagClick = (html.match(/whatsapp_click/g) || []).length;
-  if (gtagHead !== 1) problems.push(`gtag head x${gtagHead}`);
-  if (gtagClick < 1) problems.push('no click tracker');
-  if (gtagClick > 1) problems.push(`click tracker x${gtagClick}`);
+  /* Analytics. Inverted from the inherited check, which REQUIRED the Barcelona gtag on
+     every page. That property belongs to the Spanish site; shipping it here would pour US
+     traffic into it. The US site loads assets/analytics.js instead, which stays inert
+     until business.js has a ga4Id. */
+  if (/G-1K6FYZ99GN/.test(html)) problems.push('Barcelona GA4 property present');
+  if (!/assets\/analytics\.js/.test(html)) problems.push('analytics.js not wired');
 
   // h1
   const h1 = (html.match(/<h1[\s>]/g) || []).length;
@@ -80,5 +102,7 @@ for (const rel of PAGES) {
   if (problems.length) { fail++; console.log(`FAIL  ${rel}\n   - ` + problems.join('\n   - ')); }
   else console.log(`OK    ${rel}`);
 }
-console.log(fail ? `\n${fail} page(s) with problems` : '\nAll pages clean');
-process.exit(0);
+console.log(fail ? `\n${fail} page(s) with problems` : `\nAll ${PAGES.length} pages clean`);
+/* This used to be an unconditional process.exit(0): the verifier printed FAIL lines and
+   then told the build everything was fine. Wiring it into a gate list was meaningless. */
+process.exit(fail ? 1 : 0);

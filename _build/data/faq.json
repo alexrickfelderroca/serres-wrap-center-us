@@ -1,143 +1,304 @@
 {
-  "_readme": [
-    "SINGLE SOURCE for every FAQ on the site. _build/regen.mjs emits BOTH the",
-    "visible <details> accordion and the FAQPage JSON-LD from these strings, so",
-    "the visible answer and acceptedAnswer.text are byte-identical by",
-    "construction (_build/verify-seo.js enforces that).",
-    "",
-    "KEY = the route the FAQ belongs to ('' = home, 'pricing/' = /pricing).",
-    "style: 'panel'  -> inherited .faq-item / .fq-x markup (service pages)",
-    "style: 'article'-> inherited .faq-a markup (blog posts)",
-    "",
-    "TOKENS (resolved from assets/pricing.js and assets/business.js):",
-    "  {{price:<id>}}  {{price:<id>.essential}}  {{price:<id>.signature}}",
-    "  {{from:<id>}}  {{startingAt:<group>}}  {{startingAtAmount:<group>}}",
-    "  {{terms:<key>}}  {{business:<field>}}  {{film:<tier>.<label|film|note>}}",
-    "",
-    "HARD RULE: answers are PLAIN TEXT. No HTML, and none of the characters",
-    "& < > \" — they would break the byte-identity between the HTML and the JSON.",
-    "regen.mjs fails loudly if one appears."
-  ],
-
-  "paint-protection-film/": {
-    "style": "panel",
-    "items": [
-      {
-        "q": "How much does PPF cost in Boca Raton?",
-        "a": "Partial front starts at {{price:partial-front.essential}} and full front at {{price:full-front.essential}} on our Essential film; full body is {{price:full-body.essential}}. {{terms:fromMeaning}} {{terms:tax}}"
-      },
-      {
-        "q": "What is the difference between the Essential and Signature films?",
-        "a": "Essential is {{film:essential.film}} — {{film:essential.note}}. Signature is {{film:signature.film}} — {{film:signature.note}}. Both are installed to the same protocol and both carry the same 1-year SERRES installation warranty."
-      },
-      {
-        "q": "Does PPF really self-heal?",
-        "a": "Yes. The film’s top coat is self-healing: wash micro-scratches and light scuffs disappear with the heat of the sun or warm water. Gravel impacts are absorbed by the thickness of the film before they reach the paint."
-      },
-      {
-        "q": "What does the installation look like?",
-        "a": "Paint decontamination and correction, a pattern cut for your exact model, application in a clean booth and a panel-by-panel review under controlled lighting. If anything falls short of our standard it is redone before delivery."
-      },
-      {
-        "q": "How long does it take and how do I book?",
-        "a": "A front end is delivered in 1 to 2 working days, a full body in 3 to 5. We work by appointment, {{business:hoursDisplay}}. {{terms:quoteSpeed}} {{terms:deposit}}"
-      },
-      {
-        "q": "Which is better, PPF or a ceramic coating?",
-        "a": "They do different jobs. PPF physically absorbs stone chips and scratches; a ceramic coating adds gloss, water beading and easier washing, from {{startingAtAmount:ceramic}}. The most complete combination is PPF on the impact zones and ceramic on the rest, and we quote both together."
-      }
-    ]
-  },
-
-  "car-wraps/": {
-    "style": "panel",
-    "items": [
-      {
-        "q": "How much does a car wrap cost in Boca Raton?",
-        "a": "A chrome delete starts at {{price:chrome-delete}}, a full color change at {{price:color-change}}, and a Signature wrap in a premium or color-shift film at {{price:signature-wrap}}. {{terms:fromMeaning}} {{terms:tax}}"
-      },
-      {
-        "q": "Which wrap films do you use?",
-        "a": "For a full color change we use 3M 2080 and Avery SW900 in gloss, satin or matte. Signature wraps use premium films such as Inozetek, KPMF and color-flip finishes."
-      },
-      {
-        "q": "Does a wrap damage the paint?",
-        "a": "No. Vinyl is removed with controlled heat, and on factory paint in good condition the surface underneath is left as it was on the day of installation. Repainted or already damaged panels are assessed one by one before we start."
-      },
-      {
-        "q": "Can you wrap only part of the car?",
-        "a": "Yes. Roof, mirrors, spoiler, stripes and one-off requests are quoted individually: {{price:accents}}. A chrome delete covers window trim, grille surround and badges from {{price:chrome-delete}}."
-      },
-      {
-        "q": "Should I wrap or protect with PPF?",
-        "a": "A wrap changes how the car looks; paint protection film is optically clear and protects the paint underneath, with full front from {{price:full-front.essential}}. The two can be combined, and we quote them together."
-      }
-    ]
-  },
-
-  "ceramic-coating/": {
-    "style": "panel",
-    "items": [
-      {
-        "q": "How much does a ceramic coating cost in Boca Raton?",
-        "a": "Our 3-year ceramic package starts at {{price:ceramic-3yr}}. Applied over fresh film instead of bare paint, the top-up is {{price:ceramic-topup}}. {{terms:fromMeaning}} {{terms:tax}}"
-      },
-      {
-        "q": "What does the 3-year package include?",
-        "a": "Decon, single-stage gloss prep, coating, cure. The car is delivered once the coating has cured, not straight off the bench."
-      },
-      {
-        "q": "Can a coating go over PPF or a wrap?",
-        "a": "Yes, and it is the usual pairing: ceramic applied over fresh film gives you the hydrophobics without touching the paint. That top-up is {{price:ceramic-topup}}."
-      },
-      {
-        "q": "Does a coating replace paint protection film?",
-        "a": "No. A ceramic coating adds gloss, water beading and easier washing, but it does not stop a stone chip. For impact protection you need film, which starts at {{startingAtAmount:ppf}}."
-      }
-    ]
-  },
-
-  "detailing/": {
-    "style": "panel",
-    "items": [
-      {
-        "q": "How much does detailing cost in Boca Raton?",
-        "a": "An interior detail starts at {{price:interior}} and a 1 to 2 stage paint correction at {{price:paint-correction}}. {{terms:fromMeaning}} {{terms:tax}}"
-      },
-      {
-        "q": "What is included in the interior detail?",
-        "a": "Full interior strip-down, extraction, leather clean and feed. Trim, vents and glass are finished by hand, and the car goes back with nothing left to wipe."
-      },
-      {
-        "q": "What does paint correction actually do?",
-        "a": "Compound and polish, swirl and hologram removal, gloss measured in and out. It is also the prep step before a ceramic coating, so the finish is sealed at its best rather than as found."
-      }
-    ]
-  },
-
-  "pricing/": {
-    "style": "panel",
-    "items": [
-      {
-        "q": "Are these your real prices?",
-        "a": "{{terms:fromMeaning}} {{terms:tax}}"
-      },
-      {
-        "q": "Where does each service start?",
-        "a": "Paint protection film from {{startingAtAmount:ppf}}, wraps from {{startingAtAmount:wraps}}, ceramic coating from {{startingAtAmount:ceramic}}, window tint from {{startingAtAmount:tint}} and detailing from {{startingAtAmount:detailing}}. Packages that combine them start at {{startingAtAmount:packages}}."
-      },
-      {
-        "q": "How do I get an exact number for my car?",
-        "a": "{{terms:quoteSpeed}}"
-      },
-      {
-        "q": "What do I pay to book?",
-        "a": "{{terms:deposit}}"
-      },
-      {
-        "q": "What warranty comes with the work?",
-        "a": "{{terms:warranty}}"
-      }
-    ]
-  }
+ "_readme": [
+  "SINGLE SOURCE for every FAQ on the site. _build/regen.mjs emits BOTH the",
+  "visible <details> accordion and the FAQPage JSON-LD from these strings, so",
+  "the visible answer and acceptedAnswer.text are byte-identical by",
+  "construction (_build/verify-seo.js enforces that).",
+  "",
+  "KEY = the route the FAQ belongs to ('' = home, 'pricing/' = /pricing).",
+  "style: 'panel'  -> inherited .faq-item / .fq-x markup (service pages)",
+  "style: 'article'-> inherited .faq-a markup (blog posts)",
+  "",
+  "TOKENS (resolved from assets/pricing.js and assets/business.js):",
+  "  {{price:<id>}}  {{price:<id>.essential}}  {{price:<id>.signature}}",
+  "  {{from:<id>}}  {{startingAt:<group>}}  {{startingAtAmount:<group>}}",
+  "  {{terms:<key>}}  {{business:<field>}}  {{film:<tier>.<label|film|note>}}",
+  "",
+  "HARD RULE: answers are PLAIN TEXT. No HTML, and none of the characters",
+  "& < > \" — they would break the byte-identity between the HTML and the JSON.",
+  "regen.mjs fails loudly if one appears."
+ ],
+ "paint-protection-film/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "Will paint protection film turn yellow?",
+    "a": "No. Both films we install are TPU, not the old PVC film that yellowed in the sun. Essential is {{film:essential.film}} and Signature is {{film:signature.film}}, and each carries its manufacturer's own warranty against yellowing, cracking and staining. {{terms:warranty}}"
+   },
+   {
+    "q": "Does the film really heal its own scratches?",
+    "a": "Yes, within limits. The top coat is self-healing: swirl marks and light wash scuffs close up with heat from the sun or warm water. A deep gouge that cuts right through the film does not heal - but it stopped at the film instead of at your paint, which is the point."
+   },
+   {
+    "q": "What exactly does the warranty cover?",
+    "a": "{{terms:warranty}} The film manufacturer covers the film itself against defects such as yellowing, cracking, bubbling and delamination. Our year covers the installation: lifting edges, trapped dirt, anything that is our work rather than the film."
+   },
+   {
+    "q": "How long does the car stay with you?",
+    "a": "One to three days for most cars, depending on coverage. A partial front or full front is usually a single day. Track Pack and full body need two to three, because every panel is decontaminated and inspected before any film is laid. The exact number of days for your car comes with the quote."
+   },
+   {
+    "q": "How do I look after a filmed car?",
+    "a": "Wash it like paint, just more gently. Hand wash with a pH-neutral shampoo, keep a pressure washer off the film edges, and leave polishes, waxes and anything abrasive out of it. A ceramic top-up over fresh film makes washing easier again: {{from:ceramic-topup}}."
+   },
+   {
+    "q": "Can the film be removed later?",
+    "a": "Yes - film is designed to come off. With heat and slow, controlled pulling it lifts away without taking the clear coat with it, which is exactly why owners film a car before they sell it. Film left on long past its warranty life gets harder to remove, so do not leave a failing panel on the car."
+   }
+  ]
+ },
+ "car-wraps/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "How much does a car wrap cost in Boca Raton?",
+    "a": "Chrome delete starts at {{price:chrome-delete}}, a full color change at {{price:color-change}}, and a Signature wrap in a premium or color-shift film at {{price:signature-wrap}}. {{terms:fromMeaning}} {{terms:tax}}"
+   },
+   {
+    "q": "Which wrap films do you use?",
+    "a": "For a full color change we install 3M 2080 and Avery Dennison SW900 in gloss, satin or matte. Signature wraps use premium film: Inozetek Super Gloss, KPMF and color-shift finishes. Over 150 colors across those brands. {{terms:warranty}}"
+   },
+   {
+    "q": "Does a wrap damage the paint underneath?",
+    "a": "No. Vinyl is removed with controlled heat, and on factory paint in good condition the surface underneath is left as it was on the day of installation. Repainted or already damaged panels are assessed one by one before we start, and we say so before you book if a panel is not a candidate."
+   },
+   {
+    "q": "Can you wrap only part of the car?",
+    "a": "Yes. Roof, mirrors, spoiler, stripes and one-off requests are quoted individually: {{price:accents}}. A chrome delete covers window trim, grille surround and badges {{from:chrome-delete}}, and it is the cheapest way to change how the car reads from the front."
+   },
+   {
+    "q": "Should I wrap the car or protect it with PPF?",
+    "a": "A wrap changes how the car looks. Paint protection film is optically clear and protects the paint underneath, with full front from {{price:full-front.essential}} in NAR Essential film. The two combine on the same car, and we quote them together so you can see both numbers before deciding."
+   }
+  ]
+ },
+ "ceramic-coating/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "How much does a ceramic coating cost in Boca Raton?",
+    "a": "Two prices, both published. The 3-Year Ceramic Package on bare paint starts at {{price:ceramic-3yr}}. Over fresh paint protection film or a wrap, the top-up starts at {{price:ceramic-topup}}. {{terms:fromMeaning}} {{terms:tax}}"
+   },
+   {
+    "q": "What does the 3-Year Ceramic Package include?",
+    "a": "Decon, single-stage gloss prep, coating, cure. The prep is the part that decides the result: a coating locks in whatever is under it, so the paint is cleaned and corrected before anything is sealed onto it. The car goes back to you once the coating has cured, not straight off the bench."
+   },
+   {
+    "q": "Can a ceramic coating go over PPF or a wrap?",
+    "a": "Yes, and it is the usual pairing. Ceramic over fresh film gives you the beading and the easier washing without touching the paint underneath, and it makes the whole car behave the same way instead of half film and half bare panel. That is the top-up, from {{price:ceramic-topup}}."
+   },
+   {
+    "q": "Does a ceramic coating replace paint protection film?",
+    "a": "No. A coating adds gloss, water beading and easier washing, but it is microns thick and it will not stop a stone chip. For impact protection you need film: {{startingAt:ppf}}. Film on the front end and ceramic over the rest is how most cars leave the studio."
+   },
+   {
+    "q": "Do I need paint correction before the coating?",
+    "a": "Some, always. The 3-Year Ceramic Package includes a single-stage gloss prep for exactly that reason. Heavier swirls, holograms or etching are a separate paint correction job, from {{price:paint-correction}}, and it is worth doing first because a coating seals in every defect it goes over."
+   }
+  ]
+ },
+ "detailing/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "How much does detailing cost in Boca Raton?",
+    "a": "There are two services and two numbers. An Interior Detail starts at {{price:interior}} and a Paint Correction, one to two stage, starts at {{price:paint-correction}}. {{terms:fromMeaning}} {{terms:tax}}"
+   },
+   {
+    "q": "What is included in the interior detail?",
+    "a": "A full interior strip-down, hot extraction of carpets and upholstery, and leather cleaned and fed. Every panel, vent and seam is steamed and agitated, trim and glass are finished by hand, and the car goes back with nothing left to wipe. Vehicle size and how much has built up are what move the final number, and we confirm it at intake before any work starts."
+   },
+   {
+    "q": "What does paint correction do, and how many stages do I need?",
+    "a": "Correction is machine polishing that removes defects rather than hiding them. Stage 1 cuts, levelling swirls, scratches and oxidation. Stage 2 refines away the haze that cutting leaves. Stage 3 is a final jewelling pass for a show finish. The listed price covers one to two stages, which is what most daily-driven cars need, and a third stage is quoted separately when the clear coat asks for it. Gloss is read with a meter before and after, so the result is a number: a typical neglected panel goes from about 42 GU on arrival to about 94 GU after correction. It is also the right prep step before a ceramic coating, so the finish is sealed at its best rather than as found."
+   }
+  ]
+ },
+ "pricing/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "Are these the real prices, or a starting point to get me on the phone?",
+    "a": "Real prices. {{terms:fromMeaning}} {{terms:tax}}"
+   },
+   {
+    "q": "Why does PPF have two prices on every line?",
+    "a": "Because you choose the film. Essential is NAR H190 PPF: self-healing 7.5-mil TPU with a 10-year film warranty. Signature is 3M Scotchgard Pro Series 200, the 3M flagship. Partial Front is {{price:partial-front.essential}} in Essential and {{price:partial-front.signature}} in Signature; Full Front is {{price:full-front.essential}} and {{price:full-front.signature}}. Same prep, same installers, same installation warranty — the film is the only difference."
+   },
+   {
+    "q": "What would move my quote away from the number on this page?",
+    "a": "Vehicle size, panel shape and paint condition. A large SUV takes more film than a sedan, deep contours take longer to lay, and paint that needs correction before a coating adds work. Send the make, model and year and you get the exact figure for that car."
+   },
+   {
+    "q": "What is not priced on this page?",
+    "a": "Roof, mirrors, spoilers, stripes and one-off requests are quoted per car, because the panel count and the shapes decide the price. Everything else we sell today is listed above, grouped by service: paint protection film {{startingAt:ppf}}, wraps {{startingAt:wraps}}, ceramic coating {{startingAt:ceramic}}, window tint {{startingAt:tint}}, detailing {{startingAt:detailing}}."
+   }
+  ]
+ },
+ "our-films/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "Which paint protection films do you actually install?",
+    "a": "Two, and both are named on every quote. Signature is {{film:signature.film}} - {{film:signature.note}}. Essential is {{film:essential.film}} - {{film:essential.note}}. Both are self-healing TPU and both go on to the same protocol, in the same bay, by the same installer."
+   },
+   {
+    "q": "Is NAR a worse film than 3M?",
+    "a": "It is a different price, not a different class of film. Both are self-healing TPU with a manufacturer warranty behind them. Full Front is {{price:full-front.essential}} in NAR against {{price:full-front.signature}} in 3M, and that difference comes off your invoice rather than into our margin. {{terms:fromMeaning}}"
+   },
+   {
+    "q": "Why will you not fit a cheaper film?",
+    "a": "Because we would be the ones refitting it. Budget paint protection film is usually TPH, a hybrid material engineered down to a price rather than the TPU both of our films are made from. Under sustained Florida sun and heat that category is reported to haze, lift at the edges and turn amber within roughly 6 to 18 months, and there is rarely a manufacturer left standing behind the warranty."
+   },
+   {
+    "q": "What does the warranty actually cover?",
+    "a": "{{terms:warranty}} The manufacturer warranty covers the film itself against defects such as yellowing, cracking and delamination, under that manufacturer's own published terms. The SERRES installation warranty covers our work for a year: lifting edges, trapped debris, alignment. Bring the car back and we refit the affected panel."
+   }
+  ]
+ },
+ "about/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "Why is a Barcelona studio opening in Boca Raton?",
+    "a": "Because South Florida is harder on paint than Barcelona is: year-round UV, salt air, love bugs and rock chips off I-95. The protocol we built in Barcelona was designed for exactly that kind of punishment, so we are bringing it over intact instead of starting again. Same two films, same warranty terms: {{terms:warranty}}"
+   },
+   {
+    "q": "When does the Boca Raton studio open?",
+    "a": "In two stages. Detailing services open on {{business:openingSoftLabel}}, and the full paint protection film launch follows on {{business:openingFullLabel}}. The exact street address is announced in October 2026."
+   },
+   {
+    "q": "What does the SERRES protocol actually change?",
+    "a": "Six fixed steps on every car, whatever it costs: paint thickness gauged at intake, a HEPA-filtered bay, anti-static prep, a filtered-air dry, gloss measured before and after correction, and a photo record of every stage. None of it is an optional extra and none of it is reserved for expensive cars."
+   }
+  ]
+ },
+ "contact/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "How do I get a quote from SERRES in Boca Raton?",
+    "a": "Use the quote form on this page: make, model, year, and the service you are after. Tell us the state of the paint and the finish you want and the first number lands close to the final one. We price it against the published list and answer with one exact figure, not a range. {{terms:fromMeaning}}"
+   },
+   {
+    "q": "Can I call, text or e-mail SERRES right now?",
+    "a": "Not yet. The Boca Raton studio publishes no phone number, WhatsApp or e-mail address until October 2026, so nothing on this site pretends to be a live line. Instagram is the one channel open today, and the quote form keeps your details ready to send the moment the direct line opens."
+   },
+   {
+    "q": "Where is the studio, and when does it open?",
+    "a": "{{business:addressLine}}. The map on this page is a city-level pin, not the unit: the exact street address lands in October 2026 and this page changes the same day. Detailing starts {{business:openingSoftLabel}} and the full paint protection film launch follows {{business:openingFullLabel}}."
+   }
+  ]
+ },
+ "": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "When does SERRES Wrap Center open in Boca Raton?",
+    "a": "Detailing and paint correction start on {{business:openingSoftLabel}}. The full paint protection film launch follows on {{business:openingFullLabel}}. The exact studio location is announced in October 2026."
+   },
+   {
+    "q": "How much does paint protection film cost?",
+    "a": "Paint protection film starts at {{price:partial-front.essential}} for a partial front in NAR H190 and {{price:full-front.essential}} for a full front. The 3M Scotchgard Pro Series 200 tier is a step up from there. {{terms:fromMeaning}} {{terms:tax}}"
+   },
+   {
+    "q": "What warranty do I get?",
+    "a": "{{terms:warranty}} The installation warranty covers lifting, bubbling or edge failure caused by the fit, and it is ours, not the film maker's."
+   },
+   {
+    "q": "Can I get a quote before you open?",
+    "a": "Yes. Send your make, model and the coverage you are after through the quote form and we come back with the exact number. {{terms:deposit}} The studio address and phone line go live in October 2026, so the form is the way in until then."
+   }
+  ]
+ },
+ "ppf-boca-raton/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "How much does paint protection film cost in Boca Raton?",
+    "a": "A partial front is {{price:partial-front.essential}} in NAR H190 or {{price:partial-front.signature}} in 3M Scotchgard Pro Series 200. A full front is {{price:full-front.essential}} or {{price:full-front.signature}}, and full body is {{price:full-body.essential}} or {{price:full-body.signature}}. Boca Raton pays the same published list as every other city we cover. {{terms:fromMeaning}} {{terms:tax}}"
+   },
+   {
+    "q": "Where in Boca Raton is the studio, and how do I get there?",
+    "a": "The studio is in the Boca Raton to Pompano Beach area and the exact location is announced in October 2026, at which point it is published on this site. From the Town Center side it is Glades Road onto I-95 south; from Mizner Park it is Palmetto Park Road west to the same ramp; from north Boca it is Yamato Road. Federal Highway, US-1, runs the whole way parallel if you would rather stay off the interstate. {{terms:warranty}}"
+   }
+  ]
+ },
+ "ppf-delray-beach/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "How far is SERRES from Delray Beach?",
+    "a": "The studio is one town south of Delray Beach, roughly 15 to 20 minutes depending on traffic. The simple route is Federal Highway out of downtown and straight on US-1; when the Avenue is stacked or the Intracoastal bridge is up, Linton Boulevard west to I-95 and south from the ramp is usually quicker. The exact street address is announced in October 2026, so treat the drive time as an estimate until then."
+   },
+   {
+    "q": "How much is paint protection film in Delray Beach?",
+    "a": "The same as anywhere else we work: there is no separate Delray price list. A partial front is {{price:partial-front.essential}} in NAR H190 or {{price:partial-front.signature}} in 3M Scotchgard Pro Series 200, and a full front is {{price:full-front.essential}} and {{price:full-front.signature}}. {{terms:fromMeaning}} {{terms:tax}} {{terms:warranty}}"
+   }
+  ]
+ },
+ "ppf-fort-lauderdale/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "What does PPF cost for a Fort Lauderdale car?",
+    "a": "The same published list as everyone else: {{startingAt:ppf}} for a partial front in NAR H190, and {{price:full-front.essential}} for a full front in Essential. Nothing is added for the drive up. {{terms:tax}}"
+   },
+   {
+    "q": "Does the salt air off the water reach the paint?",
+    "a": "Yes, and it does not need spray to do it. A car kept near the Intracoastal picks up a salt film that pulls moisture out of the night air, holds it against the clear coat and works into every stone chip. Rinsing salt off film is easier than polishing etching out of paint. {{terms:warranty}}"
+   }
+  ]
+ },
+ "ppf-pompano-beach/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "How far is the studio from Pompano Beach?",
+    "a": "Closer than anywhere else we cover. The studio is in the Boca Raton and Pompano Beach area, so the run in is I-95 north from the Atlantic Boulevard or Copans Road ramp, or Federal Highway the whole way. The exact address and a measured drive time are published in October 2026."
+   },
+   {
+    "q": "Which PPF coverage suits a Pompano Beach car?",
+    "a": "It depends which road the car lives on. An I-95 commuter past Copans Road collects chips on the hood and fender tops, so Full Front at {{price:full-front.essential}} is the honest answer. A car that mostly does Federal Highway plazas and the Citi Centre lot picks up bumper corners and mirror caps, and Partial Front at {{price:partial-front.essential}} covers that."
+   }
+  ]
+ },
+ "reserve/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "What exactly do the first thirty cars get?",
+    "a": "Three things: 15% off any paint protection film or wrap, a free ceramic top-up over the fresh film, normally {{price:ceramic-topup}}, and Founding Member status, which is 10% off detailing for life. The discount is locked to the price list in force on the day you book. {{terms:fromMeaning}}"
+   },
+   {
+    "q": "Is the deposit refundable, and what happens to it?",
+    "a": "It is refundable in full until work begins on your car, and it is applied to your final invoice rather than charged on top. The amount is {{business:depositUsd}} US dollars. No card details are taken on this site: we send a secure deposit link by text or email once your slot is confirmed. {{terms:tax}}"
+   },
+   {
+    "q": "Can I reserve more than one car?",
+    "a": "One car per reservation, so thirty slots stay thirty cars. If you want a second car in the Founders Club, send a second reservation and we will confirm whether a slot is still open for it. Every car booked this way carries the same cover as any other job here: {{terms:warranty}}"
+   }
+  ]
+ },
+ "window-tint/": {
+  "style": "panel",
+  "items": [
+   {
+    "q": "How much is window tint in Boca Raton?",
+    "a": "A full car in ceramic film is {{startingAt:tint}} — every side window plus the rear glass. {{terms:fromMeaning}} {{terms:tax}}"
+   },
+   {
+    "q": "What tint is legal in Florida?",
+    "a": "On a sedan the front side windows have to let at least 28% of light through, and the back sides and rear window at least 15%. On an SUV or van the front sides are the same 28%, while the back sides and rear window can go down to 6%. The windshield takes non-reflective film above the AS-1 line only, and a state medical exemption exists for drivers who need darker. We have not yet verified these figures against the current Florida statute, so confirm the law before you choose a shade."
+   },
+   {
+    "q": "Is ceramic film worth it over a cheap dyed tint?",
+    "a": "Ceramic film rejects infrared — the part of sunlight you feel as heat — without having to be darker, and it carries no metal, so GPS, cell signal and a toll transponder are unaffected. A dyed film only darkens the glass, and it fades. That is why the one tint we fit is ceramic."
+   },
+   {
+    "q": "When can I roll the windows down after a tint?",
+    "a": "Not straight away. The film has to bond to the glass first, and moving a window before it has set can lift an edge. We give you the exact window at hand-back. Light haze or small pockets of moisture while it cures are normal and clear on their own. {{terms:warranty}}"
+   }
+  ]
+ }
 }

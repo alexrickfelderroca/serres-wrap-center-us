@@ -91,8 +91,13 @@
   .hero .hero-poster{z-index:0}
   /* cinematic wash: darken for legibility, vignette the edges, and melt the bottom
      into the page background so the clip reads as part of the studio, not a panel */
+  /* the copy on this page is left-aligned over a bright clip (orange towel, lit panel),
+     so a side scrim carries the legibility and the vertical one melts the clip into the page */
   .hero .hero-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-    linear-gradient(180deg,rgba(10,10,11,.60) 0%,rgba(10,10,11,.26) 30%,rgba(10,10,11,.50) 64%,var(--bg) 100%),
+    linear-gradient(90deg,rgba(10,10,11,.88) 0%,rgba(10,10,11,.70) 32%,rgba(10,10,11,.34) 60%,
+      rgba(10,10,11,.12) 82%,rgba(10,10,11,0) 100%),
+    linear-gradient(180deg,rgba(10,10,11,.60) 0%,rgba(10,10,11,.26) 30%,rgba(10,10,11,.52) 64%,
+      rgba(10,10,11,.88) 90%,var(--bg) 100%),
     radial-gradient(125% 95% at 50% 30%,transparent 38%,rgba(10,10,11,.62) 100%);}
   .hero .hero-grain{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:overlay;opacity:.5;
     background:repeating-linear-gradient(125deg,rgba(255,255,255,.025) 0 2px,transparent 2px 5px)}
@@ -210,18 +215,66 @@
     font-size:11.5px;color:var(--muted-2)}
   .stage p{color:var(--muted);font-size:14.5px;line-height:1.5;text-wrap:pretty;margin-top:auto}
 
+  /* ---------- GLOSS RESULTS (merged from the paint-correction route) ---------- */
+  .gloss{margin-top:64px;display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center}
+  .gloss .gl-copy h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:clamp(26px,3vw,42px);line-height:.98;letter-spacing:.01em;margin-bottom:18px;text-wrap:balance}
+  .gloss .gl-copy p{color:var(--muted);font-size:15.5px;max-width:40ch;text-wrap:pretty}
+  .gl-meter{display:flex;flex-direction:column;gap:26px}
+  .gbar{display:flex;flex-direction:column;gap:10px}
+  .gbar .gb-top{display:flex;align-items:baseline;justify-content:space-between}
+  .gbar .gb-label{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.16em;
+    font-size:13px;color:var(--muted)}
+  .gbar .gb-val{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:30px;line-height:1}
+  .gbar .gb-unit{font-size:14px;letter-spacing:.1em}
+  .gbar .gb-track{height:6px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
+  .gbar .gb-fill{position:absolute;left:0;top:0;height:100%;width:0;transition:width 1.3s var(--ease)}
+  .gbar.before .gb-fill{background:rgba(255,255,255,.22)}
+  .gbar.before .gb-val,.gbar.before .gb-unit{color:var(--muted)}
+  .gbar.after .gb-fill{background:var(--chrome);box-shadow:0 0 16px rgba(255,255,255,.4)}
+  .gbar.after .gb-val{color:var(--text)}
 
+  /* ---------- SKU CARDS ---------- */
+  .dtl-skus{padding:96px 0 6px}
+  .dtl-skus .us-price-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+  .dtl-skus-note{margin-top:26px;color:var(--muted);font-size:14px;max-width:70ch}
+  .us-price-note a,.dtl-skus-note a{color:var(--text);border-bottom:1px solid var(--line-strong);
+    padding-bottom:1px;transition:border-color .25s var(--ease)}
+  .us-price-note a:hover,.dtl-skus-note a:hover{border-color:#fff}
 
-  /* ---------- CTA ---------- */
-  .cta{position:relative;margin-top:80px;padding:104px 0;text-align:center;background:var(--bg-2)}
-  .cta::before,.cta::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line)}
-  .cta::before{top:0}.cta::after{bottom:0}
-  .cta .eyebrow{justify-content:center}
-  .cta h2{font-size:clamp(38px,6vw,82px);margin:20px auto 0;max-width:15ch}
-  .cta .actions{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  .cta .phone{margin-top:28px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;letter-spacing:.2em;
-    text-transform:uppercase;font-size:14px;color:var(--muted)}
-  .cta .phone strong{color:var(--text);font-weight:600}
+  /* ---------- DETAILING PROTOCOL (list, deliberately not a card grid) ---------- */
+  .dtl-proto{margin-top:44px;border-top:1px solid var(--line)}
+  .dtl-proto-row{display:grid;grid-template-columns:74px 242px 1fr;gap:30px;align-items:start;
+    padding:26px 0;border-bottom:1px solid var(--line);transition:background .25s var(--ease)}
+  .dtl-proto-row:hover{background:rgba(255,255,255,.022)}
+  .dtl-proto-no{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:36px;
+    line-height:.9;letter-spacing:.01em;color:transparent;-webkit-text-stroke:1px var(--line-strong)}
+  .dtl-proto-row:hover .dtl-proto-no{-webkit-text-stroke:1px transparent;background:var(--chrome);
+    -webkit-background-clip:text;background-clip:text}
+  .dtl-proto-h{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.04em;font-size:23px;line-height:1.04;margin-bottom:7px}
+  .dtl-proto-tool{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;
+    letter-spacing:.18em;font-size:11.5px;color:var(--muted);display:block}
+  .dtl-proto-p{color:var(--muted);font-size:15px;line-height:1.55;text-wrap:pretty;max-width:62ch}
+
+  /* ---------- QUOTE ---------- */
+  .dtl-quote{position:relative;margin-top:96px;padding:96px 0 104px;
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 18%,var(--bg-2) 82%,var(--bg) 100%)}
+  .dtl-quote-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:start;margin-top:42px}
+  .dtl-quote-copy h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;line-height:.94;letter-spacing:.012em;font-size:clamp(32px,4vw,56px);
+    margin-top:16px;text-wrap:balance}
+  .dtl-quote-copy p{margin-top:20px;color:var(--muted);font-size:15.5px;max-width:42ch;text-wrap:pretty}
+  .dtl-quote-copy .dtl-quote-alt{margin-top:22px;font-size:14.5px}
+  .dtl-quote-copy .dtl-quote-alt a{border-bottom:1px solid var(--line-strong);padding-bottom:2px;color:var(--text);
+    transition:border-color .25s var(--ease)}
+  .dtl-quote-copy .dtl-quote-alt a:hover{border-color:#fff}
+  .dtl-quote-panel{background:var(--panel);border:1px solid var(--line);padding:34px 32px 36px;
+    clip-path:polygon(0 0,100% 0,100% 100%,20px 100%,0 calc(100% - 20px));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 18px 44px -26px rgba(0,0,0,.85),
+      0 46px 92px -62px rgba(0,0,0,.95)}
+  .dtl-noscript{color:var(--muted);font-size:15px;line-height:1.6}
+  .dtl-noscript a{color:var(--text);border-bottom:1px solid var(--line-strong);padding-bottom:2px}
 
   footer{padding:30px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
     letter-spacing:.04em;text-align:center}
@@ -268,6 +321,16 @@
     .xform-grid{grid-template-columns:1fr;gap:34px;max-width:520px}
     .xtext p{max-width:100%}
     .proc-grid{grid-template-columns:1fr}
+    .gloss{grid-template-columns:1fr;gap:30px}
+    .gloss .gl-copy p{max-width:100%}
+    .dtl-quote-grid{grid-template-columns:1fr;gap:34px}
+    .dtl-quote-copy p{max-width:100%}
+  }
+  @media(max-width:860px){
+    .dtl-proto-row{grid-template-columns:46px 1fr;gap:14px 18px;padding:22px 0}
+    .dtl-proto-no{font-size:28px}
+    .dtl-proto-mid,.dtl-proto-p{grid-column:2}
+    .dtl-proto-p{max-width:100%}
   }
   @media(max-width:760px){
     .wrap,.nav-inner{padding-left:22px;padding-right:22px}
@@ -276,6 +339,24 @@
     .hero-top{align-items:flex-start}
     .hero-stats{gap:30px}
     .scroll-cue{display:none}
+    /* the h1 here is longer than the inherited two-word one, so it lands in the
+       bright middle band of the clip — deepen the scrim instead of shrinking the type */
+    .hero .hero-overlay{background:
+      linear-gradient(180deg,rgba(10,10,11,.78) 0%,rgba(10,10,11,.60) 20%,rgba(10,10,11,.76) 48%,
+        rgba(10,10,11,.92) 76%,rgba(10,10,11,.97) 92%,var(--bg) 100%),
+      radial-gradient(135% 105% at 50% 26%,transparent 22%,rgba(10,10,11,.76) 100%)}
+    .hero h1{font-size:clamp(42px,11.6vw,150px)}
+    .hero h1 .ln-kw{margin-top:14px}
+    .hero-stats{gap:24px 30px}
+    .dtl-skus{padding-top:72px}
+    .dtl-quote{margin-top:72px;padding:72px 0 80px}
+    .dtl-quote-panel{padding:26px 20px 28px}
+    .duo{gap:12px}
+    /* 44px tap targets for the related-service links without moving the underline */
+    .rel-links{gap:22px 20px}
+    .rel-links a{position:relative}
+    .rel-links a::after{content:"";position:absolute;left:0;right:0;top:50%;
+      height:44px;transform:translateY(-50%)}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important}
@@ -504,6 +585,8 @@
   </div>
 </nav>
 
+<main id="main">
+
 <!-- ===================== HERO ===================== -->
 <section class="hero" data-screen-label="Detailing — Intro">
   <video autoplay muted loop playsinline preload="metadata" poster="../assets/detailing/poster-opt.jpg">
@@ -514,22 +597,52 @@
   <div class="wrap">
     <div class="hero-top">
       <div>
-        <span class="eyebrow">Service 05 · Detailing</span>
+        <span class="eyebrow">Service 05</span>
         <h1 class="display">
-          <span class="ln"><span>Showroom</span></span>
-          <span class="ln"><span class="chrome-text">Fresh</span></span>
-          <span class="ln ln-kw"><span class="h1-kw">Car detailing in Boca Raton</span></span>
+          <span class="ln"><span>Detailing &amp;</span></span>
+          <span class="ln"><span class="chrome-text">Paint Correction</span></span>
+          <span class="ln ln-kw"><span class="h1-kw">in Boca Raton, Florida</span></span>
         </h1>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><b class="chrome-text">2</b><span>In &amp; Out</span></div>
-        <div class="hstat"><b class="chrome-text">100%</b><span>Hand Finished</span></div>
-        <div class="hstat"><b class="chrome-text">0</b><span>Cut Corners</span></div>
+        <div class="hstat"><b class="chrome-text">1–2</b><span>Stage Correction</span></div>
+        <div class="hstat"><b class="chrome-text">94</b><span>GU After Polish</span></div>
+        <div class="hstat"><b class="chrome-text">1-yr</b><span>Install Warranty</span></div>
       </div>
     </div>
-    <p class="lead">Car detailing in Boca Raton, Florida: steam cleaning, decontamination and hand finishing, inside and out, at our own studio. Deep Clean from €150.</p>
+    <p class="lead">Two services, priced openly. Interior Detail from <!--P:PRICE:interior-->$300<!--/P--> — full strip-down, extraction, leather clean and feed. Paint Correction (1–2 stage) from <!--P:PRICE:paint-correction-->$600<!--/P--> — compound, polish, and gloss measured in and out.</p>
   </div>
   <div class="scroll-cue"><span class="bar"></span> Scroll</div>
+</section>
+
+<!-- ===================== THE TWO SKUs ===================== -->
+<section class="dtl-skus" data-screen-label="Detailing — Prices" id="prices">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">What we do here</span>
+        <h2>Two services.<br>Two numbers.</h2>
+      </div>
+      <p class="sh-note">No ladder of packages you have to decode. An interior detail, and a paint correction. Both quoted from the same list everyone else sees.</p>
+    </div>
+
+    <div class="us-price-grid reveal-up">
+      <article class="us-price-card">
+        <h3 class="us-price-name">Interior Detail</h3>
+        <p class="us-price-amt"><small>From</small><!--P:PRICE:interior-->$300<!--/P--></p>
+        <p class="us-price-cov">Full interior strip-down, extraction, leather clean &amp; feed. Every panel, vent and seam steamed and agitated; carpets and upholstery extracted; leather cleaned and conditioned.</p>
+        <p class="us-price-note">Vehicle size and how much has built up set the final number — confirmed at intake, before any work starts.</p>
+      </article>
+      <article class="us-price-card">
+        <h3 class="us-price-name">Paint Correction (1–2 stage)</h3>
+        <p class="us-price-amt"><small>From</small><!--P:PRICE:paint-correction-->$600<!--/P--></p>
+        <p class="us-price-cov">Compound + polish, swirl and hologram removal, gloss measured in and out. A third finishing stage is available when the paint asks for it.</p>
+        <p class="us-price-note">Also the prep step before a <a href="../ceramic-coating/">ceramic coating</a> — the finish gets sealed at its best, not as found.</p>
+      </article>
+    </div>
+
+    <p class="dtl-skus-note reveal-up">Both prices are on the <a href="../pricing/">full price list</a>. Terms below apply.</p>
+  </div>
 </section>
 
 <!-- ===================== INTERIOR TRANSFORMATION ===================== -->
@@ -583,38 +696,141 @@
   <div class="wrap">
     <div class="section-head reveal-up">
       <div>
-        <span class="eyebrow">The Process</span>
+        <span class="eyebrow">The Detailing Protocol</span>
         <h2>Strip. Clean.<br>Protect.</h2>
       </div>
       <p class="sh-note">A full inside-and-out reset — we remove what's built up, clean down to the surface, then dress and protect every finish.</p>
     </div>
 
+    <div class="dtl-proto reveal-up">
+      <div class="dtl-proto-row">
+        <span class="dtl-proto-no" aria-hidden="true">01</span>
+        <div class="dtl-proto-mid">
+          <h3 class="dtl-proto-h">Decontaminate</h3>
+          <span class="dtl-proto-tool">Foam wash · clay · fallout</span>
+        </div>
+        <p class="dtl-proto-p">A pH-neutral foam bath lifts loose grime, then clay and iron remover pull out the bonded road film and brake fallout a wash leaves behind.</p>
+      </div>
+      <div class="dtl-proto-row">
+        <span class="dtl-proto-no" aria-hidden="true">02</span>
+        <div class="dtl-proto-mid">
+          <h3 class="dtl-proto-h">Deep Clean</h3>
+          <span class="dtl-proto-tool">Steam · extraction · brushes</span>
+        </div>
+        <p class="dtl-proto-p">Inside, every panel, vent and seam is steamed and agitated; carpets and leather are extracted and wiped down until the cabin is truly clean.</p>
+      </div>
+      <div class="dtl-proto-row">
+        <span class="dtl-proto-no" aria-hidden="true">03</span>
+        <div class="dtl-proto-mid">
+          <h3 class="dtl-proto-h">Dress &amp; Protect</h3>
+          <span class="dtl-proto-tool">Sealant · conditioner · UV</span>
+        </div>
+        <p class="dtl-proto-p">Paint is sealed for gloss and beading, trim and leather are conditioned and UV-protected, and the glass gets a rain-repellent treatment and is left streak-free.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAINT CORRECTION — THE TRANSFORMATION ===================== -->
+<section class="xform" data-screen-label="Detailing — Paint correction" id="paint-correction" style="padding-top:88px">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Paint Correction</span>
+        <h2>From hazy<br>to mirror.</h2>
+      </div>
+      <p class="sh-note">Washing makes paint clean. Correction makes it flat — and flat paint is what reflects a straight line back at you.</p>
+    </div>
+    <div class="xform-grid">
+      <div class="xtext reveal-up">
+        <p>This BMW arrived with years of wash-induced swirls and micro-marring dulling its gloss black — light scattering in every direction instead of reflecting cleanly.</p>
+        <p>We assessed the clear coat, then cut, refined and finished the paint by machine until the defects were gone. The hex lighting now mirrors back razor-sharp, with deep, wet-looking reflections restored.</p>
+        <div class="xspecs">
+          <div class="row"><span class="k">Vehicle</span><span class="v">BMW Coupé · Gloss Black</span></div>
+          <div class="row"><span class="k">Process</span><span class="v">Multi-stage machine correction</span></div>
+          <div class="row"><span class="k">Defects</span><span class="v">Swirls · holograms · oxidation</span></div>
+          <div class="row"><span class="k">Studio</span><span class="v">SERRES Barcelona — same protocol in Boca Raton</span></div>
+        </div>
+      </div>
+      <div class="reveal-up">
+        <div class="compare touched" id="compare">
+          <img class="after" src="../assets/correction/after.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="BMW coupé after paint correction — gloss black paint polished to a mirror finish" draggable="false">
+          <img class="before" id="beforeImg" src="../assets/correction/before.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="BMW coupé before paint correction — gloss black paint hazy with swirls and micro-scratches" draggable="false">
+          <div class="cmp-tag bef" id="tagBef"><small>Before</small>Swirled &amp; Hazy</div>
+          <div class="cmp-tag aft" id="tagAft"><small>After</small>Corrected Gloss</div>
+          <div class="cmp-divider" id="divider"></div>
+          <button type="button" class="cmp-handle" id="handle" aria-label="Drag to compare before and after paint correction">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg>
+          </button>
+          <div class="cmp-hint">Drag to reveal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CORRECTION STAGES + GLOSS ===================== -->
+<section class="process" data-screen-label="Detailing — Correction stages">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">How far we go</span>
+        <h2>Stage 1. Stage 2.<br>Stage 3.</h2>
+      </div>
+      <p class="sh-note">No two paints are alike. Our listed correction covers one to two stages; a third finishing pass is quoted separately when the clear coat needs it.</p>
+    </div>
+
     <div class="proc-grid reveal-up">
       <div class="stage">
         <span class="st-no">01</span>
-        <h3>Decontaminate</h3>
-        <span class="st-tool">Foam wash · clay · fallout</span>
-        <p>A pH-neutral foam bath lifts loose grime, then clay and iron remover pull out the bonded road film and brake fallout a wash leaves behind.</p>
+        <h3>Stage 1 · Cut</h3>
+        <span class="st-tool">Cutting pad · heavy compound</span>
+        <p>The aggressive stage — levelling deeper scratches, swirls and oxidation by removing a precise micron-thin layer of clear coat.</p>
       </div>
       <div class="stage">
         <span class="st-no">02</span>
-        <h3>Deep Clean</h3>
-        <span class="st-tool">Steam · extraction · brushes</span>
-        <p>Inside, every panel, vent and seam is steamed and agitated; carpets and leather are extracted and wiped down until the cabin is truly clean.</p>
+        <h3>Stage 2 · Refine</h3>
+        <span class="st-tool">Polishing pad · medium polish</span>
+        <p>The haze and micro-marring left by cutting are refined away, building back clarity and lifting gloss across the panel.</p>
       </div>
       <div class="stage">
         <span class="st-no">03</span>
-        <h3>Dress &amp; Protect</h3>
-        <span class="st-tool">Sealant · conditioner · UV</span>
-        <p>Paint is sealed for gloss and beading, trim and leather are conditioned and UV-protected, and the glass gets a rain-repellent treatment and is left streak-free.</p>
+        <h3>Stage 3 · Finish</h3>
+        <span class="st-tool">Finishing pad · fine polish</span>
+        <p>The final mirror-finish (jewelling) pass eliminates holograms and brings the paint to a true, defect-free gloss before it is sealed in.</p>
+      </div>
+    </div>
+
+    <div class="gloss reveal-up" id="glossSection">
+      <div class="gl-copy">
+        <h3>The numbers,<br>not just the shine.</h3>
+        <p>Gloss is read with a meter and expressed in GU (gloss units): the higher the number, the deeper and sharper the reflection. A typical result on neglected paint, measured in and out:</p>
+      </div>
+      <div class="gl-meter">
+        <div class="gbar before">
+          <div class="gb-top">
+            <span class="gb-label">On arrival</span>
+            <span class="gb-val">42<small class="gb-unit"> GU</small></span>
+          </div>
+          <div class="gb-track"><div class="gb-fill" data-w="44"></div></div>
+        </div>
+        <div class="gbar after">
+          <div class="gb-top">
+            <span class="gb-label">After correction</span>
+            <span class="gb-val chrome-text">94<small class="gb-unit"> GU</small></span>
+          </div>
+          <div class="gb-track"><div class="gb-fill" data-w="96"></div></div>
+        </div>
       </div>
     </div>
 
     <div class="rel-links reveal-up">
       <span class="rl-label">Pair it with:</span>
-      <a href="../paint-protection-film/">PPF paint protection</a>
+      <a href="../ceramic-coating/">Ceramic Coating</a>
       <span class="rl-dot">·</span>
-      <a href="../ceramic-coating/">Ceramic Coating SiO₂</a>
+      <a href="../paint-protection-film/">Paint Protection Film</a>
+      <span class="rl-dot">·</span>
+      <a href="../gallery/">Gallery</a>
     </div>
   </div>
 </section>
@@ -635,17 +851,17 @@
       <!-- REGION:faq:detailing/ -->
       <details class="faq-item">
         <summary>How much does detailing cost in Boca Raton?<span class="fq-x"></span></summary>
-        <p>An interior detail starts at $300 and a 1 to 2 stage paint correction at $600. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax.</p>
+        <p>There are two services and two numbers. An Interior Detail starts at $300 and a Paint Correction, one to two stage, starts at $600. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax.</p>
       </details>
 
       <details class="faq-item">
         <summary>What is included in the interior detail?<span class="fq-x"></span></summary>
-        <p>Full interior strip-down, extraction, leather clean and feed. Trim, vents and glass are finished by hand, and the car goes back with nothing left to wipe.</p>
+        <p>A full interior strip-down, hot extraction of carpets and upholstery, and leather cleaned and fed. Every panel, vent and seam is steamed and agitated, trim and glass are finished by hand, and the car goes back with nothing left to wipe. Vehicle size and how much has built up are what move the final number, and we confirm it at intake before any work starts.</p>
       </details>
 
       <details class="faq-item">
-        <summary>What does paint correction actually do?<span class="fq-x"></span></summary>
-        <p>Compound and polish, swirl and hologram removal, gloss measured in and out. It is also the prep step before a ceramic coating, so the finish is sealed at its best rather than as found.</p>
+        <summary>What does paint correction do, and how many stages do I need?<span class="fq-x"></span></summary>
+        <p>Correction is machine polishing that removes defects rather than hiding them. Stage 1 cuts, levelling swirls, scratches and oxidation. Stage 2 refines away the haze that cutting leaves. Stage 3 is a final jewelling pass for a show finish. The listed price covers one to two stages, which is what most daily-driven cars need, and a third stage is quoted separately when the clear coat asks for it. Gloss is read with a meter before and after, so the result is a number: a typical neglected panel goes from about 42 GU on arrival to about 94 GU after correction. It is also the right prep step before a ceramic coating, so the finish is sealed at its best rather than as found.</p>
       </details>
 
       <script type="application/ld+json">
@@ -659,7 +875,7 @@
             "name": "How much does detailing cost in Boca Raton?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "An interior detail starts at $300 and a 1 to 2 stage paint correction at $600. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax."
+              "text": "There are two services and two numbers. An Interior Detail starts at $300 and a Paint Correction, one to two stage, starts at $600. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax."
             }
           },
           {
@@ -667,15 +883,15 @@
             "name": "What is included in the interior detail?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Full interior strip-down, extraction, leather clean and feed. Trim, vents and glass are finished by hand, and the car goes back with nothing left to wipe."
+              "text": "A full interior strip-down, hot extraction of carpets and upholstery, and leather cleaned and fed. Every panel, vent and seam is steamed and agitated, trim and glass are finished by hand, and the car goes back with nothing left to wipe. Vehicle size and how much has built up are what move the final number, and we confirm it at intake before any work starts."
             }
           },
           {
             "@type": "Question",
-            "name": "What does paint correction actually do?",
+            "name": "What does paint correction do, and how many stages do I need?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Compound and polish, swirl and hologram removal, gloss measured in and out. It is also the prep step before a ceramic coating, so the finish is sealed at its best rather than as found."
+              "text": "Correction is machine polishing that removes defects rather than hiding them. Stage 1 cuts, levelling swirls, scratches and oxidation. Stage 2 refines away the haze that cutting leaves. Stage 3 is a final jewelling pass for a show finish. The listed price covers one to two stages, which is what most daily-driven cars need, and a third stage is quoted separately when the clear coat asks for it. Gloss is read with a meter before and after, so the result is a number: a typical neglected panel goes from about 42 GU on arrival to about 94 GU after correction. It is also the right prep step before a ceramic coating, so the finish is sealed at its best rather than as found."
             }
           }
         ]
@@ -687,18 +903,27 @@
   </div>
 </section>
 
-<!-- ===================== CTA ===================== -->
-<section class="cta" data-screen-label="Detailing — CTA">
+<!-- ===================== QUOTE FORM ===================== -->
+<section class="dtl-quote" data-screen-label="Detailing — Quote" id="quote" aria-labelledby="dtl-quote-title">
   <div class="wrap">
-    <span class="eyebrow">Inside &amp; out</span>
-    <h2 class="display">Make it feel <span class="chrome-text">new again.</span></h2>
-    <div class="actions">
-      <a href="../contact/" class="btn">Get a Quote <span class="arr">→</span></a>
-      <a href="../gallery/" class="btn ghost">See Projects</a>
+    <div class="dtl-quote-grid">
+      <div class="dtl-quote-copy reveal-up">
+        <span class="eyebrow">Get a quote</span>
+        <h2 class="display" id="dtl-quote-title">Tell us the car.<br>We will tell you the number.</h2>
+        <p>Interior condition and paint condition are what move the price, and both are read at intake. Send the make, model and year and say which of the two services you are after.</p>
+        <p class="dtl-quote-alt">Prefer a page with everything on it? <a href="../pricing/">See the full price list</a> or <a href="../contact/">use the contact page</a>.</p>
+      </div>
+      <div class="dtl-quote-panel reveal-up">
+        <form data-us-quote aria-labelledby="dtl-quote-title"></form>
+        <noscript>
+          <p class="dtl-noscript">This form needs JavaScript to build its service list. With it switched off, head to the <a href="../contact/">contact page</a> instead — the same details, same result.</p>
+        </noscript>
+      </div>
     </div>
-    <p class="phone">Sant Cugat del Vallès, Barcelona &nbsp;·&nbsp; <strong>+34 649 66 33 80</strong></p>
   </div>
 </section>
+
+</main>
 
 <!-- REGION:terms -->
 <div class="us-terms" data-us-region="terms">
@@ -797,10 +1022,94 @@
     ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   els.forEach(e=>io.observe(e));
+  /* failsafe: anything still hidden above the fold after 2.5s is shown regardless,
+     so a misfiring observer can never leave the page permanently blank */
+  setTimeout(()=>{
+    els.forEach(e=>{
+      const r=e.getBoundingClientRect();
+      if(r.top<innerHeight&&r.bottom>0)e.classList.add('in');
+    });
+  },2500);
 })();
 </script>
 
+<script>
+/* ---------- gloss bars fill on view ---------- */
+(function(){
+  const sec=document.getElementById('glossSection');
+  if(!sec)return;
+  const fills=[...sec.querySelectorAll('.gb-fill')];
+  const paint=()=>fills.forEach(f=>f.style.width=f.dataset.w+'%');
+  if(!('IntersectionObserver' in window)){paint();return;}
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(en=>{if(en.isIntersecting){paint();io.disconnect();}});
+  },{threshold:.4});
+  io.observe(sec);
+  /* failsafe: never leave the bars empty if the observer never fires */
+  setTimeout(paint,2500);
+})();
+</script>
 
+<script>
+/* ---------- Before / After comparison slider ---------- */
+(function(){
+  const box=document.getElementById('compare');
+  const before=document.getElementById('beforeImg');
+  const divider=document.getElementById('divider');
+  const handle=document.getElementById('handle');
+  const tagBef=document.getElementById('tagBef');
+  const tagAft=document.getElementById('tagAft');
+  if(!box)return;
+  let pos=50,dragging=false;
+  function set(p){
+    pos=Math.max(0,Math.min(100,p));
+    before.style.clipPath='inset(0 '+(100-pos)+'% 0 0)';
+    divider.style.left=pos+'%';
+    handle.style.left=pos+'%';
+    tagBef.style.opacity=pos<14?'0':'1';
+    tagAft.style.opacity=pos>86?'0':'1';
+  }
+  function fromEvent(e){
+    const r=box.getBoundingClientRect();
+    const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+    set(x/r.width*100);
+  }
+  function start(e){dragging=true;box.classList.add('touched');fromEvent(e);if(e.cancelable)e.preventDefault();}
+  function move(e){if(!dragging)return;fromEvent(e);if(e.cancelable&&e.touches)e.preventDefault();}
+  function end(){dragging=false;}
+  handle.addEventListener('mousedown',start);
+  box.addEventListener('mousedown',start);
+  window.addEventListener('mousemove',move);
+  window.addEventListener('mouseup',end);
+  handle.addEventListener('touchstart',start,{passive:false});
+  box.addEventListener('touchstart',start,{passive:false});
+  window.addEventListener('touchmove',move,{passive:false});
+  window.addEventListener('touchend',end);
+  handle.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'){set(pos-3);e.preventDefault();}
+    else if(e.key==='ArrowRight'){set(pos+3);e.preventDefault();}
+  });
+  set(50);
+  function animate(from,to){
+    const t0=performance.now(),dur=460;
+    function fr(t){const k=Math.min(1,(t-t0)/dur);const e=k*k*(3-2*k);
+      set(from+(to-from)*e);if(k<1)requestAnimationFrame(fr);}
+    requestAnimationFrame(fr);
+  }
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&'IntersectionObserver' in window){
+    const io=new IntersectionObserver((ents)=>{
+      ents.forEach(en=>{
+        if(en.isIntersecting){
+          io.disconnect();
+          const seq=[50,66,34,50];let i=0;
+          const iv=setInterval(()=>{i++;if(i>=seq.length){clearInterval(iv);return;}animate(pos,seq[i]);},560);
+        }
+      });
+    },{threshold:.4});
+    io.observe(box);
+  }
+})();
+</script>
 
 <script src="../assets/serres-enhance.js" defer></script>
 <!-- data-us-assets-tail -->

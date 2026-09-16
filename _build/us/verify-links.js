@@ -43,9 +43,25 @@ for (const file of html) {
       const bare = raw.split('#')[0].split('?')[0];
       if (!bare) continue;
       checked++;
-      const abs = bare.startsWith('/')
-        ? path.posix.normalize(bare)
-        : path.posix.normalize(path.posix.join(path.posix.dirname(fromSite), bare));
+      /* A "../" that climbs above the site root is a real break, not something to
+         normalise away. 404.html sits at the root but was generated with depth-1 "../"
+         links: path.join('/', '../pricing/') quietly returns '/pricing/', so the check
+         passed while every link on the page was broken in a browser. Walk the segments
+         by hand and fail if the depth ever goes negative. */
+      if (!bare.startsWith('/')) {
+        let d = path.posix.dirname(fromSite).split('/').filter(Boolean).length;
+        let escaped = false;
+        for (const seg of bare.split('/')) {
+          if (seg === '' || seg === '.') continue;
+          if (seg === '..') { d--; if (d < 0) { escaped = true; break; } }
+          else d++;
+        }
+        if (escaped) {
+          bad.push(`${fromSite}  ${attr}="${raw}"  ->  climbs above the site root`);
+          continue;
+        }
+      }
+      const abs = path.posix.normalize(bare.startsWith('/') ? bare : path.posix.join(path.posix.dirname(fromSite), bare));
       if (ALLOW.some(a => abs.startsWith(a))) continue;
       const disk = path.join(root, abs.slice(1));
       const ok = fs.existsSync(disk) &&

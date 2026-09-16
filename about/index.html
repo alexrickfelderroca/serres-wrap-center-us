@@ -34,14 +34,14 @@
   :root{
     --bg:#0a0a0b;--bg-2:#0e0e10;--panel:#141417;--panel-2:#191920;
     --line:rgba(255,255,255,0.09);--line-strong:rgba(255,255,255,0.16);
-    --text:#f3f3f5;--muted:#9a9aa3;--muted-2:#6e6e77;
+    --text:#f3f3f5;--muted:#9a9aa3;--muted-2:#6e6e77; /* --muted-2 is decorative only on this page: as TEXT it measures 3.46-3.92:1 on these backgrounds and fails WCAG AA */
     --chrome:linear-gradient(176deg,#fdfdfe 0%,#cfcfd6 32%,#8d8d97 52%,#f0f0f4 72%,#a6a6b0 100%);
     --ease:cubic-bezier(.22,.61,.36,1);--maxw:1280px;--navh:62px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;
-    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100dvh;
     display:flex;flex-direction:column;overflow-x:hidden;
     background-image:radial-gradient(90% 60% at 50% -8%,rgba(46,50,63,.26),transparent 66%);}
   ::selection{background:#e7e7ec;color:#0a0a0b}
@@ -68,6 +68,7 @@
   .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line-strong);
     clip-path:none;padding:13px 26px;}
   .btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.04)}
+  :focus-visible{outline:2px solid #f3f3f5;outline-offset:3px}
 
   /* ---------- NAV ---------- */
   header.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);
@@ -84,13 +85,13 @@
   .nav-right{display:flex;align-items:center;gap:20px}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;padding:96px 0 60px;overflow:hidden}
+  .hero{position:relative;padding:96px 0 40px;overflow:hidden}
   .hero::after{content:"";position:absolute;left:50%;top:-14%;transform:translateX(-50%);
     width:min(120vw,1500px);height:560px;z-index:0;pointer-events:none;
     background:radial-gradient(46% 52% at 50% 50%,rgba(54,58,72,.34),rgba(10,10,11,0) 72%);}
   .hero .wrap{position:relative;z-index:1}
   .hero-top{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
-  .hero h1{font-size:clamp(54px,10.5vw,150px);margin:20px 0 0}
+  .hero h1{font-size:clamp(46px,8.4vw,116px);margin:20px 0 0}
   .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.03em}
   .hero h1 .ln span{display:block}
   .hero h1 .ln .h1-kw{display:block;font-weight:500;font-size:clamp(12px,1.4vw,17px);
@@ -98,18 +99,20 @@
     background:none;-webkit-text-fill-color:currentColor}
   .crumbs{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:28px;
     font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:500;text-transform:uppercase;
-    letter-spacing:.2em;font-size:12px;color:var(--muted-2)}
-  .crumbs a{color:var(--muted);transition:color .25s var(--ease)}
+    letter-spacing:.2em;font-size:12px;color:var(--muted)}
+  /* min-height gives the 44px tap target; the negative margin keeps the row its original height */
+  .crumbs a{color:var(--muted);transition:color .25s var(--ease);
+    display:inline-flex;align-items:center;min-height:44px;margin:-12px 0}
   .crumbs a:hover{color:var(--text)}
-  .crumbs .c-sep{color:var(--muted-2)}
+  .crumbs .c-sep{color:var(--muted)}
   @keyframes rise{from{transform:translateY(108%)}to{transform:translateY(0)}}
-  .hero .lead{margin-top:26px;max-width:54ch;color:var(--muted);font-size:clamp(16px,1.5vw,19px)}
+  .hero .lead{margin-top:26px;max-width:56ch;color:var(--muted);font-size:clamp(16px,1.5vw,19px)}
   @keyframes fade{from{opacity:0}to{opacity:1}}
   .hero-stats{display:flex;gap:46px;flex-wrap:wrap;margin-bottom:8px}
   .hstat{display:flex;flex-direction:column;gap:3px}
   .hstat b{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:40px;line-height:1;letter-spacing:.01em}
   .hstat span{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.2em;
-    font-size:11.5px;color:var(--muted-2)}
+    font-size:11.5px;color:var(--muted)}
   @media(prefers-reduced-motion:no-preference){
     .hero h1 .ln span{transform:translateY(108%);animation:rise 1s var(--ease) .05s forwards}
     .hero h1 .ln:nth-child(2) span{animation-delay:.16s}
@@ -123,7 +126,7 @@
   .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
   .section-head h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
     line-height:.94;letter-spacing:.012em;font-size:clamp(34px,5vw,64px);margin-top:16px;text-wrap:balance}
-  .section-head .sh-note{color:var(--muted);font-size:15px;max-width:36ch;margin-top:14px}
+  .section-head .sh-note{color:var(--muted);font-size:15px;max-width:38ch;margin-top:14px}
 
   /* ---------- STANDARDS ---------- */
   .standards{padding:70px 0 30px}
@@ -133,65 +136,134 @@
     min-height:240px;transition:background .3s var(--ease)}
   .std:hover{background:var(--panel)}
   .std .sd-num{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;letter-spacing:.2em;
-    font-size:12px;color:var(--muted-2)}
+    font-size:12px;color:var(--muted)}
   .std h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
     letter-spacing:.02em;font-size:23px;line-height:1.04;margin-top:auto}
   .std p{color:var(--muted);font-size:14.5px;line-height:1.5;text-wrap:pretty}
   .std-links{margin-top:34px;display:flex;gap:14px 36px;flex-wrap:wrap}
   .std-links a{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.16em;font-size:14px;color:var(--muted);display:inline-flex;align-items:center;gap:9px;
-    border-bottom:1px solid var(--line-strong);padding-bottom:4px;
+    letter-spacing:.16em;font-size:14px;color:var(--muted);display:inline-flex;align-items:flex-end;gap:9px;
+    border-bottom:1px solid var(--line-strong);padding-bottom:4px;min-height:44px;
     transition:color .25s var(--ease),border-color .25s var(--ease)}
   .std-links a:hover{color:var(--text);border-color:#fff}
   .std-links a .arr{transition:transform .3s var(--ease)}
   .std-links a:hover .arr{transform:translateX(4px)}
 
-  /* ---------- REVIEWS · sticky stacking ---------- */
-  .reviews{padding:110px 0 60px;position:relative}
-  .rv-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
-  .rv-left{position:sticky;top:calc(var(--navh) + 40px);display:flex;flex-direction:column;gap:22px}
-  .rv-left h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
-    line-height:.94;letter-spacing:.012em;font-size:clamp(38px,4.6vw,68px);text-wrap:balance}
-  .rv-left p{color:var(--muted);font-size:17px;max-width:40ch;text-wrap:pretty}
-  .rv-tag{display:inline-flex;align-items:center;gap:11px;align-self:flex-start;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:13px;
-    color:var(--muted);border:1px solid var(--line);padding:9px 16px;border-radius:999px}
-  .rv-tag .dot{width:7px;height:7px;border-radius:50%;background:#3fbf6a;box-shadow:0 0 10px rgba(63,191,106,.7)}
-  .rv-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:8px;
-    background:var(--line);border:1px solid var(--line)}
-  .rv-stat{background:var(--bg);padding:20px 18px;display:flex;flex-direction:column;gap:5px;text-align:center}
-  .rv-stat b{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:30px;line-height:1}
-  .rv-stat span{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.16em;
-    font-size:10.5px;color:var(--muted-2)}
-  .rv-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+  /* =====================================================================
+     PAGE-LOCAL COMPONENTS — prefix "ab-" (about).
+     Rule of the house is that "us-" classes live in assets/serres-us.css,
+     which this agent does not own, and _build/us/verify-css-contract.js
+     FAILS the build on any "us-" class in markup that the shared stylesheet
+     does not define. So the four systems below are page-scoped with a
+     non-colliding "ab-" prefix and stay inside this page's own <style>.
+     ===================================================================== */
 
-  .rv-stack{display:flex;flex-direction:column;gap:22px;padding-bottom:30vh}
-  .rv-card{position:sticky;background:var(--panel);border:1px solid var(--line);
-    padding:30px 32px;box-shadow:0 30px 60px -40px rgba(0,0,0,.95);
-    clip-path:polygon(0 0,100% 0,100% 100%,16px 100%,0 calc(100% - 16px))}
-  .rv-card:nth-child(1){top:calc(var(--navh) + 40px)}
-  .rv-card:nth-child(2){top:calc(var(--navh) + 66px)}
-  .rv-card:nth-child(3){top:calc(var(--navh) + 92px)}
-  .rv-card:nth-child(4){top:calc(var(--navh) + 118px)}
-  .rv-card:nth-child(5){top:calc(var(--navh) + 144px)}
-  .rv-top{display:flex;align-items:center;gap:16px}
-  .rv-avatar{width:54px;height:54px;flex:none;border-radius:13px;display:grid;place-items:center;
-    background:var(--chrome);color:#0a0a0b;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
-    font-size:21px;letter-spacing:.02em}
-  .rv-id{display:flex;flex-direction:column;gap:1px}
-  .rv-name{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.04em;font-size:19px;line-height:1.1}
-  .rv-role{font-size:13.5px;color:var(--muted)}
-  .rv-rate{display:flex;align-items:center;gap:9px;margin:18px 0 0}
-  .rv-rate .score{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:17px}
-  .rv-stars{display:flex;gap:3px}
-  .rv-stars svg{width:16px;height:16px}
-  .rv-stars .s-full{color:#f3f3f5}
-  .rv-stars .s-empty{color:var(--muted-2);opacity:.4}
-  .rv-quote{margin-top:16px;color:#d6d6db;font-size:16px;line-height:1.55;text-wrap:pretty}
-  .rv-svc{margin-top:18px;display:inline-flex;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
-    text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--muted);
-    border:1px solid var(--line);padding:5px 11px;border-radius:999px}
+  /* ---------- STORY · vertical spine timeline ---------- */
+  .story{padding:104px 0 20px}
+  .ab-tl{list-style:none;margin-top:52px}
+  .ab-tl-item{display:grid;grid-template-columns:minmax(110px,170px) 1fr;gap:32px;align-items:start}
+  .ab-tl-year{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    font-size:clamp(32px,4.2vw,58px);line-height:.9;letter-spacing:.012em;display:block;padding-top:2px}
+  .ab-tl-body{position:relative;border-left:1px solid var(--line);padding:0 0 52px 32px;max-width:68ch}
+  .ab-tl-body::before{content:"";position:absolute;left:-4px;top:9px;width:7px;height:7px;border-radius:50%;
+    background:var(--chrome);box-shadow:0 0 0 4px var(--bg),0 0 14px rgba(240,240,244,.35)}
+  .ab-tl-item:last-child .ab-tl-body{padding-bottom:8px}
+  .ab-tl-body h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.03em;font-size:24px;line-height:1.05}
+  .ab-tl-body p{margin-top:12px;color:var(--muted);font-size:16px;line-height:1.6;text-wrap:pretty}
+  .ab-tl-body p + p{margin-top:10px}
+
+  /* ---------- OPENING TIMELINE · two dated panels ---------- */
+  .ab-open{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:8px;
+    background:var(--line);border:1px solid var(--line)}
+  .ab-open-item{background:var(--panel);padding:30px 30px 34px;display:flex;flex-direction:column;gap:9px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 26px 50px -44px rgba(0,0,0,.95)}
+  .ab-open-k{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.22em;font-size:11.5px;color:var(--muted)}
+  .ab-open-v{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;letter-spacing:.015em;font-size:clamp(26px,3vw,38px);line-height:1}
+  .ab-open-n{color:var(--muted);font-size:14.5px;line-height:1.55;text-wrap:pretty}
+
+  /* ---------- STUDIO PHOTOS · staggered portrait band ---------- */
+  .photos{padding:88px 0 60px}
+  .ab-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;margin-bottom:46px}
+  .ab-photo{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--panel);
+    box-shadow:0 34px 64px -46px rgba(0,0,0,.98),0 2px 0 rgba(255,255,255,.03) inset}
+  .ab-photo:nth-child(2){transform:translateY(40px)}
+  .ab-photo img{width:100%;aspect-ratio:2/3;object-fit:cover;filter:brightness(.93) saturate(.94);
+    transition:transform .5s var(--ease),filter .5s var(--ease)}
+  .ab-photo:hover img{transform:scale(1.035);filter:none}
+  .ab-cap{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 15px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:500;text-transform:uppercase;
+    letter-spacing:.2em;font-size:11px;color:#dcdce2;
+    background:linear-gradient(180deg,rgba(10,10,11,0) 0%,rgba(10,10,11,.5) 44%,rgba(10,10,11,.88) 100%)}
+
+  /* ---------- PROTOCOL · staggered numbered ladder ---------- */
+  .protocol{position:relative;padding:96px 0 104px;background:var(--bg-2)}
+  .protocol::before,.protocol::after{content:"";position:absolute;left:0;right:0;height:140px;pointer-events:none}
+  .protocol::before{top:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(12,12,14,.72) 38%,rgba(13,13,15,.3) 72%,rgba(14,14,16,0) 100%)}
+  .protocol::after{bottom:0;background:linear-gradient(0deg,var(--bg) 0%,rgba(12,12,14,.72) 38%,rgba(13,13,15,.3) 72%,rgba(14,14,16,0) 100%)}
+  .protocol .wrap{position:relative;z-index:1}
+  .ab-proto{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:20px 24px;margin-top:52px;align-items:start}
+  .ab-proto-step{position:relative;background:var(--panel);border:1px solid var(--line);
+    padding:28px 30px 30px 30px;display:flex;flex-direction:column;gap:10px;
+    box-shadow:0 28px 54px -46px rgba(0,0,0,.95),inset 0 1px 0 rgba(255,255,255,.035);
+    clip-path:polygon(0 0,100% 0,100% 100%,16px 100%,0 calc(100% - 16px));
+    transition:background .3s var(--ease),transform .3s var(--ease)}
+  .ab-proto-step:hover{background:var(--panel-2);transform:translateY(-3px)}
+  .ab-proto-step::before{content:"";position:absolute;left:0;top:0;width:56px;height:2px;background:var(--chrome)}
+  .ab-proto li:nth-child(even){margin-top:40px}
+  .ab-proto-no{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    font-size:42px;line-height:.82;letter-spacing:.01em;color:transparent;-webkit-text-stroke:1px var(--line-strong)}
+  .ab-proto-step h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.03em;font-size:21px;line-height:1.08;margin-top:6px}
+  .ab-proto-step p{color:var(--muted);font-size:14.5px;line-height:1.55;text-wrap:pretty}
+
+  /* ---------- DISCIPLINES · editorial index rows ---------- */
+  .disciplines{padding:96px 0 40px}
+  .ab-index{margin-top:46px;border-top:1px solid var(--line)}
+  .ab-disc{display:grid;grid-template-columns:56px minmax(150px,1.05fr) 2fr 28px;align-items:center;gap:20px;
+    padding:22px 8px 22px 0;border-bottom:1px solid var(--line);min-height:76px;
+    transition:background .28s var(--ease),padding-left .28s var(--ease)}
+  .ab-disc:hover,.ab-disc:focus-visible{background:linear-gradient(90deg,rgba(255,255,255,.045),rgba(255,255,255,0) 72%);
+    padding-left:14px}
+  .ab-disc-no{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    letter-spacing:.2em;font-size:12px;color:var(--muted)}
+  .ab-disc-name{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.03em;font-size:clamp(20px,2.1vw,27px);line-height:1.05}
+  .ab-disc-note{color:var(--muted);font-size:14.5px;line-height:1.5;text-wrap:pretty}
+  .ab-disc-arr{justify-self:end;color:var(--muted);font-size:17px;transition:transform .3s var(--ease),color .3s var(--ease)}
+  .ab-disc:hover .ab-disc-arr{transform:translateX(5px);color:var(--text)}
+
+  /* ---------- PROCESS · three top-ruled blocks ---------- */
+  .process{padding:88px 0 40px}
+  .ab-proc{display:grid;grid-template-columns:repeat(3,1fr);gap:46px;margin-top:50px}
+  .ab-proc-step{position:relative;padding-top:26px;border-top:1px solid var(--line)}
+  .ab-proc-step::before{content:"";position:absolute;top:-1px;left:0;width:54px;height:1px;background:var(--chrome)}
+  .ab-proc-no{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;font-size:50px;
+    line-height:.8;letter-spacing:.01em;color:transparent;-webkit-text-stroke:1px var(--line-strong)}
+  .ab-proc-step h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.03em;font-size:24px;margin-top:16px;line-height:1.05}
+  .ab-proc-step p{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.55;text-wrap:pretty}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:88px 0 30px}
+  .faq-list{margin-top:44px;border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+    gap:24px;padding:24px 0;min-height:68px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
+    letter-spacing:.02em;font-size:clamp(18px,1.8vw,23px);line-height:1.15;
+    transition:color .25s var(--ease)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary:hover{color:#fff}
+  .faq-item .fq-x{position:relative;flex:none;width:16px;height:16px}
+  .faq-item .fq-x::before,.faq-item .fq-x::after{content:"";position:absolute;left:0;top:7.5px;width:16px;height:1px;
+    background:var(--muted);transition:transform .3s var(--ease),background .3s var(--ease)}
+  .faq-item .fq-x::after{transform:rotate(90deg)}
+  .faq-item[open] .fq-x::after{transform:rotate(0)}
+  .faq-item[open] .fq-x::before,.faq-item[open] .fq-x::after{background:var(--text)}
+  .faq-item p,.faq-item .fq-a{padding:0 0 26px;max-width:70ch;color:var(--muted);font-size:16px;line-height:1.62}
 
   /* ---------- CTA ---------- */
   .cta{position:relative;margin-top:80px;padding:104px 0;text-align:center;background:var(--bg-2)}
@@ -200,9 +272,9 @@
   .cta .eyebrow{justify-content:center}
   .cta h2{font-size:clamp(38px,6vw,82px);margin:20px auto 0;max-width:15ch}
   .cta .actions{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  .cta .phone{margin-top:28px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;letter-spacing:.2em;
-    text-transform:uppercase;font-size:14px;color:var(--muted)}
-  .cta .phone strong{color:var(--text);font-weight:600}
+  .cta .cta-note{margin:28px auto 0;max-width:46ch;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
+    letter-spacing:.18em;text-transform:uppercase;font-size:13.5px;color:var(--muted)}
+  .cta .cta-note strong{color:var(--text);font-weight:600}
 
   footer{padding:30px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
     letter-spacing:.04em;text-align:center}
@@ -212,10 +284,14 @@
 
   @media(max-width:980px){
     .std-grid{grid-template-columns:repeat(2,1fr)}
-    .rv-grid{grid-template-columns:1fr;gap:34px}
-    .rv-left{position:static}
-    .rv-card:nth-child(n){top:calc(var(--navh) + 16px)}
-    .rv-stack{padding-bottom:10vh}
+    .ab-proto{grid-template-columns:1fr;gap:18px}
+    .ab-proto li:nth-child(even){margin-top:0}
+    .ab-proc{grid-template-columns:1fr;gap:34px}
+    .ab-disc{grid-template-columns:44px 1fr 24px;gap:0 14px;align-items:start;padding:20px 8px 22px 0}
+    .ab-disc-no{grid-column:1;grid-row:1;padding-top:6px}
+    .ab-disc-name{grid-column:2;grid-row:1}
+    .ab-disc-arr{grid-column:3;grid-row:1;align-self:center}
+    .ab-disc-note{grid-column:2 / 4;grid-row:2;margin-top:8px}
   }
   @media(max-width:760px){
     .wrap,.nav-inner{padding-left:22px;padding-right:22px}
@@ -224,12 +300,25 @@
     .hero-top{align-items:flex-start}
     .hero-stats{gap:30px}
     .std-grid{grid-template-columns:1fr}
+    .story{padding-top:72px}
+    .ab-tl-item{grid-template-columns:1fr;gap:10px}
+    .ab-tl-body{border-left:none;padding-left:0;padding-bottom:36px}
+    .ab-tl-body::before{display:none}
+    .ab-tl-item + .ab-tl-item{border-top:1px solid var(--line);padding-top:28px}
+    .ab-open{grid-template-columns:1fr}
+    .ab-photos{grid-template-columns:1fr;gap:14px;margin-bottom:0}
+    .ab-photo:nth-child(2){transform:none}
+    .photos{padding:64px 0 40px}
+    .protocol{padding:72px 0 78px}
+    .disciplines,.process,.faq{padding-top:72px}
   }
   @media(prefers-reduced-motion:reduce){
-    *{animation:none!important}
+    *{animation:none!important;transition:none!important}
     .hero h1 .ln span{transform:none}
     .hero .lead,.hero-stats,.hero .eyebrow{opacity:1}
     .reveal-up{opacity:1;transform:none}
+    .ab-photo:hover img{transform:none}
+    .ab-disc:hover{padding-left:0}
   }
 </style>
 <!-- REGION:jsonld -->
@@ -383,39 +472,176 @@
 </section>
 <!-- /REGION:trustbar -->
 
+<main id="main">
+
 <!-- ===================== HERO ===================== -->
-<section class="hero" data-screen-label="Why SERRES — Intro">
+<section class="hero" data-screen-label="About — Intro">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="../">Home</a>
       <span class="c-sep">/</span>
-      <span aria-current="page">Why SERRES</span>
+      <span aria-current="page">About</span>
     </nav>
     <div class="hero-top">
       <div>
         <span class="eyebrow">The Studio</span>
         <h1 class="display">
-          <span class="ln"><span>Why</span></span>
-          <span class="ln"><span class="chrome-text">SERRES</span></span>
-          <span class="ln"><span class="h1-kw">Detailing studio in Boca Raton, Florida</span></span>
+          <span class="ln"><span>From Barcelona</span></span>
+          <span class="ln"><span class="chrome-text">to Boca Raton</span></span>
+          <span class="ln"><span class="h1-kw">The studio, the protocol and the opening timeline</span></span>
         </h1>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><b class="chrome-text">1</b><span>Standard</span></div>
-        <div class="hstat"><b class="chrome-text">100%</b><span>Hand Finished</span></div>
-        <div class="hstat"><b class="chrome-text">0</b><span>Cut Corners</span></div>
+        <div class="hstat"><b class="chrome-text">2023</b><span>Barcelona studio</span></div>
+        <div class="hstat"><b class="chrome-text">6</b><span>Protocol steps</span></div>
+        <div class="hstat"><b class="chrome-text">2</b><span>Films we install</span></div>
       </div>
     </div>
-    <p class="lead">We are a detailing studio in Boca Raton, Florida, with one obsession: doing it properly. No shortcuts, no “good enough” — meticulous prep, premium materials and the same standards applied to a daily driver and a hypercar alike.</p>
+    <p class="lead">SERRES has protected cars in Barcelona since 2023 on one rule: the prep decides the result. Nothing about that changes in Florida. Same protocol, same two films, same refusal to hand a car back early — now in Boca Raton.</p>
+  </div>
+</section>
+
+<!-- ===================== STORY · 2023 → 2026 ===================== -->
+<section class="story" id="story" data-screen-label="About — Story">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">The story</span>
+        <h2>One studio.<br>Two coasts.</h2>
+      </div>
+      <p class="sh-note">How a Barcelona workshop ended up opening an install bay in South Florida — and what came with it.</p>
+    </div>
+
+    <ol class="ab-tl reveal-up">
+      <li class="ab-tl-item">
+        <span class="ab-tl-year chrome-text display">2023</span>
+        <div class="ab-tl-body">
+          <h3>SERRES opens in Barcelona</h3>
+          <p>A wrap and paint-protection studio built around a single conviction: almost every bad film job is a bad prep job. Decontaminate properly, measure the paint before you touch it, keep dust out of the bay — and the film does the rest.</p>
+          <p>The work that followed was mostly the difficult kind: widebody Porsches, satin wraps over long panels, full-front film. It is all in the gallery, shot in the bay it was finished in.</p>
+          <!-- TODO(owner): supply a car count you can stand behind ("X cars protected in Barcelona since 2023") and it goes here. The spec's "300+" is flagged unconfirmed and the Barcelona site says 50+ — see TODO.md item 13. Nothing is published until you confirm. -->
+        </div>
+      </li>
+      <li class="ab-tl-item">
+        <span class="ab-tl-year chrome-text display">Today</span>
+        <div class="ab-tl-body">
+          <h3>The protocol, written down</h3>
+          <p>Not house style — a checklist. Paint thickness gauged at intake, on every panel. Air filtered before it reaches a car. Gloss read before and after correction, so the improvement is a number instead of an opinion. Every stage photographed.</p>
+          <p>The film list is two: <strong>3M Scotchgard Pro Series 200</strong> and <strong>NAR H190</strong>. Both self-healing TPU, both with a real manufacturer warranty behind them — one flagship, one that does the same job for less. Cheap TPH film is not on it, and will not be.</p>
+        </div>
+      </li>
+      <li class="ab-tl-item">
+        <span class="ab-tl-year chrome-text display">2026</span>
+        <div class="ab-tl-body">
+          <h3>Boca Raton</h3>
+          <p>Florida asks more of paint than Barcelona does: year-round UV, salt air, love bugs, and rock chips off I-95 and Glades Road. The protocol was built for exactly that kind of punishment, so it crosses the Atlantic intact rather than being rebuilt from scratch.</p>
+          <p>The exact street address is announced in October 2026. The opening runs in two stages:</p>
+          <!-- Dates are business.js openingSoftLabel / openingFullLabel. Keep them in sync with that file. -->
+          <div class="ab-open">
+            <div class="ab-open-item">
+              <span class="ab-open-k">Stage one · detailing</span>
+              <span class="ab-open-v chrome-text">November 13, 2026</span>
+              <span class="ab-open-n">Detailing services open: interior details and paint correction, with gloss measured in and out.</span>
+            </div>
+            <div class="ab-open-item">
+              <span class="ab-open-k">Stage two · full PPF</span>
+              <span class="ab-open-v chrome-text">December 8, 2026</span>
+              <span class="ab-open-n">Full paint protection film launch, with the filtered install bay commissioned and both film tiers available.</span>
+            </div>
+          </div>
+          <!-- TODO(owner): confirm which of wraps, ceramic coating and window tint are bookable from Nov 13 and which wait for Dec 8. business.js only defines "detailing opens" and "full PPF launch", so nothing else is claimed here. -->
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== STUDIO PHOTOS ===================== -->
+<section class="photos" data-screen-label="About — Studio photos">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">The bay</span>
+        <h2>Shot under<br>our own lights.</h2>
+      </div>
+      <p class="sh-note">Barcelona work, shot at handover under the same hexagon lights the cars were finished under.</p>
+    </div>
+
+    <div class="ab-photos reveal-up">
+      <figure class="ab-photo">
+        <img src="../assets/gallery/landrover-studio-s.jpg" width="603" height="900" loading="lazy" decoding="async" alt="Range Rover Sport in a satin black car wrap, front three-quarter view under the studio's hexagon lights">
+        <figcaption class="ab-cap">Range Rover Sport · satin black wrap</figcaption>
+      </figure>
+      <figure class="ab-photo">
+        <img src="../assets/gallery/rwb-doors-s.jpg" width="600" height="900" loading="lazy" decoding="async" alt="RWB Porsche 993 head-on with both doors open under the studio's hexagon lights">
+        <figcaption class="ab-cap">RWB Porsche 993 · doors open in the studio</figcaption>
+      </figure>
+      <figure class="ab-photo">
+        <img src="../assets/gallery/gts-quarter-s.jpg" width="598" height="900" loading="lazy" decoding="async" alt="Porsche 911 Carrera GTS in a satin sand car wrap, front three-quarter view under the studio's hexagon lights">
+        <figcaption class="ab-cap">911 Carrera GTS · satin sand wrap</figcaption>
+      </figure>
+    </div>
+
+    <p class="std-links reveal-up">
+      <a href="../gallery/">See the full gallery <span class="arr">→</span></a>
+      <a href="../our-films/">The two films we install <span class="arr">→</span></a>
+    </p>
+  </div>
+</section>
+
+<!-- ===================== THE SERRES PROTOCOL ===================== -->
+<section class="protocol" id="protocol" data-screen-label="About — The SERRES protocol">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">The method</span>
+        <h2>The SERRES<br>protocol.</h2>
+      </div>
+      <p class="sh-note">Six fixed steps, on every car, at every price. None of them is an upsell and none of them is skipped when the day runs long.</p>
+    </div>
+
+    <ol class="ab-proto reveal-up">
+      <li class="ab-proto-step">
+        <span class="ab-proto-no" aria-hidden="true">01</span>
+        <h3>Paint thickness gauged at intake</h3>
+        <p>Before anything touches the car, every panel is read with an electronic thickness gauge and the numbers are recorded. Thin paint, filler and previous respray work show up here — not halfway through a correction pass.</p>
+      </li>
+      <li class="ab-proto-step">
+        <span class="ab-proto-no" aria-hidden="true">02</span>
+        <h3>HEPA-filtered bay</h3>
+        <p>The air in the install bay is HEPA-filtered before it reaches the car. A speck of dust trapped under paint protection film or vinyl is not a flaw you polish out later — it is permanent for the life of the film.</p>
+      </li>
+      <li class="ab-proto-step">
+        <span class="ab-proto-no" aria-hidden="true">03</span>
+        <h3>Anti-static prep</h3>
+        <p>Clean panels still pull dust out of the air. The anti-static prep step neutralizes the charge on the surface so the paint stops attracting the exact particles the filtered bay just removed.</p>
+      </li>
+      <li class="ab-proto-step">
+        <span class="ab-proto-no" aria-hidden="true">04</span>
+        <h3>Filtered-air dry</h3>
+        <p>After the final rinse the car is dried with filtered air, not towels. Nothing is dragged across decontaminated paint, and water is blown out of seams, badges and mirror bases before it can creep back under a freshly laid edge.</p>
+      </li>
+      <li class="ab-proto-step">
+        <span class="ab-proto-no" aria-hidden="true">05</span>
+        <h3>Gloss measurement</h3>
+        <p>Gloss is measured on the same panels, at the same points, before and after correction. Both readings go in your handover record. It is the difference between us telling you the paint improved and us showing you by how much.</p>
+      </li>
+      <li class="ab-proto-step">
+        <span class="ab-proto-no" aria-hidden="true">06</span>
+        <h3>Photo documentation</h3>
+        <p>Intake, mid-process and handover, photographed under the studio lights. The set goes to you with the car — which is also the record of the condition it arrived in.</p>
+      </li>
+    </ol>
+    <!-- TODO(owner): confirm the two customer-facing promises in steps 05 and 06 — that the before/after gloss readings and the full photo set are handed to the customer at collection. Both come from spec 6.9; neither is in a data file. -->
   </div>
 </section>
 
 <!-- ===================== STANDARDS ===================== -->
-<section class="standards" data-screen-label="Why SERRES — Standards">
+<section class="standards" data-screen-label="About — Standards">
   <div class="wrap">
     <div class="section-head reveal-up">
       <div>
-        <span class="eyebrow">The Difference</span>
+        <span class="eyebrow">The difference</span>
         <h2>Standards you<br>can measure.</h2>
       </div>
       <p class="sh-note">Four principles that decide whether a car leaves the studio — or stays until it's right.</p>
@@ -443,50 +669,192 @@
         <p>One point of contact from start to finish: the same team that quotes your car is the team that hands it back.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===================== DISCIPLINES ===================== -->
+<section class="disciplines" id="disciplines" data-screen-label="About — Disciplines">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">The scope</span>
+        <h2>Six disciplines.<br>One standard.</h2>
+      </div>
+      <p class="sh-note">Booked separately or combined into one project on one car. The protocol above does not change with the invoice.</p>
+    </div>
+
+    <div class="ab-index reveal-up">
+      <a class="ab-disc" href="../detailing/">
+        <span class="ab-disc-no">01</span>
+        <span class="ab-disc-name">Paint correction</span>
+        <span class="ab-disc-note">The foundation. Compound and polish until the swirls and holograms are gone, with the gloss reading to prove it.</span>
+        <span class="ab-disc-arr" aria-hidden="true">→</span>
+      </a>
+      <a class="ab-disc" href="../car-wraps/">
+        <span class="ab-disc-no">02</span>
+        <span class="ab-disc-name">Car wraps</span>
+        <span class="ab-disc-note">The identity. Full color change or chrome delete, edges wrapped in, film chosen with you panel by panel.</span>
+        <span class="ab-disc-arr" aria-hidden="true">→</span>
+      </a>
+      <a class="ab-disc" href="../paint-protection-film/">
+        <span class="ab-disc-no">03</span>
+        <span class="ab-disc-name">Paint protection film</span>
+        <span class="ab-disc-note">The insurance. Self-healing film over the panels that take the hits, laid in a filtered bay and tucked out of sight.</span>
+        <span class="ab-disc-arr" aria-hidden="true">→</span>
+      </a>
+      <a class="ab-disc" href="../ceramic-coating/">
+        <span class="ab-disc-no">04</span>
+        <span class="ab-disc-name">Ceramic coating</span>
+        <span class="ab-disc-note">The seal. Applied over paint, film or a fresh wrap so the surface stays slick and washing stops being a fight.</span>
+        <span class="ab-disc-arr" aria-hidden="true">→</span>
+      </a>
+      <a class="ab-disc" href="../window-tint/">
+        <span class="ab-disc-no">05</span>
+        <span class="ab-disc-name">Window tint</span>
+        <span class="ab-disc-note">The cabin. Ceramic IR-rejecting film in Florida-legal VLT options, cut and fitted to the glass in the same bay.</span>
+        <span class="ab-disc-arr" aria-hidden="true">→</span>
+      </a>
+      <a class="ab-disc" href="../detailing/">
+        <span class="ab-disc-no">06</span>
+        <span class="ab-disc-name">Interior detail</span>
+        <span class="ab-disc-note">The cockpit. Full strip-down, extraction, leather cleaned and fed — so the inside matches what we did to the outside.</span>
+        <span class="ab-disc-arr" aria-hidden="true">→</span>
+      </a>
+    </div>
 
     <p class="std-links reveal-up">
-      <a href="../detailing/">Professional detailing in Boca Raton <span class="arr">→</span></a>
-      <a href="../paint-protection-film/">PPF protection for your paint <span class="arr">→</span></a>
+      <a href="../pricing/">See every price <span class="arr">→</span></a>
+      <a href="../contact/">Get a quote for your car <span class="arr">→</span></a>
     </p>
   </div>
 </section>
 
-<!-- ===================== REVIEWS (sticky stacking) ===================== -->
-<!-- TODO(Miami): section hidden until the Miami branch has its OWN Google reviews. The parent studio's
-     testimonials, rating and review count must never be reused here. To enable: remove the
-     `hidden` attribute below and fill TESTIMONIALS[] (script at the end of the page) with real reviews. -->
-<section class="reviews" data-screen-label="Why SERRES — Reviews" hidden>
+<!-- ===================== PROCESS ===================== -->
+<section class="process" data-screen-label="About — Process">
   <div class="wrap">
-    <div class="rv-grid">
-      <!-- Sticky left column -->
-      <div class="rv-left">
-        <span class="rv-tag"><span class="dot"></span> What clients say</span>
-        <h2>Trusted with<br>the cars they<br>love most.</h2>
-        <p>From a first wrap to a full PPF and correction build — these are the people who handed us the keys, and what they said when they got them back.</p>
-        <div class="rv-actions">
-          <a href="../contact/" class="btn">Get a Quote <span class="arr">→</span></a>
-          <a href="./" class="btn ghost">See Projects</a>
-        </div>
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">How it works</span>
+        <h2>Three steps<br>to handover.</h2>
       </div>
+      <p class="sh-note">The same three whether it is a chrome delete or every painted panel on the car.</p>
+    </div>
 
-      <!-- Stacking cards -->
-      <div class="rv-stack" id="rvStack" data-i18n-skip></div>
+    <div class="ab-proc reveal-up">
+      <div class="ab-proc-step">
+        <span class="ab-proc-no" aria-hidden="true">01</span>
+        <h3>The consultation</h3>
+        <p>Bring the car, or just the idea. We talk finishes, films, coverage and budget — and tell you honestly what is worth doing on your car and what is not.</p>
+      </div>
+      <div class="ab-proc-step">
+        <span class="ab-proc-no" aria-hidden="true">02</span>
+        <h3>The written scope</h3>
+        <p>One document: the exact panels, the film tier, the timeline and the price. Every number on this site is published up front, so the quote holds no surprises.</p>
+      </div>
+      <div class="ab-proc-step">
+        <span class="ab-proc-no" aria-hidden="true">03</span>
+        <h3>The build</h3>
+        <p>The protocol runs start to finish, with photos at every stage. The car goes back under the lights with you before the keys change hands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+  TEAM SECTION — deliberately omitted.
+  TODO(owner): supply the Boca Raton names, roles and photos and a team section goes in here.
+  Nothing is shipped in the meantime: placeholder people on an About page are the one thing
+  a visitor is guaranteed to check. Tracked as TODO.md item 31.
+-->
+
+<!--
+  CLIENT REVIEWS — deliberately absent from this page.
+  TODO(owner): the Barcelona Google rating and testimonials must NOT be re-badged as US reviews
+  (TODO.md item 24). A review section goes in only once the Boca Raton studio has its own.
+-->
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq" id="faq" data-screen-label="About — FAQ">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Frequently asked questions</span>
+        <h2>About the studio</h2>
+      </div>
+      <p class="sh-note">What people ask before they hand over a car to a studio that has not opened yet.</p>
+    </div>
+
+    <div class="faq-list reveal-up">
+      <!-- Seeded from _build/us/faq/about.json. _build/regen.mjs wraps these in
+           REGION:faq:about/ and regenerates them, together with the FAQPage JSON-LD. -->
+      <!-- REGION:faq:about/ -->
+      <details class="faq-item">
+        <summary>Why is a Barcelona studio opening in Boca Raton?<span class="fq-x"></span></summary>
+        <p>Because South Florida is harder on paint than Barcelona is: year-round UV, salt air, love bugs and rock chips off I-95. The protocol we built in Barcelona was designed for exactly that kind of punishment, so we are bringing it over intact instead of starting again. Same two films, same warranty terms: Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>When does the Boca Raton studio open?<span class="fq-x"></span></summary>
+        <p>In two stages. Detailing services open on November 13, 2026, and the full paint protection film launch follows on December 8, 2026. The exact street address is announced in October 2026.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What does the SERRES protocol actually change?<span class="fq-x"></span></summary>
+        <p>Six fixed steps on every car, whatever it costs: paint thickness gauged at intake, a HEPA-filtered bay, anti-static prep, a filtered-air dry, gloss measured before and after correction, and a photo record of every stage. None of it is an optional extra and none of it is reserved for expensive cars.</p>
+      </details>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://serreswrap.com/about/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why is a Barcelona studio opening in Boca Raton?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because South Florida is harder on paint than Barcelona is: year-round UV, salt air, love bugs and rock chips off I-95. The protocol we built in Barcelona was designed for exactly that kind of punishment, so we are bringing it over intact instead of starting again. Same two films, same warranty terms: Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When does the Boca Raton studio open?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In two stages. Detailing services open on November 13, 2026, and the full paint protection film launch follows on December 8, 2026. The exact street address is announced in October 2026."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the SERRES protocol actually change?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Six fixed steps on every car, whatever it costs: paint thickness gauged at intake, a HEPA-filtered bay, anti-static prep, a filtered-air dry, gloss measured before and after correction, and a photo record of every stage. None of it is an optional extra and none of it is reserved for expensive cars."
+            }
+          }
+        ]
+      }
+      </script>
+      <!-- /REGION:faq:about/ -->
     </div>
   </div>
 </section>
 
 <!-- ===================== CTA ===================== -->
-<section class="cta" data-screen-label="Why SERRES — CTA">
+<section class="cta" data-screen-label="About — CTA">
   <div class="wrap">
     <span class="eyebrow">Bring us the car</span>
     <h2 class="display">Hold us to the <span class="chrome-text">standard.</span></h2>
     <div class="actions">
       <a href="../contact/" class="btn">Get a Quote <span class="arr">→</span></a>
-      <a href="../#services" class="btn ghost">Explore Services</a>
+      <a href="../pricing/" class="btn ghost">See Pricing</a>
     </div>
-    <p class="phone">Sant Cugat del Vallès, Barcelona &nbsp;·&nbsp; <strong>+34 649 66 33 80</strong></p>
+    <p class="cta-note">Detailing opens <strong>November 13, 2026</strong> &nbsp;·&nbsp; Full PPF <strong>December 8, 2026</strong></p>
   </div>
 </section>
+
+</main>
 
 <!-- REGION:ctaband -->
 <section class="us-ctaband" aria-labelledby="us-ctaband-title" data-us-region="ctaband">
@@ -574,44 +942,13 @@
     ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   els.forEach(e=>io.observe(e));
+  /* failsafes: anything already on screen, or still hidden after 1.6s, is shown anyway */
+  const show=()=>els.forEach(e=>{const r=e.getBoundingClientRect();
+    if(r.top<innerHeight*.94&&r.bottom>0){e.classList.add('in');io.unobserve(e);}});
+  show(); addEventListener('scroll',show,{passive:true});
+  setTimeout(()=>els.forEach(e=>e.classList.add('in')),1600);
 })();
 </script>
-
-<script>
-/* ---------- Reviews: stacking testimonial cards ---------- */
-(function(){
-  /* TODO(Miami): fill with REAL Miami reviews only — {name, role, rating, svc, quote} — never the parent studio's. */
-  const TESTIMONIALS=[];
-
-  function stars(r){
-    let out='';
-    for(let i=1;i<=5;i++){
-      const full=i<=Math.round(r);
-      out+='<svg viewBox="0 0 24 24" fill="currentColor" class="'+(full?'s-full':'s-empty')+'">'+
-        '<path d="M12 2l2.9 6.26L21.5 9.2l-4.75 4.43 1.2 6.62L12 17.1 6.05 20.25l1.2-6.62L2.5 9.2l6.6-.94z"/></svg>';
-    }
-    return out;
-  }
-  function initials(n){return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
-  function T(s){return (window.SERRES_I18N&&window.SERRES_I18N.t)?window.SERRES_I18N.t(s):s;}
-
-  function paint(){
-    document.getElementById('rvStack').innerHTML=TESTIMONIALS.map(t=>
-      '<article class="rv-card">'+
-        '<div class="rv-top">'+
-          '<div class="rv-avatar">'+initials(t.name)+'</div>'+
-          '<div class="rv-id"><span class="rv-name">'+t.name+'</span><span class="rv-role">'+T(t.role)+'</span></div>'+
-        '</div>'+
-        '<div class="rv-rate"><span class="score">'+t.rating.toFixed(1)+'</span><span class="rv-stars">'+stars(t.rating)+'</span></div>'+
-        '<p class="rv-quote">&ldquo;'+T(t.quote)+'&rdquo;</p>'+
-        '<span class="rv-svc">'+T(t.svc)+'</span>'+
-      '</article>').join('');
-  }
-  paint();
-  window.addEventListener('serres:langchange',paint);
-})();
-</script>
-
 
 <script src="../assets/serres-enhance.js" defer></script>
 <!-- data-us-assets-tail -->

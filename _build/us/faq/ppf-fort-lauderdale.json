@@ -1,0 +1,13 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "What does PPF cost for a Fort Lauderdale car?",
+      "a": "The same published list as everyone else: {{startingAt:ppf}} for a partial front in NAR H190, and {{price:full-front.essential}} for a full front in Essential. Nothing is added for the drive up. {{terms:tax}}"
+    },
+    {
+      "q": "Does the salt air off the water reach the paint?",
+      "a": "Yes, and it does not need spray to do it. A car kept near the Intracoastal picks up a salt film that pulls moisture out of the night air, holds it against the clear coat and works into every stone chip. Rinsing salt off film is easier than polishing etching out of paint. {{terms:warranty}}"
+    }
+  ]
+}

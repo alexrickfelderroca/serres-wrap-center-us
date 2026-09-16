@@ -1,0 +1,25 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "How much does a car wrap cost in Boca Raton?",
+      "a": "Chrome delete starts at {{price:chrome-delete}}, a full color change at {{price:color-change}}, and a Signature wrap in a premium or color-shift film at {{price:signature-wrap}}. {{terms:fromMeaning}} {{terms:tax}}"
+    },
+    {
+      "q": "Which wrap films do you use?",
+      "a": "For a full color change we install 3M 2080 and Avery Dennison SW900 in gloss, satin or matte. Signature wraps use premium film: Inozetek Super Gloss, KPMF and color-shift finishes. Over 150 colors across those brands. {{terms:warranty}}"
+    },
+    {
+      "q": "Does a wrap damage the paint underneath?",
+      "a": "No. Vinyl is removed with controlled heat, and on factory paint in good condition the surface underneath is left as it was on the day of installation. Repainted or already damaged panels are assessed one by one before we start, and we say so before you book if a panel is not a candidate."
+    },
+    {
+      "q": "Can you wrap only part of the car?",
+      "a": "Yes. Roof, mirrors, spoiler, stripes and one-off requests are quoted individually: {{price:accents}}. A chrome delete covers window trim, grille surround and badges {{from:chrome-delete}}, and it is the cheapest way to change how the car reads from the front."
+    },
+    {
+      "q": "Should I wrap the car or protect it with PPF?",
+      "a": "A wrap changes how the car looks. Paint protection film is optically clear and protects the paint underneath, with full front from {{price:full-front.essential}} in NAR Essential film. The two combine on the same car, and we quote them together so you can see both numbers before deciding."
+    }
+  ]
+}

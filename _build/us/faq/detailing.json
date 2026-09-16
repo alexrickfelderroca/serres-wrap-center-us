@@ -1,0 +1,17 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "How much does detailing cost in Boca Raton?",
+      "a": "There are two services and two numbers. An Interior Detail starts at {{price:interior}} and a Paint Correction, one to two stage, starts at {{price:paint-correction}}. {{terms:fromMeaning}} {{terms:tax}}"
+    },
+    {
+      "q": "What is included in the interior detail?",
+      "a": "A full interior strip-down, hot extraction of carpets and upholstery, and leather cleaned and fed. Every panel, vent and seam is steamed and agitated, trim and glass are finished by hand, and the car goes back with nothing left to wipe. Vehicle size and how much has built up are what move the final number, and we confirm it at intake before any work starts."
+    },
+    {
+      "q": "What does paint correction do, and how many stages do I need?",
+      "a": "Correction is machine polishing that removes defects rather than hiding them. Stage 1 cuts, levelling swirls, scratches and oxidation. Stage 2 refines away the haze that cutting leaves. Stage 3 is a final jewelling pass for a show finish. The listed price covers one to two stages, which is what most daily-driven cars need, and a third stage is quoted separately when the clear coat asks for it. Gloss is read with a meter before and after, so the result is a number: a typical neglected panel goes from about 42 GU on arrival to about 94 GU after correction. It is also the right prep step before a ceramic coating, so the finish is sealed at its best rather than as found."
+    }
+  ]
+}

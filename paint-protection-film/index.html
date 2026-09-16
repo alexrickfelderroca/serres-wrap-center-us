@@ -90,7 +90,7 @@
     background:radial-gradient(46% 52% at 50% 50%,rgba(54,58,72,.34),rgba(10,10,11,0) 72%);}
   .hero .wrap{position:relative;z-index:1}
   .hero-top{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
-  .hero h1{font-size:clamp(56px,11.5vw,168px);margin:20px 0 0}
+  .hero h1{font-size:clamp(32px,5.6vw,72px);margin:20px 0 0}
   .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.03em}
   .hero h1 .ln span{display:block}
   @keyframes rise{from{transform:translateY(108%)}to{transform:translateY(0)}}
@@ -196,79 +196,123 @@
   .layer.l2{background:rgba(255,255,255,.035)}
   .layer.l3{background:rgba(255,255,255,.015)}
 
-  /* ---------- COLOR CAROUSEL ---------- */
-  .colors{padding:96px 0 40px;position:relative;overflow:hidden}
-  .col-filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
-  .chip{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.14em;font-size:13px;color:var(--muted);background:transparent;cursor:pointer;
-    border:1px solid var(--line);padding:9px 17px;border-radius:999px;
-    transition:color .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
-  .chip:hover{color:var(--text);border-color:var(--line-strong)}
-  .chip.active{color:#0a0a0b;background:var(--chrome);border-color:transparent}
-  .chip .ct{opacity:.55;margin-left:6px;font-size:11px}
-
-  .coverflow{margin-top:44px;position:relative}
-  .cf-stage{position:relative;overflow:hidden;padding:30px 0}
-  .cf-track{display:flex;align-items:center;gap:26px;
-    transition:transform .55s var(--ease);will-change:transform}
-  .film-card{flex:0 0 360px;width:360px;cursor:pointer;
-    transition:transform .55s var(--ease),opacity .55s var(--ease);transform:scale(.82);opacity:.4}
-  .film-card.active{transform:scale(1);opacity:1}
-  .film-skin{position:relative;height:300px;overflow:hidden;background:var(--c);
-    border:1px solid var(--line);box-shadow:0 30px 60px -40px rgba(0,0,0,.9)}
-  .film-skin::after{content:"";position:absolute;inset:0}
-  .film-card[data-finish="Gloss"] .film-skin::after{
-    background:linear-gradient(128deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,.05) 28%,
-      rgba(255,255,255,0) 50%,rgba(0,0,0,.12) 76%,rgba(0,0,0,.30) 100%)}
-  .film-card[data-finish="Satin"] .film-skin::after{
-    background:linear-gradient(150deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.02) 40%,rgba(0,0,0,.06) 72%,rgba(0,0,0,.16) 100%)}
-  .film-fam{padding:6px 4px 0;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--muted);opacity:0;transition:opacity .5s var(--ease)}
-  .film-card.active .film-fam{opacity:1}
-  .film-card[data-finish="Matte"] .film-skin::after{
-    background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 28%,rgba(0,0,0,.08) 100%)}
-  .film-card[data-finish="Color Shift"] .film-skin{background:var(--c)}
-  .film-card[data-finish="Color Shift"] .film-skin::after{
-    background:linear-gradient(122deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,0) 32%,rgba(0,0,0,.18) 100%)}
-  .film-flag{position:absolute;left:14px;top:14px;z-index:2;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.16em;
-    font-size:10.5px;color:#fff;background:rgba(0,0,0,.34);backdrop-filter:blur(4px);
-    border:1px solid rgba(255,255,255,.28);padding:4px 10px;border-radius:999px;opacity:0;transition:opacity .4s}
-  .film-card[data-finish="Color Shift"] .film-flag{opacity:1}
-  .film-meta{padding:18px 4px 0;display:flex;align-items:baseline;justify-content:space-between;gap:12px;
-    opacity:0;transition:opacity .5s var(--ease)}
-  .film-card.active .film-meta{opacity:1}
-  .film-name{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.03em;font-size:21px;line-height:1.04}
-  .film-code{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;letter-spacing:.16em;font-size:13px;color:var(--muted-2)}
-
-  .cf-controls{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:30px}
-  .cf-count{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;letter-spacing:.22em;text-transform:uppercase;
-    font-size:13px;color:var(--muted)}
-  .cf-count b{color:var(--text);font-weight:700}
-  .arrows{display:flex;gap:10px}
-  .arrow{width:48px;height:48px;border:1px solid var(--line-strong);background:transparent;color:var(--text);
-    cursor:pointer;display:grid;place-items:center;border-radius:50%;
-    transition:background .25s var(--ease),border-color .25s var(--ease),opacity .25s var(--ease)}
-  .arrow:hover{background:rgba(255,255,255,.06);border-color:#fff}
-  .arrow svg{width:18px;height:18px}
-  .cf-rail{height:2px;background:rgba(255,255,255,.10);position:relative;margin-top:26px;overflow:hidden}
-  .cf-rail i{position:absolute;left:0;top:0;height:100%;background:var(--chrome);
-    box-shadow:0 0 12px rgba(255,255,255,.5);transition:left .5s var(--ease),width .5s var(--ease)}
-  .col-note{margin-top:26px;color:var(--muted-2);font-size:13px;letter-spacing:.02em}
-
-  /* ---------- CTA ---------- */
-  .cta{position:relative;margin-top:80px;padding:104px 0;text-align:center;background:var(--bg-2)}
-  .cta::before,.cta::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line)}
-  .cta::before{top:0}.cta::after{bottom:0}
-  .cta .eyebrow{justify-content:center}
-  .cta h2{font-size:clamp(38px,6vw,82px);margin:20px auto 0;max-width:15ch}
-  .cta .actions{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  .cta .phone{margin-top:28px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;letter-spacing:.2em;
-    text-transform:uppercase;font-size:14px;color:var(--muted)}
-  .cta .phone strong{color:var(--text);font-weight:600}
-
   footer{padding:30px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
     letter-spacing:.04em;text-align:center}
+
+  /* ---------- anchors under the sticky header ---------- */
+  [id]{scroll-margin-top:96px}
+
+  /* ---------- HERO ACTIONS ---------- */
+  .hero-actions{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+  @media(prefers-reduced-motion:no-preference){
+    .hero-actions{opacity:0;animation:fade .9s var(--ease) .68s forwards}
+  }
+
+  /* ---------- COVERAGE TABLE ---------- */
+  .coverage{padding:96px 0 8px}
+  .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+    clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+  .cov-note{margin-top:24px;color:var(--muted);font-size:14.5px;max-width:74ch;text-wrap:pretty}
+  .cov-note a{border-bottom:1px solid rgba(255,255,255,.42);padding-bottom:1px;color:var(--text);
+    transition:border-color .25s var(--ease)}
+  .cov-note a:hover{border-color:#fff}
+
+  /* ---------- FILM TIERS ---------- */
+  .films{padding:88px 0 8px}
+  .tier-pair{margin-top:44px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .tier-card{position:relative;padding:32px 28px 28px;border:1px solid var(--line);
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 18px 40px -30px rgba(0,0,0,.92),
+      0 44px 88px -64px rgba(0,0,0,.85);
+    clip-path:polygon(0 0,100% 0,100% 100%,18px 100%,0 calc(100% - 18px));
+    transition:transform .3s var(--ease),border-color .3s var(--ease)}
+  .tier-card:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+  .tier-card.is-signature::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;
+    background:var(--chrome)}
+  .tier-kicker{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.28em;font-size:11.5px;color:var(--muted-2)}
+  .tier-card h3{margin-top:12px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
+    font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(24px,2.6vw,30px);
+    line-height:1.02;text-wrap:balance}
+  .tier-note{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.55;text-wrap:pretty}
+  .tier-specs{margin-top:24px;border-top:1px solid var(--line)}
+  .tier-specs > div{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+    padding:12px 0;border-bottom:1px solid var(--line)}
+  .tier-specs dt{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:500;
+    text-transform:uppercase;letter-spacing:.2em;font-size:11.5px;color:var(--muted-2)}
+  .tier-specs dd{font-size:15px;color:var(--text)}
+  .lnk-row{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:baseline}
+  .lnk-row a{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.14em;font-size:14px;color:var(--muted);
+    border-bottom:1px solid var(--line-strong);padding-bottom:2px;
+    transition:color .25s var(--ease),border-color .25s var(--ease)}
+  .lnk-row a:hover{color:var(--text);border-color:#fff}
+
+  /* ---------- FEATURE ICONS ---------- */
+  .feat .ficon{display:block;width:26px;height:26px;color:var(--muted)}
+  .feat .ficon svg{width:26px;height:26px;display:block}
+  .feat:hover .ficon{color:var(--text)}
+
+  /* ---------- PROCESS ---------- */
+  .process{padding:96px 0 8px}
+  .steps{list-style:none;margin-top:48px;border-top:1px solid var(--line)}
+  .step{position:relative;display:grid;
+    grid-template-columns:88px minmax(0,.95fr) minmax(0,1.35fr);gap:20px 32px;align-items:start;
+    padding:28px 8px 28px 0;border-bottom:1px solid var(--line);
+    transition:background .3s var(--ease)}
+  .step:hover{background:rgba(255,255,255,.022)}
+  .st-n{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    font-size:38px;line-height:.9;letter-spacing:.02em;
+    background:var(--chrome);-webkit-background-clip:text;background-clip:text;
+    color:transparent;-webkit-text-fill-color:transparent}
+  .step h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.03em;font-size:22px;line-height:1.06;text-wrap:balance}
+  .step p{color:var(--muted);font-size:15px;line-height:1.6;text-wrap:pretty}
+
+  /* ---------- PPF GALLERY ---------- */
+  .ppfgal{padding:96px 0 8px}
+  .gal-grid{margin-top:48px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .gal-shot{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--panel);
+    box-shadow:0 24px 50px -40px rgba(0,0,0,.95),0 60px 110px -80px rgba(0,0,0,.8)}
+  .gal-wide{grid-column:1/-1}
+  .gal-shot img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;
+    transition:transform .5s var(--ease)}
+  .gal-wide img{aspect-ratio:16/9}
+  .gal-shot:hover img{transform:scale(1.03)}
+  .gal-shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 14px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.16em;font-size:11.5px;color:#fff;
+    background:linear-gradient(180deg,rgba(8,8,9,0) 0%,rgba(8,8,9,.16) 34%,
+      rgba(8,8,9,.48) 64%,rgba(8,8,9,.84) 100%)}
+
+  /* ---------- QUOTE ---------- */
+  .quote{position:relative;margin-top:56px;padding:88px 0 96px;overflow:hidden}
+  .quote::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.012) 18%,
+      rgba(255,255,255,.03) 46%,rgba(255,255,255,.03) 58%,rgba(255,255,255,.012) 84%,
+      rgba(255,255,255,0) 100%)}
+  .quote > .wrap{position:relative;z-index:1}
+  .quote .us-form{max-width:820px}
+  /* quote-form.js injects its honesty notice and result state as the form's first
+     child; without this they would eat a single grid cell and shunt the first field
+     into the second column. */
+  .quote .us-form > .us-qf-note{grid-column:1/-1}
+  .quote .btn{margin-top:4px}
+  .form-foot{margin-top:20px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+  .form-foot p{color:var(--muted-2);font-size:13.5px;line-height:1.6;max-width:52ch}
+
+  @media(max-width:860px){
+    .tier-pair{grid-template-columns:1fr}
+    .step{grid-template-columns:52px minmax(0,1fr);gap:8px 18px;padding:24px 0}
+    .step h3{grid-column:2}
+    .step p{grid-column:2}
+    .st-n{font-size:26px;padding-top:3px}
+  }
+  @media(max-width:640px){
+    .gal-grid{grid-template-columns:1fr}
+    .gal-wide{grid-column:auto}
+    .gal-shot img,.gal-wide img{aspect-ratio:4/3}
+  }
 
   .reveal-up{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
   .reveal-up.in{opacity:1;transform:none}
@@ -278,8 +322,6 @@
     .xtext p{max-width:100%}
     .feat-grid{grid-template-columns:repeat(2,1fr)}
     .construct{grid-template-columns:1fr;gap:30px}
-    .film-card{flex-basis:300px;width:300px}
-    .film-skin{height:250px}
   }
   @media(max-width:760px){
     .wrap,.nav-inner{padding-left:22px;padding-right:22px}
@@ -288,15 +330,12 @@
     .hero-top{align-items:flex-start}
     .hero-stats{gap:30px}
     .feat-grid{grid-template-columns:1fr}
-    .film-card{flex-basis:240px;width:240px}
-    .film-skin{height:210px}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important}
     .hero h1 .ln span{transform:none}
     .hero .lead,.hero-stats,.hero .eyebrow{opacity:1}
     .reveal-up{opacity:1;transform:none}
-    .cf-track{transition:none}
   }
 </style>
 <!-- REGION:jsonld -->
@@ -595,6 +634,8 @@
 </section>
 <!-- /REGION:trustbar -->
 
+<main id="main">
+
 <!-- ===================== HERO ===================== -->
 <section class="hero" data-screen-label="PPF — Intro">
   <div class="wrap">
@@ -607,19 +648,120 @@
     </nav>
     <div class="hero-top">
       <div>
-        <span class="eyebrow">Service 03 · Paint Protection Film</span>
+        <span class="eyebrow">Service 01 · Paint Protection Film</span>
         <h1 class="display">
-          <span class="ln"><span class="chrome-text" data-i18n-skip>PPF</span></span>
-          <span class="ln"><span class="h1-kw">PPF in Boca Raton — paint protection for your car</span></span>
+          <span class="ln"><span class="chrome-text">Paint Protection Film</span></span>
+          <span class="ln"><span>(PPF) in Boca Raton</span></span>
         </h1>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><b class="chrome-text">50+</b><span>Film Colors</span></div>
-        <div class="hstat"><b class="chrome-text">100%</b><span>Reversible</span></div>
-        <div class="hstat"><b class="chrome-text">3</b><span>Film layers</span></div>
+        <div class="hstat"><b class="chrome-text">4</b><span>Coverage levels</span></div>
+        <div class="hstat"><b class="chrome-text">2</b><span>Film tiers</span></div>
+        <div class="hstat"><b class="chrome-text">1&nbsp;yr</b><span>Install warranty</span></div>
       </div>
     </div>
-    <p class="lead">We install PPF in Boca Raton, Florida, at our own workshop: an invisible urethane skin over your factory paint that absorbs stone chips, swirls and bug acid. Self-healing film with a 3-year warranty, from 890 €. Available clear, gloss, satin and full colour-shift.</p>
+    <p class="lead">A clear urethane skin over your factory paint. It takes the rock chips, the love-bug acid and the Florida sun so the paint underneath does not. Four coverage levels, two film tiers, prices published on this page — PPF <!--P:STARTING:ppf-->from $1,000<!--/P-->.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#coverage">Coverage &amp; prices <span class="arr">→</span></a>
+      <a class="btn ghost" href="#quote">Get a quote</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== COVERAGE & PRICES ===================== -->
+<section class="coverage" id="coverage" data-screen-label="PPF — Coverage &amp; prices">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Coverage &amp; prices</span>
+        <h2>How much of<br>the car.</h2>
+      </div>
+      <p class="sh-note">Four coverage levels, each available in either film tier. What you read here is what we quote.</p>
+    </div>
+
+    <table class="us-tier-table reveal-up">
+      <caption class="vh">PPF coverage options, what each one covers, and the price in each film tier</caption>
+      <thead>
+        <tr class="us-tier-row">
+          <th scope="col">Coverage</th>
+          <th scope="col">What is filmed</th>
+          <th scope="col">Essential · NAR H190</th>
+          <th scope="col">Signature · 3M Pro 200</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="us-tier-row">
+          <th scope="row" class="us-tier-name">Partial Front</th>
+          <td class="us-tier-cov">Full bumper, partial hood &amp; fenders, mirrors</td>
+          <td class="us-tier-price" data-tier="Essential"><small>From</small><!--P:PRICE:partial-front.essential-->$1,000<!--/P--></td>
+          <td class="us-tier-price" data-tier="Signature"><small>From</small><!--P:PRICE:partial-front.signature-->$1,150<!--/P--></td>
+        </tr>
+        <tr class="us-tier-row">
+          <th scope="row" class="us-tier-name">Full Front <span class="us-tier-badge">Most popular</span></th>
+          <td class="us-tier-cov">Full hood, full fenders, bumper, mirrors</td>
+          <td class="us-tier-price" data-tier="Essential"><small>From</small><!--P:PRICE:full-front.essential-->$1,900<!--/P--></td>
+          <td class="us-tier-price" data-tier="Signature"><small>From</small><!--P:PRICE:full-front.signature-->$2,150<!--/P--></td>
+        </tr>
+        <tr class="us-tier-row">
+          <th scope="row" class="us-tier-name">Track Pack</th>
+          <td class="us-tier-cov">Full front + rocker panels + A-pillars + leading roof edge</td>
+          <td class="us-tier-price" data-tier="Essential"><small>From</small><!--P:PRICE:track-pack.essential-->$2,600<!--/P--></td>
+          <td class="us-tier-price" data-tier="Signature"><small>From</small><!--P:PRICE:track-pack.signature-->$2,900<!--/P--></td>
+        </tr>
+        <tr class="us-tier-row">
+          <th scope="row" class="us-tier-name">Full Body</th>
+          <td class="us-tier-cov">Every painted panel</td>
+          <td class="us-tier-price" data-tier="Essential"><small>From</small><!--P:PRICE:full-body.essential-->$4,995<!--/P--></td>
+          <td class="us-tier-price" data-tier="Signature"><small>From</small><!--P:PRICE:full-body.signature-->$5,600<!--/P--></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="cov-note reveal-up">Both tiers are installed to the same protocol and carry the same 1-year SERRES installation warranty on top of the film manufacturer's own. Bigger or heavily contoured vehicles — trucks, SUVs, wide-body — are quoted on the car. <a href="../pricing/">See every service and price</a>.</p>
+  </div>
+</section>
+
+<!-- ===================== FILM TIERS ===================== -->
+<section class="films" data-screen-label="PPF — Film tiers">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Film tiers</span>
+        <h2>3M Signature vs<br>NAR Essential.</h2>
+      </div>
+      <p class="sh-note">Two films, one install protocol. The difference is the film itself and the warranty behind it.</p>
+    </div>
+
+    <div class="tier-pair reveal-up">
+      <article class="tier-card">
+        <span class="tier-kicker">Essential</span>
+        <h3>NAR H190 PPF</h3>
+        <p class="tier-note">Self-healing 7.5-mil TPU, 10-yr film warranty.</p>
+        <dl class="tier-specs">
+          <div><dt>Construction</dt><dd>7.5-mil TPU</dd></div>
+          <div><dt>Top coat</dt><dd>Self-healing</dd></div>
+          <div><dt>Film warranty</dt><dd>10 years</dd></div>
+          <div><dt>Full front</dt><dd><!--P:PRICE:full-front.essential-->$1,900<!--/P--></dd></div>
+        </dl>
+      </article>
+      <article class="tier-card is-signature">
+        <span class="tier-kicker">Signature</span>
+        <h3>3M Scotchgard Pro Series 200</h3>
+        <p class="tier-note">3M flagship PPF, up to 10-yr 3M warranty.</p>
+        <dl class="tier-specs">
+          <div><dt>Construction</dt><dd>3M flagship PPF</dd></div>
+          <div><dt>Top coat</dt><dd>Self-healing</dd></div>
+          <div><dt>Film warranty</dt><dd>Up to 10 years, by 3M</dd></div>
+          <div><dt>Full front</dt><dd><!--P:PRICE:full-front.signature-->$2,150<!--/P--></dd></div>
+        </dl>
+      </article>
+    </div>
+
+    <div class="lnk-row reveal-up">
+      <a href="../our-films/">Full film specifications on Our Films →</a>
+      <a href="#quote">Not sure which tier? Ask us →</a>
+    </div>
   </div>
 </section>
 
@@ -629,26 +771,26 @@
     <div class="section-head reveal-up">
       <div>
         <span class="eyebrow">The Transformation</span>
-        <h2>Gloss in.<br>Satin out.</h2>
+        <h2>Every panel,<br>edge to edge.</h2>
       </div>
     </div>
     <div class="xform-grid">
       <div class="xtext reveal-up">
-        <p>Every panel was decontaminated, paint-corrected and measured before a single piece of film was laid. The satin PPF then went on edge-to-edge — bumper, arches, mirrors, door shuts — wrapping the factory gloss in a deep, stealth matte skin.</p>
-        <p>The result is a colour-and-texture change and a protective layer in one: stone-chip resistance, self-healing topcoat and a finish that's fully reversible.</p>
+        <p>Every panel was decontaminated, paint-corrected and measured before a single piece of film was laid. The film then went on edge-to-edge — bumper, arches, mirrors, door shuts — so there is no bare panel left for a stone to find.</p>
+        <p>What you are looking at is film, not paint. It absorbs the chips, heals its own wash marks, and lifts off years later with the factory finish underneath untouched.</p>
         <div class="xspecs">
           <div class="row"><span class="k">Vehicle</span><span class="v">BMW M2</span></div>
-          <div class="row"><span class="k">Film</span><span class="v">Satin Self-Healing PPF</span></div>
-          <div class="row"><span class="k">Coverage</span><span class="v">Full body wrap</span></div>
-          <div class="row"><span class="k">Warranty</span><span class="v">3 yr</span></div>
+          <div class="row"><span class="k">Film</span><span class="v">Self-healing TPU paint protection film</span></div>
+          <div class="row"><span class="k">Coverage</span><span class="v">Full body — every painted panel</span></div>
+          <div class="row"><span class="k">Warranty</span><span class="v">Manufacturer film warranty + 1-yr SERRES install</span></div>
         </div>
       </div>
       <div class="reveal-up">
         <div class="compare touched" id="compare">
-          <img class="after" src="../assets/ppf/after.webp" width="1000" height="1500" loading="lazy" decoding="async" alt="BMW M2 after — SERRES satin PPF" draggable="false">
+          <img class="after" src="../assets/ppf/after.webp" width="1000" height="1500" loading="lazy" decoding="async" alt="BMW M2 after — full-body SERRES paint protection film" draggable="false">
           <img class="before" id="beforeImg" src="../assets/ppf/before.webp" width="1290" height="1710" loading="lazy" decoding="async" alt="BMW M2 before — factory gloss" draggable="false">
           <div class="cmp-tag bef" id="tagBef"><small>Before</small>Factory Gloss</div>
-          <div class="cmp-tag aft" id="tagAft"><small>After</small>Satin PPF</div>
+          <div class="cmp-tag aft" id="tagAft"><small>After</small>Full-body PPF</div>
           <div class="cmp-divider" id="divider"></div>
           <button class="cmp-handle" id="handle" aria-label="Drag to compare before and after">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg>
@@ -665,35 +807,40 @@
   <div class="wrap">
     <div class="section-head reveal-up">
       <div>
-        <span class="eyebrow">Why PPF</span>
-        <h2>Protection you<br>never see.</h2>
+        <span class="eyebrow">Why PPF in Florida</span>
+        <h2>What this coast<br>does to paint.</h2>
       </div>
+      <p class="sh-note">Every one of these is a South Florida problem before it is a paint problem. Film is the layer that takes them instead of your clear coat.</p>
     </div>
 
     <div class="feat-grid reveal-up">
       <div class="feat">
+        <span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l7.2 3v6.1c0 4.3-3.1 7-7.2 9.3C7.9 18.9 4.8 16.2 4.8 11.9V5.8z"/><path d="M9.3 9.6l1.4 1.9 2-1.3 1.9 2.4"/><circle cx="8.6" cy="14.6" r=".9"/></svg></span>
         <span class="fnum">01</span>
-        <h3>Stone-chip<br>defense</h3>
-        <p>Absorbs the impact of gravel, debris and road grit across the highest-risk panels.</p>
+        <h3>I-95<br>rock chips</h3>
+        <p>Six lanes of traffic flicking gravel at your hood and bumper on every commute. The film absorbs the strike; the paint under it never knows.</p>
       </div>
       <div class="feat">
+        <span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg></span>
         <span class="fnum">02</span>
-        <h3>Self-healing<br>topcoat</h3>
-        <p>Light swirls and scratches vanish with heat from the sun or warm water.</p>
+        <h3>UV and<br>sun fade</h3>
+        <p>Florida sun works on clear coat all year, not for one summer. The film's top coat carries the UV load and keeps the gloss where it started.</p>
       </div>
       <div class="feat">
+        <span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="12" cy="14" rx="3.4" ry="5.2"/><circle cx="12" cy="6.9" r="2.1"/><path d="M10.7 5.2L9.1 3.5M13.3 5.2l1.6-1.7M8.6 11.2H5.2M15.4 11.2h3.4M8.6 15.1H5.6M15.4 15.1h3M12 9v10"/></svg></span>
         <span class="fnum">03</span>
-        <h3>Stain &amp;<br>UV resistant</h3>
-        <p>Repels bug acid, sap, salt and fuel, and blocks the UV that fades paint over time.</p>
+        <h3>Love bug<br>season</h3>
+        <p>Twice a year they arrive in clouds and what they leave behind is acidic. Off film they wash away; off bare clear coat they etch.</p>
       </div>
       <div class="feat">
+        <span class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2.8 17.4c1.9-2.1 3.8-2.1 5.7 0s3.8 2.1 5.7 0 3.8-2.1 5.7 0"/><path d="M2.8 12.6c1.9-2.1 3.8-2.1 5.7 0s3.8 2.1 5.7 0 3.8-2.1 5.7 0"/><circle cx="7" cy="6.4" r=".9"/><circle cx="12.2" cy="7.6" r=".9"/><circle cx="17.2" cy="5.6" r=".9"/></svg></span>
         <span class="fnum">04</span>
-        <h3>Fully<br>removable</h3>
-        <p>Lifts cleanly years later with no residue — protecting resale and original finish.</p>
+        <h3>Sand and<br>salt air</h3>
+        <p>Wind-blown sand sandblasts the leading edges — bumper, mirrors, A-pillars — and coastal salt sits on everything else. Those are the exact panels every coverage level starts with.</p>
       </div>
     </div>
 
-    <div class="construct reveal-up">
+    <div class="construct reveal-up">    <div class="construct reveal-up">
       <div class="ct-copy">
         <h3>Three layers,<br>one invisible skin.</h3>
         <p>Each PPF panel is a precision-engineered stack — a sacrificial self-healing topcoat, a shock-absorbing urethane core and a clear, conformable adhesive that disappears over your paint.</p>
@@ -716,37 +863,81 @@
   </div>
 </section>
 
-<!-- ===================== COLOR CAROUSEL ===================== -->
-<section class="colors" data-screen-label="PPF — Colors">
+<!-- ===================== PROCESS ===================== -->
+<section class="process" data-screen-label="PPF — Process">
   <div class="wrap">
     <div class="section-head reveal-up">
       <div>
-        <span class="eyebrow">Color PPF</span>
-        <h2>Protect it.<br>Express it.</h2>
+        <span class="eyebrow">The install</span>
+        <h2>Five steps,<br>no shortcuts.</h2>
       </div>
-      <p class="sh-note">PPF isn't only clear. 50+ colors from several professional brands — gloss, satin, matte and colour-shift — a finish change and a shield in a single film.</p>
+      <p class="sh-note">The same protocol our Barcelona studio runs. Nothing gets skipped because a car is booked tight.</p>
     </div>
 
-    <div class="col-filters reveal-up" id="colBrands" data-i18n-skip></div>
-    <div class="col-filters reveal-up" id="colFilters" data-i18n-skip style="margin-top:12px"></div>
+    <ol class="steps reveal-up">
+      <li class="step">
+        <span class="st-n">01</span>
+        <h3>Wash &amp; decon</h3>
+        <p>Two-bucket wash, iron fallout remover, clay. Anything still on the paint ends up sealed under the film for years, so nothing is left on it.</p>
+      </li>
+      <li class="step">
+        <span class="st-n">02</span>
+        <h3>Paint inspection, thickness gauge</h3>
+        <p>We read the paint panel by panel with a thickness gauge and photograph what we find. Respray, filler or thin clear coat changes the plan — and you hear about it before we start, not after.</p>
+      </li>
+      <li class="step">
+        <span class="st-n">03</span>
+        <h3>HEPA-filtered install bay</h3>
+        <p>The car moves into a HEPA-filtered, anti-static bay. Airborne dust trapped under film is the single most common reason a panel has to come back off.</p>
+      </li>
+      <li class="step">
+        <span class="st-n">04</span>
+        <h3>Install</h3>
+        <p>Pattern cut for your exact model, edges wrapped in wherever the panel allows, filtered-air dry, then a panel-by-panel review under controlled light. A panel that is not right is redone before you see the car.</p>
+      </li>
+      <li class="step">
+        <span class="st-n">05</span>
+        <h3>Warranty &amp; aftercare</h3>
+        <p>You leave with the manufacturer film warranty — up to 10 years — plus a 1-year SERRES installation warranty covering lifting, bubbling and edge failure, and a written aftercare sheet for the first wash, the edges and which chemicals to keep away.</p>
+      </li>
+    </ol>
+    <!-- TODO(owner): confirm the exact aftercare figures (hours before first wash, pressure-washer
+         distance) so they can be printed here instead of described. -->
+  </div>
+</section>
 
-    <div class="coverflow reveal-up">
-      <div class="cf-stage">
-        <div class="cf-track" id="cfTrack" data-i18n-skip></div>
+<!-- ===================== GALLERY ===================== -->
+<section class="ppfgal" data-screen-label="PPF — Gallery">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Proven in Barcelona</span>
+        <h2>Cars we<br>have filmed.</h2>
       </div>
-      <div class="cf-controls">
-        <div class="cf-count"><b id="cfIndex">01</b> / <span id="cfTotal">00</span></div>
-        <div class="arrows">
-          <button class="arrow" id="cfPrev" aria-label="Previous color">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button class="arrow" id="cfNext" aria-label="Next color">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="cf-rail"><i id="cfRail"></i></div>
-      <p class="col-note">Finishes shown are representative of the protection film ranges we install. Final swatches confirmed in-studio under our lighting before application.</p>
+      <p class="sh-note">Work from our Barcelona studio. Same films, same protocol, same hands — now opening in Boca Raton.</p>
+    </div>
+
+    <div class="gal-grid reveal-up">
+      <figure class="gal-shot gal-wide">
+        <img src="../assets/gallery/xm-front-s.jpg" alt="BMW XM in full-body paint protection film, front three-quarter view on a tree-lined road" width="900" height="600" loading="lazy" decoding="async">
+        <figcaption>BMW XM · Full body PPF</figcaption>
+      </figure>
+      <figure class="gal-shot">
+        <img src="../assets/gallery/m2-front-s.jpg" alt="BMW M2 front end finished in full-body paint protection film" width="600" height="900" loading="lazy" decoding="async">
+        <figcaption>BMW M2 · Full body PPF</figcaption>
+      </figure>
+      <figure class="gal-shot">
+        <img src="../assets/gallery/xm-rear-s.jpg" alt="Rear of the BMW XM in paint protection film, showing the stacked quad exhaust" width="520" height="780" loading="lazy" decoding="async">
+        <figcaption>BMW XM · Rear quarter</figcaption>
+      </figure>
+    </div>
+    <!-- TODO(owner): the gallery page describes the M2 as a frozen-grey wrap while this page
+         documents it as full-body self-healing film. Confirm which is correct for that car. -->
+
+    <div class="lnk-row reveal-up">
+      <a href="../gallery/">See the full gallery →</a>
+      <a href="../car-wraps/">Car wraps →</a>
+      <a href="../ceramic-coating/">Ceramic coating →</a>
     </div>
   </div>
 </section>
@@ -790,33 +981,33 @@
 
       <!-- REGION:faq:paint-protection-film/ -->
       <details class="faq-item">
-        <summary>How much does PPF cost in Boca Raton?<span class="fq-x"></span></summary>
-        <p>Partial front starts at $1,000 and full front at $1,900 on our Essential film; full body is $4,995. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax.</p>
+        <summary>Will paint protection film turn yellow?<span class="fq-x"></span></summary>
+        <p>No. Both films we install are TPU, not the old PVC film that yellowed in the sun. Essential is NAR H190 PPF and Signature is 3M Scotchgard Pro Series 200, and each carries its manufacturer's own warranty against yellowing, cracking and staining. Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty.</p>
       </details>
 
       <details class="faq-item">
-        <summary>What is the difference between the Essential and Signature films?<span class="fq-x"></span></summary>
-        <p>Essential is NAR H190 PPF — Self-healing 7.5-mil TPU, 10-yr film warranty. Signature is 3M Scotchgard Pro Series 200 — 3M flagship PPF, up to 10-yr 3M warranty. Both are installed to the same protocol and both carry the same 1-year SERRES installation warranty.</p>
+        <summary>Does the film really heal its own scratches?<span class="fq-x"></span></summary>
+        <p>Yes, within limits. The top coat is self-healing: swirl marks and light wash scuffs close up with heat from the sun or warm water. A deep gouge that cuts right through the film does not heal - but it stopped at the film instead of at your paint, which is the point.</p>
       </details>
 
       <details class="faq-item">
-        <summary>Does PPF really self-heal?<span class="fq-x"></span></summary>
-        <p>Yes. The film’s top coat is self-healing: wash micro-scratches and light scuffs disappear with the heat of the sun or warm water. Gravel impacts are absorbed by the thickness of the film before they reach the paint.</p>
+        <summary>What exactly does the warranty cover?<span class="fq-x"></span></summary>
+        <p>Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty. The film manufacturer covers the film itself against defects such as yellowing, cracking, bubbling and delamination. Our year covers the installation: lifting edges, trapped dirt, anything that is our work rather than the film.</p>
       </details>
 
       <details class="faq-item">
-        <summary>What does the installation look like?<span class="fq-x"></span></summary>
-        <p>Paint decontamination and correction, a pattern cut for your exact model, application in a clean booth and a panel-by-panel review under controlled lighting. If anything falls short of our standard it is redone before delivery.</p>
+        <summary>How long does the car stay with you?<span class="fq-x"></span></summary>
+        <p>One to three days for most cars, depending on coverage. A partial front or full front is usually a single day. Track Pack and full body need two to three, because every panel is decontaminated and inspected before any film is laid. The exact number of days for your car comes with the quote.</p>
       </details>
 
       <details class="faq-item">
-        <summary>How long does it take and how do I book?<span class="fq-x"></span></summary>
-        <p>A front end is delivered in 1 to 2 working days, a full body in 3 to 5. We work by appointment, Mon–Sat 9:00 AM – 6:00 PM. Send your make & model — exact quote within 2 hours. Booking secured with a 30% deposit.</p>
+        <summary>How do I look after a filmed car?<span class="fq-x"></span></summary>
+        <p>Wash it like paint, just more gently. Hand wash with a pH-neutral shampoo, keep a pressure washer off the film edges, and leave polishes, waxes and anything abrasive out of it. A ceramic top-up over fresh film makes washing easier again: from $600.</p>
       </details>
 
       <details class="faq-item">
-        <summary>Which is better, PPF or a ceramic coating?<span class="fq-x"></span></summary>
-        <p>They do different jobs. PPF physically absorbs stone chips and scratches; a ceramic coating adds gloss, water beading and easier washing, from $600. The most complete combination is PPF on the impact zones and ceramic on the rest, and we quote both together.</p>
+        <summary>Can the film be removed later?<span class="fq-x"></span></summary>
+        <p>Yes - film is designed to come off. With heat and slow, controlled pulling it lifts away without taking the clear coat with it, which is exactly why owners film a car before they sell it. Film left on long past its warranty life gets harder to remove, so do not leave a failing panel on the car.</p>
       </details>
 
       <script type="application/ld+json">
@@ -827,50 +1018,50 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "How much does PPF cost in Boca Raton?",
+            "name": "Will paint protection film turn yellow?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Partial front starts at $1,000 and full front at $1,900 on our Essential film; full body is $4,995. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax."
+              "text": "No. Both films we install are TPU, not the old PVC film that yellowed in the sun. Essential is NAR H190 PPF and Signature is 3M Scotchgard Pro Series 200, and each carries its manufacturer's own warranty against yellowing, cracking and staining. Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty."
             }
           },
           {
             "@type": "Question",
-            "name": "What is the difference between the Essential and Signature films?",
+            "name": "Does the film really heal its own scratches?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Essential is NAR H190 PPF — Self-healing 7.5-mil TPU, 10-yr film warranty. Signature is 3M Scotchgard Pro Series 200 — 3M flagship PPF, up to 10-yr 3M warranty. Both are installed to the same protocol and both carry the same 1-year SERRES installation warranty."
+              "text": "Yes, within limits. The top coat is self-healing: swirl marks and light wash scuffs close up with heat from the sun or warm water. A deep gouge that cuts right through the film does not heal - but it stopped at the film instead of at your paint, which is the point."
             }
           },
           {
             "@type": "Question",
-            "name": "Does PPF really self-heal?",
+            "name": "What exactly does the warranty cover?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. The film’s top coat is self-healing: wash micro-scratches and light scuffs disappear with the heat of the sun or warm water. Gravel impacts are absorbed by the thickness of the film before they reach the paint."
+              "text": "Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty. The film manufacturer covers the film itself against defects such as yellowing, cracking, bubbling and delamination. Our year covers the installation: lifting edges, trapped dirt, anything that is our work rather than the film."
             }
           },
           {
             "@type": "Question",
-            "name": "What does the installation look like?",
+            "name": "How long does the car stay with you?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Paint decontamination and correction, a pattern cut for your exact model, application in a clean booth and a panel-by-panel review under controlled lighting. If anything falls short of our standard it is redone before delivery."
+              "text": "One to three days for most cars, depending on coverage. A partial front or full front is usually a single day. Track Pack and full body need two to three, because every panel is decontaminated and inspected before any film is laid. The exact number of days for your car comes with the quote."
             }
           },
           {
             "@type": "Question",
-            "name": "How long does it take and how do I book?",
+            "name": "How do I look after a filmed car?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A front end is delivered in 1 to 2 working days, a full body in 3 to 5. We work by appointment, Mon–Sat 9:00 AM – 6:00 PM. Send your make & model — exact quote within 2 hours. Booking secured with a 30% deposit."
+              "text": "Wash it like paint, just more gently. Hand wash with a pH-neutral shampoo, keep a pressure washer off the film edges, and leave polishes, waxes and anything abrasive out of it. A ceramic top-up over fresh film makes washing easier again: from $600."
             }
           },
           {
             "@type": "Question",
-            "name": "Which is better, PPF or a ceramic coating?",
+            "name": "Can the film be removed later?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "They do different jobs. PPF physically absorbs stone chips and scratches; a ceramic coating adds gloss, water beading and easier washing, from $600. The most complete combination is PPF on the impact zones and ceramic on the rest, and we quote both together."
+              "text": "Yes - film is designed to come off. With heat and slow, controlled pulling it lifts away without taking the clear coat with it, which is exactly why owners film a car before they sell it. Film left on long past its warranty life gets harder to remove, so do not leave a failing panel on the car."
             }
           }
         ]
@@ -887,16 +1078,51 @@
   </div>
 </section>
 
-<!-- ===================== CTA ===================== -->
-<section class="cta" data-screen-label="PPF — CTA">
+<!-- ===================== QUOTE ===================== -->
+<section class="quote" id="quote" data-screen-label="PPF — Quote">
   <div class="wrap">
-    <span class="eyebrow">Shield your car</span>
-    <h2 class="display">Protect what you <span class="chrome-text">drive.</span></h2>
-    <div class="actions">
-      <a href="../contact/" class="btn">Get a Quote <span class="arr">→</span></a>
-      <a href="../gallery/" class="btn ghost">See Projects</a>
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Get a quote</span>
+        <h2>Tell us the car.<br>We price it exactly.</h2>
+      </div>
+      <p class="sh-note">Make, model and year change the pattern and the price. Send those and you get the real number for your car, not a range.</p>
     </div>
-    <p class="phone">Sant Cugat del Vallès, Barcelona &nbsp;·&nbsp; <strong>+34 649 66 33 80</strong></p>
+
+    <form class="us-form reveal-up" data-us-quote>
+      <div class="us-field">
+        <label class="us-label" for="ppfq-name">Your name</label>
+        <input class="us-input" id="ppfq-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="us-field">
+        <label class="us-label" for="ppfq-phone">Phone <em>(US number)</em></label>
+        <input class="us-input" id="ppfq-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+      </div>
+      <div class="us-field">
+        <label class="us-label" for="ppfq-email">Email <em>(optional)</em></label>
+        <input class="us-input" id="ppfq-email" name="email" type="email" autocomplete="email">
+      </div>
+      <div class="us-field">
+        <label class="us-label" for="ppfq-vehicle">Car — make, model, year</label>
+        <input class="us-input" id="ppfq-vehicle" name="vehicle" type="text" autocomplete="off" required>
+      </div>
+      <div class="us-field us-field-wide">
+        <label class="us-label" for="ppfq-service">Service</label>
+        <select class="us-select" id="ppfq-service" name="service" required>
+          <option value="" selected disabled>Select a service</option>
+        </select>
+      </div>
+      <div class="us-field us-field-wide">
+        <label class="us-label" for="ppfq-message">Anything else? <em>(optional)</em></label>
+        <textarea class="us-textarea" id="ppfq-message" name="message" rows="4"></textarea>
+      </div>
+      <div class="us-field us-field-wide">
+        <div class="form-foot">
+          <button class="btn" type="submit">Prepare my request <span class="arr">→</span></button>
+          <p>Our direct line is not open yet, so nothing is sent from here — you get your details back, ready to send the day it opens.</p>
+        </div>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -910,6 +1136,8 @@
   </ul>
 </div>
 <!-- /REGION:terms -->
+
+</main>
 
 <!-- REGION:ctaband -->
 <section class="us-ctaband" aria-labelledby="us-ctaband-title" data-us-region="ctaband">
@@ -1060,194 +1288,6 @@
   }
 })();
 </script>
-
-<script>
-/* ---------- Color PPF coverflow carousel — multimarca (Inozetek · 3M) ---------- */
-(function(){
-  const BRANDS=[
-    {id:"inozetek",label:"Inozetek",colors:[
-      // INOCOLOR GLOSS
-      {n:"Piano Black",c:"DPPF701",f:"Gloss",h:"#0b0b0d"},
-      {n:"Championship White",c:"DPPF702",f:"Gloss",h:"#f0f1ec"},
-      {n:"Cement Grey",c:"DPPF703",f:"Gloss",h:"#8d9091"},
-      {n:"Sand Dune",c:"DPPF704",f:"Gloss",h:"#c7b595"},
-      {n:"Petrol Blue",c:"DPPF705",f:"Gloss",h:"#1f5f6b"},
-      {n:"Shadow Green",c:"DPPF706",f:"Gloss",h:"#37473f"},
-      {n:"GT Silver",c:"DPPF709",f:"Gloss",h:"#b4b6b8"},
-      {n:"Sage Green",c:"DPPF710",f:"Gloss",h:"#8a9a80"},
-      {n:"Dragons Blood Red",c:"DPPF711",f:"Gloss",h:"#7c1c22"},
-      {n:"Royal Blue",c:"DPPF712",f:"Gloss",h:"#1f4ba6"},
-      {n:"Solar Flame",c:"DPPF713",f:"Gloss",h:"#f4501e"},
-      {n:"Pearl Yellow",c:"DPPF714",f:"Gloss",h:"#f5d76e"},
-      {n:"Midnight Purple",c:"DPPF901",f:"Gloss",h:"#2e1a47"},
-      {n:"Emerald Green",c:"DPPF902",f:"Gloss",h:"#0a6b47"},
-      {n:"Dolphin Grey",c:"DPPF904",f:"Gloss",h:"#828a8f"},
-      {n:"Perfect Black",c:"DPPF908",f:"Gloss",h:"#101113"},
-      {n:"Silver Bullet",c:"DPPF912",f:"Gloss",h:"#aeb2b5"},
-      {n:"Coastal Blue",c:"DPPF913",f:"Gloss",h:"#4a7ba6"},
-      {n:"Blue Raspberry",c:"DPPF914",f:"Gloss",h:"#2764c4"},
-      {n:"Black Cherry",c:"DPPF915",f:"Gloss",h:"#3b0f1e"},
-      {n:"Italia Red",c:"DPPF917",f:"Gloss",h:"#ce2029"},
-      {n:"Sunflower Yellow",c:"DPPF921",f:"Gloss",h:"#ffc512"},
-      {n:"Bronze",c:"DPPF928",f:"Gloss",h:"#8c6b3e"},
-      {n:"Tiffany Blue",c:"DPPF935",f:"Gloss",h:"#0abab5"},
-      // INOCOLOR SATIN
-      {n:"Satin Blackout",c:"DPPF819",f:"Satin",h:"#131416"},
-      {n:"Satin Pearl White",c:"DPPF807",f:"Satin",h:"#f1efe8"},
-      {n:"Satin Rock Grey",c:"DPPF802",f:"Satin",h:"#6e7073"},
-      {n:"Satin Silver Aluminum",c:"DPPF803",f:"Satin",h:"#adb1b4"},
-      {n:"Satin Midnight Moss",c:"DPPF804",f:"Satin",h:"#2e3a2e"},
-      {n:"Satin Blood Red",c:"DPPF806",f:"Satin",h:"#7e1420"},
-      {n:"Satin Azure Blue",c:"DPPF814",f:"Satin",h:"#2f6fb0"},
-      {n:"Satin Midnight Purple",c:"DPPF801",f:"Satin",h:"#32204c"},
-      // FROZEN MATTE
-      {n:"Frozen White",c:"DPPF816",f:"Frozen Matte",h:"#f0f0ea"},
-      {n:"Frozen Ultimate Grey",c:"DPPF809",f:"Frozen Matte",h:"#8c8f92"},
-      {n:"Frozen Shark Grey",c:"DPPF818",f:"Frozen Matte",h:"#7c8288"},
-      {n:"Frozen Sand",c:"DPPF815",f:"Frozen Matte",h:"#c6b491"},
-      {n:"Frozen Army Green",c:"DPPF810",f:"Frozen Matte",h:"#4c5430"},
-      // COLOR SHIFT
-      {n:"Chameleon Vampire",c:"DPPF715",f:"Color Shift",h:"#7a1f4d",h2:"#a06a2c"},
-      {n:"Chameleon",c:"DPPF717",f:"Color Shift",h:"#4e7d7b",h2:"#5c4a86"}
-    ]},
-    {id:"3m",label:"3M",colors:[
-      // GLOSS
-      {n:"Crimson Red",c:"GP233",f:"Gloss",h:"#b81e26"},
-      {n:"Umbra Rosso",c:"GP263",f:"Gloss",h:"#5c1f24"},
-      {n:"Habanero Red",c:"G43",f:"Gloss",h:"#bf3a1b"},
-      {n:"Solar Flare",c:"G255",f:"Gloss",h:"#d98a18"},
-      {n:"Olive Green",c:"G76",f:"Gloss",h:"#3f4622"},
-      {n:"British Racing Green",c:"GP276",f:"Gloss",h:"#163826"},
-      {n:"Basilisk Blue",c:"G67",f:"Gloss",h:"#1f586d"},
-      {n:"Neptune Blue",c:"G97",f:"Gloss",h:"#1d4f88"},
-      {n:"Miami Blue",c:"G37",f:"Gloss",h:"#27a3c2"},
-      {n:"Frozen Blue Metallic",c:"G137",f:"Gloss",h:"#7c9eb6"},
-      {n:"Powder Blue",c:"G117",f:"Gloss",h:"#9cc1d4"},
-      {n:"Viola",c:"G248",f:"Gloss",h:"#54268a"},
-      {n:"Bone Gray",c:"G11",f:"Gloss",h:"#cdccc1"},
-      {n:"Nardo Gray",c:"G61",f:"Gloss",h:"#8a8e8e"},
-      {n:"Gloss White",c:"G10",f:"Gloss",h:"#eef0ef"},
-      {n:"Gloss Black",c:"G12",f:"Gloss",h:"#0c0d10"},
-      // MATTE
-      {n:"Moon Rock Blue",c:"M87",f:"Matte",h:"#39465a"},
-      {n:"Coyote Brown",c:"M99",f:"Matte",h:"#897856"},
-      {n:"Matte White",c:"M10",f:"Matte",h:"#e4e4e1"},
-      {n:"Smoke Gray",c:"M91",f:"Matte",h:"#3a414a"},
-      {n:"Matte Black",c:"M12",f:"Matte",h:"#191a1c"},
-      // COLOR SHIFT
-      {n:"Flip Cosmic Dust",c:"GP288",f:"Color Shift",h:"#94a39a",h2:"#5e7a72"},
-      {n:"Flip Winter Rose",c:"GP231",f:"Color Shift",h:"#c98fa3",h2:"#a9885a"},
-      {n:"Flip Psychedelic",c:"GP261",f:"Color Shift",h:"#b03a6a",h2:"#2a6ab0"}
-    ]}
-  ];
-  const FX={"Gloss":"Gloss","Satin":"Satin","Matte":"Matte","Frozen Matte":"Matte","Color Shift":"Color Shift"};
-
-  const track=document.getElementById('cfTrack');
-  const brandsEl=document.getElementById('colBrands');
-  const filtersEl=document.getElementById('colFilters');
-  const idxEl=document.getElementById('cfIndex');
-  const totalEl=document.getElementById('cfTotal');
-  const rail=document.getElementById('cfRail');
-  const prev=document.getElementById('cfPrev');
-  const next=document.getElementById('cfNext');
-
-  let activeBrand=BRANDS[0].id, activeFamily="All", list=[], active=0;
-  function T(s){return (window.SERRES_I18N&&window.SERRES_I18N.t)?window.SERRES_I18N.t(s):s;}
-  function brand(){return BRANDS.find(b=>b.id===activeBrand);}
-  function families(){return [...new Set(brand().colors.map(c=>c.f))];}
-
-  function skin(col){
-    if(FX[col.f]==="Color Shift") return "linear-gradient(125deg,"+col.h+" 0%,"+col.h2+" 100%)";
-    return col.h;
-  }
-  function buildBrands(){
-    brandsEl.innerHTML=BRANDS.map(b=>
-      '<button class="chip'+(b.id===activeBrand?' active':'')+'" data-b="'+b.id+'">'+b.label+'<span class="ct">'+b.colors.length+'</span></button>'
-    ).join('');
-  }
-  function buildFilters(){
-    const b=brand();
-    const fams=["All",...families()];
-    filtersEl.innerHTML=fams.map(f=>{
-      const count=f==="All"?b.colors.length:b.colors.filter(c=>c.f===f).length;
-      return '<button class="chip'+(f===activeFamily?' active':'')+'" data-f="'+f+'">'+T(f)+'<span class="ct">'+count+'</span></button>';
-    }).join('');
-  }
-  function render(){
-    const b=brand();
-    list=b.colors.filter(c=>activeFamily==="All"||c.f===activeFamily);
-    track.innerHTML=list.map((col,i)=>
-      '<article class="film-card" data-finish="'+FX[col.f]+'" data-i="'+i+'">'+
-        '<div class="film-skin" style="--c:'+skin(col)+'"><span class="film-flag">'+T('Color Shift')+'</span></div>'+
-        '<div class="film-meta"><span class="film-name">'+col.n+'</span><span class="film-code">'+b.label+' · '+col.c+'</span></div>'+
-        '<div class="film-fam">'+T(col.f)+'</div>'+
-      '</article>').join('');
-    totalEl.textContent=String(list.length).padStart(2,'0');
-    active=0;
-    layout();
-  }
-  function layout(){
-    const cards=[...track.children];
-    if(!cards.length) return;
-    cards.forEach((c,i)=>c.classList.toggle('active',i===active));
-    const card=cards[active];
-    const stage=track.parentElement;
-    const stageW=stage.clientWidth;
-    const cardW=card.offsetWidth;
-    const cardLeft=card.offsetLeft;
-    const shift=(stageW/2 - cardW/2) - cardLeft;
-    track.style.transform='translateX('+shift+'px)';
-    idxEl.textContent=String(active+1).padStart(2,'0');
-    const p=list.length>1?active/(list.length-1):0;
-    const w=Math.max(8,100/list.length);
-    rail.style.width=w+'%';
-    rail.style.left=(p*(100-w))+'%';
-  }
-  function go(d){ active=Math.max(0,Math.min(list.length-1,active+d)); layout(); }
-
-  brandsEl.addEventListener('click',e=>{
-    const b=e.target.closest('.chip'); if(!b) return;
-    activeBrand=b.dataset.b;
-    activeFamily="All";
-    buildBrands();buildFilters();render();
-  });
-  filtersEl.addEventListener('click',e=>{
-    const b=e.target.closest('.chip'); if(!b) return;
-    activeFamily=b.dataset.f;
-    [...filtersEl.children].forEach(c=>c.classList.toggle('active',c.dataset.f===activeFamily));
-    render();
-  });
-  track.addEventListener('click',e=>{
-    const card=e.target.closest('.film-card'); if(!card) return;
-    const i=+card.dataset.i;
-    if(i===active) return;
-    active=i; layout();
-  });
-  prev.addEventListener('click',()=>go(-1));
-  next.addEventListener('click',()=>go(1));
-  window.addEventListener('resize',layout);
-
-  // drag / swipe
-  let down=false,startX=0,moved=0;
-  track.addEventListener('pointerdown',e=>{down=true;moved=0;startX=e.clientX;});
-  window.addEventListener('pointermove',e=>{if(down)moved=e.clientX-startX;});
-  window.addEventListener('pointerup',()=>{
-    if(!down)return;down=false;
-    if(Math.abs(moved)>50) go(moved<0?1:-1);
-  });
-  // keyboard
-  document.addEventListener('keydown',e=>{
-    if(e.target.closest('input,textarea')) return;
-    if(e.key==='ArrowLeft')go(-1); else if(e.key==='ArrowRight')go(1);
-  });
-
-  buildBrands();
-  buildFilters();
-  render();
-  window.addEventListener('serres:langchange',function(){buildBrands();buildFilters();render();});
-})();
-</script>
-
 
 <script src="../assets/serres-enhance.js" defer></script>
 <!-- data-us-assets-tail -->

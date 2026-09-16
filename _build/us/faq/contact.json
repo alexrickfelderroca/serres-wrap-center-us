@@ -1,0 +1,17 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "How do I get a quote from SERRES in Boca Raton?",
+      "a": "Use the quote form on this page: make, model, year, and the service you are after. Tell us the state of the paint and the finish you want and the first number lands close to the final one. We price it against the published list and answer with one exact figure, not a range. {{terms:fromMeaning}}"
+    },
+    {
+      "q": "Can I call, text or e-mail SERRES right now?",
+      "a": "Not yet. The Boca Raton studio publishes no phone number, WhatsApp or e-mail address until October 2026, so nothing on this site pretends to be a live line. Instagram is the one channel open today, and the quote form keeps your details ready to send the moment the direct line opens."
+    },
+    {
+      "q": "Where is the studio, and when does it open?",
+      "a": "{{business:addressLine}}. The map on this page is a city-level pin, not the unit: the exact street address lands in October 2026 and this page changes the same day. Detailing starts {{business:openingSoftLabel}} and the full paint protection film launch follows {{business:openingFullLabel}}."
+    }
+  ]
+}

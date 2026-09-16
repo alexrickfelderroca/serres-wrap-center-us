@@ -121,8 +121,14 @@ function routeOf(relFile) {
   return relFile.split(path.sep).join('/').replace(/index\.html$/, '');
 }
 
-function depthOf(route) {
-  return route === '' ? 0 : route.split('/').filter(Boolean).length;
+/* Depth is a property of the FILE, not the route. Deriving it from the route broke
+   404.html: routeOf() only strips a trailing "index.html", so the route came out as
+   "404.html" and counted as one segment — depth 1. The file is at the site root, so every
+   generated link on it was written as "../…" and pointed outside the site. Counting the
+   directory segments of the file path is right for index.html (0), about/index.html (1),
+   blog/<slug>/index.html (2) and 404.html (0) alike. */
+function depthOfFile(relFile) {
+  return relFile.split(path.sep).join('/').split('/').length - 1;
 }
 
 function shortDate(iso) {
@@ -799,7 +805,7 @@ function processPage(rel) {
   const raw = fs.readFileSync(abs, 'utf8');
   const eol = raw.includes('\r\n') ? '\r\n' : '\n';
   const route = routeOf(rel);
-  const page = { rel, abs, route, depth: depthOf(route), entry: SEO.routes[route] };
+  const page = { rel, abs, route, depth: depthOfFile(rel), entry: SEO.routes[route] };
   if (!page.entry) warn(`${rel}: no seo.json entry for route "${route}" — head and JSON-LD left alone`);
   if (/gtag\/js\?id=/.test(raw) && !B.ANALYTICS_LIVE) {
     warn(`${rel}: an inherited Barcelona GA4 tag is still hard-coded in this page, but business.js ga4Id is null. ` +

@@ -31,6 +31,13 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-sans-400-normal-latin.woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css">
 <style>
+  /* ------------------------------------------------------------------
+     SERRES Wrap Center (US) — home page, page-local styles.
+     Shared "us-" components live in assets/serres-us.css (owned elsewhere);
+     nothing here restyles them. Page-local classes are prefixed "hm-" so
+     they cannot collide with the inherited vocabulary or with the "us-"
+     contract that _build/us/verify-css-contract.js polices.
+     ------------------------------------------------------------------ */
   :root{
     --bg:#0a0a0b;
     --bg-2:#0e0e10;
@@ -60,6 +67,7 @@
   ::selection{background:#e7e7ec;color:#0a0a0b}
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
+  :focus-visible{outline:2px solid #e7e7ec;outline-offset:3px}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
 
@@ -123,17 +131,18 @@
   .nav-links a:hover{color:var(--text)}
   .nav-right{display:flex;align-items:center;gap:22px}
 
+  /* ---------- BUTTONS · one 3-variant system, used everywhere ---------- */
   .btn{
     font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
     text-transform:uppercase;letter-spacing:.14em;font-size:15px;
-    display:inline-flex;align-items:center;gap:11px;white-space:nowrap;
-    padding:14px 26px;border:none;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;gap:11px;white-space:nowrap;
+    min-height:48px;padding:14px 26px;border:none;cursor:pointer;
     background:var(--chrome);color:#0a0a0b;
     clip-path:polygon(0 0,100% 0,100% 100%,12px 100%,0 calc(100% - 12px));
-    transition:transform .3s var(--ease),filter .3s var(--ease);
+    transition:transform .22s var(--ease),filter .22s var(--ease);
   }
   .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
-  .btn .arr{transition:transform .3s var(--ease)}
+  .btn .arr{transition:transform .22s var(--ease)}
   .btn:hover .arr{transform:translateX(4px)}
   .btn.ghost{
     background:transparent;color:var(--text);
@@ -141,50 +150,67 @@
     padding:13px 26px;
   }
   .btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.04)}
+  .btn.link{
+    background:none;color:var(--text);border:0;clip-path:none;
+    min-height:0;padding:6px 0;position:relative;
+  }
+  .btn.link::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+    background:var(--chrome);transform:scaleX(.34);transform-origin:left;
+    transition:transform .22s var(--ease);
+  }
+  .btn.link:hover{transform:none;filter:none}
+  .btn.link:hover::after{transform:scaleX(1)}
+
+  /* ---------- SECTION HEAD ---------- */
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .section-head h2{
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;line-height:.94;letter-spacing:.012em;
+    font-size:clamp(34px,5vw,64px);margin-top:16px;text-wrap:balance;
+  }
+  .section-head .sh-note{color:var(--muted);font-size:15.5px;max-width:38ch;margin-top:14px;text-wrap:pretty}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;height:100svh;min-height:640px;display:flex;align-items:center;overflow:hidden}
+  .hero{
+    position:relative;min-height:100dvh;display:flex;align-items:center;overflow:hidden;
+    padding:132px 0 96px;
+  }
   .hero video,.hero .poster{
     position:absolute;inset:0;width:100%;height:100%;
     object-fit:cover;object-position:center 60%;z-index:0;
   }
-  .hero .poster{z-index:0}
   .hero .overlay{
     position:absolute;inset:0;z-index:1;
     background:
-      linear-gradient(180deg,rgba(10,10,11,.55) 0%,rgba(10,10,11,.25) 32%,rgba(10,10,11,.42) 66%,#14151b 100%),
-      radial-gradient(120% 90% at 50% 30%,transparent 40%,rgba(10,10,11,.55) 100%);
+      radial-gradient(56% 104% at 24% 56%,rgba(4,4,6,.86) 0%,rgba(4,4,6,.80) 42%,rgba(4,4,6,.62) 64%,rgba(4,4,6,.32) 84%,rgba(4,4,6,0) 100%),
+      linear-gradient(180deg,rgba(10,10,11,.58) 0%,rgba(10,10,11,.32) 30%,rgba(10,10,11,.50) 64%,#14151b 100%),
+      radial-gradient(120% 90% at 50% 30%,transparent 40%,rgba(10,10,11,.58) 100%);
   }
   .hero-content{position:relative;z-index:2;width:100%}
+  .hero .us-countdown{opacity:0;animation:fade .9s var(--ease) .18s forwards}
   .hero h1{
-    font-size:clamp(54px,11vw,166px);
-    margin:22px 0 0;
+    font-size:clamp(28px,5.2vw,74px);
+    margin:26px 0 0;
   }
-  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
   .hero h1 .ln span{display:block;white-space:nowrap;transform:translateY(110%);animation:rise 1s var(--ease) forwards}
-  .hero h1 .ln:nth-child(2) span{animation-delay:.12s}
-  .hero h1 .ln:nth-child(3) span{animation-delay:.24s}
-  .hero h1 .ln .h1-kw{
-    display:inline-block;font-weight:500;
-    font-size:clamp(11.5px,1.4vw,17px);letter-spacing:.18em;
-    color:var(--muted);margin-top:20px;
-    background:none;-webkit-text-fill-color:currentColor;
-  }
+  .hero h1 .ln:nth-child(2) span{animation-delay:.1s}
+  .hero h1 .ln:nth-child(3) span{animation-delay:.2s}
   @keyframes rise{to{transform:translateY(0)}}
   .hero .sub{
-    margin-top:30px;max-width:48ch;font-size:clamp(16px,1.5vw,20px);
-    color:#d4d4d9;line-height:1.55;
+    margin-top:28px;max-width:52ch;font-size:clamp(16px,1.5vw,19px);
+    color:#d4d4d9;line-height:1.55;text-wrap:pretty;
     opacity:0;animation:fade .9s var(--ease) .5s forwards;
   }
   .hero .actions{
-    margin-top:42px;display:flex;gap:16px;flex-wrap:wrap;
+    margin-top:38px;display:flex;gap:16px;flex-wrap:wrap;
     opacity:0;animation:fade .9s var(--ease) .68s forwards;
   }
-  .hero .eyebrow{opacity:0;animation:fade .9s var(--ease) .25s forwards}
   @keyframes fade{to{opacity:1}}
 
   .scroll-cue{
-    position:absolute;left:40px;bottom:34px;z-index:3;
+    position:absolute;left:40px;bottom:30px;z-index:3;
     display:flex;align-items:center;gap:14px;
     font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;
     letter-spacing:.28em;font-size:12px;color:var(--muted);
@@ -195,70 +221,62 @@
   @keyframes slide{0%{transform:translateX(-100%)}55%{transform:translateX(100%)}100%{transform:translateX(100%)}}
 
   .hero-meta{
-    position:absolute;right:40px;bottom:34px;z-index:3;text-align:right;
+    position:absolute;right:40px;bottom:30px;z-index:3;text-align:right;
     font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;
     letter-spacing:.22em;font-size:12px;color:var(--muted);
     opacity:0;animation:fade 1s var(--ease) 1.1s forwards;
   }
 
-  /* ---------- SERVICE NAVIGATOR · six doors into the studio ---------- */
+  /* ---------- TRUST BAR WRAPPER · bridges the hero into the services block ---------- */
+  .hm-trustwrap{
+    display:flow-root;            /* contains the bar's own top margin */
+    background:linear-gradient(180deg,#14151b 0%,#131419 28%,#111217 58%,#0f1015 84%,#0e0f14 100%);
+  }
+
+  /* ---------- SERVICES · five doors, one leading ---------- */
   .svcnav{
     position:relative;
-    /* seats between the hero (ends #14151b) and the black reveal studio:
-       long multi-stop gradient so there is no visible seam on either side */
-    background:linear-gradient(180deg,
-      #14151b 0%,
-      #101116 14%,
-      #0c0d11 34%,
-      #0b0b0e 62%,
-      #0e0f14 84%,
-      #14151b 100%);
-    padding:110px 0 120px;
+    background:linear-gradient(180deg,#0e0f14 0%,#0d0e12 18%,#0b0c0f 46%,#0a0a0c 74%,#0a0a0b 100%);
+    padding:96px 0 100px;
   }
-  .svcnav-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:46px}
-  .svcnav-head h2{
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
-    line-height:.94;letter-spacing:.012em;font-size:clamp(36px,5.4vw,72px);margin-top:16px;text-wrap:balance;
-  }
-  .svcnav-head .sn-note{color:var(--muted);font-size:15.5px;max-width:36ch;margin-top:14px;text-wrap:pretty}
-  .svcnav-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-  }
+  .svcnav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:46px}
   .svc-door{
     position:relative;display:flex;flex-direction:column;justify-content:flex-end;
     min-height:250px;padding:26px 26px 24px;overflow:hidden;isolation:isolate;
     background:var(--panel);border:1px solid var(--line);
     clip-path:polygon(0 0,100% 0,100% 100%,16px 100%,0 calc(100% - 16px));
-    transition:border-color .5s var(--ease),transform .5s var(--ease);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 2px 4px rgba(0,0,0,.3),0 14px 30px -16px rgba(0,0,0,.62);
+    transition:border-color .4s var(--ease),transform .4s var(--ease);
   }
+  .svc-door.lead{grid-column:span 2;min-height:330px}
   .svc-door:hover{border-color:var(--line-strong);transform:translateY(-4px)}
   .svc-door .sd-img{
     position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;
-    opacity:0;transform:scale(1.07);
+    opacity:.2;transform:scale(1.06);
     filter:brightness(.62) saturate(.82) contrast(1.04);
-    transition:opacity .65s var(--ease),transform 1.1s var(--ease);
+    transition:opacity .55s var(--ease),transform 1s var(--ease);
     pointer-events:none;
   }
-  .svc-door::after{ /* scrim so the label always reads over the photo */
-    content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
-    background:linear-gradient(180deg,rgba(8,8,10,.05) 0%,rgba(8,8,10,.18) 46%,rgba(8,8,10,.78) 100%);
-    transition:opacity .65s var(--ease);
+  .svc-door::after{
+    content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:1;
+    background:linear-gradient(180deg,rgba(8,8,10,.15) 0%,rgba(8,8,10,.40) 46%,rgba(8,8,10,.86) 100%);
+    transition:opacity .55s var(--ease);
   }
   .svc-door:hover .sd-img,.svc-door:focus-visible .sd-img{opacity:1;transform:scale(1.015)}
-  .svc-door:hover::after,.svc-door:focus-visible::after{opacity:1}
   .svc-door .sd-top{
     position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;
     margin-bottom:auto;
   }
   .svc-door .sd-num{
     font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;letter-spacing:.22em;
-    font-size:12px;color:var(--muted-2);transition:color .4s var(--ease);
+    /* --muted-2 measures 3.64:1 on --panel; the ordinal is real text, so it uses --muted (6.59:1) */
+    font-size:12px;color:var(--muted);transition:color .35s var(--ease);
   }
   .svc-door:hover .sd-num{color:#d6d6db}
   .svc-door .sd-arrow{
     width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
     border:1px solid var(--line);color:var(--muted);
-    transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease);
+    transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);
   }
   .svc-door .sd-arrow svg{width:15px;height:15px}
   .svc-door:hover .sd-arrow{
@@ -268,316 +286,137 @@
   .svc-door .sd-name{
     position:relative;z-index:2;
     font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
-    letter-spacing:.02em;font-size:clamp(24px,2.3vw,33px);line-height:.96;margin-top:34px;
-    transition:transform .5s var(--ease);
+    letter-spacing:.02em;font-size:clamp(22px,2.1vw,30px);line-height:.98;margin-top:34px;
+    text-wrap:balance;
+    transition:transform .45s var(--ease);
   }
+  .svc-door.lead .sd-name{font-size:clamp(26px,3vw,44px)}
   .svc-door:hover .sd-name{transform:translateY(-3px)}
   .svc-door .sd-sub{
-    position:relative;z-index:2;margin-top:7px;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:500;text-transform:uppercase;
-    letter-spacing:.2em;font-size:11.5px;color:var(--muted);
-    transition:color .4s var(--ease);
+    position:relative;z-index:2;margin-top:8px;
+    font-size:14.5px;line-height:1.5;color:#c3c3ca;max-width:34ch;text-wrap:pretty;
   }
-  .svc-door:hover .sd-sub{color:#e3e3e8}
+  .svc-door .sd-price{
+    position:relative;z-index:2;margin-top:16px;padding-top:14px;
+    border-top:1px solid var(--line);
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;font-size:19px;line-height:1;color:#eaeaef;
+  }
   .svc-door .sd-line{
     position:absolute;left:0;right:0;bottom:0;height:2px;z-index:2;
     background:var(--chrome);transform:scaleX(0);transform-origin:left;
-    transition:transform .55s var(--ease);
+    transition:transform .5s var(--ease);
   }
   .svc-door:hover .sd-line,.svc-door:focus-visible .sd-line{transform:scaleX(1)}
   .svc-door:focus-visible{outline:2px solid #e7e7ec;outline-offset:3px}
-  @media(max-width:1024px){
-    .svcnav-grid{grid-template-columns:repeat(2,1fr)}
-    .svc-door{min-height:210px}
-  }
-  @media(max-width:760px){
-    .svcnav{padding:76px 0 84px}
-    .svcnav-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-    .svc-door{min-height:172px;padding:18px 16px 16px}
-    .svc-door .sd-arrow{width:32px;height:32px}
-    .svc-door .sd-name{font-size:21px;margin-top:22px}
-    .svc-door .sd-sub{font-size:10.5px;letter-spacing:.16em}
-    /* no hover on touch: keep each photo faintly present so the doors read visual */
-    .svc-door .sd-img{opacity:.34;transform:scale(1.02)}
-    .svc-door::after{opacity:1}
-  }
-  @media(hover:none){
-    .svc-door .sd-img{opacity:.34;transform:scale(1.02)}
-    .svc-door::after{opacity:1}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .svc-door,.svc-door .sd-img,.svc-door .sd-name,.svc-door .sd-arrow,.svc-door .sd-line{transition:none}
-  }
 
-  /* ---------- GOLD · "Exclusivo" ---------- */
-  .gold-text{
-    background:linear-gradient(105deg,#8a6d2f 0%,#c9a44f 20%,#f3e0ac 38%,#d4af5f 52%,#8a6d2f 70%,#e9d194 88%,#b28f41 100%);
-    background-size:220% 100%;background-position:0% 0;
-    -webkit-background-clip:text;background-clip:text;
-    color:transparent;-webkit-text-fill-color:transparent;
-    transition:filter .35s var(--ease),background-position .9s var(--ease);
+  /* ---------- PACKAGES ---------- */
+  .hm-pkg{
+    position:relative;padding:88px 0 92px;
+    background:linear-gradient(180deg,#0a0a0b 0%,#0c0c0f 22%,#0e0e12 50%,#0c0c0f 78%,#0a0a0b 100%);
   }
-  .gold-text:hover,a:hover > .gold-text,a:focus-visible > .gold-text{
-    background-position:100% 0;
-    filter:drop-shadow(0 0 6px rgba(212,175,95,.5)) drop-shadow(0 0 18px rgba(212,175,95,.22));
-  }
-  @media(prefers-reduced-motion:reduce){
-    .gold-text{transition:none}
-  }
+  .hm-pkg-foot{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 
-  /* ---------- REVEAL · scroll-driven Urus transformation ---------- */
-  .reveal{position:relative;background:#000;height:200vh}
-  .reveal-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000;isolation:isolate}
-  /* metallic-of-the-hero melting GRADUALLY down into the black void — long, soft, multi-stop
-     fade so there is no perceptible band edge; the two sections read as one continuous studio */
-  .reveal-stage::before{
-    content:"";position:absolute;left:0;right:0;top:0;height:66%;z-index:2;pointer-events:none;
-    background:linear-gradient(180deg,
-      #14151b 0%,
-      rgba(20,21,27,0.78) 8%,
-      rgba(18,19,25,0.54) 18%,
-      rgba(15,16,21,0.34) 30%,
-      rgba(11,12,16,0.18) 44%,
-      rgba(6,6,9,0.07) 62%,
-      rgba(0,0,0,0) 100%);
+  /* ---------- PROVEN IN BARCELONA ---------- */
+  .hm-proof{
+    position:relative;padding:88px 0 92px;
+    background:linear-gradient(180deg,#0a0a0b 0%,#0c0d11 20%,#101116 52%,#0c0d11 80%,#0b0b0e 100%);
   }
-  /* cinematic studio pool — a soft, cool, low-opacity light seated under the car that lifts the
-     surrounding black into a gentle gradient (screen-blend = only lightens) so the G-Class is
-     nested in ambient light instead of popped onto flat black */
-  .reveal-stage::after{
-    content:"";position:absolute;left:50%;top:62%;transform:translate(-50%,-50%);
-    width:min(146vw,1640px);height:min(82vh,720px);z-index:2;pointer-events:none;
-    background:radial-gradient(54% 56% at 50% 50%,
-      rgba(46,50,63,0.42) 0%,
-      rgba(30,33,43,0.24) 38%,
-      rgba(13,14,19,0.09) 66%,
-      rgba(0,0,0,0) 82%);
-    mix-blend-mode:screen;
+  .hm-proof-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:64px;align-items:center}
+  .hm-proof-text h2{
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;line-height:.94;letter-spacing:.012em;
+    font-size:clamp(34px,4.6vw,62px);margin:18px 0 0;text-wrap:balance;
   }
-  #urus-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
+  .hm-proof-text p{margin-top:22px;color:var(--muted);font-size:16.5px;max-width:48ch;text-wrap:pretty}
+  .hm-proof-text .btn.link{margin-top:28px}
+  .hm-proof-shots{display:grid;grid-template-columns:1.04fr .96fr;gap:14px;align-content:start}
+  .hm-proof-shots figure{
+    margin:0;overflow:hidden;background:var(--panel);border:1px solid var(--line);
+    clip-path:polygon(0 0,100% 0,100% 100%,14px 100%,0 calc(100% - 14px));
+    box-shadow:0 2px 4px rgba(0,0,0,.3),0 18px 40px -20px rgba(0,0,0,.7);
+  }
+  .hm-proof-shots img{width:100%;height:100%;object-fit:cover}
+  .hm-proof-shots figure:nth-child(1){grid-column:1;grid-row:1/span 2}
+  .hm-proof-shots figure:nth-child(2){grid-column:2;grid-row:1;margin-top:46px;aspect-ratio:4/5}
+  .hm-proof-shots figure:nth-child(3){grid-column:2;grid-row:2;aspect-ratio:4/5}
 
-  .reveal-head{
-    position:absolute;left:50%;top:clamp(40px,8.5vh,104px);transform:translateX(-50%);
-    z-index:3;text-align:center;width:min(94vw,1180px);pointer-events:none;
+  /* ---------- GALLERY PREVIEW ---------- */
+  .hm-gal{
+    position:relative;padding:84px 0 92px;
+    background:linear-gradient(180deg,#0b0b0e 0%,#090909 24%,#08080a 52%,#09090b 78%,#0a0a0b 100%);
   }
-  .reveal-head .eyebrow{justify-content:center;margin-bottom:20px}
-  .reveal-head .eyebrow::after{
-    content:"";width:30px;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent);
+  .hm-gal-grid{
+    display:grid;grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:clamp(118px,12.4vw,172px);gap:12px;margin-top:44px;
   }
-  .reveal-head h2{
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    font-size:clamp(36px,6.2vw,102px);line-height:.92;letter-spacing:.012em;margin:0;
-    text-wrap:balance;
+  .hm-gal-tile{
+    position:relative;display:block;overflow:hidden;background:var(--panel);border:1px solid var(--line);
+    transition:border-color .3s var(--ease),transform .3s var(--ease);
   }
-  .reveal-head .svc-line{
-    margin-top:24px;font-family:"DM Sans",sans-serif;font-weight:500;
-    text-transform:uppercase;letter-spacing:.26em;font-size:clamp(10px,1.05vw,13.5px);
-    color:var(--muted);
+  .hm-gal-tile figure{position:relative;height:100%;margin:0}
+  .hm-gal-tile img{
+    width:100%;height:100%;object-fit:cover;
+    filter:brightness(.88) saturate(.94);
+    transition:transform .5s var(--ease),filter .3s var(--ease);
   }
-  .reveal-head .svc-line span{display:none}
-  .reveal-head .svc-line{pointer-events:auto;display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
-  .reveal-head .svc-line a{
-    color:var(--text);
-    background:var(--panel-2);
-    border:1px solid var(--line-strong);
-    border-radius:999px;
-    padding:10px 18px;
-    line-height:1;
-    position:relative;
-    transition:color .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease);
+  .hm-gal-tile:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+  .hm-gal-tile:hover img{transform:scale(1.04);filter:brightness(1) saturate(1)}
+  .hm-gal-tile figcaption{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;padding:34px 16px 14px;
+    background:linear-gradient(180deg,rgba(8,8,10,0),rgba(8,8,10,.86));
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:#e7e7ec;
   }
-  .reveal-head .svc-line a:hover{
-    color:var(--bg);
-    background:var(--chrome);
-    border-color:transparent;
-    transform:translateY(-2px);
-    box-shadow:0 8px 22px rgba(0,0,0,.45);
-  }
+  .hm-gal-tile:nth-child(1){grid-column:span 4;grid-row:span 2}
+  .hm-gal-tile:nth-child(2){grid-column:span 2;grid-row:span 2}
+  .hm-gal-tile:nth-child(3),
+  .hm-gal-tile:nth-child(4),
+  .hm-gal-tile:nth-child(5){grid-column:span 2}
+  .hm-gal-tile:nth-child(6){grid-column:span 6}
+  .hm-gal-foot{margin-top:32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 
-  .reveal-hint{
-    position:absolute;left:50%;bottom:clamp(96px,13vh,156px);transform:translateX(-50%);
-    z-index:3;display:flex;align-items:center;gap:12px;pointer-events:none;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:500;text-transform:uppercase;
-    letter-spacing:.3em;font-size:12px;color:var(--muted);transition:opacity .55s var(--ease);
+  /* ---------- FAQ ---------- */
+  .faq{
+    position:relative;padding:84px 0 40px;
+    background:linear-gradient(180deg,#0a0a0b 0%,#0b0b0d 30%,#0c0c0e 64%,#0a0a0b 100%);
   }
-  .reveal-hint .dot{width:5px;height:5px;border-radius:50%;background:#e7e7ec;
-    box-shadow:0 0 10px rgba(255,255,255,.6);animation:hintpulse 1.9s var(--ease) infinite}
-  @keyframes hintpulse{0%,100%{opacity:.25;transform:scale(.6)}50%{opacity:1;transform:scale(1)}}
-
-  .reveal-foot{
-    position:absolute;left:50%;bottom:clamp(26px,4.6vh,52px);transform:translateX(-50%);
-    z-index:3;display:flex;flex-direction:column;align-items:center;gap:13px;
-    width:min(360px,70vw);pointer-events:none;
+  .faq-intro{margin-top:26px;color:var(--muted);font-size:16px;max-width:70ch;text-wrap:pretty}
+  /* axe flagged link-in-text-block: inherited a{color:inherit;text-decoration:none}
+     made this inline link indistinguishable from the sentence around it. */
+  .faq-intro a{color:var(--text);text-decoration:underline;text-underline-offset:3px;
+    text-decoration-color:rgba(255,255,255,.45);transition:text-decoration-color .2s var(--ease)}
+  .faq-intro a:hover{text-decoration-color:#fff}
+  .faq-list{margin-top:44px;border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-item summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+    padding:20px 0;min-height:44px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.06em;font-size:19px;line-height:1.25;color:var(--text);
+    transition:color .2s var(--ease);
   }
-  .reveal-labels{display:flex;justify-content:space-between;width:100%;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.24em;
-    font-size:11px;color:var(--muted-2)}
-  .reveal-labels b{font-weight:600;transition:color .35s var(--ease)}
-  .reveal-labels b.on{color:var(--text)}
-  .reveal-track{width:100%;height:1px;background:rgba(255,255,255,.15);position:relative;overflow:hidden}
-  .reveal-track i{position:absolute;left:0;top:0;height:100%;width:0%;
-    background:var(--chrome);box-shadow:0 0 14px rgba(255,255,255,.55)}
-  @media(prefers-reduced-motion:reduce){.reveal-hint .dot{animation:none}}
-
-  /* ---------- SERVICE SCROLL SECTIONS (color emerges from / dissolves back into the black studio) ---------- */
-  .svc{position:relative;height:200vh;background:#000}
-  .svc-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000;
-    display:flex;align-items:center;justify-content:center}
-  .svc-media{position:absolute;inset:0;z-index:0;background:#000;opacity:0;will-change:opacity}
-  .svc-media img,.svc-media video{
-    position:absolute;left:50%;top:50%;width:100%;height:100%;
-    transform:translate(-50%,-50%) scale(var(--mscale,1.06));transform-origin:center center;
-    object-fit:cover;will-change:transform;
-    filter:brightness(.6) contrast(1.05) saturate(.68);
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary:hover{color:#fff}
+  .faq-item summary .fq-x{
+    flex:none;position:relative;width:16px;height:16px;align-self:center;
+    transition:transform .2s var(--ease);
   }
-  /* cinematic grade: vignette + PURE-BLACK top & bottom edges so stacked sticky stages seam invisibly */
-  .svc-grade{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:
-      radial-gradient(122% 80% at 50% 45%,transparent 24%,rgba(0,0,0,.5) 70%,rgba(0,0,0,.88) 100%),
-      linear-gradient(180deg,#000 0%,rgba(0,0,0,.4) 13%,rgba(0,0,0,0) 34%,rgba(0,0,0,0) 60%,rgba(0,0,0,.48) 83%,#000 100%);}
-  /* soft dark pool seats the title legibly over any media */
-  .svc-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;pointer-events:none;
-    width:min(125vw,1600px);height:min(74vh,680px);
-    background:radial-gradient(closest-side,rgba(0,0,0,.6),rgba(0,0,0,.28) 46%,rgba(0,0,0,0) 74%)}
-  .svc-inner{position:relative;z-index:2;text-align:center;padding:0 40px;opacity:0;will-change:opacity}
-  .svc-inner .eyebrow{justify-content:center}
-  .svc-inner .eyebrow::after{content:"";width:30px;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent)}
-  .svc-inner h2{
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
-    font-size:clamp(54px,11vw,176px);line-height:.9;letter-spacing:.012em;margin:20px 0 0;
-    text-wrap:balance;
+  .faq-item summary .fq-x::before,
+  .faq-item summary .fq-x::after{
+    content:"";position:absolute;left:50%;top:50%;background:var(--muted);
+    transition:background .2s var(--ease);
   }
-  .svc-inner .svc-desc{margin:22px auto 0;max-width:46ch;color:#d6d6db;
-    font-size:clamp(15px,1.45vw,19px);line-height:1.55;text-wrap:pretty;}
-  .svc-inner .svc-more{margin-top:26px;display:inline-flex;align-items:center;gap:11px;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.18em;font-size:15px;color:var(--text);position:relative;padding-bottom:6px;pointer-events:auto;}
-  .svc-inner .svc-more::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
-    background:var(--chrome);transform:scaleX(.36);transform-origin:left;transition:transform .3s var(--ease);}
-  .svc-inner .svc-more:hover::after{transform:scaleX(1)}
-  .svc-inner .svc-more .arr{transition:transform .3s var(--ease)}
-  .svc-inner .svc-more:hover .arr{transform:translateX(4px)}
-
-  /* ---------- LOCAL SEO · indexable text + FAQ ---------- */
-  .home-seo{
-    position:relative;padding:110px 0 96px;
-    /* long soft ramp out of the black reveal studio into the CTA band (--bg-2) */
-    background:linear-gradient(180deg,#000 0%,#050506 26%,#09090b 56%,#0c0c0e 80%,#0e0e10 100%);
-  }
-  .home-seo .wrap{max-width:900px}
-  .home-seo h2{
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.02em;line-height:.94;font-size:clamp(30px,4.6vw,54px);
-    margin-top:18px;text-wrap:balance;
-  }
-  .home-seo p{color:var(--muted);font-size:16px;line-height:1.7;margin-top:20px;max-width:66ch;text-wrap:pretty}
-  .home-faq{margin-top:44px;border-top:1px solid var(--line)}
-  .home-faq details{border-bottom:1px solid var(--line)}
-  .home-faq summary{
-    cursor:pointer;list-style:none;
-    display:flex;align-items:center;justify-content:space-between;gap:18px;
-    padding:18px 0;
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.08em;font-size:17px;color:var(--text);
-    transition:color .25s var(--ease);
-  }
-  .home-faq summary::-webkit-details-marker{display:none}
-  .home-faq summary::after{
-    content:"+";font-weight:400;color:var(--muted-2);font-size:22px;line-height:1;flex:none;
-    transition:transform .25s var(--ease),color .25s var(--ease);
-  }
-  .home-faq details[open] summary::after{transform:rotate(45deg);color:var(--text)}
-  .home-faq summary:hover{color:#fff}
-  .home-faq summary:focus-visible{outline:2px solid #e7e7ec;outline-offset:3px}
-  .home-faq details p{margin:0;padding:0 0 20px;color:var(--muted);font-size:15.5px;max-width:66ch}
-  @media(max-width:760px){
-    .home-seo{padding:80px 0 70px}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .home-faq summary,.home-faq summary::after{transition:none}
-  }
-
-  /* ---------- CTA BAND ---------- */
-  .cta{position:relative;padding:120px 0;text-align:center;overflow:hidden;background:var(--bg-2)}
-  .cta::before,.cta::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line)}
-  .cta::before{top:0}.cta::after{bottom:0}
-  .cta .eyebrow{justify-content:center}
-  .cta h2{font-size:clamp(40px,7vw,96px);margin:22px auto 0;max-width:16ch}
-  .cta .actions{margin-top:40px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  .cta .phone{
-    margin-top:30px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;letter-spacing:.2em;
-    text-transform:uppercase;font-size:14px;color:var(--muted);
-  }
-  .cta .phone strong{color:var(--text);font-weight:600}
-
-  /* contact layout + map */
-  .contact-grid{display:grid;grid-template-columns:1.04fr 1fr;gap:60px;align-items:center;text-align:left;margin-top:4px}
-  .contact-info .eyebrow{justify-content:flex-start}
-  .contact-info h2{font-size:clamp(36px,5vw,74px);margin:22px 0 0;max-width:13ch;line-height:.92}
-  .contact-info .actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-start}
-  .contact-meta{margin-top:36px;display:flex;flex-direction:column;border-top:1px solid var(--line)}
-  .contact-meta .cm-row{display:flex;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
-  .contact-meta .cm-k{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.2em;
-    font-size:13px;color:var(--muted-2);width:84px;flex:none;padding-top:3px}
-  .contact-meta .cm-v{color:var(--text);font-size:16px}
-  .contact-meta .cm-v a{color:var(--text);transition:color .25s var(--ease)}
-  .contact-meta .cm-v a:hover{color:var(--muted)}
-  .contact-social{margin-top:26px;display:flex;align-items:center;gap:14px}
-  .contact-social .cs-lbl{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;
-    letter-spacing:.2em;font-size:12px;color:var(--muted-2)}
-  .contact-social a{width:46px;height:46px;display:grid;place-items:center;color:var(--text);
-    border:1px solid var(--line-strong);background:rgba(255,255,255,.02);
-    transition:border-color .25s var(--ease),background .25s var(--ease),transform .25s var(--ease)}
-  .contact-social a:hover{border-color:#fff;transform:translateY(-2px)}
-  .contact-social a.wa:hover{border-color:#25d366;color:#25d366;background:rgba(37,211,102,.14)}
-  .contact-social a svg{width:23px;height:23px}
-
-  .map-frame{position:relative;height:470px;border:1px solid var(--line-strong);overflow:hidden;background:#0d0d10;
-    clip-path:polygon(0 0,100% 0,100% 100%,18px 100%,0 calc(100% - 18px))}
-  .map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.9) brightness(.95) contrast(.96)}
-  .map-card{position:absolute;right:16px;top:16px;z-index:5;display:flex;flex-direction:column;gap:3px;
-    padding:14px 18px;background:rgba(11,11,13,.86);backdrop-filter:blur(10px);border:1px solid var(--line-strong);
-    max-width:80%;transition:transform .3s var(--ease),border-color .3s var(--ease)}
-  .map-card:hover{transform:translateY(-2px);border-color:#fff}
-  .map-card .mc-eyebrow{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.16em;font-size:15px;color:var(--text)}
-  .map-card .mc-addr{font-size:13px;color:var(--muted)}
-  .map-card .mc-open{margin-top:7px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;
-    letter-spacing:.14em;font-size:12.5px;color:var(--text);display:inline-flex;align-items:center;gap:8px}
-  .map-card .mc-open .arr{transition:transform .3s var(--ease)}
-  .map-card:hover .mc-open .arr{transform:translateX(4px)}
-  @media(max-width:880px){
-    .contact-grid{grid-template-columns:1fr;gap:34px}
-    .contact-info h2{max-width:100%}
-    .map-frame{height:360px}
-  }
+  .faq-item summary .fq-x::before{width:16px;height:1px;transform:translate(-50%,-50%)}
+  .faq-item summary .fq-x::after{width:1px;height:16px;transform:translate(-50%,-50%)}
+  .faq-item[open] summary .fq-x{transform:rotate(45deg)}
+  .faq-item[open] summary .fq-x::before,
+  .faq-item[open] summary .fq-x::after{background:var(--text)}
+  .faq-item p{padding:0 0 26px;color:var(--muted);font-size:15.5px;max-width:68ch;text-wrap:pretty}
 
   /* ---------- FOOTER ---------- */
   footer{padding:70px 0 50px;background:var(--bg)}
-  .foot{display:flex;justify-content:space-between;gap:50px;flex-wrap:wrap;align-items:flex-start}
-  .foot .logo{font-size:26px}
-  .foot .tagline{color:var(--muted);max-width:30ch;margin-top:16px;font-size:15px}
-  .foot-cols{display:flex;gap:70px;flex-wrap:wrap}
-  .foot-col h3{
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.2em;
-    font-size:13px;color:var(--muted);font-weight:600;margin-bottom:16px;
-  }
-  .foot-col a,.foot-col p{display:block;color:var(--muted);font-size:15px;margin-bottom:9px;transition:color .25s var(--ease)}
-  .foot-col a:hover{color:var(--text)}
-  .foot-bottom{
-    margin-top:60px;padding-top:26px;border-top:1px solid var(--line);
-    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
-    color:var(--muted);font-size:13px;letter-spacing:.04em;
-  }
-
-  /* sticky mobile call */
-  .mobile-call{
-    display:none;position:fixed;right:18px;bottom:18px;z-index:60;
-    width:58px;height:58px;border-radius:50%;
-    background:var(--chrome);color:#0a0a0b;place-items:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.5);
-  }
-  .mobile-call svg{width:24px;height:24px}
 
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:1500px){
@@ -589,27 +428,59 @@
     .nav-links{display:none}
   }
   @media(max-width:1024px){
-    .group{grid-template-columns:1fr;gap:26px}
-    .group-label{position:static}
+    .svcnav-grid{grid-template-columns:repeat(2,1fr)}
+    .svc-door{min-height:220px}
+    .svc-door.lead{grid-column:span 2;min-height:290px}
+    .hm-proof-grid{grid-template-columns:1fr;gap:44px}
+  }
+  @media(max-width:880px){
+    .hm-proof-shots{grid-template-columns:1fr 1fr}
+    .hm-proof-shots figure:nth-child(1){grid-column:1;grid-row:1;aspect-ratio:3/4}
+    .hm-proof-shots figure:nth-child(2){grid-column:2;grid-row:1;margin-top:0;aspect-ratio:3/4}
+    .hm-proof-shots figure:nth-child(3){grid-column:1/-1;grid-row:2;aspect-ratio:16/9}
   }
   @media(max-width:760px){
     .wrap,.nav-inner{padding-left:24px;padding-right:24px}
     .nav-inner{padding-top:max(68px,calc(env(safe-area-inset-top) + 22px));padding-bottom:14px}
     .nav-links{display:none}
     .nav-right .btn:not(.compact){display:none}
-    .hero .actions{flex-direction:column;align-items:flex-start}
-    .hero .actions .btn{width:100%;justify-content:center}
+    .hero{padding:150px 0 104px}
+    .hero .overlay{
+      background:
+        radial-gradient(96% 62% at 46% 62%,rgba(4,4,6,.84) 0%,rgba(4,4,6,.76) 42%,rgba(4,4,6,.56) 70%,rgba(4,4,6,.22) 90%,rgba(4,4,6,0) 100%),
+        linear-gradient(180deg,rgba(6,6,8,.72) 0%,rgba(6,6,8,.52) 22%,rgba(6,6,8,.74) 54%,rgba(8,9,12,.92) 82%,#14151b 100%);
+    }
+    .hero .actions{flex-direction:column;align-items:stretch}
+    .hero .actions .btn{width:100%}
     .scroll-cue,.hero-meta{display:none}
-    .mobile-call{display:grid}
-    .cards{grid-template-columns:1fr}
-    .services{padding-top:90px}
-    .reveal-head .svc-line{font-size:12px;letter-spacing:.16em;gap:8px}
-    .reveal-head .svc-line a{padding:9px 14px}
+    .svcnav{padding:72px 0 80px}
+    .svcnav-grid{gap:10px}
+    .svc-door{min-height:180px;padding:18px 16px 16px}
+    .svc-door.lead{min-height:230px}
+    .svc-door .sd-arrow{width:34px;height:34px}
+    .svc-door .sd-name{font-size:21px;margin-top:22px}
+    .svc-door .sd-sub{font-size:13.5px}
+    .svc-door .sd-price{font-size:17px;margin-top:12px;padding-top:11px}
+    .hm-pkg,.hm-proof,.hm-gal{padding:68px 0 76px}
+    .faq{padding:68px 0 30px}
+    .hm-gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:33vw;gap:8px;margin-top:34px}
+    .hm-gal-tile:nth-child(n){grid-column:span 1;grid-row:span 1}
+    .hm-gal-tile:nth-child(1){grid-column:span 2;grid-row:span 2}
+    .hm-gal-tile:nth-child(6){grid-column:span 2}
+    .hm-gal-foot .btn,.hm-pkg-foot .btn{width:100%}
+  }
+  @media(max-width:420px){
+    .svcnav-grid{grid-template-columns:1fr}
+    .svc-door.lead{grid-column:span 1}
+  }
+  @media(hover:none){
+    .svc-door .sd-img{opacity:.42;transform:scale(1.02)}
   }
   @media(prefers-reduced-motion:reduce){
-    *{animation:none!important}
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
     .hero h1 .ln span{transform:none}
-    .hero .sub,.hero .actions,.hero .eyebrow,.scroll-cue,.hero-meta{opacity:1}
+    .hero .sub,.hero .actions,.hero .us-countdown,.scroll-cue,.hero-meta{opacity:1}
   }
 </style>
 <!-- REGION:jsonld -->
@@ -1043,6 +914,34 @@
 </header>
 <!-- /REGION:header -->
 
+<!-- ===================== 1 · HERO ===================== -->
+<section class="hero" id="top" data-screen-label="Hero">
+  <video autoplay muted loop playsinline preload="none" poster="assets/serres-poster.jpg">
+    <source src="assets/serres-hero.webm" type="video/webm">
+    <source src="assets/serres-hero.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <div class="wrap">
+      <p class="us-countdown">Opening <time datetime="2026-11-13">November 13, 2026</time></p>
+      <h1 class="display">
+        <span class="ln"><span>Paint Protection Film</span></span>
+        <span class="ln"><span class="chrome-text">and Detailing</span></span>
+        <span class="ln"><span>in Boca Raton</span></span>
+      </h1>
+      <p class="sub">The protocol we have run in our Barcelona studio since 2023, now installing in South Florida. 3M and NAR films, published prices, a 1-year SERRES installation warranty.</p>
+      <div class="actions">
+        <a href="contact/" class="btn">Request your quote <span class="arr">→</span></a>
+        <a href="pricing/" class="btn ghost">See pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="bar"></span> Scroll</div>
+  <div class="hero-meta">PPF · Wraps · Ceramic<br>Tint · Detailing</div>
+</section>
+
+<!-- ===================== 2 · TRUST BAR (generated region) ===================== -->
+<div class="hm-trustwrap">
 <!-- REGION:trustbar -->
 <section class="us-trustbar" aria-label="Why SERRES" data-us-region="trustbar">
   <ul class="wrap us-trustbar__list">
@@ -1053,164 +952,300 @@
   </ul>
 </section>
 <!-- /REGION:trustbar -->
+<main id="main">
+</div>
 
-<!-- ===================== HERO ===================== -->
-<section class="hero" id="top" data-screen-label="Hero">
-  <video autoplay muted loop playsinline preload="metadata" poster="assets/serres-poster.jpg">
-    <source src="assets/serres-hero.mp4" type="video/mp4">
-  </video>
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <div class="wrap">
-      <span class="eyebrow">Premium Detailing &amp; Customization</span>
-      <h1 class="display">
-        <span class="ln"><span>Elevate</span></span>
-        <span class="ln"><span class="chrome-text">your dream</span></span>
-        <span class="ln"><span class="h1-kw">PPF, Car Wrap &amp; Detailing in Boca Raton</span></span>
-      </h1>
-      <p class="sub">PPF, custom Car Wrap and concours-level detailing in Boca Raton, Florida — engineered for the cars you build your life around. One workshop. Obsessive standards.</p>
-      <div class="actions">
-        <a href="contact/" class="btn ghost">Get a Quote <span class="arr">→</span></a>
-        <a href="#services" class="btn ghost">Explore Services</a>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-cue"><span class="bar"></span> Scroll</div>
-  <div class="hero-meta">PPF · Wraps · Paint Correction<br>Detailing Studio</div>
-</section>
-
-<!-- ===================== SERVICE NAVIGATOR ===================== -->
-<section class="svcnav" id="services" data-screen-label="Services">
+<!-- ===================== 3 · SERVICES · five doors ===================== -->
+<section class="svcnav" id="services" aria-labelledby="hm-svc-title" data-screen-label="Services">
   <div class="wrap">
-    <div class="svcnav-head">
+    <div class="section-head">
       <div>
-        <span class="eyebrow">Our services</span>
-        <h2 class="chrome-text">Choose where to begin.</h2>
+        <span class="eyebrow">What we do</span>
+        <h2 id="hm-svc-title">Five ways in.<br>One standard.</h2>
       </div>
-      <p class="sn-note">Six specialities, one standard. Tap a service to see the process, materials and pricing.</p>
+      <p class="sh-note">Every service carries a published starting price. Send the make and model and you get the exact number, not a range.</p>
     </div>
-    <nav class="svcnav-grid" aria-label="Servicios SERRES">
-      <a class="svc-door" href="paint-protection-film/">
-        <img class="sd-img" src="assets/svc/ppf-tile.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <nav class="svcnav-grid" aria-label="Services">
+      <a class="svc-door lead" href="paint-protection-film/">
+        <img class="sd-img" src="assets/ppf/after.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">01</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
-        <span class="sd-name">PPF</span>
-        <span class="sd-sub">Invisible protection</span>
+        <span class="sd-name">Paint Protection Film</span>
+        <span class="sd-sub">Self-healing urethane over the panels that take the hits. NAR H190 or 3M Scotchgard Pro Series 200.</span>
+        <span class="sd-price"><!--P:STARTING:ppf-->from $1,000<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
       <a class="svc-door" href="car-wraps/">
         <img class="sd-img" src="assets/gallery/xm-grille-s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">02</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
-        <span class="sd-name" data-i18n-skip>Car Wrap</span>
-        <span class="sd-sub">Color change</span>
+        <span class="sd-name">Car Wraps</span>
+        <span class="sd-sub">Chrome delete to a full color change, edges wrapped in.</span>
+        <span class="sd-price"><!--P:STARTING:wraps-->from $450<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
       <a class="svc-door" href="ceramic-coating/">
-        <img class="sd-img" src="assets/gallery/supra-villa-s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img class="sd-img" src="assets/ceramic/after.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">03</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
-        <span class="sd-name" data-i18n-skip>Ceramic Coating</span>
-        <span class="sd-sub">Seal &amp; gloss</span>
+        <span class="sd-name">Ceramic Coating</span>
+        <span class="sd-sub">Decon, gloss prep, coating, cure — on bare paint or over fresh film.</span>
+        <span class="sd-price"><!--P:STARTING:ceramic-->from $600<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
-      <a class="svc-door" href="detailing/">
-        <img class="sd-img" src="assets/gallery/e92-coast-s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <a class="svc-door" href="window-tint/">
+        <img class="sd-img" src="assets/gallery/gts-rear-s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">04</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
-        <span class="sd-name">Paint Correction</span>
-        <span class="sd-sub">Stage Polish</span>
+        <span class="sd-name">Window Tint</span>
+        <span class="sd-sub">Ceramic IR-rejecting film, Florida-legal VLT options.</span>
+        <span class="sd-price"><!--P:STARTING:tint-->from $500<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
       <a class="svc-door" href="detailing/">
-        <img class="sd-img" src="assets/gallery/xm-headliner-s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img class="sd-img" src="assets/detailing/int-after.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">05</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
-        <span class="sd-name" data-i18n-skip>Detailing</span>
-        <span class="sd-sub">Inside &amp; outside</span>
-        <span class="sd-line" aria-hidden="true"></span>
-      </a>
-      <a class="svc-door" href="pricing/">
-        <img class="sd-img" src="assets/gallery/rwb-profile-s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-        <span class="sd-top"><span class="sd-num">06</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
-        <span class="sd-name" data-i18n-skip>Body Kits</span>
-        <span class="sd-sub">Aero &amp; stance</span>
+        <span class="sd-name">Detailing</span>
+        <span class="sd-sub">Interior strip-down and extraction, or 1–2 stage paint correction.</span>
+        <span class="sd-price"><!--P:STARTING:detailing-->from $300<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
     </nav>
   </div>
 </section>
 
-<!-- ===================== REVEAL · scroll-driven Urus transformation ===================== -->
-<section class="reveal" id="transformacion" data-screen-label="Transformation">
-  <div class="reveal-stage">
-    <canvas id="urus-canvas"></canvas>
-
-    <div class="reveal-head">
-      <span class="eyebrow">The SERRES Build</span>
-      <h2>We make your <span class="chrome-text">dream car</span><span> a reality</span></h2>
-      <nav class="svc-line"><a href="paint-protection-film/">PPF</a><span>·</span><a href="car-wraps/" data-i18n-skip>CAR WRAP</a><span>·</span><a href="ceramic-coating/" data-i18n-skip>Ceramic Coating</a><span>·</span><a href="detailing/">Paint Correction</a><span>·</span><a href="detailing/">Detailing</a><span>·</span><a href="pricing/">Body Kits</a></nav>
-    </div>
-
-    <div class="reveal-hint" id="reveal-hint"><span class="dot"></span> Scroll to transform</div>
-
-    <div class="reveal-foot">
-      <div class="reveal-track"><i id="reveal-fill"></i></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== LOCAL · indexable text + FAQ ===================== -->
-<section class="home-seo" id="taller-barcelona" data-screen-label="Taller">
+<!-- ===================== 4 · PACKAGES ===================== -->
+<section class="hm-pkg" id="packages" aria-labelledby="hm-pkg-title" data-screen-label="Packages">
   <div class="wrap">
-    <span class="eyebrow">Workshop in Boca Raton</span>
-    <h2>PPF, Car Wrap and detailing in Boca Raton</h2>
-    <p>SERRES is a PPF, Car Wrap and detailing workshop in Boca Raton, Florida. We work with films from several professional brands: PPF in more than 50 colors and 3M, Avery Dennison and Inozetek vinyls with more than 150 colors for color changes.</p>
-    <p>Every project is booked by appointment and inspected panel by panel under controlled hexagonal lighting; if anything falls short of our standard, it is redone before delivery. We complete the range with Ceramic Coating, multi-stage polishing, detailing and body kits, with published guide prices, VAT included.</p>
-    <div class="home-faq">
-      <details>
-        <summary>How much does PPF installation cost in Boca Raton?</summary>
-        <p>The front-end PPF pack starts at 890 € and the full car at 2,390 €, with a 3-year film warranty and VAT included. Message us on WhatsApp with your car's model and we'll send you an exact quote.</p>
-      </details>
-      <details>
-        <summary>How long does a full Car Wrap take?</summary>
-        <p>A full color change takes several days in the workshop: we remove trim, wrap panel by panel and check every edge before delivery. When you book your appointment we confirm the exact lead time for your car.</p>
-      </details>
-      <details>
-        <summary>Where is the SERRES workshop?</summary>
-        <p>Our workshop is in Boca Raton, Florida, and we work by appointment only: Monday to Friday from 09:00 to 19:00 and Saturdays from 10:00 to 14:00.</p>
-      </details>
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Packages</span>
+        <h2 id="hm-pkg-title">Bundled,<br>not padded.</h2>
+      </div>
+      <p class="sh-note">Three combinations that cover most of what comes through the bay. Anything outside them is quoted line by line.</p>
+    </div>
+
+    <div class="us-pkg-grid">
+      <article class="us-pkg-card">
+        <h3 class="us-pkg-name">Daily Driver</h3>
+        <ul class="us-pkg-incl">
+          <li>Partial front PPF — full bumper, partial hood and fenders, mirrors</li>
+          <li>3-year ceramic coating on top</li>
+          <li>The panels that collect I-95 rock chips, covered</li>
+        </ul>
+        <p class="us-pkg-price"><small>Package price</small><!--P:PRICE:daily-driver-->$1,990<!--/P--></p>
+      </article>
+
+      <article class="us-pkg-card us-price-popular">
+        <span class="us-price-popular">Most popular</span>
+        <h3 class="us-pkg-name">New Car</h3>
+        <ul class="us-pkg-incl">
+          <li>Full front PPF — full hood, full fenders, bumper, mirrors</li>
+          <li>3-year ceramic coating</li>
+          <li>Ceramic window tint, Florida-legal VLT</li>
+          <li>The one to book before the first summer</li>
+        </ul>
+        <p class="us-pkg-price"><small>Package price</small><!--P:PRICE:new-car-->$2,990<!--/P--></p>
+      </article>
+
+      <article class="us-pkg-card">
+        <h3 class="us-pkg-name">Collector</h3>
+        <ul class="us-pkg-incl">
+          <li>Full body PPF — every painted panel</li>
+          <li>3-year ceramic coating over the film</li>
+          <li>Gloss measured in and out, photographed panel by panel</li>
+        </ul>
+        <p class="us-pkg-price"><small>Package price</small><!--P:PRICE:collector-->$5,990<!--/P--></p>
+      </article>
+    </div>
+
+    <div class="hm-pkg-foot">
+      <a class="btn ghost" href="pricing/">See the full price list <span class="arr">→</span></a>
+      <a class="btn link" href="our-films/">Compare the two film tiers <span class="arr">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ===================== CTA ===================== -->
-<section class="cta" id="contact" data-screen-label="Contact">
+<!-- ===================== 5 · PROVEN IN BARCELONA ===================== -->
+<!-- TODO(owner): spec 6.1.5 wants the line "300+ cars protected in Barcelona since 2023".
+     That number is unconfirmed and the Barcelona site's own figure (50+) contradicts it,
+     so NO car count is published here. Confirm the real figure and it can be added to this
+     block (and, if it is to be reused elsewhere, to assets/business.js as a single source). -->
+<section class="hm-proof" id="barcelona" aria-labelledby="hm-proof-title" data-screen-label="Proven in Barcelona">
+  <div class="wrap hm-proof-grid">
+    <div class="hm-proof-text">
+      <span class="eyebrow">Proven in Barcelona</span>
+      <h2 id="hm-proof-title">Not a new shop.<br><span class="chrome-text">A second one.</span></h2>
+      <p>SERRES has been fitting paint protection film, color-change wraps and ceramic coatings in Barcelona since 2023 — RWB Porsches, BMW M cars, a Range Rover Sport taken to satin black, plenty of daily drivers.</p>
+      <p>Boca Raton gets the same protocol, not a lighter version of it: paint thickness gauged at intake, a HEPA-filtered install bay, anti-static prep, a filtered-air dry, gloss measured in and out, and every car photographed panel by panel before it leaves.</p>
+      <a class="btn link" href="about/">Read the Barcelona story <span class="arr">→</span></a>
+    </div>
+    <div class="hm-proof-shots">
+      <figure>
+        <img src="assets/gallery/rwb-top-s.jpg" alt="Porsche 993 RWB widebody in a mirror-silver finish, shot from above the nose under the hexagon studio lights" width="600" height="900" loading="lazy" decoding="async">
+      </figure>
+      <figure>
+        <img src="assets/gallery/m2-tower-s.jpg" alt="BMW M2 in a matte frozen-grey wrap with gloss-black detailing, rear view with a communications tower behind it" width="600" height="900" loading="lazy" decoding="async">
+      </figure>
+      <figure>
+        <img src="assets/gallery/supra-villa-s.jpg" alt="Pearl-white Toyota GR Supra after paint protection and ceramic sealing" width="720" height="900" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6 · GALLERY PREVIEW ===================== -->
+<section class="hm-gal" id="work" aria-labelledby="hm-gal-title" data-screen-label="Gallery preview">
   <div class="wrap">
-    <div class="contact-grid">
-      <div class="contact-info">
-        <span class="eyebrow">Book your build</span>
-        <h2 class="display">Bring us the car.<br><span class="chrome-text">We'll redefine it.</span></h2>
-        <div class="actions">
-          <a href="contact/" class="btn">Get a Quote <span class="arr">→</span></a>
-          <a href="tel:+34649663380" class="btn ghost">Call the Studio</a>
-        </div>
-        <div class="contact-meta">
-          <div class="cm-row"><span class="cm-k">Studio</span><span class="cm-v">Sant Cugat del Vallès, Barcelona</span></div>
-          <div class="cm-row"><span class="cm-k">Hours</span><span class="cm-v">Mon–Sat · By appointment</span></div>
-          <div class="cm-row"><span class="cm-k">Phone</span><span class="cm-v"><a href="tel:+34649663380">+34 649 66 33 80</a></span></div>
-        </div>
-        <div class="contact-social">
-          <span class="cs-lbl">Follow &amp; chat</span>
-          <a class="ig" href="https://www.instagram.com/serres.wrap.center/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 2.8h10A4.2 4.2 0 0 1 21.2 7v10a4.2 4.2 0 0 1-4.2 4.2H7A4.2 4.2 0 0 1 2.8 17V7A4.2 4.2 0 0 1 7 2.8Z"></path><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"></circle></svg></a>
-          <a class="wa" href="https://wa.me/34649663380?text=Hola%20SERRES%2C%20quer%C3%ADa%20pedir%20presupuesto%20para%20mi%20coche." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.4 4 15.04c0 2.12.56 4.18 1.62 6L4 29l8.16-1.58a12 12 0 0 0 3.88.64h.01C22.7 28.06 28.1 22.66 28.1 16.02 28.1 8.4 22.68 3 16.04 3Zm0 21.9h-.01c-1.18 0-2.34-.22-3.43-.66l-.25-.1-4.84.94.97-4.72-.16-.25a9.74 9.74 0 0 1-1.49-5.18c0-5.4 4.4-9.8 9.83-9.8 2.62 0 5.08 1.02 6.93 2.88a9.7 9.7 0 0 1 2.87 6.93c0 5.4-4.4 9.8-9.82 9.8Zm5.39-7.33c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.15-.17.2-.34.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.18-.24-.58-.48-.5-.66-.5l-.56-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.07-.13-.27-.2-.57-.35Z"></path></svg></a>
-        </div>
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Selected work</span>
+        <h2 id="hm-gal-title">Cars we<br>have finished.</h2>
       </div>
-      <div class="contact-map">
-        <div class="map-frame">
-          <iframe title="SERRES Wrap Center on Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28430.735708274406!2d2.0633841973199507!3d41.49532481891128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2027f0d4ea2a70f1%3A0xc8f7c6ce9b2a429d!2sSerres%20Wrap%20Center!5e0!3m2!1ses!2ses!4v1780990222187!5m2!1ses!2ses" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
+      <p class="sh-note">Every car below went through the Barcelona studio. The Boca Raton bay runs the same process.</p>
+    </div>
+
+    <div class="hm-gal-grid">
+      <a class="hm-gal-tile" href="gallery/#porsche">
+        <figure>
+          <img src="assets/gallery/rwb-side-s.jpg" alt="Side profile of a Porsche 993 RWB widebody in a mirror-silver wrap, doors open under the studio lights" width="900" height="600" loading="lazy" decoding="async">
+          <figcaption>Porsche 993 RWB · Wrap</figcaption>
+        </figure>
+      </a>
+      <a class="hm-gal-tile" href="gallery/#landrover">
+        <figure>
+          <img src="assets/gallery/landrover-studio-s.jpg" alt="Range Rover Sport wrapped in satin black vinyl, every panel and pillar colour-matched" width="603" height="900" loading="lazy" decoding="async">
+          <figcaption>Range Rover Sport · Wrap</figcaption>
+        </figure>
+      </a>
+      <a class="hm-gal-tile" href="gallery/#xm">
+        <figure>
+          <img src="assets/gallery/xm-front-s.jpg" alt="Matte-black BMW XM in full paint protection film, illuminated kidney grille" width="900" height="600" loading="lazy" decoding="async">
+          <figcaption>BMW XM · Full PPF</figcaption>
+        </figure>
+      </a>
+      <a class="hm-gal-tile" href="gallery/#cayenne">
+        <figure>
+          <img src="assets/gallery/cayenne-quarter-s.jpg" alt="Porsche Cayenne E-Hybrid in a satin black wrap with blacked-out trim and acid-green calipers" width="601" height="900" loading="lazy" decoding="async">
+          <figcaption>Porsche Cayenne · Wrap</figcaption>
+        </figure>
+      </a>
+      <a class="hm-gal-tile" href="gallery/#gts">
+        <figure>
+          <img src="assets/gallery/gts-rear-s.jpg" alt="Porsche 911 Carrera GTS colour-changed to satin sand vinyl, gloss-black roof and wheels" width="598" height="900" loading="lazy" decoding="async">
+          <figcaption>911 Carrera GTS · Wrap</figcaption>
+        </figure>
+      </a>
+      <a class="hm-gal-tile" href="gallery/#e92">
+        <figure>
+          <img src="assets/gallery/e92-rolling-s.jpg" alt="Gloss-black BMW 335i E92 rolling at speed after paint correction and a protective finish" width="900" height="600" loading="lazy" decoding="async">
+          <figcaption>BMW 335i · Paint correction</figcaption>
+        </figure>
+      </a>
+    </div>
+
+    <div class="hm-gal-foot">
+      <a class="btn ghost" href="gallery/">See every project <span class="arr">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
+<!-- ===================== 7 · REVIEW STRIP — deliberately omitted =====================
+     TODO(owner): spec 6.1.7 asks for a ReviewStrip of Barcelona Google-review screenshots.
+     We do not hold those screenshots, and a US entity with no US reviews may not publish
+     the Barcelona listing's rating (4.9 / 98% recommend) — it was removed sitewide on
+     purpose. The section is left OUT rather than faked. Supply the real screenshots (or a
+     US Google Business Profile once reviews exist) and it can be built between the gallery
+     preview and the FAQ. -->
+
+<!-- ===================== 8 · FAQ ===================== -->
+<section class="faq" id="faq" aria-labelledby="hm-faq-title" data-screen-label="FAQ">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Questions</span>
+        <h2 id="hm-faq-title">Before you book.</h2>
+      </div>
+      <p class="sh-note">The four we are asked most while the Boca Raton studio fits out.</p>
+    </div>
+    <p class="faq-intro">SERRES Wrap Center is a paint protection film, wrap, ceramic coating, window tint and detailing studio serving Boca Raton, Delray Beach, Pompano Beach, Deerfield Beach and Fort Lauderdale. Prices are published on every service page, and the film tiers are compared side by side on <a href="our-films/">our films</a>.</p>
+
+    <div class="faq-list">
+      <!-- REGION:faq: -->
+      <details class="faq-item">
+        <summary>When does SERRES Wrap Center open in Boca Raton?<span class="fq-x"></span></summary>
+        <p>Detailing and paint correction start on November 13, 2026. The full paint protection film launch follows on December 8, 2026. The exact studio location is announced in October 2026.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How much does paint protection film cost?<span class="fq-x"></span></summary>
+        <p>Paint protection film starts at $1,000 for a partial front in NAR H190 and $1,900 for a full front. The 3M Scotchgard Pro Series 200 tier is a step up from there. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What warranty do I get?<span class="fq-x"></span></summary>
+        <p>Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty. The installation warranty covers lifting, bubbling or edge failure caused by the fit, and it is ours, not the film maker's.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I get a quote before you open?<span class="fq-x"></span></summary>
+        <p>Yes. Send your make, model and the coverage you are after through the quote form and we come back with the exact number. Booking secured with a 30% deposit. The studio address and phone line go live in October 2026, so the form is the way in until then.</p>
+      </details>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://serreswrap.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "When does SERRES Wrap Center open in Boca Raton?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Detailing and paint correction start on November 13, 2026. The full paint protection film launch follows on December 8, 2026. The exact studio location is announced in October 2026."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does paint protection film cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Paint protection film starts at $1,000 for a partial front in NAR H190 and $1,900 for a full front. The 3M Scotchgard Pro Series 200 tier is a step up from there. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What warranty do I get?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty. The installation warranty covers lifting, bubbling or edge failure caused by the fit, and it is ours, not the film maker's."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get a quote before you open?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Send your make, model and the coverage you are after through the quote form and we come back with the exact number. Booking secured with a 30% deposit. The studio address and phone line go live in October 2026, so the form is the way in until then."
+            }
+          }
+        ]
+      }
+      </script>
+      <!-- /REGION:faq: -->
+    </div>
+  </div>
+</section>
+
+<!-- REGION:terms -->
+<div class="us-terms" data-us-region="terms">
+  <ul class="wrap us-terms__list">
+    <li class="us-terms__item">Prices exclude FL sales tax.</li>
+    <li class="us-terms__item">“From” pricing = real price for a standard sedan in good condition — no bait pricing.</li>
+    <li class="us-terms__item">Manufacturer film warranty (up to 10 years) + 1-year Serres installation warranty.</li>
+    <li class="us-terms__item">Booking secured with a 30% deposit.</li>
+  </ul>
+</div>
+<!-- /REGION:terms -->
+
+</main>
 <!-- REGION:ctaband -->
 <section class="us-ctaband" aria-labelledby="us-ctaband-title" data-us-region="ctaband">
   <div class="wrap us-ctaband__inner">
@@ -1288,117 +1323,14 @@
 </footer>
 <!-- /REGION:footer -->
 
-<a href="tel:+34649663380" class="mobile-call" aria-label="Call SERRES">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-</a>
-
 <script>
-  const nav=document.getElementById('nav');
-  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);
+/* sticky-nav background: the header gains .scrolled once the page has moved */
+(function(){
+  var nav=document.querySelector('header.nav');
+  if(!nav) return;
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>40); }
   onScroll();
   window.addEventListener('scroll',onScroll,{passive:true});
-</script>
-
-<script>
-/* ---- Scroll-driven Urus transformation (frame sequence on canvas) ---- */
-(function(){
-  const N=72;
-  const section=document.getElementById('transformacion');
-  const canvas=document.getElementById('urus-canvas');
-  const ctx=canvas.getContext('2d');
-  const fill=document.getElementById('reveal-fill');
-  const hint=document.getElementById('reveal-hint');
-  const labStock=null;
-  const labBuild=null;
-  if(!section||!canvas) return;
-
-  const pad=n=>String(n).padStart(2,'0');
-  const frames=new Array(N);
-  let firstReady=false;
-  /* perf: on phones load every 2nd frame (~half the payload); the nearest-
-     loaded-frame fallback below keeps the scroll animation smooth. Always
-     load frame 0 (first paint) and the last frame (end state). */
-  const lite = Math.min(window.innerWidth||9999,(window.screen&&window.screen.width)||9999) <= 760;
-  for(let i=0;i<N;i++){
-    const im=new Image();
-    im.decoding='async';
-    const keep = !lite || i%2===0 || i===N-1;
-    if(keep){
-      im.src='assets/gclass/frame_'+pad(i)+'.jpg';
-      im.onload=()=>{ if(i===0){ firstReady=true; sizeCanvas(); render(true); } };
-    }
-    frames[i]=im;
-  }
-
-  const head=document.querySelector('.reveal-head');
-  const foot=document.querySelector('.reveal-foot');
-  let W=0,H=0,dpr=1,curIdx=-1;
-  function sizeCanvas(){
-    dpr=Math.min(window.devicePixelRatio||1,2);
-    W=canvas.clientWidth; H=canvas.clientHeight;
-    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    curIdx=-1; // force redraw at new size
-  }
-
-  function pickLoaded(idx){
-    if(frames[idx]&&frames[idx].complete&&frames[idx].naturalWidth) return idx;
-    for(let d=1;d<N;d++){
-      const a=idx-d,b=idx+d;
-      if(a>=0&&frames[a].complete&&frames[a].naturalWidth) return a;
-      if(b<N&&frames[b].complete&&frames[b].naturalWidth) return b;
-    }
-    return -1;
-  }
-
-  function drawIdx(idx){
-    const im=frames[idx]; if(!im) return;
-    ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H);
-    const iw=im.naturalWidth, ih=im.naturalHeight;
-    // Frames already carry the original video's cinematic studio lighting, soft
-    // glow and floor reflection — no synthetic light is added. Contain the WHOLE
-    // frame between the headline and the scroll hint so the full car (wheels,
-    // lower body line, reflection) is always visible and never clipped.
-    const hintEl=document.getElementById('reveal-hint');
-    const top=(head? head.offsetTop+head.offsetHeight : H*0.26)+18;
-    const lowerBound=hintEl? hintEl.offsetTop : (foot? foot.offsetTop : H*0.9);
-    const bottom=lowerBound-14;
-    const bandH=Math.max(bottom-top, 80);
-    const scale=Math.min(W*0.94/iw, bandH/ih);
-    const dw=iw*scale, dh=ih*scale;
-    const dx=(W-dw)/2;
-    const dy=top+(bandH-dh)/2;
-    ctx.drawImage(im,dx,dy,dw,dh);
-    curIdx=idx;
-  }
-
-  function progress(){
-    const r=section.getBoundingClientRect();
-    const total=r.height-window.innerHeight;
-    if(total<=0) return 0;
-    return Math.min(1,Math.max(0,(-r.top)/total));
-  }
-
-  let lastP=-1;
-  function render(force){
-    const p=progress();
-    if(!force && p===lastP) return;
-    lastP=p;
-    const want=Math.round(p*(N-1));
-    const idx=pickLoaded(want);
-    if(idx>=0 && idx!==curIdx) drawIdx(idx);
-    if(fill) fill.style.width=(p*100).toFixed(2)+'%';
-    if(hint) hint.style.opacity = p>0.015 ? '0' : '1';
-  }
-
-  let ticking=false;
-  function onScrollResize(){ if(!ticking){ ticking=true; requestAnimationFrame(()=>{ render(false); ticking=false; }); } }
-  window.addEventListener('scroll',onScrollResize,{passive:true});
-  window.addEventListener('resize',()=>{ sizeCanvas(); render(true); },{passive:true});
-
-  sizeCanvas();
-  if(firstReady) render(true);
-  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(()=>{ sizeCanvas(); render(true); }); }
 })();
 </script>
 
@@ -1407,23 +1339,6 @@
 <script src="assets/quote-form.js" defer></script>
 <script src="assets/cookie-notice.js" defer></script>
 <!-- /data-us-assets-tail -->
-
-<script>
-(function () {
-  function track(name, params) {
-    if (typeof gtag === 'function') gtag('event', name, params || {});
-  }
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest ? e.target.closest('a') : null;
-    if (!a || !a.href) return;
-    if (a.href.indexOf('wa.me') !== -1 || a.href.indexOf('api.whatsapp.com') !== -1) {
-      track('whatsapp_click', { link_url: a.href, page_path: location.pathname });
-    } else if (a.href.indexOf('tel:') === 0) {
-      track('phone_click', { link_url: a.href, page_path: location.pathname });
-    }
-  }, true);
-})();
-</script>
 
 </body>
 </html>

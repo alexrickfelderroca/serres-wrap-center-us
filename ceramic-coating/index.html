@@ -41,7 +41,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;
-    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100dvh;
     display:flex;flex-direction:column;overflow-x:hidden;
     background-image:radial-gradient(90% 60% at 50% -8%,rgba(46,50,63,.26),transparent 66%);}
   ::selection{background:#e7e7ec;color:#0a0a0b}
@@ -84,8 +84,8 @@
   .nav-right{display:flex;align-items:center;gap:20px}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:90vh;min-height:90svh;display:flex;align-items:flex-end;
-    padding:130px 0 62px;overflow:hidden;background:#000}
+  .hero{position:relative;min-height:90dvh;min-height:90svh;display:flex;align-items:flex-end;
+    padding:130px 0 62px;overflow:hidden;background:var(--bg)}
   .hero video,.hero .hero-poster{position:absolute;inset:0;width:100%;height:100%;
     object-fit:cover;object-position:center 42%;z-index:0}
   .hero .hero-poster{z-index:0}
@@ -123,7 +123,8 @@
   .crumbs{position:absolute;top:24px;left:0;right:0;z-index:3;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
     text-transform:uppercase;letter-spacing:.2em;font-size:12px;color:var(--muted)}
   .crumbs .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  .crumbs a{color:var(--muted);transition:color .25s var(--ease)}
+  .crumbs a{color:var(--muted);transition:color .25s var(--ease);position:relative}
+  .crumbs a::after{content:"";position:absolute;left:-6px;right:-6px;top:50%;height:44px;transform:translateY(-50%)}
   .crumbs a:hover{color:var(--text)}
   .crumbs .c-sep{color:var(--muted-2)}
   .crumbs .c-here{color:var(--text)}
@@ -154,7 +155,7 @@
   .xspecs .v{color:var(--text);font-size:15.5px}
 
   .compare{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;
-    border:1px solid var(--line-strong);background:#000;user-select:none;touch-action:pan-y;
+    border:1px solid var(--line-strong);background:var(--bg);user-select:none;touch-action:pan-y;
     clip-path:polygon(0 0,100% 0,100% 100%,20px 100%,0 calc(100% - 20px))}
   .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;
     pointer-events:none}
@@ -201,16 +202,62 @@
 
 
 
-  /* ---------- CTA ---------- */
-  .cta{position:relative;margin-top:80px;padding:104px 0;text-align:center;background:var(--bg-2)}
-  .cta::before,.cta::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line)}
-  .cta::before{top:0}.cta::after{bottom:0}
-  .cta .eyebrow{justify-content:center}
-  .cta h2{font-size:clamp(38px,6vw,82px);margin:20px auto 0;max-width:15ch}
-  .cta .actions{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  .cta .phone{margin-top:28px;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;letter-spacing:.2em;
-    text-transform:uppercase;font-size:14px;color:var(--muted)}
-  .cta .phone strong{color:var(--text);font-weight:600}
+  /* ==========================================================================
+     PAGE-LOCAL COMPONENTS — prefix "cc-" (ceramic-coating).
+     Deliberately NOT prefixed "us-": _build/us/verify-css-contract.js requires
+     every "us-" class in the markup to be defined in assets/serres-us.css, and
+     this page is not allowed to write to that shared file. "cc-" appears nowhere
+     else in the repo, so it is just as collision-proof.
+     ========================================================================== */
+
+  /* ---------- PRICING ---------- */
+  .cc-prices{padding:92px 0 30px}
+  .cc-prices-grid{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,.68fr);
+    gap:48px;align-items:start}
+  .cc-aside{margin-top:40px}
+  .cc-aside h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.05em;font-size:23px;line-height:1.04}
+  .cc-list{margin-top:18px;list-style:none;border-top:1px solid var(--line)}
+  .cc-list li{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);
+    color:var(--muted);font-size:14.5px;line-height:1.5;text-wrap:pretty}
+  .cc-list li::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;
+    background:var(--chrome);transform:rotate(45deg)}
+
+  /* ---------- CERAMIC vs PPF vs BOTH ---------- */
+  .cc-vs{padding:92px 0 30px}
+  .cc-cap{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+  /* Stacked cards below 640px: the shared table centres its cells, which reads as
+     ragged once every cell carries its own printed label. Top-align this instance
+     only — desktop keeps the shared vertical centring. */
+  @media(max-width:640px){.cc-compare tr{align-items:start}}
+  .cc-pair{display:grid;grid-template-columns:1.12fr .88fr;gap:54px;align-items:center;margin-top:62px}
+  .cc-pair h3{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
+    text-transform:uppercase;letter-spacing:.02em;line-height:.98;
+    font-size:clamp(28px,3.2vw,44px);text-wrap:balance}
+  .cc-pair p{margin-top:20px;color:var(--muted);font-size:16.5px;max-width:50ch;text-wrap:pretty}
+  .cc-figure{position:relative;margin:0;border:1px solid var(--line-strong);background:var(--bg);
+    overflow:hidden;clip-path:polygon(0 0,100% 0,100% 100%,20px 100%,0 calc(100% - 20px))}
+  .cc-figure img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:50% 45%}
+  .cc-figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:38px 20px 16px;
+    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;
+    letter-spacing:.2em;font-size:11.5px;color:#d7d7dd;
+    background:linear-gradient(180deg,transparent,rgba(8,8,9,.55) 45%,rgba(8,8,9,.9))}
+
+  /* ---------- QUOTE ---------- */
+  .cc-quote{position:relative;margin-top:96px;padding:96px 0 84px;
+    background:linear-gradient(180deg,
+      var(--bg) 0%,#0b0b0d 9%,#0d0d0f 20%,var(--bg-2) 34%,
+      var(--bg-2) 72%,#0d0d0f 86%,#0b0b0d 95%,var(--bg) 100%);}
+  .cc-quote::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--line-strong) 22%,var(--line-strong) 78%,transparent)}
+  .cc-quote-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+    gap:56px;align-items:start;margin-top:44px}
+  .cc-quote-aside p{margin-top:20px;color:var(--muted);font-size:16.5px;max-width:42ch;text-wrap:pretty}
+  .cc-form-foot{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:4px}
+  .cc-form-terms{font-size:13.5px;line-height:1.6;color:var(--muted);max-width:44ch;margin:0}
+  .cc-noscript{margin-top:36px}
+  @media(min-width:981px){.cc-quote-aside{position:sticky;top:112px}}
 
   footer{padding:30px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
     letter-spacing:.04em;text-align:center}
@@ -218,10 +265,17 @@
   .reveal-up{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
   .reveal-up.in{opacity:1;transform:none}
 
+  @media(max-width:1080px){
+    .cc-prices-grid{grid-template-columns:1fr;gap:8px}
+    .cc-aside{margin-top:36px;max-width:56ch}
+  }
   @media(max-width:980px){
     .xform-grid{grid-template-columns:1fr;gap:34px;max-width:520px}
     .xtext p{max-width:100%}
     .proc-grid{grid-template-columns:1fr}
+    .cc-pair{grid-template-columns:1fr;gap:32px;max-width:520px}
+    .cc-quote-grid{grid-template-columns:1fr;gap:36px}
+    .cc-quote-aside p{max-width:100%}
   }
   @media(max-width:760px){
     .wrap,.nav-inner{padding-left:22px;padding-right:22px}
@@ -230,13 +284,27 @@
     .hero-top{align-items:flex-start}
     .hero-stats{gap:30px}
     .scroll-cue{display:none}
+    .cc-prices,.cc-vs{padding-top:72px}
+    .cc-quote{margin-top:72px;padding:76px 0 68px}
+    .cc-pair{margin-top:44px}
   }
+  /* ---------- FOCUS ----------
+     The inherited page shipped no focus styling and leaned on the UA ring.
+     Explicit, high-contrast and consistent on this dark surface. */
+  :focus-visible{outline:2px solid #f3f3f5;outline-offset:3px}
+  .btn:focus-visible{outline-offset:4px}
+  .faq-item summary:focus-visible{outline-offset:-3px}
+  .cc-figure a:focus-visible,.rel-link:focus-visible,.crumbs a:focus-visible{outline-offset:6px}
+
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important}
     .hero h1 .ln span{transform:none}
     .hero .lead,.hero-stats,.hero .eyebrow{opacity:1}
     .scroll-cue{opacity:1}
     .reveal-up{opacity:1;transform:none}
+    /* motion, not just keyframes: kill the hover translations too */
+    .btn:hover,.btn:hover .arr,.compare:hover .cmp-handle{transform:none}
+    .btn,.btn .arr,.stage,.cmp-handle,.cmp-tag,.cmp-hint{transition-duration:.01ms!important}
   }
 </style>
 <!-- REGION:jsonld -->
@@ -451,6 +519,8 @@
 </section>
 <!-- /REGION:trustbar -->
 
+<main id="main">
+
 <!-- ===================== HERO ===================== -->
 <section class="hero" data-screen-label="Ceramic — Intro">
   <video autoplay muted loop playsinline preload="metadata" poster="../assets/ceramic/poster-opt.jpg">
@@ -470,16 +540,16 @@
         <h1 class="display">
           <span class="ln"><span data-i18n-skip>Ceramic</span></span>
           <span class="ln"><span class="chrome-text" data-i18n-skip>Coating</span></span>
-          <span class="ln"><span class="h1-kw">Ceramic coating for cars in Boca Raton</span></span>
+          <span class="ln"><span class="h1-kw">Ceramic coating for cars in Boca Raton, FL</span></span>
         </h1>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><b class="chrome-text">SiO₂</b><span>Coating</span></div>
-        <div class="hstat"><b class="chrome-text">5<span style="font-size:.55em">yr</span></b><span>Protection</span></div>
-        <div class="hstat"><b class="chrome-text">2</b><span>Layers</span></div>
+        <div class="hstat"><b class="chrome-text">SiO₂</b><span>Chemistry</span></div>
+        <div class="hstat"><b class="chrome-text">3<span style="font-size:.55em">yr</span></b><span>Package</span></div>
+        <div class="hstat"><b class="chrome-text">2</b><span>Ways to buy it</span></div>
       </div>
     </div>
-    <p class="lead">The SERRES ceramic coating for cars in Boca Raton: a SiO₂ coating that chemically bonds to the paint — sealing the gloss with a slick, hydrophobic layer that repels water, grime and UV for years.</p>
+    <p class="lead">A SiO₂ layer that cures onto the clear coat and changes how the surface behaves: water pulls into beads, dust and road film let go, and washing stops fighting you. Two ways to buy it in Boca Raton — on bare paint, or as a top-up over fresh film.</p>
   </div>
   <div class="scroll-cue"><span class="bar"></span> Scroll</div>
 </section>
@@ -499,9 +569,9 @@
         <p>Once our ceramic layer cures, the surface energy drops dramatically. Water can't wet the paint, so it pulls into beads and sheets away — taking dirt with it and leaving the gloss untouched.</p>
         <div class="xspecs">
           <div class="row"><span class="k">Vehicle</span><span class="v">Sedan · Gloss Black</span></div>
-          <div class="row"><span class="k">Coating</span><span class="v">SiO₂ ceramic · 2 layers</span></div>
-          <div class="row"><span class="k">Effect</span><span class="v">Hydrophobic · self-cleaning</span></div>
-          <div class="row"><span class="k">Lifespan</span><span class="v">Up to 5 years</span></div>
+          <div class="row"><span class="k">Coating</span><span class="v">SiO₂ ceramic</span></div>
+          <div class="row"><span class="k">Effect</span><span class="v">Hydrophobic · easier washing</span></div>
+          <div class="row"><span class="k">Package</span><span class="v">3-Year Ceramic Package</span></div>
         </div>
       </div>
       <div class="reveal-up">
@@ -517,6 +587,128 @@
           <div class="cmp-hint">Drag to reveal</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section class="cc-prices" id="prices" data-screen-label="Ceramic — Pricing">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Published pricing</span>
+        <h2>Two ways<br>to buy it.</h2>
+      </div>
+      <p class="sh-note">One package for bare paint, one for a car that already wears film or a wrap. No third tier, no upsell ladder.</p>
+    </div>
+
+    <div class="cc-prices-grid">
+      <div class="us-price-grid reveal-up">
+        <article class="us-price-card us-price-popular">
+          <h3 class="us-price-name">3-Year Ceramic Package</h3>
+          <span class="us-price-amt"><small>From</small><!--P:PRICE:ceramic-3yr-->$1,200<!--/P--></span>
+          <p class="us-price-cov">Decon, single-stage gloss prep, coating, cure. The full job on bare paint — the surface is corrected before anything is sealed onto it.</p>
+          <p class="us-price-note">The prep stage is the price. Whatever the paint looks like when it goes under the coating is what it looks like for the next three years.</p>
+        </article>
+
+        <article class="us-price-card">
+          <h3 class="us-price-name">Top-up over PPF / wrap</h3>
+          <span class="us-price-amt"><small>From</small><!--P:PRICE:ceramic-topup-->$600<!--/P--></span>
+          <p class="us-price-cov">Ceramic applied over fresh film — hydrophobics without touching the paint. The usual finish to a PPF or wrap job.</p>
+          <p class="us-price-note">Cheaper because the film install already did the prep. Booked alongside the film, not months later.</p>
+        </article>
+      </div>
+
+      <aside class="cc-aside reveal-up">
+        <h3>What moves the number</h3>
+        <ul class="cc-list">
+          <li>Vehicle size and panel count — an SUV is not a sedan.</li>
+          <li>Paint condition. Swirls, etching and previous polishing decide how much correction the prep stage needs.</li>
+          <li>Whether the car already wears film or a wrap, which is what separates the two packages above.</li>
+        </ul>
+        <p class="us-note"><strong>TODO(owner)</strong>The spec fixes the two SKUs and their prices but not the coating product, the number of layers or the exact cure window. Confirm those before launch — until then this page describes the service, not the chemistry.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CERAMIC vs PPF vs BOTH ============ -->
+<section class="cc-vs" id="vs" data-screen-label="Ceramic — Ceramic vs PPF">
+  <div class="wrap">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Straight comparison</span>
+        <h2>Gloss is not<br>armour.</h2>
+      </div>
+      <p class="sh-note">A coating changes how the surface behaves. Film changes what the paint can survive. They are not alternatives.</p>
+    </div>
+
+    <div class="reveal-up">
+      <table class="us-compare cc-compare">
+        <caption class="cc-cap">Ceramic coating compared with paint protection film, and the two combined</caption>
+        <thead>
+          <tr>
+            <th scope="col"><span class="cc-cap">What we are comparing</span></th>
+            <th scope="col">Ceramic coating</th>
+            <th scope="col">Paint protection film</th>
+            <th scope="col" class="us-compare-col">Both — the usual pairing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">What it is</th>
+            <td data-label="Ceramic">A microns-thin SiO₂ layer cured onto the clear coat</td>
+            <td data-label="PPF">A thick self-healing TPU film laid over the paint</td>
+            <td data-label="Both" class="us-compare-col">Film on the impact zones, coating over the rest</td>
+          </tr>
+          <tr>
+            <th scope="row">Stops a stone chip</th>
+            <td data-label="Ceramic">No. Nothing that thin absorbs an impact</td>
+            <td data-label="PPF">Yes. The film takes the hit instead of the paint</td>
+            <td data-label="Both" class="us-compare-col">Yes, everywhere the film goes</td>
+          </tr>
+          <tr>
+            <th scope="row">Gloss and depth</th>
+            <td data-label="Ceramic">Yes — that is most of what you are buying</td>
+            <td data-label="PPF">Yes, and light swirls heal out of the film</td>
+            <td data-label="Both" class="us-compare-col">Yes, on film and on paint alike</td>
+          </tr>
+          <tr>
+            <th scope="row">Beading and easier washing</th>
+            <td data-label="Ceramic">Yes. Water pulls into beads and carries dirt off</td>
+            <td data-label="PPF">Some. Coat the film to get the same behaviour</td>
+            <td data-label="Both" class="us-compare-col">Yes — the coating goes over the film too</td>
+          </tr>
+          <tr>
+            <th scope="row">Where we put it</th>
+            <td data-label="Ceramic">Every painted panel</td>
+            <td data-label="PPF">Front end first: bumper, hood, fenders, mirrors</td>
+            <td data-label="Both" class="us-compare-col">Film on the front, ceramic over everything</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Starts at</td>
+            <td data-label="Ceramic"><!--P:PRICE:ceramic-3yr-->$1,200<!--/P--></td>
+            <td data-label="PPF"><!--P:STARTING:ppf-->from $1,000<!--/P--></td>
+            <td data-label="Both" class="us-compare-col"><!--P:PRICE:daily-driver-->$1,990<!--/P--></td>
+          </tr>
+        </tfoot>
+      </table>
+      <p class="us-note"><strong>Read this bit</strong>The “both” column is our Daily Driver package — partial front PPF plus ceramic. If you only take one thing from this table: a coating makes the car easier to keep clean and better to look at, and a stone off I-95 will still chip the paint underneath it. Only film changes that.</p>
+    </div>
+
+    <div class="cc-pair">
+      <div class="reveal-up">
+        <h3>Film on the front,<br>ceramic over the rest.</h3>
+        <p>The front end eats the road — bumper, hood, fenders and mirrors take the gravel, the bugs and the sandblasting off the highway. That is where the film goes.</p>
+        <p>Everything behind the A-pillar mostly suffers weather, washing and UV. That is what a coating is good at. Coat the film as well and the whole car beads the same way, so you are not washing two different surfaces.</p>
+        <p><a class="rel-link" href="../paint-protection-film/">See PPF coverage and pricing</a></p>
+      </div>
+      <figure class="cc-figure reveal-up">
+        <img src="../assets/ppf/after.webp" width="1000" height="1500" loading="lazy" decoding="async" alt="BMW M2 with SERRES paint protection film over the front end, satin finish">
+        <figcaption>BMW M2 · Paint protection film, front end</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -577,6 +769,9 @@
     letter-spacing:.14em;font-size:15px;color:var(--text);border-bottom:1px solid var(--line-strong);
     padding-bottom:3px;transition:color .25s var(--ease),border-color .25s var(--ease)}
   .rel-link:hover{color:#fff;border-color:#fff}
+  /* 44px tap target without pushing the underline away from the baseline */
+  .rel-link{position:relative}
+  .rel-link::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 </style>
 
 <section class="faq" data-screen-label="Ceramic — FAQ" id="faq">
@@ -593,22 +788,27 @@
       <!-- REGION:faq:ceramic-coating/ -->
       <details class="faq-item">
         <summary>How much does a ceramic coating cost in Boca Raton?<span class="fq-x"></span></summary>
-        <p>Our 3-year ceramic package starts at $1,200. Applied over fresh film instead of bare paint, the top-up is $600. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax.</p>
+        <p>Two prices, both published. The 3-Year Ceramic Package on bare paint starts at $1,200. Over fresh paint protection film or a wrap, the top-up starts at $600. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax.</p>
       </details>
 
       <details class="faq-item">
-        <summary>What does the 3-year package include?<span class="fq-x"></span></summary>
-        <p>Decon, single-stage gloss prep, coating, cure. The car is delivered once the coating has cured, not straight off the bench.</p>
+        <summary>What does the 3-Year Ceramic Package include?<span class="fq-x"></span></summary>
+        <p>Decon, single-stage gloss prep, coating, cure. The prep is the part that decides the result: a coating locks in whatever is under it, so the paint is cleaned and corrected before anything is sealed onto it. The car goes back to you once the coating has cured, not straight off the bench.</p>
       </details>
 
       <details class="faq-item">
-        <summary>Can a coating go over PPF or a wrap?<span class="fq-x"></span></summary>
-        <p>Yes, and it is the usual pairing: ceramic applied over fresh film gives you the hydrophobics without touching the paint. That top-up is $600.</p>
+        <summary>Can a ceramic coating go over PPF or a wrap?<span class="fq-x"></span></summary>
+        <p>Yes, and it is the usual pairing. Ceramic over fresh film gives you the beading and the easier washing without touching the paint underneath, and it makes the whole car behave the same way instead of half film and half bare panel. That is the top-up, from $600.</p>
       </details>
 
       <details class="faq-item">
-        <summary>Does a coating replace paint protection film?<span class="fq-x"></span></summary>
-        <p>No. A ceramic coating adds gloss, water beading and easier washing, but it does not stop a stone chip. For impact protection you need film, which starts at $1,000.</p>
+        <summary>Does a ceramic coating replace paint protection film?<span class="fq-x"></span></summary>
+        <p>No. A coating adds gloss, water beading and easier washing, but it is microns thick and it will not stop a stone chip. For impact protection you need film: from $1,000. Film on the front end and ceramic over the rest is how most cars leave the studio.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need paint correction before the coating?<span class="fq-x"></span></summary>
+        <p>Some, always. The 3-Year Ceramic Package includes a single-stage gloss prep for exactly that reason. Heavier swirls, holograms or etching are a separate paint correction job, from $600, and it is worth doing first because a coating seals in every defect it goes over.</p>
       </details>
 
       <script type="application/ld+json">
@@ -622,31 +822,39 @@
             "name": "How much does a ceramic coating cost in Boca Raton?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Our 3-year ceramic package starts at $1,200. Applied over fresh film instead of bare paint, the top-up is $600. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax."
+              "text": "Two prices, both published. The 3-Year Ceramic Package on bare paint starts at $1,200. Over fresh paint protection film or a wrap, the top-up starts at $600. “From” pricing = real price for a standard sedan in good condition — no bait pricing. Prices exclude FL sales tax."
             }
           },
           {
             "@type": "Question",
-            "name": "What does the 3-year package include?",
+            "name": "What does the 3-Year Ceramic Package include?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Decon, single-stage gloss prep, coating, cure. The car is delivered once the coating has cured, not straight off the bench."
+              "text": "Decon, single-stage gloss prep, coating, cure. The prep is the part that decides the result: a coating locks in whatever is under it, so the paint is cleaned and corrected before anything is sealed onto it. The car goes back to you once the coating has cured, not straight off the bench."
             }
           },
           {
             "@type": "Question",
-            "name": "Can a coating go over PPF or a wrap?",
+            "name": "Can a ceramic coating go over PPF or a wrap?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, and it is the usual pairing: ceramic applied over fresh film gives you the hydrophobics without touching the paint. That top-up is $600."
+              "text": "Yes, and it is the usual pairing. Ceramic over fresh film gives you the beading and the easier washing without touching the paint underneath, and it makes the whole car behave the same way instead of half film and half bare panel. That is the top-up, from $600."
             }
           },
           {
             "@type": "Question",
-            "name": "Does a coating replace paint protection film?",
+            "name": "Does a ceramic coating replace paint protection film?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. A ceramic coating adds gloss, water beading and easier washing, but it does not stop a stone chip. For impact protection you need film, which starts at $1,000."
+              "text": "No. A coating adds gloss, water beading and easier washing, but it is microns thick and it will not stop a stone chip. For impact protection you need film: from $1,000. Film on the front end and ceramic over the rest is how most cars leave the studio."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need paint correction before the coating?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some, always. The 3-Year Ceramic Package includes a single-stage gloss prep for exactly that reason. Heavier swirls, holograms or etching are a separate paint correction job, from $600, and it is worth doing first because a coating seals in every defect it goes over."
             }
           }
         ]
@@ -659,22 +867,85 @@
       <span class="rel-label">Related services</span>
       <a class="rel-link" href="../detailing/">Paint correction &amp; polishing</a>
       <a class="rel-link" href="../paint-protection-film/">PPF paint protection</a>
+      <a class="rel-link" href="../pricing/">Full price list</a>
     </div>
   </div>
 </section>
 
-<!-- ===================== CTA ===================== -->
-<section class="cta" data-screen-label="Ceramic — CTA">
+<!-- ===================== QUOTE FORM ===================== -->
+<section class="cc-quote" id="quote" data-screen-label="Ceramic — Quote form">
   <div class="wrap">
-    <span class="eyebrow">Seal in the shine</span>
-    <h2 class="display">Lock in the <span class="chrome-text">gloss.</span></h2>
-    <div class="actions">
-      <a href="../contact/" class="btn">Get a Quote <span class="arr">→</span></a>
-      <a href="../gallery/" class="btn ghost">See Projects</a>
+    <div class="section-head reveal-up">
+      <div>
+        <span class="eyebrow">Get a quote</span>
+        <h2>Tell us<br>the car.</h2>
+      </div>
+      <p class="sh-note">Ceramic pricing moves with panel count and paint condition, so a real answer needs the real car.</p>
     </div>
-    <p class="phone">Sant Cugat del Vallès, Barcelona &nbsp;·&nbsp; <strong>+34 649 66 33 80</strong></p>
+
+    <div class="cc-quote-grid">
+      <div class="cc-quote-aside reveal-up">
+        <p>The more of this you give us, the closer the first number is to the final one.</p>
+        <ul class="cc-list">
+          <li>Make, model and year.</li>
+          <li>Whether it already wears paint protection film or a wrap.</li>
+          <li>How the paint looks today — swirls, etching, water spots, a previous polish.</li>
+          <li>What you want out of it: gloss, easier washing, or the film-and-coating pairing.</li>
+        </ul>
+        <noscript>
+          <p class="us-note cc-noscript"><strong>No JavaScript</strong>This form needs JavaScript to build its service list. The full published price list is on the <a href="../pricing/">pricing page</a>, and <a href="../contact/">contact</a> has every way to reach the studio.</p>
+        </noscript>
+      </div>
+
+      <form class="us-form reveal-up" data-us-quote>
+        <div class="us-field">
+          <label class="us-label" for="cc-name">Your name</label>
+          <input class="us-input" id="cc-name" name="name" type="text" autocomplete="name" required>
+          <p class="us-form-error" id="cc-name-err" aria-live="polite"></p>
+        </div>
+
+        <div class="us-field">
+          <label class="us-label" for="cc-phone">Phone</label>
+          <input class="us-input" id="cc-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+          <p class="us-form-error" id="cc-phone-err" aria-live="polite"></p>
+        </div>
+
+        <div class="us-field">
+          <label class="us-label" for="cc-email">Email <em>(optional)</em></label>
+          <input class="us-input" id="cc-email" name="email" type="email" autocomplete="email">
+          <p class="us-form-error" id="cc-email-err" aria-live="polite"></p>
+        </div>
+
+        <div class="us-field us-field-wide">
+          <label class="us-label" for="cc-vehicle">Car — make, model, year</label>
+          <input class="us-input" id="cc-vehicle" name="vehicle" type="text" autocomplete="off" required>
+          <p class="us-form-error" id="cc-vehicle-err" aria-live="polite"></p>
+        </div>
+
+        <div class="us-field us-field-wide">
+          <label class="us-label" for="cc-service">Service</label>
+          <select class="us-select" id="cc-service" name="service" required>
+            <option value="" selected disabled>Select a service</option>
+          </select>
+          <p class="us-form-error" id="cc-service-err" aria-live="polite"></p>
+        </div>
+
+        <div class="us-field us-field-wide">
+          <label class="us-label" for="cc-message">Anything else? <em>(optional)</em></label>
+          <textarea class="us-textarea" id="cc-message" name="message" rows="4"></textarea>
+          <p class="us-form-error" id="cc-message-err" aria-live="polite"></p>
+        </div>
+
+        <div class="us-field-wide cc-form-foot">
+          <button type="submit" class="btn">See what we’ll need <span class="arr">→</span></button>
+          <p class="cc-form-terms">Nothing leaves your browser: the studio’s direct line is not open yet, so the form hands your details back to you to copy and send when it is.</p>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
+
+</main>
 
 <!-- REGION:terms -->
 <div class="us-terms" data-us-region="terms">

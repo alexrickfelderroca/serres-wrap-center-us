@@ -1,0 +1,29 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "Will paint protection film turn yellow?",
+      "a": "No. Both films we install are TPU, not the old PVC film that yellowed in the sun. Essential is {{film:essential.film}} and Signature is {{film:signature.film}}, and each carries its manufacturer's own warranty against yellowing, cracking and staining. {{terms:warranty}}"
+    },
+    {
+      "q": "Does the film really heal its own scratches?",
+      "a": "Yes, within limits. The top coat is self-healing: swirl marks and light wash scuffs close up with heat from the sun or warm water. A deep gouge that cuts right through the film does not heal - but it stopped at the film instead of at your paint, which is the point."
+    },
+    {
+      "q": "What exactly does the warranty cover?",
+      "a": "{{terms:warranty}} The film manufacturer covers the film itself against defects such as yellowing, cracking, bubbling and delamination. Our year covers the installation: lifting edges, trapped dirt, anything that is our work rather than the film."
+    },
+    {
+      "q": "How long does the car stay with you?",
+      "a": "One to three days for most cars, depending on coverage. A partial front or full front is usually a single day. Track Pack and full body need two to three, because every panel is decontaminated and inspected before any film is laid. The exact number of days for your car comes with the quote."
+    },
+    {
+      "q": "How do I look after a filmed car?",
+      "a": "Wash it like paint, just more gently. Hand wash with a pH-neutral shampoo, keep a pressure washer off the film edges, and leave polishes, waxes and anything abrasive out of it. A ceramic top-up over fresh film makes washing easier again: {{from:ceramic-topup}}."
+    },
+    {
+      "q": "Can the film be removed later?",
+      "a": "Yes - film is designed to come off. With heat and slow, controlled pulling it lifts away without taking the clear coat with it, which is exactly why owners film a car before they sell it. Film left on long past its warranty life gets harder to remove, so do not leave a failing panel on the car."
+    }
+  ]
+}

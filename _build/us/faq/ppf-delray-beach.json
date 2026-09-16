@@ -1,0 +1,13 @@
+{
+  "style": "panel",
+  "items": [
+    {
+      "q": "How far is SERRES from Delray Beach?",
+      "a": "The studio is one town south of Delray Beach, roughly 15 to 20 minutes depending on traffic. The simple route is Federal Highway out of downtown and straight on US-1; when the Avenue is stacked or the Intracoastal bridge is up, Linton Boulevard west to I-95 and south from the ramp is usually quicker. The exact street address is announced in October 2026, so treat the drive time as an estimate until then."
+    },
+    {
+      "q": "How much is paint protection film in Delray Beach?",
+      "a": "The same as anywhere else we work: there is no separate Delray price list. A partial front is {{price:partial-front.essential}} in NAR H190 or {{price:partial-front.signature}} in 3M Scotchgard Pro Series 200, and a full front is {{price:full-front.essential}} and {{price:full-front.signature}}. {{terms:fromMeaning}} {{terms:tax}} {{terms:warranty}}"
+    }
+  ]
+}
