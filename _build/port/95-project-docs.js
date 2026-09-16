@@ -63,7 +63,7 @@ Los datos van en \`_build/port/miami.json\`; los mapas de copy en \`_build/port/
 ## Decisiones tomadas en el port (reversibles)
 - Reseñas: sección de testimonios oculta (\`hidden\` + TODO) y \`aggregateRating\` eliminado hasta que Miami tenga reseñas propias.
 - Stats del hero de "Why SERRES": las cifras de la ficha de Barcelona (50+ coches, 4.9) sustituidas por claims que la marca ya usa (1 Standard · 100% Hand Finished · 0 Cut Corners).
-- Inglés americano en el copy (\`_build/port/59-us-english.js\`): colour→color, grey→gray, bonnet→hood, wings→fenders…
+- Inglés americano en el copy (\`_build/port/59-us-english.js\`): color→color, grey→gray, hood→hood, wings→fenders…
 - Captions de galería sin geografía (las fotos son trabajo real hecho en Barcelona; no se afirma que sean de Miami).
 - Páginas legales (privacy / terms) NO creadas: ver TODO-MIAMI.md.
 `;

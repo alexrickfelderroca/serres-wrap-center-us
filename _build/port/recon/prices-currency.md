@@ -40,11 +40,11 @@ De-duplicated across all 15 pages + JSON-LD + i18n + blog. "Where" lists the can
 | # | Service | Variant / size | Barcelona EUR (as written) | Where it is published | Miami USD |
 |---|---|---|---|---|---|
 | 1 | Car Wrap | Accents — roof, mirrors, pillars / detail pieces | desde 250 € | prices.html:322,331,360 · vinyl.html:375,424,629 · prices.html:255 (Offer) · blog | ___ |
-| 2 | Car Wrap | Full colour change — standard car ("turismo") | desde 1.490 € | prices.html:322,331,362 · vinyl.html:7,388,424,515 · blog | ___ |
-| 3 | Car Wrap | Full colour change — SUV / large saloon | "Presupuesto cerrado previo" (no number) | blog/cuanto-cuesta-vinilar-un-coche.html:239 only | ___ (or keep on-request) |
+| 2 | Car Wrap | Full color change — standard car ("turismo") | desde 1.490 € | prices.html:322,331,362 · vinyl.html:7,388,424,515 · blog | ___ |
+| 3 | Car Wrap | Full color change — SUV / large saloon | "Presupuesto cerrado previo" (no number) | blog/cuanto-cuesta-vinilar-un-coche.html:239 only | ___ (or keep on-request) |
 | 4 | Car Wrap | Signature Wrap — premium / colour-flip films, extended disassembly, door shuts | desde 1.990 € | prices.html:322,331,364 · vinyl.html:401,424 · blog | ___ |
-| 5 | PPF | Front pack — bumper, partial bonnet (front third), mirrors | desde 890 € | prices.html:256,380 · ppf.html:7,330,382,486 · index.html:658,820 · blog | ___ |
-| 6 | PPF | Pro / "Frontal completo" — full bonnet, wings, bumper, headlights, mirrors, A-pillars (+ ceramic over film) | desde 1.190 € | prices.html:382 · ppf.html:344,382 · blog | ___ |
+| 5 | PPF | Front pack — bumper, partial hood (front third), mirrors | desde 890 € | prices.html:256,380 · ppf.html:7,330,382,486 · index.html:658,820 · blog | ___ |
+| 6 | PPF | Pro / "Frontal completo" — full hood, wings, bumper, headlights, mirrors, A-pillars (+ ceramic over film) | desde 1.190 € | prices.html:382 · ppf.html:344,382 · blog | ___ |
 | 7 | PPF | Full body — every painted panel | desde 2.390 € | prices.html:384 · ppf.html:358,382 · index.html:658,820 · blog | ___ |
 | 8 | PPF | Spot zones — headlights, sills, door frames, boot edge | "desde 60–150 €" | blog/cuanto-cuesta-ppf-coche.html:233 only | ___ |
 | 9 | Correction + Ceramic | Essential — stage-1 polish + 1 ceramic layer, 2 yr | desde 340 € | prices.html:257,402 · ceramic.html:7,269,271,300 · paint-correction.html:341,390 · ppf.html:422 · blog | ___ |
@@ -331,7 +331,7 @@ Engine facts relevant to prices (all cited): `LANGS` :23, `LABELS` :24, `DICT` :
 | 1114 | `€450.` `€1,490,` `€3,490,` VAT | "Aero add-ons —splitter, diffuser or spoiler— start at €450. A complete kit with fitting and paint starts at €1,490, and a full widebody transformation from €3,490, VAT included. …" | (= body-kits.html:352/547) |
 | 1136 | `340 €`, VAT, `590 €`, `890 €` | "At SERRES Wrap Center polishing with a SiO₂ Ceramic Coating starts at 340 € (Essential, VAT included). The Signature level… costs 590 €, and the Concours… 890 €. …" | (= paint-correction.html:390/597) |
 | 1144 | `890 €` | "The SiO₂ Ceramic Coating protects… self-healing PPF (from 890 € for the front end) includes a 3-year film warranty." | (= paint-correction.html:422/613) |
-| 1155 | `€1,490`, VAT, `€250`, `€1,990.` | "A full colour change with 3M, Avery Dennison or Inozetek films starts at €1,490 VAT included; accents… from €250 and the Signature finish… from €1,990. …" | (= vinyl.html:424/629) |
+| 1155 | `€1,490`, VAT, `€250`, `€1,990.` | "A full color change with 3M, Avery Dennison or Inozetek films starts at €1,490 VAT included; accents… from €250 and the Signature finish… from €1,990. …" | (= vinyl.html:424/629) |
 
 **Format chaos in the EN keys — four styles coexist:** `€890 / €1,490` (symbol-first, comma) 24 tokens; `890 €` (ES style in English) 8 tokens; `2,390 €` 1 token; `1.190 € / 2.390 €` (Spanish dots in English) 2 tokens. ES values are consistent: `890 €` ×32, `1.490 €` ×9; CA identical (41 €). For Miami every EN key must be normalised to `$1,490` and the inline EN HTML must equal the key byte-for-byte (§4.3).
 

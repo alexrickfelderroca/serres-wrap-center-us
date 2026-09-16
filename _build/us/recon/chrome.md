@@ -365,7 +365,7 @@ var current = getLang();
   - mobile: `.srs-menu-foot` (built by `serres-enhance.js`) → `insertBefore(makeSwitcher("srs-lang-menu"), foot.firstChild)`
 
 ### 4.8 MutationObserver
-`observe()` 1437-1452 — watches `document.body` `{childList:true, subtree:true}`; `walk()`s every added element/text node and re-runs `mountSwitchers()`. This is how JS-rendered content (price tiers, colour carousels, testimonials, lightbox) and the late-appended mobile menu get translated.
+`observe()` 1437-1452 — watches `document.body` `{childList:true, subtree:true}`; `walk()`s every added element/text node and re-runs `mountSwitchers()`. This is how JS-rendered content (price tiers, color carousels, testimonials, lightbox) and the late-appended mobile menu get translated.
 
 ### 4.9 Public API + data-driven consumers
 `window.SERRES_I18N = { get(), set(lang), t(key) }` — `serres-i18n.js:1464-1468`.
@@ -376,7 +376,7 @@ Consumers (all use the same `T()` shim + `serres:langchange` listener):
 | `pages/gallery.html:699` | `T()` for lightbox `data-note` captions (31 `data-note` attrs, **authored in English**, e.g. line 344 `data-note="Front three-quarter · In the studio"`) |
 | `pages/prices.html:467`, `:563` | price tiers, tabs, comparison table re-render |
 | `pages/why-serres.html:466`, `:481` | testimonial stack `paint()` |
-| `services/ppf.html:874`, `:966` | `buildBrands(); buildFilters(); render();` colour carousel |
+| `services/ppf.html:874`, `:966` | `buildBrands(); buildFilters(); render();` color carousel |
 | `services/vinyl.html:915`, `:958` | same |
 
 `pages/prices.html:464` holds its own WhatsApp base: `var WA='https://wa.me/34649663380?text=';`

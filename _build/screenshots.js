@@ -39,13 +39,26 @@ const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\..+/, '').
       await page.evaluate('document.querySelectorAll(".reveal-up,[data-reveal]").forEach(function(e){e.classList.add("in")});window.scrollTo(0,0);"ok"');
       await sleep(300);
       const overflow = await page.evaluate('({sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth})');
+      // Guard against silently capturing a 404 / error page: every real page of this site has a
+      // <footer>, a non-empty <title> and substantial body text. Without this probe the run
+      // cheerfully reports hscroll=none for a browser error page.
+      const loaded = await page.evaluate('({t:document.title||"",f:!!document.querySelector("footer"),n:(document.body?document.body.innerText.length:0)})');
+      const ok = loaded.f && loaded.t.length > 0 && loaded.n > 400;
       const slug = rel.replace(/\.html$/, '').replace(/[\/]/g, '_');
       const file = path.join(OUT, `pass-${PASS}-${vp}-${LANG}-${slug}-${stamp}.png`);
       await page.screenshot(file, true);
       await page.close();
-      results.push({ page: rel, viewport: vp, file: path.basename(file), horizontalScroll: overflow.sw > overflow.cw ? `${overflow.sw}>${overflow.cw}` : 'none' });
-      console.log(`${vp.padEnd(7)} ${rel.padEnd(42)} hscroll=${overflow.sw > overflow.cw ? overflow.sw + '>' + overflow.cw : 'none'}  -> ${path.basename(file)}`);
+      results.push({ ok, title: loaded.t, textLen: loaded.n, page: rel, viewport: vp, file: path.basename(file), horizontalScroll: overflow.sw > overflow.cw ? `${overflow.sw}>${overflow.cw}` : 'none' });
+      console.log(`${ok ? "ok  " : "FAIL"} ${vp.padEnd(7)} ${rel.padEnd(42)} hscroll=${overflow.sw > overflow.cw ? overflow.sw + '>' + overflow.cw : 'none'}  -> ${path.basename(file)}`);
     }
   } finally { chrome.close(); server.close(); }
   fs.writeFileSync(path.join(OUT, `pass-${PASS}-${LANG}-${stamp}.json`), JSON.stringify(results, null, 1));
+  const bad = results.filter(r => !r.ok);
+  if (bad.length) {
+    console.error('\n' + bad.length + ' of ' + results.length + ' captures did NOT render the site (browser error page or empty document):');
+    bad.forEach(b => console.error('  ' + b.viewport + ' ' + b.page + '  title=' + JSON.stringify(b.title) + ' textLen=' + b.textLen));
+    console.error('Those PNGs are worthless as evidence. Fix the cause and re-run.');
+    process.exit(3);
+  }
+  console.log('\nall ' + results.length + ' captures rendered the site.');
 })().catch(e => { console.error(e); process.exit(2); });

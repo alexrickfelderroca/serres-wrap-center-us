@@ -13,6 +13,7 @@ const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': '
   '.json': 'application/json', '.xml': 'application/xml', '.txt': 'text/plain', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
   '.webp': 'image/webp', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.mp4': 'video/mp4', '.woff2': 'font/woff2', '.woff': 'font/woff', '.ttf': 'font/ttf' };
 function serve(root) {
+  root = path.resolve(root);   // callers may pass a relative root; the guard below needs it absolute
   return new Promise(resolve => {
     const srv = http.createServer((req, res) => {
       const u = decodeURIComponent(req.url.split('?')[0]);

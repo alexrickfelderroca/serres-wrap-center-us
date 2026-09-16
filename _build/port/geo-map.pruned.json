@@ -1,0 +1,51 @@
+[
+ {
+  "en": "Detailing studio in Sant Cugat del Vallès: PPF, Car Wrap and paint correction with certified materials and 98% of clients who recommend us.",
+  "newEn": "Detailing studio in Boca Raton, Florida: PPF, Car Wrap and paint correction with certified materials, recommended by the clients we work for.",
+  "newEs": "Estudio de detailing en Boca Raton, Florida: PPF, Car Wrap y corrección de pintura con materiales certificados, recomendado por los clientes con los que trabajamos.",
+  "note": "98% claim dropped (rephrased without a number); SEO: neighbourhood slot",
+  "_prunedBecause": "en key absent from both the dictionary and every HTML page (stale vs the current Barcelona source)"
+ },
+ {
+  "en": "We don't work by eye alone: we review the finish panel by panel under controlled hexagonal lighting, at our Sant Cugat del Vallès workshop. If anything falls short of our standard, it is redone before delivery. That is the reason behind our 4.9 rating and why 98% of clients recommend us.",
+  "newEn": "We don't work by eye alone: we review the finish panel by panel under controlled hexagonal lighting, at our own Boca Raton workshop. If anything falls short of our standard, it is redone before delivery. That is the reason behind our 4.9 rating and why our clients recommend us.",
+  "newEs": "No trabajamos a ojo: revisamos el acabado panel a panel bajo iluminación hexagonal controlada, en nuestro propio taller de Boca Raton. Si algo no cumple nuestro estándar, se repite antes de la entrega. Es la razón de nuestra valoración de 4,9 y de que nuestros clientes nos recomienden.",
+  "note": "98% dropped; '4.9 rating' kept verbatim — it is the Barcelona listing rating, trust-signal pass to decide",
+  "_prunedBecause": "en key absent from both the dictionary and every HTML page (stale vs the current Barcelona source)"
+ },
+ {
+  "en": "We work by appointment only, Monday to Saturday, at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès (Barcelona). Message us on WhatsApp or call +34 621 24 44 69 with your car's model and condition and we confirm a fixed price and date, usually the same day.",
+  "newEn": "We work by appointment only, Monday to Saturday, at our workshop in Boca Raton, Florida. Message us on WhatsApp or call +34 621 24 44 69 with your car's model and condition and we confirm a fixed price and date, usually the same day.",
+  "newEs": "Trabajamos solo con cita previa, de lunes a sábado, en nuestro taller de Boca Raton, Florida. Escríbenos por WhatsApp o llama al +34 621 24 44 69 con el modelo y el estado del coche y te confirmamos precio cerrado y fecha, normalmente el mismo día.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Boca Raton address slot",
+  "_prunedBecause": "en key absent from both the dictionary and every HTML page (stale vs the current Barcelona source)"
+ },
+ {
+  "en": "By prior appointment from Monday to Saturday at our workshop in Sant Cugat del Vallès (Av. Can Fatjó dels Aurons 15). Message us on WhatsApp or call +34 621 24 44 69 and we will give you a closed quote the same day.",
+  "newEn": "By prior appointment from Monday to Saturday at our workshop in Boca Raton, Florida. Message us on WhatsApp or call +34 621 24 44 69 and we will give you a closed quote the same day.",
+  "newEs": "Con cita previa de lunes a sábado en nuestro taller de Boca Raton, Florida. Escríbenos por WhatsApp o llama al +34 621 24 44 69 y te damos presupuesto cerrado en el día.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Boca Raton address slot",
+  "_prunedBecause": "en key absent from both the dictionary and every HTML page (stale vs the current Barcelona source)"
+ },
+ {
+  "en": "We work by appointment Monday to Saturday at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès, 20 minutes from Barcelona. Message us on WhatsApp or call +34 621 24 44 69 with your model and the kit you have in mind, and we'll give you a quote and a date the same day.",
+  "newEn": "We work by appointment Monday to Saturday at our workshop in Boca Raton, Florida. Message us on WhatsApp or call +34 621 24 44 69 with your model and the kit you have in mind, and we'll give you a quote and a date the same day.",
+  "newEs": "Trabajamos con cita previa de lunes a sábado en nuestro taller de Boca Raton, Florida. Escríbenos por WhatsApp o llama al +34 621 24 44 69 con el modelo y el kit que tienes en mente, y te damos valoración y fecha en el día.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Boca Raton address slot",
+  "_prunedBecause": "en key absent from both the dictionary and every HTML page (stale vs the current Barcelona source)"
+ },
+ {
+  "en": "Message us on WhatsApp at +34 621 24 44 69 or call us and we'll book you in Monday to Saturday. We are at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès, 20 minutes from Barcelona. For corrections taking more than one day we can coordinate pick-up and delivery with you.",
+  "newEn": "Message us on WhatsApp at +34 621 24 44 69 or call us and we'll book you in Monday to Saturday. Our workshop is in Boca Raton, Florida, and we see every car by appointment. For corrections taking more than one day we can coordinate pick-up and delivery with you.",
+  "newEs": "Escríbenos por WhatsApp al +34 621 24 44 69 o llámanos y te damos cita de lunes a sábado. Nuestro taller está en Boca Raton, Florida, y atendemos cada coche con cita previa. Para correcciones de más de un día podemos coordinar la recogida y entrega contigo.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Boca Raton address slot",
+  "_prunedBecause": "en key absent from both the dictionary and every HTML page (stale vs the current Barcelona source)"
+ },
+ {
+  "en": "We work by appointment from Monday to Saturday at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès (Barcelona), 20 minutes from central Barcelona. Message us on WhatsApp or call +34 621 24 44 69 and we'll confirm the day and an approximate quote in the same conversation.",
+  "newEn": "We work by appointment only, from Monday to Saturday, at our own workshop in Boca Raton, Florida. Message us on WhatsApp or call +34 621 24 44 69 and we'll confirm the day and an approximate quote in the same conversation.",
+  "newEs": "Trabajamos solo con cita previa, de lunes a sábado, en nuestro taller propio de Boca Raton, Florida. Escríbenos por WhatsApp o llama al +34 621 24 44 69 y te confirmamos día y presupuesto orientativo en la misma conversación.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Boca Raton address slot; ~-21% length until the address is inserted",
+  "_prunedBecause": "en key absent from both the dictionary and every HTML page (stale vs the current Barcelona source)"
+ }
+]

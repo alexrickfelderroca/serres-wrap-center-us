@@ -17,7 +17,7 @@ Everything below is content that is **not transferable** to the Miami branch as-
 | 3 | Visible counters `50+ Coches transformados`, `4.9 Valoración media`, `98% Recomendaciones` | `pages/why-serres.html:336-338, 396-398`, meta description `:7,13,20` | Remove/replace; count-up animation in `serres-enhance.js:219-236` targets them. |
 | 4 | `98 %` / `4,9` claims in blog prose | 4 blog articles (§3.3) | Rewrite. |
 | 5 | Barcelona-only photo copy (Collserola, azotea de Barcelona, masía catalana, carretera de costa, nieve) | `pages/gallery.html`, `assets/serres-i18n.js:111-182` | Confirm with client whether Barcelona photos are reused in Miami; if yes, strip the geographic captions. |
-| 6 | **Readable Spanish licence plate `2383 MRZ` + `movento.es` dealer frame** | `assets/detailing/ext-before.{jpg,webp}` and `ext-after.{jpg,webp}` (used `services/detailing.html:385,389`) | Must be blurred/replaced (privacy + geography). |
+| 6 | **Readable Spanish license plate `2383 MRZ` + `movento.es` dealer frame** | `assets/detailing/ext-before.{jpg,webp}` and `ext-after.{jpg,webp}` (used `services/detailing.html:385,389`) | Must be blurred/replaced (privacy + geography). |
 | 7 | EU "E" plate bands / Spanish road sign / Barcelona landmark in photos | §7 table | Confirm with client. |
 | 8 | Brand / warranty / certification claims (3M 2080, Avery Dennison, Inozetek, "3 años de garantía del fabricante", "materiales certificados", "garantizamos por escrito", "Solo 6 Exclusivos al año", "1 Taller") | §4 | Do not decide — "confirm with client" list. |
 | 9 | Legal: **zero** privacy / cookies / terms pages, no consent banner, GA4 fires unconditionally on all 16 pages | §5 | Create US/Florida privacy + terms as TODO; add footer links (footer structure documented in §5.2). |
@@ -185,11 +185,11 @@ Same trailing-comma caveat at line 325.
 441	(function(){
 442	  const TESTIMONIALS=[
 443	    {name:"Marc Vidal",role:"Golf GTI · Owner",rating:5.0,svc:"Full Wrap",
-444	     quote:"Excellent service from start to finish. The treatment is genuinely exceptional — very professional, attentive to every detail and always ready to offer a personalised experience. I brought my Golf GTI in for a black wrap and the result was flawless, beyond my expectations. I'm delighted with both the finish and the whole process. Without a doubt, a place I thoroughly recommend."},
+444	     quote:"Excellent service from start to finish. The treatment is genuinely exceptional — very professional, attentive to every detail and always ready to offer a personalized experience. I brought my Golf GTI in for a black wrap and the result was flawless, beyond my expectations. I'm delighted with both the finish and the whole process. Without a doubt, a place I thoroughly recommend."},
 445	    {name:"Marcos Catlano",role:"Porsche 911 · Owner",rating:5.0,svc:"Paint Correction",
 446	     quote:"Years of swirls just… gone. They walked me round the car panel by panel under the hex lights. You can see your reflection in the roof like a mirror."},
 447	    {name:"Daniel Roca",role:"Mercedes G-Class · Collector",rating:4.8,svc:"Full Wrap",
-448	     quote:"Colour change on the G-Class was flawless — every shut line and edge finished properly. This is a proper studio."},
+448	     quote:"Color change on the G-Class was flawless — every shut line and edge finished properly. This is a proper studio."},
 449	    {name:"Aleix Soler",role:"Audi RS6 · Owner",rating:5.0,svc:"PPF + Ceramic",
 450	     quote:"Booked the full front PPF and a ceramic on top. Communication was perfect, timeline was exact, and the car came back cleaner than the showroom."},
 451	    {name:"Núria Camps",role:"Range Rover · Owner",rating:4.9,svc:"Detailing",
@@ -249,7 +249,7 @@ Line 407 is a single ~6 KB line: `<div class="rv-stack" id="rvStack" data-i18n-s
 931	      ["Un servicio excelente de principio a fin. … Sin duda, un lugar totalmente recomendable.",
 932	       "Un servei excel·lent de principi a fi. … Sens dubte, un lloc totalment recomanable."],
 933	    "Years of swirls just… gone. …": [ "Años de micro-arañazos simplemente… desaparecidos. …", "Anys de micro-ratllades …" ],   // 933-935
-936	    "Colour change on the G-Class was flawless — …": [ "El cambio de color del clase G fue impecable — …", "…" ],             // 936-938
+936	    "Color change on the G-Class was flawless — …": [ "El cambio de color del clase G fue impecable — …", "…" ],             // 936-938
 939	    "Booked the full front PPF and a ceramic on top. …": [ "Reservé el PPF frontal completo y una cerámica encima. …", "…" ],  // 939-941
 942	    "The interior detail genuinely felt like a new car. …": [ "El detallado de interior hizo que pareciera un coche nuevo de verdad. …", "…" ], // 942-944
 ```
@@ -289,7 +289,7 @@ CSS (`pages/why-serres.html:146-191`, responsive `:210-215`):
 - `.rv-stack{display:flex;flex-direction:column;gap:22px;padding-bottom:30vh}`; `.rv-card{position:sticky; …}` with `nth-child(1..5)` `top` offsets (`:169-173`) — the stacking effect is hard-wired to **exactly 5 cards**; a 6th card would not be sticky-offset.
 - Stars: `.rv-stars svg{width:16px;height:16px}`, `.s-full{color:#f3f3f5}`, `.s-empty{opacity:.4}`; score `.rv-rate .score`.
 - **There is no empty-state rule** (no `:empty`, no `[hidden]`, no conditional in `paint()`). With `TESTIMONIALS=[]`, `paint()` sets `innerHTML=''` → the right column becomes an empty flex box that is still `30vh` tall (10vh on mobile); the left column (tag "Lo que dicen los clientes", H2, paragraph, 4.9/50+/98% tiles, two buttons) stays → a half-empty two-column section with the headline "La confianza de los coches que más quieren." and no cards. On mobile the left block is followed by ~10vh of blank space, then the CTA.
-- Recommended port behaviour: remove the whole `<section class="reviews">` (386-410) plus the script (439-482) plus the SSR div. The following `.cta{margin-top:80px;padding:104px 0}` (`:194`) already provides its own top spacing, so the Standards section flows straight into the CTA without a hard cut. Also delete `.reviews/.rv-*` CSS (146-191, 212-215) to avoid dead styles, and the i18n keys at `serres-i18n.js:346-355` ("What clients say", "Trusted with", "the cars they", "love most.", the intro paragraph, "Avg Rating", "Cars", "Referrals").
+- Recommended port behavior: remove the whole `<section class="reviews">` (386-410) plus the script (439-482) plus the SSR div. The following `.cta{margin-top:80px;padding:104px 0}` (`:194`) already provides its own top spacing, so the Standards section flows straight into the CTA without a hard cut. Also delete `.reviews/.rv-*` CSS (146-191, 212-215) to avoid dead styles, and the i18n keys at `serres-i18n.js:346-355` ("What clients say", "Trusted with", "the cars they", "love most.", the intro paragraph, "Avg Rating", "Cars", "Referrals").
 
 ### 2.5 Other review-flavoured counters on the same page
 
@@ -353,7 +353,7 @@ Only on `pages/why-serres.html`: inline `<svg class="s-full">` ×5 per card in l
 - Same article also carries Spain-only regulatory content (not trust, but in this sweep): `blog/cuanto-cuesta-vinilar-un-coche.html:115-118` (FAQ JSON-LD) and `:354-356` (visible FAQ) — "¿Hay que avisar a la DGT si vinilo el coche de otro color?" / "…no exige homologación ni ITV extraordinaria…". `serres-i18n.js` has 17 lines matching `ITV|DGT|IVA|VAT`.
 
 ### 3.4 i18n dictionary entries carrying review/stat vocabulary (all in `assets/serres-i18n.js`)
-`:314 "Cars Transformed"`, `:315 "Average Rating"`, `:316 "Workshop"`, `:346 "What clients say"`, `:347-349 "Trusted with"/"the cars they"/"love most."`, `:350-352` intro paragraph ("From a first wrap to a full PPF and correction build — these are the people who handed us the keys…"), `:353 "Avg Rating"`, `:354 "Cars"`, `:355 "Referrals"`, `:921-944` testimonial roles/services/quotes, `:1018-1020` the 98 % meta description. No dictionary entry contains "4.9" or "50 reviews"; `50+` appears only in PPF colour copy (`:447, :752`), which is not a review claim.
+`:314 "Cars Transformed"`, `:315 "Average Rating"`, `:316 "Workshop"`, `:346 "What clients say"`, `:347-349 "Trusted with"/"the cars they"/"love most."`, `:350-352` intro paragraph ("From a first wrap to a full PPF and correction build — these are the people who handed us the keys…"), `:353 "Avg Rating"`, `:354 "Cars"`, `:355 "Referrals"`, `:921-944` testimonial roles/services/quotes, `:1018-1020` the 98 % meta description. No dictionary entry contains "4.9" or "50 reviews"; `50+` appears only in PPF color copy (`:447, :752`), which is not a review claim.
 
 ---
 
@@ -376,7 +376,7 @@ Only on `pages/why-serres.html`: inline `<svg class="s-full">` ×5 per card in l
 | 659 | `<footer>© 2026 SERRES. Todos los derechos reservados. &nbsp;·&nbsp; Sobre coches reales de clientes</footer>` | provenance claim |
 | 268 | ImageGallery JSON-LD: "Fotos reales de proyectos … hechos en el taller de SERRES en Sant Cugat del Vallès (Barcelona)." | |
 
-Matching dictionary keys: `serres-i18n.js:111-113` (gallery lead), `:121-123` (M2/Collserola), `:125` (Catalan countryside), `:129` (motorway/coast road), `:133-135` (Catalan back road), `:139-141` (footer "Shot on real client cars"), `:148 "Snow-dusted"`, `:150 "Rooftop"`, `:151 "Collserola"`, `:154 "Masia driveway"`, `:160 "Coast road"`, `:174-182` combined captions ("Snow-dusted · The ramp", "Frozen grey · Rooftop", "Front end · Collserola", "Pearl white · Masia driveway", "Gloss black · Coast road").
+Matching dictionary keys: `serres-i18n.js:111-113` (gallery lead), `:121-123` (M2/Collserola), `:125` (Catalan countryside), `:129` (highway/coast road), `:133-135` (Catalan back road), `:139-141` (footer "Shot on real client cars"), `:148 "Snow-dusted"`, `:150 "Rooftop"`, `:151 "Collserola"`, `:154 "Masia driveway"`, `:160 "Coast road"`, `:174-182` combined captions ("Snow-dusted · The ramp", "Frozen grey · Rooftop", "Front end · Collserola", "Pearl white · Masia driveway", "Gloss black · Coast road").
 Decision needed: does Miami reuse the Barcelona portfolio (same brand, "sin fotos de stock" claim becomes untrue for Miami if the cars were not done there) or launch with a reduced gallery? Not decided here.
 
 Also `index.html:753-781` reuses gallery photos as the six service tiles (`xm-grille-s`, **`supra-villa-s` (masía)**, **`e92-coast-s` (Spanish road sign)**, `xm-headliner-s`, `rwb-profile-s`) with empty `alt` — location leaks onto the home page even if the gallery is trimmed.
@@ -386,7 +386,7 @@ Also `index.html:753-781` reuses gallery photos as the six service tiles (`xm-gr
 
 ### 4.3 Brand names, warranties, "certified" wording (no named certifications exist)
 Grep for `XPEL|KPMF|Gtechniq|STEK|SunTek|Llumar|Ceramic Pro|Gyeon|certified installer|instalador autorizado|partner|concesionario oficial` → **no installer certification, no partner/dealer logos, no "authorised installer" claim anywhere.** What does exist and needs the client's OK for Miami (US distribution/warranty terms differ):
-- Film brands: `3M` (Serie 2080), `Avery Dennison` (Supreme Wrapping Film), `Inozetek` (Super Gloss) — colour pickers `services/vinyl.html:688-…` (`{id:"3m",label:"3M",series:"Wrap Film Serie 2080"…}` `:690`, `avery` `:756`, `inozetek` `:837`) and `services/ppf.html:783-831` (`inozetek` `:786`, `3m` `:831`); footers `services/ppf.html:707` "Paint Protection Film · Inozetek · 3M", `services/vinyl.html:673` "Car Wrap · 3M · Avery Dennison · Inozetek"; meta `services/vinyl.html:7,13,20`; JSON-LD `services/vinyl.html:349,352`; FAQ `services/vinyl.html:424,440,629,639`; spec row `services/vinyl.html:570` "3M™ 2080 Satin Black"; hero stat `services/vinyl.html:511` "3 Marcas profesionales"; home `index.html:815`; blog `cuanto-cuesta-ppf-coche.html:281` ("3M, XPEL o SunTek" as market examples), `:205,285-286,348,420`; `cuanto-cuesta-vinilar-un-coche.html:102,220,273,284,315,322,342,421`; `ppf-o-ceramico-que-elegir.html:108,202,234-235,262,312,344-345`.
+- Film brands: `3M` (Serie 2080), `Avery Dennison` (Supreme Wrapping Film), `Inozetek` (Super Gloss) — color pickers `services/vinyl.html:688-…` (`{id:"3m",label:"3M",series:"Wrap Film Serie 2080"…}` `:690`, `avery` `:756`, `inozetek` `:837`) and `services/ppf.html:783-831` (`inozetek` `:786`, `3m` `:831`); footers `services/ppf.html:707` "Paint Protection Film · Inozetek · 3M", `services/vinyl.html:673` "Car Wrap · 3M · Avery Dennison · Inozetek"; meta `services/vinyl.html:7,13,20`; JSON-LD `services/vinyl.html:349,352`; FAQ `services/vinyl.html:424,440,629,639`; spec row `services/vinyl.html:570` "3M™ 2080 Satin Black"; hero stat `services/vinyl.html:511` "3 Marcas profesionales"; home `index.html:815`; blog `cuanto-cuesta-ppf-coche.html:281` ("3M, XPEL o SunTek" as market examples), `:205,285-286,348,420`; `cuanto-cuesta-vinilar-un-coche.html:102,220,273,284,315,322,342,421`; `ppf-o-ceramico-que-elegir.html:108,202,234-235,262,312,344-345`.
 - "varias marcas profesionales" (deliberately vague) — `index.html:621,815`, `pages/prices.html:321`, `services/ppf.html:7,13,20,307,390,591,662`, `services/vinyl.html:527`.
 - Warranty claims: "3 años de garantía del fabricante/del film" (PPF) — `index.html:658,820`, `services/ppf.html:307,390,662`, blog ×8 lines above; vinyl "duran entre 5 y 7 años… el fabricante los respalda con su garantía oficial. Además **garantizamos por escrito nuestra instalación**" `services/vinyl.html:440,639`; ceramic "hasta 5 años" `services/ceramic.html:246,316`, stat `:404`; body kits "Garantizamos la fijación, el ajuste de holguras y el acabado de pintura…" `services/body-kits.html:368,561`.
 - "Certified" wording: `pages/why-serres.html:7,13,20` ("materiales certificados"), `:370` "Solo films, recubrimientos y compuestos **certificados** — respaldados por garantías reales de fabricante, nunca stock de mercado gris." (DICT `:338-340`); `blog/limpieza-tapiceria-coche-precio.html:330` "desinfección certificada".
@@ -561,7 +561,7 @@ Every asset below was opened. "EU band" = the blue left-hand strip with the coun
 | `assets/gallery/supra-road-s.jpg` / `.jpg` | `pages/gallery.html:431` | Blue EU band, digits blanked. |
 | `assets/gallery/supra-villa-s.jpg` / `.webp` / `.jpg` | `pages/gallery.html:421`, **`index.html:760`** (ceramic tile), JSON-LD `pages/gallery.html:268` | Blue EU band + Catalan **masía** (stone farmhouse, terracotta roof). |
 | `assets/gallery/e92-coast-s.jpg` / `.webp` / `.jpg` | `pages/gallery.html:457`, **`index.html:767`** (detailing tile), JSON-LD `:268` | Plate blanked, but a **Spanish blue pedestrian-zone road sign** on a post, Mediterranean cypresses, sea. |
-| `assets/gallery/e92-rolling-s.jpg` | `pages/gallery.html:452` | Plate blanked white; Spanish motorway guardrail — low risk. |
+| `assets/gallery/e92-rolling-s.jpg` | `pages/gallery.html:452` | Plate blanked white; Spanish highway guardrail — low risk. |
 | `assets/gallery/gts-rear-s.jpg`, `gts-tail-s.jpg` | `pages/gallery.html:633,638` | Plate blanked white — OK. |
 | `assets/bodykit/before.jpg`, `after.jpg` (+`.webp`) | `services/body-kits.html:484-485` | Red Golf GTI, plate removed — OK. |
 | `assets/vinyl/xm-before.jpg` (+`.webp`) | `services/vinyl.html:584` | Plate blacked out; parking lot — OK. |
@@ -610,7 +610,7 @@ Observations for the port:
 - `sameAs` contains a **WhatsApp deep link** (`wa.me/34621244469`) on 3 pages — non-standard; when the Miami number replaces it, decide whether to keep WhatsApp in `sameAs` at all.
 - The brief wants `sameAs` to include `https://serreswrapcenter.es` (parent). Today no page links the parent, obviously.
 - Instagram handle `serres.wrap.center` is the **Barcelona shop's** account. Occurrences (8): `index.html:645,852,890`, `pages/prices.html:253`, `pages/projects.html:221`, `pages/why-serres.html:265`, `assets/serres-enhance.js:17` (`IG_URL`, rendered into the mobile overlay menu at `:162`) and its comment `:295,306`. No TikTok, Facebook, YouTube, LinkedIn, X anywhere. → **Confirm with client**: does Miami get its own Instagram, or is the brand account shared?
-- Google Maps: `index.html:622` `hasMap` cid `14481261717501919901`; `:858` embed iframe centred 41.4953/2.0634 with place id `0x2027f0d4ea2a70f1:0xc8f7c6ce9b2a429d`; `:892` search link. Mobile menu contact string "Sant Cugat del Vallès, Barcelona" is hard-coded in `assets/serres-enhance.js:164`.
+- Google Maps: `index.html:622` `hasMap` cid `14481261717501919901`; `:858` embed iframe centered 41.4953/2.0634 with place id `0x2027f0d4ea2a70f1:0xc8f7c6ce9b2a429d`; `:892` search link. Mobile menu contact string "Sant Cugat del Vallès, Barcelona" is hard-coded in `assets/serres-enhance.js:164`.
 - `openingHoursSpecification` appears in `index.html:631-644`, `pages/prices.html:250-252`, `pages/why-serres.html:250-263` only (other pages have none).
 - `areaServed` = "Barcelona" / City nodes "Sant Cugat del Vallès" + "Barcelona" on prices, projects and all 6 service pages (`services/*.html` — e.g. `ppf.html:322-325`).
 
@@ -620,7 +620,7 @@ Observations for the port:
 - `_build/verify-seo.js:45` — GA4 check is hard-coded to `G-1K6FYZ99GN`; `:11-19` PAGES list uses the Spanish blog slugs; `:70-78` requires every FAQPage question/answer string to appear verbatim in visible HTML (so the FAQ JSON-LD and the visible `<details>` must be edited in lockstep — including the DGT/ITV FAQ). After removing `aggregateRating` blocks, re-run to confirm JSON-LD still parses.
 - `_build/dict-tools.js:39,50,79` assume each DICT value is a `[es, ca]` pair (`v[0]`, `v[1]`); after pruning Catalan (`v[1]` gone) `check`/`lookup`/`merge` need the second index removed or they will treat `undefined` as a value.
 - `_build/agg-report.json` is the 2026-07-09 SEO-package merge log: `dict_new` (139 entries incl. many "…in Barcelona" keys), `dict_changed` (25), `js_missing` (already-known dictionary gaps: `blog/index.html` "Guías y consejos" + subtitle, `pages/prices.html` tier labels, `services/vinyl.html` finish families) — a starting list for the "cero huérfanas" script.
-- `assets/serres-i18n.js:1-18` header comment documents the current inverted (ES→EN via `INV`, `:1174-1188`) design; `getLang()` `:1193-1197` defaults to `"es"`; `tr()` `:1200-1206` returns the key untouched when `current === "en"` — the exact behaviour the Miami forward-mode must invert.
+- `assets/serres-i18n.js:1-18` header comment documents the current inverted (ES→EN via `INV`, `:1174-1188`) design; `getLang()` `:1193-1197` defaults to `"es"`; `tr()` `:1200-1206` returns the key untouched when `current === "en"` — the exact behavior the Miami forward-mode must invert.
 
 ---
 

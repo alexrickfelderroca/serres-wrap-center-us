@@ -15,36 +15,36 @@ const CENSUS = process.argv.includes('--census');
 
 /* [pattern (whole word, case-preserving via callback), replacement] */
 const RULES = [
-  ['colour', 'color'], ['colours', 'colors'], ['coloured', 'colored'], ['colourful', 'colorful'],
-  ['tyre', 'tire'], ['tyres', 'tires'],
-  ['bonnet', 'hood'], ['bonnets', 'hoods'],
-  ['windscreen', 'windshield'], ['windscreens', 'windshields'],
-  ['kerb', 'curb'], ['kerbs', 'curbs'], ['kerbed', 'curbed'],
-  ['aluminium', 'aluminum'],
-  ['centre', 'center'], ['centred', 'centered'],
-  ['customise', 'customize'], ['customised', 'customized'], ['customisation', 'customization'],
-  ['personalise', 'personalize'], ['personalised', 'personalized'], ['personalisation', 'personalization'],
-  ['optimise', 'optimize'], ['optimised', 'optimized'], ['organise', 'organize'], ['organised', 'organized'],
-  ['recognise', 'recognize'], ['recognised', 'recognized'], ['specialise', 'specialize'], ['specialised', 'specialized'],
-  ['favourite', 'favorite'], ['favourites', 'favorites'],
-  ['programme', 'program'], ['programmes', 'programs'],
-  ['licence', 'license'], ['licences', 'licenses'],
-  ['metres', 'meters'], ['metre', 'meter'], ['litre', 'liter'], ['litres', 'liters'],
-  ['fibre', 'fiber'], ['vapour', 'vapor'], ['armour', 'armor'], ['behaviour', 'behavior'],
-  ['catalogue', 'catalog'], ['defence', 'defense'], ['jewellery', 'jewelry'],
-  /* "grey" and "petrol" deliberately NOT converted: they occur in film colour names ("Petrol Blue", "Frozen Shark Grey") */
-  ['mould', 'mold'], ['moulding', 'molding'], ['mouldings', 'moldings'],
-  ['number plate', 'license plate'], ['number plates', 'license plates'],
-  ['whilst', 'while'], ['towards', 'toward'], ['amongst', 'among'],
-  ['motorway', 'highway'], ['car park', 'parking lot'],
-  ['boot lid', 'trunk lid'],
+  ['color', 'color'], ['colors', 'colors'], ['colored', 'colored'], ['colorful', 'colorful'],
+  ['tire', 'tire'], ['tires', 'tires'],
+  ['hood', 'hood'], ['hoods', 'hoods'],
+  ['windshield', 'windshield'], ['windshields', 'windshields'],
+  ['curb', 'curb'], ['curbs', 'curbs'], ['curbed', 'curbed'],
+  ['aluminum', 'aluminum'],
+  ['center', 'center'], ['centered', 'centered'],
+  ['customize', 'customize'], ['customized', 'customized'], ['customization', 'customization'],
+  ['personalize', 'personalize'], ['personalized', 'personalized'], ['personalization', 'personalization'],
+  ['optimize', 'optimize'], ['optimized', 'optimized'], ['organize', 'organize'], ['organized', 'organized'],
+  ['recognize', 'recognize'], ['recognized', 'recognized'], ['specialize', 'specialize'], ['specialized', 'specialized'],
+  ['favorite', 'favorite'], ['favorites', 'favorites'],
+  ['program', 'program'], ['programs', 'programs'],
+  ['license', 'license'], ['licenses', 'licenses'],
+  ['meters', 'meters'], ['meter', 'meter'], ['liter', 'liter'], ['liters', 'liters'],
+  ['fiber', 'fiber'], ['vapor', 'vapor'], ['armor', 'armor'], ['behavior', 'behavior'],
+  ['catalog', 'catalog'], ['defense', 'defense'], ['jewelry', 'jewelry'],
+  /* "grey" and "petrol" deliberately NOT converted: they occur in film color names ("Petrol Blue", "Frozen Shark Grey") */
+  ['mold', 'mold'], ['molding', 'molding'], ['moldings', 'moldings'],
+  ['license plate', 'license plate'], ['license plates', 'license plates'],
+  ['while', 'while'], ['toward', 'toward'], ['among', 'among'],
+  ['highway', 'highway'], ['parking lot', 'parking lot'],
+  ['trunk lid', 'trunk lid'],
 ];
 /* words whose UK/US meaning differs by context — replaced only inside these known phrases */
 const PHRASES = [
-  ['Full bonnet, wings, bumper', 'Full hood, fenders, bumper'],
-  ['Bumper, partial bonnet and mirrors', 'Bumper, partial hood and mirrors'],
-  ['Bumper + partial bonnet', 'Bumper + partial hood'],
-  ['wings, bumper, mirrors and headlights', 'fenders, bumper, mirrors and headlights'],
+  ['Full hood, fenders, bumper', 'Full hood, fenders, bumper'],
+  ['Bumper, partial hood and mirrors', 'Bumper, partial hood and mirrors'],
+  ['Bumper + partial hood', 'Bumper + partial hood'],
+  ['fenders, bumper, mirrors and headlights', 'fenders, bumper, mirrors and headlights'],
 ];
 const dec = s => s.replace(/&amp;/g, '&');
 function caseLike(src, rep) { if (src === src.toUpperCase() && src.length > 1) return rep.toUpperCase(); if (src[0] === src[0].toUpperCase()) return rep[0].toUpperCase() + rep.slice(1); return rep; }

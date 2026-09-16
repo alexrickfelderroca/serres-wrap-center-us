@@ -182,7 +182,7 @@ footer{margin-top:auto;padding:30px 40px;border-top:1px solid var(--line);
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:980px){
-  .post-layout{grid-template-columns:1fr;gap:34px}
+  .post-layout{grid-template-columns:minmax(0,1fr);gap:34px} /* minmax: the 520px-min table must scroll inside .table-scroll, not widen the page */
   .toc{position:static}
   .rel-grid{grid-template-columns:1fr}
   .post-grid{grid-template-columns:1fr 1fr}

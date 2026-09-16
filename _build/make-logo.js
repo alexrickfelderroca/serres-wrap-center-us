@@ -31,7 +31,7 @@ const OUT_W = 600; // header renders ~118px, footer ~95px -> 600px covers 3x ret
   console.log(`source: ${meta.width}x${meta.height} ${meta.format} alpha=${!!meta.hasAlpha}`);
 
   // 1. Trim the black surround. Work from a greyscale copy so the trim keys on
-  //    ink vs background rather than on any colour noise.
+  //    ink vs background rather than on any color noise.
   const trimmed = await sharp(SRC)
     .greyscale()
     .trim({ background: '#000000', threshold: 12 })

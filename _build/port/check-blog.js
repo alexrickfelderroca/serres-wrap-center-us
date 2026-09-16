@@ -3,7 +3,7 @@
    placeholders present (domain, GA4 ×2, tel, wa.me), JSON-LD parses + inLanguage/dates, FAQPage strings byte-identical to
    visible <summary>/<p>, {{PRICE:key}} tokens valid, forbidden terms (€, EUR, VAT/IVA, Barcelona…, 98%, 4.9, ITV/DGT, XPEL/SunTek),
    Spanish leakage outside chrome (common Spanish words), data-i18n-skip on post-hero/toc/prose, TOC anchors ↔ ids, internal links
-   resolve (against a site root), related cards on the new slugs, "bonnet/colour" in prose (US English expected outside pack names).
+   resolve (against a site root), related cards on the new slugs, "hood/color" in prose (US English expected outside pack names).
    Usage: node check-blog.js <contentDir> <siteRoot>
 */
 'use strict';
@@ -58,8 +58,8 @@ function check(slug) {
   for (const s of SLUGS) if (s !== slug && !html.includes(s + '.html') && !/car-upholstery/.test(slug)) { /* related cards: at least two other slugs expected */ }
   const rel = SLUGS.filter(s => s !== slug && html.includes(s + '.html')).length; if (rel < 1) probs.push('no related card to another new slug');
   // US English outside pack names
-  const prose = dec(body.replace(/Full Colour Change|Signature Colour Change|colour-shift|colour-flip/g, '').replace(/<[^>]+>/g, ' '));
-  const uk = prose.match(/\b(colour|colours|bonnet|tyre|tyres|windscreen|kerb)\b/gi); if (uk) probs.push('UK spelling in prose: ' + [...new Set(uk.map(w => w.toLowerCase()))].join(', ') + ' (59-us-english.js will convert; informational)');
+  const prose = dec(body.replace(/Full Color Change|Signature Color Change|colour-shift|colour-flip/g, '').replace(/<[^>]+>/g, ' '));
+  const uk = prose.match(/\b(color|colors|hood|tire|tires|windshield|curb)\b/gi); if (uk) probs.push('UK spelling in prose: ' + [...new Set(uk.map(w => w.toLowerCase()))].join(', ') + ' (59-us-english.js will convert; informational)');
   const words = (text.match(/[A-Za-z’']+/g) || []).length;
   console.log((probs.length ? 'FAIL ' : 'OK   ') + slug + `  (${words} words, title ${title.length}, desc ${desc.length})` + (probs.length ? '\n   - ' + probs.join('\n   - ') : ''));
   total += probs.length;

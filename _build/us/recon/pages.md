@@ -71,15 +71,15 @@ Source of truth is the JS object `PRICING` at **lines 356–462**. Five categori
 {
   "wrap": {
     "label_en": "Car Wrap", "label_es": "Car Wrap",
-    "blurb_en": "Colour change with films from several professional brands — from subtle accents to a full identity change.",
+    "blurb_en": "Color change with films from several professional brands — from subtle accents to a full identity change.",
     "blurb_es": "Cambio de color con films de varias marcas profesionales — desde acentos sutiles hasta un cambio de identidad completo.",
     "quote": false,
     "tiers": [
       {"name_en":"Accents","name_es":"Acentos","price":250,"display":"250 €","popular":false,
        "desc_en":"Roof, mirrors and detail pieces — change the attitude, not the whole car.",
        "note_en":"From 1 day in the studio","note_es":"Desde 1 día en el taller"},
-      {"name_en":"Full Colour Change","name_es":"Cambio de color completo","price":1490,"display":"1.490 €","popular":true,
-       "desc_en":"Every exterior panel wrapped edge-to-edge in the colour you actually wanted.",
+      {"name_en":"Full Color Change","name_es":"Cambio de color completo","price":1490,"display":"1.490 €","popular":true,
+       "desc_en":"Every exterior panel wrapped edge-to-edge in the color you actually wanted.",
        "note_en":"From 3–4 days in the studio","note_es":"Desde 3–4 días en el taller"},
       {"name_en":"Signature Wrap","name_es":"Car Wrap Signature","price":1990,"display":"1.990 €","popular":false,
        "desc_en":"Premium and colour-flip films, with the service tailored to the vehicle configuration.",
@@ -96,18 +96,18 @@ Source of truth is the JS object `PRICING` at **lines 356–462**. Five categori
   },
   "ppf": {
     "label_en": "PPF",
-    "blurb_en": "Self-healing paint protection film — 50+ colours from several professional brands — over the areas the road attacks first, or the whole car.",
+    "blurb_en": "Self-healing paint protection film — 50+ colors from several professional brands — over the areas the road attacks first, or the whole car.",
     "quote": false,
     "tiers": [
       {"name_en":"Front Pack","price":890,"display":"890 €","popular":false,
-       "desc_en":"Bumper, partial bonnet and mirrors — the high-impact essentials covered.","note_en":"From 1 day in the studio"},
+       "desc_en":"Bumper, partial hood and mirrors — the high-impact essentials covered.","note_en":"From 1 day in the studio"},
       {"name_en":"Pro","price":1190,"display":"1.190 €","popular":true,
-       "desc_en":"Full bonnet, wings, bumper, mirrors and headlights — seamless coverage, sealed with a Ceramic Coating over the film.","note_en":"From 2–3 days in the studio"},
+       "desc_en":"Full hood, fenders, bumper, mirrors and headlights — seamless coverage, sealed with a Ceramic Coating over the film.","note_en":"From 2–3 days in the studio"},
       {"name_en":"Full Body","price":2390,"display":"2.390 €","popular":false,
-       "desc_en":"Every painted panel protected, edges tucked — invisible armour, total peace of mind.","note_en":"From 5–8 days in the studio"}
+       "desc_en":"Every painted panel protected, edges tucked — invisible armor, total peace of mind.","note_en":"From 5–8 days in the studio"}
     ],
     "rows": [
-      ["Coverage","Bumper + partial bonnet","Full front end","Every painted panel"],
+      ["Coverage","Bumper + partial hood","Full front end","Every painted panel"],
       ["Self-healing topcoat", true, true, true],
       ["Headlight protection", false, true, true],
       ["Wrapped edges — no visible lines", false, true, true],
@@ -442,9 +442,9 @@ Source array `TESTIMONIALS` at **lines 443–454** (English source; the DOM snap
 
 | # | name | initials | role (EN) | rating | svc (EN) | quote (EN, abbreviated) |
 |---|---|---|---|---|---|---|
-| 1 | Marc Vidal | MV | Golf GTI · Owner | 5.0 | Full Wrap | "Excellent service from start to finish. The treatment is genuinely exceptional — very professional, attentive to every detail and always ready to offer a personalised experience. I brought my Golf GTI in for a black wrap and the result was flawless, beyond my expectations. I'm delighted with both the finish and the whole process. Without a doubt, a place I thoroughly recommend." |
+| 1 | Marc Vidal | MV | Golf GTI · Owner | 5.0 | Full Wrap | "Excellent service from start to finish. The treatment is genuinely exceptional — very professional, attentive to every detail and always ready to offer a personalized experience. I brought my Golf GTI in for a black wrap and the result was flawless, beyond my expectations. I'm delighted with both the finish and the whole process. Without a doubt, a place I thoroughly recommend." |
 | 2 | Marcos Catlano | MC | Porsche 911 · Owner | 5.0 | Paint Correction | "Years of swirls just… gone. They walked me round the car panel by panel under the hex lights. You can see your reflection in the roof like a mirror." |
-| 3 | Daniel Roca | DR | Mercedes G-Class · Collector | 4.8 | Full Wrap | "Colour change on the G-Class was flawless — every shut line and edge finished properly. This is a proper studio." |
+| 3 | Daniel Roca | DR | Mercedes G-Class · Collector | 4.8 | Full Wrap | "Color change on the G-Class was flawless — every shut line and edge finished properly. This is a proper studio." |
 | 4 | Aleix Soler | AS | Audi RS6 · Owner | 5.0 | PPF + Ceramic | "Booked the full front PPF and a ceramic on top. Communication was perfect, timeline was exact, and the car came back cleaner than the showroom." |
 | 5 | Núria Camps | NC | Range Rover · Owner | 4.9 | Detailing | "The interior detail genuinely felt like a new car. They care about the parts nobody photographs." |
 

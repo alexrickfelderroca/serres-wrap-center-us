@@ -58,7 +58,7 @@ Verified by grep for `€`, `"price"`, and every plausible class name (`pricing|
 | 464–489 | `.hero` — **no video/img**; background is a CSS radial glow `.hero::after` | H1 above; eyebrow `Servicio 03 · Paint Protection Film`; crumbs inline at L466–472 (inside `.wrap`); hero-stats L481–485 = `50+ Colores de film` / `100% Reversible` / `3 Capas de film`; lead L487 |
 | 492–526 | `.xform` | H2 `Entra en brillo.<br>Sale en satinado.` (L497) |
 | 529–582 | `.protect` | H2 `Protección que<br>no se ve.` (L534) |
-| 585–617 | `.colours` | H2 `Protégelo.<br>Exprésalo.` (L590) |
+| 585–617 | `.colors` | H2 `Protégelo.<br>Exprésalo.` (L590) |
 | 620–693 | `.faq#faq` (inline `<style>` L621–645) | H2 `PPF, en <span class="chrome-text">claro.</span>` (L650) |
 | 696–706 | `.cta` | H2 `Protege lo que <span class="chrome-text">conduces.</span>` (L699) |
 | 708 | `footer` | `© 2026 SERRES … Paint Protection Film · Inozetek · 3M` |
@@ -74,10 +74,10 @@ Also in prose: lead L487 ("desde 890 €"), FAQ #1 L658, FAQ #6 L683 (cross-ref 
 - `.xspecs` L504–509: Vehículo=`BMW M2` / Film=`PPF satinado autorreparable` / Cobertura=`Cobertura de carrocería completa` / Garantía=`3 años`
 - `.feat-grid` L538–559 — 4 × `.feat` (`.fnum` 01–04): `Defensa contra impactos`, `Capa superior autorreparable`, `Resistente a manchas y UV`, `Totalmente reversible`
 - `.construct` L561–580 — `.ct-copy h3` `Tres capas,<br>una piel invisible.` + `.stack` with 3 × `.layer.l1/.l2/.l3`, each `<span class="ly-name">` + `<span class="ly-micron">`
-- **Colour coverflow** L595–615 (markup) + L783–968 (data+logic). Empty containers `#colBrands`, `#colFilters`, `#cfTrack`, `#cfIndex`, `#cfTotal`, `#cfPrev`, `#cfNext`, `#cfRail`. **63 colour entries** across 2 brands: `{id:"inozetek",label:"Inozetek"}` L787, `{id:"3m",label:"3M"}` L832. Entry shape `{n:"Piano Black",c:"DPPF701",f:"Gloss",h:"#0b0b0d"}` (+`h2` for Colour Shift). `FX` finish map at L862. Card template L898–903:
+- **Color coverflow** L595–615 (markup) + L783–968 (data+logic). Empty containers `#colBrands`, `#colFilters`, `#cfTrack`, `#cfIndex`, `#cfTotal`, `#cfPrev`, `#cfNext`, `#cfRail`. **63 color entries** across 2 brands: `{id:"inozetek",label:"Inozetek"}` L787, `{id:"3m",label:"3M"}` L832. Entry shape `{n:"Piano Black",c:"DPPF701",f:"Gloss",h:"#0b0b0d"}` (+`h2` for Color Shift). `FX` finish map at L862. Card template L898–903:
   ```html
   <article class="film-card" data-finish="{FX}" data-i="{i}">
-    <div class="film-skin" style="--c:{hex|gradient}"><span class="film-flag">Colour Shift</span></div>
+    <div class="film-skin" style="--c:{hex|gradient}"><span class="film-flag">Color Shift</span></div>
     <div class="film-meta"><span class="film-name">{n}</span><span class="film-code">{brand} · {c}</span></div>
     <div class="film-fam">{f}</div>
   </article>
@@ -91,7 +91,7 @@ Q1 `¿Cuánto cuesta instalar PPF en Barcelona?` L657 · Q2 `¿Cuánto dura el P
 **CTA blocks** — nav CTA L458 (`.btn` → `../index.html#contact`); section `.cta` L696–706: eyebrow `Blinda tu coche`, `.actions` with `.btn`→`../index.html#contact` and `.btn.ghost`→`../pages/gallery.html`, `.phone` `Sant Cugat del Vallès, Barcelona · <strong>+34 649 66 33 80</strong>`.
 **Related links** `.rel-links` L687–691 → `vinyl.html`, `ceramic.html`.
 
-**Page-only CSS classes:** `.protect .feat-grid .feat .fnum .construct .ct-copy .stack .layer .l1 .l2 .l3 .ly-name .ly-micron .colours .col-filters .chip .ct .coverflow .cf-stage .cf-track .film-card .film-skin .film-fam .film-flag .film-meta .film-name .film-code .cf-controls .cf-count .arrows .arrow .cf-rail .col-note .fq-x .rel-links .rel-label`
+**Page-only CSS classes:** `.protect .feat-grid .feat .fnum .construct .ct-copy .stack .layer .l1 .l2 .l3 .ly-name .ly-micron .colors .col-filters .chip .ct .coverflow .cf-stage .cf-track .film-card .film-skin .film-fam .film-flag .film-meta .film-name .film-code .cf-controls .cf-count .arrows .arrow .cf-rail .col-note .fq-x .rel-links .rel-label`
 
 ---
 
@@ -126,7 +126,7 @@ Q1 `¿Cuánto cuesta instalar PPF en Barcelona?` L657 · Q2 `¿Cuánto dura el P
 Prose: lead L516; FAQ #1 L630.
 
 **Gallery / image blocks**
-- **Palette scroller** L531–552: `#brandFilters`, `#filters` (`.filters`+`.chip`), `.scroll-tools`/`.scroll-hint`/`#prev`/`#next`, `.pal-viewport#viewport[data-at-start]` → `.pal-track#track`, `.pal-progress > i#palFill`. **190 colours across 3 brands**: `3m` L691 (60, series `Wrap Film Serie 2080`), `avery` L757 (71, `Supreme Wrapping Film`), `inozetek` L838 (59, `Super Gloss`); array closes L904. `FX` map L907–910. Swatch template L929–941:
+- **Palette scroller** L531–552: `#brandFilters`, `#filters` (`.filters`+`.chip`), `.scroll-tools`/`.scroll-hint`/`#prev`/`#next`, `.pal-viewport#viewport[data-at-start]` → `.pal-track#track`, `.pal-progress > i#palFill`. **190 colors across 3 brands**: `3m` L691 (60, series `Wrap Film Serie 2080`), `avery` L757 (71, `Supreme Wrapping Film`), `inozetek` L838 (59, `Super Gloss`); array closes L904. `FX` map L907–910. Swatch template L929–941:
   ```html
   <article class="swatch" data-finish="${FX[col.f]}">
     <div class="sw-chip" style="--c:${chipBg(col)}"><span class="flip-flag">Flip</span></div>
@@ -478,7 +478,7 @@ var NO='<svg class="ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 
 ### 8.5 Full pricing data model (`pages/prices.html:356–462`) — English strings, the port's source of truth
 ```
-wrap      Car Wrap            250 / 1490* / 1990    Accents | Full Colour Change | Signature Wrap
+wrap      Car Wrap            250 / 1490* / 1990    Accents | Full Color Change | Signature Wrap
 ppf       PPF                 890 / 1190* / 2390    Front Pack | Pro | Full Body
 ceramic   Correction+Ceramic  340 / 590*  / 890     Essential | Signature | Concours
 detailing Detailing            35 / 150*  / 490     Refresh | Deep Clean | Showroom Reset

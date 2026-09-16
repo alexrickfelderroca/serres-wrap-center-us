@@ -36,8 +36,8 @@ Legend: `[COPY]` copied from Barcelona unchanged · `[EDIT]` copied then modifie
 | Path (relative to `<US_ROOT>`) | Mark | Note |
 |---|---|---|
 | `index.html` | [EDIT] | Home. Keeps hero video + 72-frame reveal canvas + service tiles; section order rebuilt to spec §6.1 (TrustBar, Packages strip, Barcelona-proven block, gallery preview, ReviewStrip, 4 FAQs). |
-| `paint-protection-film/index.html` | [EDIT] | From `services/ppf.html` (989 l). Keeps 3-layer TPU diagram (`:562-583`), 4-feature block, colour carousel. Adds 4×2 tier table, Florida-reasons block, 5-step process, QuoteForm. |
-| `car-wraps/index.html` | [EDIT] | From `services/vinyl.html` (1312 l). Best-preserved page: palette scroller (190 colours, 3 brands), xform, before/after slider all reusable. |
+| `paint-protection-film/index.html` | [EDIT] | From `services/ppf.html` (989 l). Keeps 3-layer TPU diagram (`:562-583`), 4-feature block, color carousel. Adds 4×2 tier table, Florida-reasons block, 5-step process, QuoteForm. |
+| `car-wraps/index.html` | [EDIT] | From `services/vinyl.html` (1312 l). Best-preserved page: palette scroller (190 colors, 3 brands), xform, before/after slider all reusable. |
 | `ceramic-coating/index.html` | [EDIT] | From `services/ceramic.html`. Decoupled from paint-correction pricing; 3 tiers → 2 SKUs; adds "ceramic vs PPF vs both" mini-table. |
 | `window-tint/index.html` | [NEW] | Zero source content. Hero + SKU + **FL legal VLT table** (the spec's stated content differentiator) + 4 FAQs + QuoteForm. |
 | `detailing/index.html` | [EDIT] | Merge of `services/detailing.html` (duo before/after pattern, 3-stage process) + the Stage 1/2/3 blocks from `services/paint-correction.html:529-584` and its gloss-meter (`:560-581`, 42→94 GU). |
@@ -112,7 +112,7 @@ Legend: `[COPY]` copied from Barcelona unchanged · `[EDIT]` copied then modifie
 | `_build/data/blog-meta.json` | [EDIT] | From `_build/port/content/blog/blog-meta.json`, retargeted. |
 | `_build/verify-prices.mjs` | [NEW] | Grep gate: every `$N` in shipped HTML must equal a value derivable from `assets/pricing.js`. See §4.4. |
 | `_build/verify-seo.js` | [EDIT] | Inherited. Retarget the hardcoded 16-page list (`:11-19`), GA4 id (`:45`), and the Spanish banned-claims regexes (`:21-24`). Keeps the critical invariant: every FAQPage question **and** answer must also appear in visible HTML. |
-| `_build/count-terms.js` | [EDIT] | Inherited, 25 acceptance greps (Barcelona, `+34`, 08174, `€`, `EUR`, `IVA`, `es_ES`, `G-1K6FYZ99GN`, `{{TOKEN`, old slugs…). Add `Miami`, `serreswrapcenter.es`, `€€`. Keep the `Miami Blue` false-positive filter (a real 3M colour at `ppf.html:841` / `vinyl.html:853`). |
+| `_build/count-terms.js` | [EDIT] | Inherited, 25 acceptance greps (Barcelona, `+34`, 08174, `€`, `EUR`, `IVA`, `es_ES`, `G-1K6FYZ99GN`, `{{TOKEN`, old slugs…). Add `Miami`, `serreswrapcenter.es`, `€€`. Keep the `Miami Blue` false-positive filter (a real 3M color at `ppf.html:841` / `vinyl.html:853`). |
 | `_build/screenshots.js`, `headless.js`, `serve.js` | [COPY] | Reused verbatim. 1440×900 + 390×844@2x, reduced motion, videos paused, lazy images forced, horizontal-overflow report. |
 | `_build/i18n-orphans.js`, `verify-parity.js` | [COPY] | Useful while the English base is still 1:1 with Barcelona (T02–T05); of declining value once pages are restructured. |
 | `_build/port/check-blog.js` | [EDIT] | Blog QA: FAQ byte-identity, title/description length, forbidden terms, `{{PRICE:key}}` validity. Re-key to the new price ids. |
@@ -181,7 +181,7 @@ Each task: **id · what changes · files · data needed · verification**. Scree
 - **Why now:** this is the single highest-value thing in the old pipeline and it only works while the Barcelona markup is byte-identical. Do it before any restructuring.
 
 **T03 · Mechanical passes that are geo-neutral**
-- Changes, in order: `35-alt-text.js` (55 alt rewrites) → `50-trust-signals.js` (strips the 3 `aggregateRating 4.9/50` blocks at `why-serres.html:268-272`, `body-kits.html:287-292`, `paint-correction.html:326-331`; empties `TESTIMONIALS`; removes the 4.9/50+/98% stat tiles; strips every `4.9`/`98%` sentence from the dictionary) → `56-blog-css.js` → `59-us-english.js` (40+ UK→US rules, case-preserving; `bonnet→hood`, `wings→fenders`; `grey`/`petrol` excluded because they are film colour names) → cherry-picked edits from `57-copy-fixes.js` (the `aria-label` fixes, `BMW Serie 1 → BMW 1 Series`, the dead `"Film Colours "` key). **Do not** take 57's ceramic meta-description edit (Miami-worded; the description is re-authored in T25).
+- Changes, in order: `35-alt-text.js` (55 alt rewrites) → `50-trust-signals.js` (strips the 3 `aggregateRating 4.9/50` blocks at `why-serres.html:268-272`, `body-kits.html:287-292`, `paint-correction.html:326-331`; empties `TESTIMONIALS`; removes the 4.9/50+/98% stat tiles; strips every `4.9`/`98%` sentence from the dictionary) → `56-blog-css.js` → `59-us-english.js` (40+ UK→US rules, case-preserving; `hood→hood`, `wings→fenders`; `grey`/`petrol` excluded because they are film color names) → cherry-picked edits from `57-copy-fixes.js` (the `aria-label` fixes, `BMW Serie 1 → BMW 1 Series`, the dead `"Film Colors "` key). **Do not** take 57's ceramic meta-description edit (Miami-worded; the description is re-authored in T25).
 - Files: all pages + `assets/serres-i18n.js` + `assets/blog.css`.
 - Data: none.
 - Verify: `node _build/count-terms.js` — expect remaining hits only on the still-unhandled categories (Barcelona geo, €, +34, domain, GA4). Zero `aggregateRating|reviewCount`.

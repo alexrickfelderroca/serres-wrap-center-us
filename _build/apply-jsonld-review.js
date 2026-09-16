@@ -32,11 +32,11 @@ for (const es of ['Barcelona', 'Sant Cugat del Vallès']) if (byEs[es]) { delete
 /* coverage gaps: serviceType strings */
 const add = [
   ['Protección y personalización de vehículos (PPF, Car Wrap, Ceramic Coating, detailing, body kits)', 'Vehicle protection and customization (PPF, Car Wrap, Ceramic Coating, detailing, body kits)', ['pages/prices.html']],
-  ['Transformación integral del vehículo (corrección, vinilo, PPF, cerámico, carrocería, interior)', 'Complete car transformation (paint correction, colour change, PPF, Ceramic Coating, body work, interior)', ['pages/projects.html']],
+  ['Transformación integral del vehículo (corrección, vinilo, PPF, cerámico, carrocería, interior)', 'Complete car transformation (paint correction, color change, PPF, Ceramic Coating, body work, interior)', ['pages/projects.html']],
   ['Instalación y pintura de body kits, spoilers y widebody', 'Body kit, spoiler and widebody installation and painting', ['services/body-kits.html']],
   ['Recubrimiento cerámico SiO2 (Ceramic Coating)', 'SiO2 ceramic coating (Ceramic Coating)', ['services/ceramic.html']],
   ['Corrección de pintura y Ceramic Coating', 'Paint correction and Ceramic Coating', ['services/paint-correction.html']],
-  ['Car wrapping — cambio de color con films 3M 2080, Avery Dennison e Inozetek', 'Car wrapping — colour change with 3M 2080, Avery Dennison and Inozetek films', ['services/vinyl.html']],
+  ['Car wrapping — cambio de color con films 3M 2080, Avery Dennison e Inozetek', 'Car wrapping — color change with 3M 2080, Avery Dennison and Inozetek films', ['services/vinyl.html']],
 ];
 for (const [es, en, pages] of add) if (!byEs[es]) { byEs[es] = { es, en, pages }; log.push('added serviceType ' + es.slice(0, 40)); }
 

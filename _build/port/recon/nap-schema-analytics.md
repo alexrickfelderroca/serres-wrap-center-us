@@ -218,7 +218,7 @@ Canonical (`rel="canonical"`) + `og:url` + `og:image` + `twitter:image` on every
 
 | Item | File:line | Exact value |
 |---|---|---|
-| Embed iframe | `index.html:858` | `<iframe title="SERRES Wrap Center en Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28430.735708274406!2d2.0633841973199507!3d41.49532481891128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2027f0d4ea2a70f1%3A0xc8f7c6ce9b2a429d!2sSerres%20Wrap%20Center!5e0!3m2!1ses!2ses!4v1780990222187!5m2!1ses!2ses" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">` — centre lng `2.0633841973199507`, lat `41.49532481891128`, place id `0x2027f0d4ea2a70f1:0xc8f7c6ce9b2a429d`, UI locale `!3m2!1ses!2ses` (es/ES → should become `!1sen!2sus`). Wrapped in `<div class="contact-map"><div class="map-frame">` (856–859). |
+| Embed iframe | `index.html:858` | `<iframe title="SERRES Wrap Center en Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28430.735708274406!2d2.0633841973199507!3d41.49532481891128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2027f0d4ea2a70f1%3A0xc8f7c6ce9b2a429d!2sSerres%20Wrap%20Center!5e0!3m2!1ses!2ses!4v1780990222187!5m2!1ses!2ses" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">` — center lng `2.0633841973199507`, lat `41.49532481891128`, place id `0x2027f0d4ea2a70f1:0xc8f7c6ce9b2a429d`, UI locale `!3m2!1ses!2ses` (es/ES → should become `!1sen!2sus`). Wrapped in `<div class="contact-map"><div class="map-frame">` (856–859). |
 | `hasMap` (CID link) | `index.html:622` | `"hasMap": "https://maps.google.com/?cid=14481261717501919901",` — only on the home AutoBodyShop block; no other page has `hasMap`. |
 | Footer "Google Maps" link | `index.html:892` | `<a href="https://www.google.com/maps/search/?api=1&query=Serres+Wrap+Center+Sant+Cugat+del+Vall%C3%A8s" target="_blank" rel="noopener">Google Maps</a>` |
 | Lat/long elsewhere | — | **None.** No `GeoCoordinates`, `latitude`, `longitude`, `geo.position`, or `ICBM` anywhere. The brief's "geo" for the Miami AutoBodyShop is an **addition**, not a replacement. |
@@ -333,7 +333,7 @@ Inconsistency to resolve with Miami hours: JSON-LD says Sat 10–14 while visibl
 
 | Ref | File:line(s) | Notes |
 |---|---|---|
-| **ITV / DGT / homologación** | `blog/cuanto-cuesta-vinilar-un-coche.html:115-118` (JSON-LD Q/A) and `354-356` (visible `<details>`) | Whole FAQ item is Spanish vehicle-registry law ("El color no consta en la ficha técnica del vehículo en España… ni ITV extraordinaria… comunicarlo a tu aseguradora"). Replace with a Florida equivalent (e.g. no DHSMV colour update required, but notify insurer) — confirm wording with client; keep JSON-LD/visible twins identical. |
+| **ITV / DGT / homologación** | `blog/cuanto-cuesta-vinilar-un-coche.html:115-118` (JSON-LD Q/A) and `354-356` (visible `<details>`) | Whole FAQ item is Spanish vehicle-registry law ("El color no consta en la ficha técnica del vehículo en España… ni ITV extraordinaria… comunicarlo a tu aseguradora"). Replace with a Florida equivalent (e.g. no DHSMV color update required, but notify insurer) — confirm wording with client; keep JSON-LD/visible twins identical. |
 | **IVA** (VAT) — 51 occurrences outside i18n | index 658/816/820; prices 7/13/20/242/255-259/306/348; ppf 382/657; vinyl 424/629; ceramic 246/271/278/285/300/521; paint-correction 390/597; detailing 524/452; body-kits 273/352/547; blog/index 121; ppf-coche 8/22/33/49/95/203/222/227/239/323/341; vinilar 221/234/328-329/381; tapiceria 222/236; ppf-o-ceramico 236 | US has no VAT; "IVA incluido" → drop or "tax not included" per client. EN keys use "VAT included" at i18n 229, 243, 1015, 1043, 1045, 1056, 1074, 1090, 1114, 1136, 1155 (11) — these keys become inline EN text. |
 | **"en EUR"** | `pages/prices.html:348` footer `Precios orientativos en EUR, IVA incluido`; i18n 243–245 | → USD |
 | **`priceRange` "€€€"/"€€"** | `index.html:620`, `pages/why-serres.html:241` | → `$$$` |
@@ -2560,7 +2560,7 @@ Classes: a-nap · b-copy (SEO/visible) · c-i18n (dictionary; `KEY:` = the Engli
 | assets/serres-i18n.js:244 | c-i18n | IVA, EUR | VAL: Todos los derechos reservados. \u00A0·\u00A0 Precios orientativos en EUR, IVA incluido", |
 | assets/serres-i18n.js:245 | c-i18n | IVA, EUR | VAL: SERRES. Tots els drets reservats. \u00A0·\u00A0 Preus orientatius en EUR, IVA inclòs"], |
 | assets/serres-i18n.js:248 | c-i18n | Barcelona | KEY: Exclusive — Car Transformation Projects in Barcelona \| SERRES |
-| assets/serres-i18n.js:255 | c-i18n | Barcelona | KEY: The Exclusive is our complete car transformation project in Barcelona: paint correction, colour change, PPF, Ceramic Coating, body work and interior — |
+| assets/serres-i18n.js:255 | c-i18n | Barcelona | KEY: The Exclusive is our complete car transformation project in Barcelona: paint correction, color change, PPF, Ceramic Coating, body work and interior — |
 | assets/serres-i18n.js:256 | c-i18n | Barcelona | VAL: Exclusivo es nuestro proyecto de transformación completa de coches en Barcelona: corrección de pintura, cambio de color, PPF, Ceramic Coating, carrocería e interior — cada disciplina que ten |
 | assets/serres-i18n.js:257 | c-i18n | Barcelona | VAL: 'Exclusiu és el nostre projecte de transformació completa de cotxes a Barcelona: correcció de pintura, canvi de color, PPF, Ceramic Coating, carrosseria i interior — cada disciplina que teni |
 | assets/serres-i18n.js:312 | c-i18n | Sant Cugat | KEY: Detailing Studio in Sant Cugat — Why SERRES |
@@ -2584,7 +2584,7 @@ Classes: a-nap · b-copy (SEO/visible) · c-i18n (dictionary; `KEY:` = the Engli
 | assets/serres-i18n.js:585 | c-i18n | Barcelona, Sant Cugat, Vallès | VAL: ["El pulido de coche en Barcelona de SERRES es una corrección multietapa a máquina que elimina micro-arañazos, hologramas y oxidación, devolviendo el brillo y la profundidad reales a t |
 | assets/serres-i18n.js:586 | c-i18n | Barcelona, Sant Cugat, Vallès | VAL: "El polit de cotxe a Barcelona de SERRES és una correcció multietapa a màquina que elimina micro-ratllades, hologrames i oxidació, tornant la brillantor i la profunditat reals a la te |
 | assets/serres-i18n.js:639 | c-i18n | Barcelona | KEY: SERRES — Car Wrap / Vinyl |
-| assets/serres-i18n.js:648 | c-i18n | Barcelona, Sant Cugat, Vallès | KEY: Car wrapping in Barcelona: we wrap your car with a full or partial colour change using 3M, Avery Dennison and Inozetek films — over 150 colours in mat |
+| assets/serres-i18n.js:648 | c-i18n | Barcelona, Sant Cugat, Vallès | KEY: Car wrapping in Barcelona: we wrap your car with a full or partial color change using 3M, Avery Dennison and Inozetek films — over 150 colors in mat |
 | assets/serres-i18n.js:649 | c-i18n | Barcelona, Sant Cugat, Vallès | VAL: ["Car wrapping en Barcelona: vinilamos tu coche con cambio de color total o parcial usando films 3M, Avery Dennison e Inozetek — más de 150 colores en mate, satinado, brillo, metalizad |
 | assets/serres-i18n.js:650 | c-i18n | Barcelona, Sant Cugat, Vallès | VAL: "Car wrapping a Barcelona: vinilem el teu cotxe amb canvi de color total o parcial amb films 3M, Avery Dennison i Inozetek — més de 150 colors en mat, setinat, brillant, metal·litzat |
 | assets/serres-i18n.js:678 | c-i18n | Barcelona | KEY: SERRES — Body Kits |
@@ -2616,7 +2616,7 @@ Classes: a-nap · b-copy (SEO/visible) · c-i18n (dictionary; `KEY:` = the Engli
 | assets/serres-i18n.js:1021 | c-i18n | Barcelona | KEY: SERRES projects in Barcelona: a gallery of real PPF, Car Wrap, Ceramic Coating and detailing work on Porsche, BMW, Toyota and Range Rover. |
 | assets/serres-i18n.js:1022 | c-i18n | Barcelona | VAL: ["Proyectos de SERRES en Barcelona: galería de trabajos reales de PPF, Car Wrap, Ceramic Coating y detailing en Porsche, BMW, Toyota y Range Rover.", |
 | assets/serres-i18n.js:1023 | c-i18n | Barcelona | VAL: "Projectes de SERRES a Barcelona: galeria de treballs reals de PPF, Car Wrap, Ceramic Coating i detailing en Porsche, BMW, Toyota i Range Rover."], |
-| assets/serres-i18n.js:1024 | c-i18n | Barcelona | KEY: SERRES Exclusive: complete car transformation projects in Barcelona. Correction, colour change, PPF, Ceramic Coating and interior. Only 6 a year. |
+| assets/serres-i18n.js:1024 | c-i18n | Barcelona | KEY: SERRES Exclusive: complete car transformation projects in Barcelona. Correction, color change, PPF, Ceramic Coating and interior. Only 6 a year. |
 | assets/serres-i18n.js:1025 | c-i18n | Barcelona | VAL: ["Exclusivo SERRES: proyectos de transformación completa de coches en Barcelona. Corrección, cambio de color, PPF, Ceramic Coating e interior. Solo 6 al año.", |
 | assets/serres-i18n.js:1026 | c-i18n | Barcelona | VAL: "Exclusiu SERRES: projectes de transformació completa de cotxes a Barcelona. Correcció, canvi de color, PPF, Ceramic Coating i interior. Només 6 a l'any."], |
 | assets/serres-i18n.js:1030 | c-i18n | Barcelona | KEY: Complete transformation projects in Barcelona |
@@ -2634,7 +2634,7 @@ Classes: a-nap · b-copy (SEO/visible) · c-i18n (dictionary; `KEY:` = the Engli
 | assets/serres-i18n.js:1056 | c-i18n | IVA, VAT | KEY: The front pack starts at 890 €, the full front at 1.190 € and the full body at 2.390 €, VAT included. The final price depends on the model and the con |
 | assets/serres-i18n.js:1062 | c-i18n | Sant Cugat, Vallès | KEY: Paint decontamination and correction, cutting the pattern specific to your model, application in a clean booth and a panel-by-panel review under contr |
 | assets/serres-i18n.js:1064 | c-i18n | +34, 621 24 44 69 | KEY: A front end is delivered in 1-2 working days; a full body, in 3-5 days. We work by appointment from Monday to Saturday: call or message us on WhatsApp |
-| assets/serres-i18n.js:1068 | c-i18n | Barcelona | KEY: Car Wrap — car colour change in Barcelona |
+| assets/serres-i18n.js:1068 | c-i18n | Barcelona | KEY: Car Wrap — car color change in Barcelona |
 | assets/serres-i18n.js:1069 | c-i18n | Barcelona | KEY: Ceramic Coating — paint correction and ceramic sealing in Barcelona |
 | assets/serres-i18n.js:1070 | c-i18n | Barcelona | KEY: Car detailing in Barcelona |
 | assets/serres-i18n.js:1072 | c-i18n | Sant Cugat | KEY: What people ask before a detail — prices, timings and how we work in Sant Cugat. |
@@ -2647,7 +2647,7 @@ Classes: a-nap · b-copy (SEO/visible) · c-i18n (dictionary; `KEY:` = the Engli
 | assets/serres-i18n.js:1104 | c-i18n | Barcelona | KEY: Work gallery — PPF, Car Wrap & Detailing in Barcelona |
 | assets/serres-i18n.js:1105 | c-i18n | Barcelona | KEY: PPF protection in Barcelona |
 | assets/serres-i18n.js:1107 | c-i18n | Barcelona | KEY: Body kit fitting in Barcelona |
-| assets/serres-i18n.js:1109 | c-i18n | Barcelona | KEY: Car Wrap and colour change in Barcelona |
+| assets/serres-i18n.js:1109 | c-i18n | Barcelona | KEY: Car Wrap and color change in Barcelona |
 | assets/serres-i18n.js:1112 | c-i18n | Sant Cugat | KEY: What we get asked every week at the Sant Cugat workshop. If your question isn't here, message us on WhatsApp. |
 | assets/serres-i18n.js:1114 | c-i18n | IVA, VAT | KEY: Aero add-ons —splitter, diffuser or spoiler— start at €450. A complete kit with fitting and paint starts at €1,490, and a full widebody transformation |
 | assets/serres-i18n.js:1118 | c-i18n | Sant Cugat, Vallès | KEY: Yes. We guarantee the mounting, the panel-gap fitment and the paint finish of the installed kit. All the work is done at our Sant Cugat del Vallès wor |
@@ -2659,7 +2659,7 @@ Classes: a-nap · b-copy (SEO/visible) · c-i18n (dictionary; `KEY:` = the Engli
 | assets/serres-i18n.js:1142 | c-i18n | Sant Cugat, Vallès | KEY: We work in three stages: cutting to remove the defects, refining and final finishing. We review the car panel by panel under controlled hexagonal ligh |
 | assets/serres-i18n.js:1146 | c-i18n | Barcelona, Sant Cugat, Vallès, Can Fatjó, +34, 621 24 44 69 | KEY: Message us on WhatsApp at +34 621 24 44 69 or call us and we'll book you in Monday to Saturday. We are at Av. Can Fatjó dels Aurons 15, Sant Cugat del |
 | assets/serres-i18n.js:1149 | c-i18n | Barcelona | KEY: Car wrapping in Barcelona — wrap your car |
-| assets/serres-i18n.js:1155 | c-i18n | IVA, VAT | KEY: A full colour change with 3M, Avery Dennison or Inozetek films starts at €1,490 VAT included; accents (roof, mirrors, pillars) from €250 and the Signa |
+| assets/serres-i18n.js:1155 | c-i18n | IVA, VAT | KEY: A full color change with 3M, Avery Dennison or Inozetek films starts at €1,490 VAT included; accents (roof, mirrors, pillars) from €250 and the Signa |
 | assets/serres-i18n.js:1159 | c-i18n | Sant Cugat, Vallès | KEY: The 3M, Avery Dennison and Inozetek films we install last between 5 and 7 years outdoors with normal care, and the manufacturer backs them with its of |
 | assets/serres-i18n.js:1164 | c-i18n | Barcelona, Sant Cugat, Vallès, Can Fatjó, +34, 621 24 44 69 | KEY: We work by appointment from Monday to Saturday at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès (Barcelona), 20 minutes from central Barcelona.  |
 | assets/serres-enhance.js:14 | a-nap | +34, 34621244469, 621 24 44 69 | var WA_DIGITS = "34621244469"; // +34 621 24 44 69 |

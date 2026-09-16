@@ -1,5 +1,5 @@
 /* count-terms.js — acceptance greps for the Miami port, with the known false positives excluded:
-     · "Catal" inside "OfferCatalog" (JSON-LD), "maps" inside "sitemaps.org", "Miami Blue" (a film colour name)
+     · "Catal" inside "OfferCatalog" (JSON-LD), "maps" inside "sitemaps.org", "Miami Blue" (a film color name)
      · serreswrapcenter.es is allowed ONLY on sameAs / parentOrganization / branchOf lines (the Barcelona parent site)
    Scans the shipped files (HTML, JS, CSS, XML, TXT, .htaccess) — never _build/ — and prints per-term totals + file hits.
    Usage: node _build/count-terms.js [siteRoot]    exit 1 when any forbidden term remains

@@ -29,7 +29,7 @@ const SEO = {
            'Precios SERRES Miami: PPF desde 890 €, Car Wrap desde 250 €, Ceramic Coating desde 340 € y detailing desde 35 €, IVA incluido. Pide tu presupuesto exacto.'] },
   'pages/projects.html': {
     title: ['Exclusive — Car Transformation Projects in Miami | SERRES', 'Exclusivo — Proyectos de Transformación en Miami | SERRES'],
-    desc: ['SERRES Exclusive: complete car transformation projects in Miami. Correction, colour change, PPF, Ceramic Coating and interior. Only 6 a year.',
+    desc: ['SERRES Exclusive: complete car transformation projects in Miami. Correction, color change, PPF, Ceramic Coating and interior. Only 6 a year.',
            'Exclusivo SERRES: proyectos de transformación completa de coches en Miami. Corrección, cambio de color, PPF, Ceramic Coating e interior. Solo 6 al año.'] },
   'pages/why-serres.html': {
     title: ['Detailing Studio in Miami — Why SERRES', 'Estudio de Detailing en Miami — Por Qué SERRES'],
@@ -53,11 +53,11 @@ const SEO = {
            'Pulido por etapas a máquina: Etapa 1, 2 o 3 según el estado de tu pintura. Adiós a arañazos, remolinos y hologramas. Miami, Florida.'] },
   'services/ppf.html': {
     title: ['PPF in Miami — Paint Protection Film | SERRES', 'PPF en Miami — Protección de Pintura | SERRES'],
-    desc: ['Self-healing PPF installation in 50+ colours from several professional brands. Front and full-car packs from €890. Miami, Florida.',
+    desc: ['Self-healing PPF installation in 50+ colors from several professional brands. Front and full-car packs from €890. Miami, Florida.',
            'Instalación de PPF autorreparable con más de 50 colores de varias marcas profesionales. Packs frontal y coche completo desde 890 €. Miami, Florida.'] },
   'services/vinyl.html': {
-    title: ['Car Wrap in Miami — Colour Change | SERRES', 'Car Wrap en Miami — Cambio de Color | SERRES'],
-    desc: ['Car Wrap: colour change with 3M, Avery Dennison and Inozetek films. 150+ colours. Full car from €1,490. Miami, Florida.',
+    title: ['Car Wrap in Miami — Color Change | SERRES', 'Car Wrap en Miami — Cambio de Color | SERRES'],
+    desc: ['Car Wrap: color change with 3M, Avery Dennison and Inozetek films. 150+ colors. Full car from €1,490. Miami, Florida.',
            'Car Wrap: cambio de color con films 3M, Avery Dennison e Inozetek. Más de 150 colores. Coche completo desde 1.490 €. Miami, Florida.'] },
 };
 const dec = s => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');

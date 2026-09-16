@@ -18,7 +18,7 @@ const P = rel => path.join(root, rel);
 editFile(P('index.html'), (src, api) => { api.once('aria-label="Servicios SERRES"', 'aria-label="SERRES services"', 'services grid aria-label'); });
 editFile(P('assets/serres-enhance.js'), (src, api) => { api.once('     4.  LANGUAGE SWITCHER (EN / ES / CA) — loaded after the nav + mobile', '     4.  LANGUAGE SWITCHER (EN / ES) — loaded after the nav + mobile', 'enhance.js switcher comment'); });
 /* dead dictionary key (trailing space: affix() can never produce it) */
-editFile(P('assets/serres-i18n.js'), (src, api) => { api.re(/\n    "Film Colours ": "[^"\n]*",/, '', 'dead key "Film Colours "'); });
+editFile(P('assets/serres-i18n.js'), (src, api) => { api.re(/\n    "Film Colors ": "[^"\n]*",/, '', 'dead key "Film Colors "'); });
 editFile(P('pages/prices.html'), (src, api) => { api.all('aria-label="Elige un servicio"', 'aria-label="Choose a service"', 1); });
 editFile(P('pages/gallery.html'), (src, api) => { api.all('BMW Serie 1', 'BMW 1 Series', 1); });   // nav label, data-car (lightbox title), data-screen-label
 addEntries(root, 'Miami port — copy fixes', [
