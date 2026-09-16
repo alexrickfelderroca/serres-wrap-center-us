@@ -6,57 +6,10 @@
   renders NOTHING while the flag is false. Never add a placeholder number here.
 --}}
 <footer class="us-footer" data-us-region="footer">
-  <div class="wrap us-footer__inner">
-    <div class="us-footer__brand">
-      <a href="{{rel:}}" class="logo" aria-label="SERRES Wrap Center — home"><img src="{{rel:assets/serres-logo.png}}" alt="SERRES" width="600" height="55"></a>
-      <p class="us-footer__tagline">Paint protection film, wraps, ceramic coating and detailing for South Florida.</p>
-      {{!-- languages line ("Se habla espanol / Govorim po-russki") removed at the
-            owner's request 2026-09-16. business.languages is still in business.js if
-            it is ever wanted back. --}}
-    </div>
-    <div class="us-footer__cols">
-      <div class="us-footer__col">
-        <h2 class="us-footer__col-title">Services</h2>
-        <div class="us-footer__links">
-          <a class="us-footer__link" href="{{rel:paint-protection-film/}}">Paint Protection Film</a>
-          <a class="us-footer__link" href="{{rel:car-wraps/}}">Car Wraps</a>
-          <a class="us-footer__link" href="{{rel:ceramic-coating/}}">Ceramic Coating</a>
-          <a class="us-footer__link" href="{{rel:window-tint/}}">Window Tint</a>
-          <a class="us-footer__link" href="{{rel:detailing/}}">Detailing</a>
-          <a class="us-footer__link" href="{{rel:our-films/}}">Our Films</a>
-        </div>
-      </div>
-      {{!-- "PPF near you" column removed at the owner's request 2026-09-16.
-            NOTE: this was the only site-wide link to the four local landers. They are
-            still linked from each other and from /paint-protection-film, but they are
-            now further than 2 clicks from the home page — see TODO.md. --}}
-      <div class="us-footer__col">
-        <h2 class="us-footer__col-title">Studio</h2>
-        <address class="us-footer__nap">
-          <span class="us-footer__nap-line">{{business:name}}</span>
-          <span class="us-footer__nap-line">{{business:addressLine}}</span>
-          <span class="us-footer__nap-line">{{business:city}}, {{business:region}}</span>
-        </address>
-        <p class="us-footer__hours">{{business:hoursDisplay}}</p>
-        <div class="us-footer__links">
-{{#if PHONE_LIVE}}          <a class="us-footer__link" href="{{telHref}}">{{business:phoneDisplay}}</a>
-{{/if}}{{#if WHATSAPP_LIVE}}          <a class="us-footer__link" href="{{waHref}}" target="_blank" rel="noopener">WhatsApp</a>
-{{/if}}{{#if EMAIL_LIVE}}          <a class="us-footer__link" href="{{mailHref}}">{{business:email}}</a>
-{{/if}}          <a class="us-footer__link" href="{{business:instagram}}" target="_blank" rel="noopener">Instagram</a>
-          <a class="us-footer__link" href="{{rel:contact/}}">Contact</a>
-        </div>
-      </div>
-      <div class="us-footer__col">
-        <h2 class="us-footer__col-title">Company</h2>
-        <div class="us-footer__links">
-          <a class="us-footer__link" href="{{rel:about/}}">About</a>
-          <a class="us-footer__link" href="{{rel:blog/}}">Blog</a>
-          <a class="us-footer__link" href="{{rel:contact/}}">Get a quote</a>
-          <a class="us-footer__link" href="{{business:parentUrl}}" target="_blank" rel="noopener">SERRES Barcelona</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{!-- The whole footer body (brand, tagline, link columns, NAP, hours, Instagram)
+      was removed at the owner request 2026-09-16. Only the bottom bar survives.
+      Header nav still reaches the 5 services, Pricing, Our Films, About, Contact,
+      Blog and Gallery; Privacy and Terms are in the bar below. --}}
   <div class="wrap us-footer__bottom">
     <span class="us-footer__copy">© {{year}} SERRES Wrap Center</span>
     <nav class="us-footer__legal" aria-label="Legal">

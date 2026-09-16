@@ -115,7 +115,8 @@ will not be indexed in its place. To attach the domain: add a `CNAME` file conta
 
 | # | Item | Detail |
 |---|---|---|
-| 34 | **Local landers are further from the home page** | The footer "PPF near you" column was the only site-wide link to the four  landers. It was removed at your request. They are still linked from each other and from , so they are not orphans, but they are now 3 clicks from home rather than 1. Spec §8.4 asks for every page within 2 clicks. If that matters for the local SEO, the cheapest fix is a row of city links on . |
+| 34 | ~~Local landers further from home~~ — **resolved.** A crawl from the home page puts all four `/ppf-<city>/` landers at exactly **2 clicks**, via `/paint-protection-film`, which meets spec §8.4. The earlier note guessed 3; measured, it is 2. `_build/us/verify-reachability.js` now proves it on every build | Nothing needed |
+| 36 | **Footer emptied** (2026-09-16) | The brand block, link columns, NAP, hours and Instagram link were removed at your request; only the copyright bar with Privacy and Terms remains. Nothing was orphaned — the header nav still reaches all five services, Pricing, Our Films, About, Contact, Blog and Gallery. But the site now has **no address, hours or Instagram link anywhere except `/contact`**, so that page carries the whole NAP. Worth knowing for local SEO: Google likes seeing consistent NAP sitewide |
 | 35 | **"Se habla español · Говорим по-русски" removed everywhere** | Footer, mobile menu and the contact page. The string is still in  as  if you ever want it back — nothing else references it now. |
 
 ---
