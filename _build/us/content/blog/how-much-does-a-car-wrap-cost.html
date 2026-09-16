@@ -135,13 +135,10 @@
 }
 </script>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1K6FYZ99GN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-1K6FYZ99GN');
-</script>
+<!-- TODO(owner): US GA4 property id (assets/business.js ga4Id, still null, so ANALYTICS_LIVE is
+     false and no snippet ships). The parent Barcelona property id that used to sit here has been
+     removed — business.js says it must NEVER be reused on the US site. The click tracker at the
+     bottom of this page is a no-op until a US gtag exists. -->
 <link rel="stylesheet" href="../../assets/serres-logo.css">
 </head>
 <body>
@@ -187,6 +184,10 @@
       <span>8 min read</span>
     </div>
 
+    <!-- TODO(build): the cover and og images still live in
+         assets/blog/cuanto-cuesta-vinilar-un-coche/. That folder has to be renamed to
+         assets/blog/how-much-does-a-car-wrap-cost/ (same rename the other three articles and
+         blog/index.html need) or this image 404s. -->
     <figure class="post-cover">
       <img src="../../assets/blog/how-much-does-a-car-wrap-cost/cover.webp" width="1600" height="900"
            fetchpriority="high"
@@ -293,6 +294,9 @@
           textures cost more per roll and take more hours to lay. That is why the Signature Wrap is
           a level of its own: {{PRICE:signature-wrap}}.</li>
     </ul>
+    <!-- TODO(owner): "more than 150 colors in a physical swatch catalog" is inherited studio copy,
+         not spec §3 data. Confirm the swatch count the Boca Raton studio will actually stock, or
+         cut the number. The same claim sits on /car-wraps/ and on the home page. -->
     <p>In our <a href="../../car-wraps/">car wrap service</a> we work only with cast film from
        3M (2080 series), Avery Dennison and Inozetek, with more than 150 colors in a physical swatch
        catalog so you can see them on a real curve in daylight rather than on a screen.</p>

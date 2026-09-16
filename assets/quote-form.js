@@ -67,7 +67,7 @@
   +   'outline:2px solid var(--text,#f3f3f5);outline-offset:2px;border-color:var(--text,#f3f3f5)}'
   + '.us-qf-field input[aria-invalid="true"],.us-qf-field select[aria-invalid="true"],'
   +   '.us-qf-field textarea[aria-invalid="true"]{border-color:#e2765f}'
-  + '.us-qf-hint{font-size:13px;line-height:1.5;color:var(--muted-2,#6e6e77)}'
+  + '.us-qf-hint{font-size:13px;line-height:1.5;color:var(--muted,#9a9aa3)}'   /* 7.2:1 on --bg */
   + '.us-qf-err{font-size:13px;line-height:1.5;color:#f0947f;min-height:0}'
   + '.us-qf-err:empty{display:none}'
 
@@ -84,7 +84,7 @@
   +   'transition:transform .2s var(--ease,ease),background .2s var(--ease,ease)}'
   + '.us-qf-submit:hover{transform:translateY(-2px);background:#fff}'
   + '.us-qf-submit:focus-visible{outline:2px solid var(--text,#f3f3f5);outline-offset:3px}'
-  + '.us-qf-terms{font-size:13px;line-height:1.6;color:var(--muted-2,#6e6e77);max-width:46ch}'
+  + '.us-qf-terms{font-size:13px;line-height:1.6;color:var(--muted,#9a9aa3);max-width:46ch}'
 
   /* pre-flight honesty notice + post-submit state */
   + '.us-qf-note{display:grid;gap:8px;padding:16px 18px;'
@@ -417,7 +417,8 @@
     form.noValidate = true;                 // our messages, not the browser's
 
     var prefix = 'usqf' + (++uid);
-    if (!hasAnyControl(form)) renderFields(form, prefix);
+    var selfRendered = !hasAnyControl(form);
+    if (selfRendered) renderFields(form, prefix);
 
     /* resolve every field, wire labels / errors */
     var map = {};
@@ -466,6 +467,10 @@
         ', so nobody can answer this form yet. Fill it in to see exactly what we will need &#8212; ' +
         'you can copy it and send it the moment we are reachable.</p>';
       form.insertBefore(pre, form.firstChild);
+      /* Do not promise a quote the form cannot fetch. Only relabel a button we
+         rendered ourselves — an author-written label is theirs to word. */
+      var sub = selfRendered ? form.querySelector('.us-qf-submit') : null;
+      if (sub) sub.textContent = 'See what we’ll need';
     }
 
     /* inline validation on blur, clear on input */

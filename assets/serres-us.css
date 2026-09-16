@@ -266,15 +266,18 @@
   box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 5px rgba(0,0,0,.4),0 8px 18px -8px rgba(0,0,0,.6);
   white-space:nowrap;
 }
-/* ...and the SAME class used as a card modifier --------------------------- */
+/* ...and the SAME class used as a card modifier. Every badge declaration has to
+   be neutralised here - notably align-items, which would otherwise centre the
+   whole card's contents. --------------------------------------------------- */
 .us-price-card.us-price-popular,
 .us-pkg-card.us-price-popular{
   position:relative;top:auto;right:auto;z-index:auto;
-  display:flex;border-radius:0;
+  display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;
+  border-radius:0;text-align:left;
   background:var(--panel-2,#191920);color:var(--text,#f3f3f5);
   border:1px solid rgba(255,255,255,.30);
   box-shadow:none;filter:var(--us-lift-hi);
-  font-family:var(--us-body);font-size:inherit;font-weight:400;
+  font-family:var(--us-body);font-size:inherit;font-weight:400;line-height:1.6;
   letter-spacing:normal;text-transform:none;white-space:normal;
 }
 .us-price-card.us-price-popular{padding:30px 28px 28px}
@@ -823,13 +826,21 @@
   background:none;color:var(--muted,#9a9aa3);-webkit-text-fill-color:var(--muted,#9a9aa3);
 }
 .us-compare svg{width:17px;height:17px;display:inline-block;vertical-align:middle}
-.us-compare .us-compare-col{background:rgba(255,255,255,.045)}
 
+/* The emphasised column is tinted by a pseudo-element, NOT by background, because
+   the tfoot cells use background+background-clip:text for their chrome numerals -
+   a background override there would erase the number entirely. */
 .us-compare-col{
-  position:relative;
-  margin:-14px 0;padding:14px 8px;
+  position:relative;isolation:isolate;
+  padding:0 8px;
   color:var(--text,#f3f3f5);
 }
+.us-compare-col::after{
+  content:"";position:absolute;inset:-14px 0 -15px;z-index:-1;
+  background:rgba(255,255,255,.045);
+}
+/* bridge the row padding differences so the column reads as one continuous band */
+.us-compare tfoot .us-compare-col::after{inset:-16px 0 -18px}
 
 @media (max-width:640px){
   .us-compare{border:0;background:none;margin-top:26px}
@@ -854,7 +865,8 @@
   }
   .us-compare tbody td:first-child::before,.us-compare tfoot td:first-child::before{content:none}
   .us-compare tfoot td{font-size:16px}
-  .us-compare tr .us-compare-col{background:none;margin:0;padding:0}
+  .us-compare-col{padding:0 6px}
+  .us-compare-col::after{inset:-6px -2px}
 }
 
 

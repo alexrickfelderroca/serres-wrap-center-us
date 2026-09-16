@@ -80,10 +80,13 @@
       '<button type="button" class="us-cookie-ok">Got it</button>';
     document.body.appendChild(bar);
 
-    /* next frame, so the slide-up transition has a start value to animate from */
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () { bar.classList.add('us-cookie-in'); });
-    });
+    /* Flush style so the transition has a start value, then reveal synchronously.
+       A requestAnimationFrame would never fire in a backgrounded tab, which
+       would leave the bar translated off-screen forever. A timeout failsafe
+       covers the case where the class is somehow dropped. */
+    void bar.offsetWidth;
+    bar.classList.add('us-cookie-in');
+    setTimeout(function () { bar.classList.add('us-cookie-in'); }, 600);
 
     bar.querySelector('.us-cookie-ok').addEventListener('click', function () {
       store('set', VALUE);

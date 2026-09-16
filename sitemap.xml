@@ -1,83 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://serreswrapcenter.es/</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/services/ppf.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/paint-protection-film/</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/services/vinyl.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/car-wraps/</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/services/ceramic.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/ceramic-coating/</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/services/paint-correction.html</loc>
-    <lastmod>2026-07-09</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://serreswrapcenter.es/services/detailing.html</loc>
-    <lastmod>2026-07-09</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://serreswrapcenter.es/services/body-kits.html</loc>
-    <lastmod>2026-07-09</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://serreswrapcenter.es/pages/prices.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/detailing/</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/pages/why-serres.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/pricing/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://serreswrap.com/gallery/</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/pages/gallery.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/about/</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/pages/projects.html</loc>
-    <lastmod>2026-07-09</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://serreswrapcenter.es/blog/index.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/blog/</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/blog/cuanto-cuesta-vinilar-un-coche.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/blog/how-much-does-ppf-cost/</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/blog/ppf-o-ceramico-que-elegir.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/blog/how-much-does-a-car-wrap-cost/</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/blog/cuanto-cuesta-ppf-coche.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/blog/ppf-vs-ceramic-coating/</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://serreswrapcenter.es/blog/limpieza-tapiceria-coche-precio.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://serreswrap.com/blog/car-upholstery-cleaning-cost/</loc>
     <priority>0.6</priority>
   </url>
 </urlset>

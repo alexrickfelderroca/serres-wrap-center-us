@@ -22,7 +22,6 @@
     "             contact | page | article",
     "schema.group: the assets/pricing.js group whose Offers this page publishes."
   ],
-
   "defaults": {
     "siteName": "SERRES Wrap Center",
     "locale": "en_US",
@@ -31,23 +30,32 @@
     "robots": "index,follow,max-image-preview:large,max-snippet:-1",
     "twitterCard": "summary_large_image"
   },
-
   "routes": {
     "": {
       "title": "PPF, Wraps and Ceramic in Boca Raton | SERRES",
       "description": "Paint protection film from {{startingAtAmount:ppf}}, wraps from {{startingAtAmount:wraps}} and ceramic coating in Boca Raton. 3M and NAR films, published prices, 1-year install warranty.",
       "ogImage": "assets/og/home.jpg",
       "priority": "1.0",
-      "schema": { "kind": "home" }
+      "schema": {
+        "kind": "home"
+      }
     },
-
     "paint-protection-film/": {
       "title": "Paint Protection Film Boca Raton {{startingAt:ppf}} | SERRES",
       "description": "PPF in Boca Raton {{startingAt:ppf}}: 3M Scotchgard Pro 200 and NAR H190 film, published prices, 1-year SERRES install warranty. Exact quote in 2 hours.",
       "ogImage": "assets/og/ppf.jpg",
       "priority": "0.9",
       "hasPrices": true,
-      "crumbs": [["Services", ""], ["Paint Protection Film", "paint-protection-film/"]],
+      "crumbs": [
+        [
+          "Services",
+          "#services"
+        ],
+        [
+          "Paint Protection Film",
+          "paint-protection-film/"
+        ]
+      ],
       "schema": {
         "kind": "service",
         "name": "Paint protection film installation in Boca Raton",
@@ -56,14 +64,22 @@
         "description": "Installation of self-healing paint protection film over the impact zones or the whole car, in NAR H190 or 3M Scotchgard Pro Series 200, with a 1-year SERRES installation warranty."
       }
     },
-
     "car-wraps/": {
       "title": "Car Wraps Boca Raton {{startingAt:wraps}} | SERRES",
       "description": "Vinyl car wraps in Boca Raton {{startingAt:wraps}}: chrome delete, full color change in 3M 2080 and Avery SW900, premium color-shift films. Exact quote in 2 hours.",
       "ogImage": "assets/og/vinyl.jpg",
       "priority": "0.9",
       "hasPrices": true,
-      "crumbs": [["Services", ""], ["Car Wraps", "car-wraps/"]],
+      "crumbs": [
+        [
+          "Services",
+          "#services"
+        ],
+        [
+          "Car Wraps",
+          "car-wraps/"
+        ]
+      ],
       "schema": {
         "kind": "service",
         "name": "Car wrap installation in Boca Raton",
@@ -72,14 +88,22 @@
         "description": "Chrome delete, full color change and premium color-shift wraps in 3M 2080, Avery SW900, Inozetek and KPMF film, with edges wrapped in and a 1-year SERRES installation warranty."
       }
     },
-
     "ceramic-coating/": {
       "title": "Ceramic Coating Boca Raton {{startingAt:ceramic}} | SERRES",
       "description": "Ceramic coating in Boca Raton {{startingAt:ceramic}}: decon, gloss prep, coating and cure, or a top-up over fresh PPF or wrap. Published prices, exact quote in 2 hours.",
       "ogImage": "assets/og/ceramic.jpg",
       "priority": "0.9",
       "hasPrices": true,
-      "crumbs": [["Services", ""], ["Ceramic Coating", "ceramic-coating/"]],
+      "crumbs": [
+        [
+          "Services",
+          "#services"
+        ],
+        [
+          "Ceramic Coating",
+          "ceramic-coating/"
+        ]
+      ],
       "schema": {
         "kind": "service",
         "name": "Ceramic coating in Boca Raton",
@@ -88,14 +112,22 @@
         "description": "Three-year ceramic coating over decontaminated and gloss-prepped paint, or applied over fresh paint protection film or wrap as a top-up."
       }
     },
-
     "window-tint/": {
       "title": "Window Tint Boca Raton {{startingAt:tint}} | SERRES",
       "description": "Ceramic window tint in Boca Raton {{startingAt:tint}}: IR-rejecting film on every side window and the rear glass, Florida-legal VLT options. Exact quote in 2 hours.",
       "ogImage": "assets/og/home.jpg",
       "priority": "0.8",
       "hasPrices": true,
-      "crumbs": [["Services", ""], ["Window Tint", "window-tint/"]],
+      "crumbs": [
+        [
+          "Services",
+          "#services"
+        ],
+        [
+          "Window Tint",
+          "window-tint/"
+        ]
+      ],
       "schema": {
         "kind": "service",
         "name": "Ceramic window tint in Boca Raton",
@@ -104,14 +136,22 @@
         "description": "Ceramic infrared-rejecting window film on all side windows and the rear glass, in Florida-legal VLT options."
       }
     },
-
     "detailing/": {
       "title": "Car Detailing Boca Raton {{startingAt:detailing}} | SERRES",
-      "description": "Detailing and paint correction in Boca Raton {{startingAt:detailing}}: interior strip-down and extraction, compound and polish, gloss measured in and out.",
+      "description": "Detailing and paint correction in Boca Raton {{startingAt:detailing}}: interior strip-down, extraction, compound and polish, gloss measured in and out. No bait pricing.",
       "ogImage": "assets/og/detailing.jpg",
       "priority": "0.8",
       "hasPrices": true,
-      "crumbs": [["Services", ""], ["Detailing", "detailing/"]],
+      "crumbs": [
+        [
+          "Services",
+          "#services"
+        ],
+        [
+          "Detailing",
+          "detailing/"
+        ]
+      ],
       "schema": {
         "kind": "service",
         "name": "Detailing and paint correction in Boca Raton",
@@ -120,70 +160,119 @@
         "description": "Interior detailing with full strip-down, extraction and leather care, and one to two stage paint correction with swirl and hologram removal."
       }
     },
-
     "pricing/": {
       "title": "PPF, Wrap and Ceramic Prices in Boca Raton | SERRES",
       "description": "Every SERRES price in one place: PPF {{startingAt:ppf}}, wraps {{startingAt:wraps}}, ceramic {{startingAt:ceramic}}, tint and detailing. No bait pricing, exact quote in 2 hours.",
       "ogImage": "assets/og/prices.jpg",
       "priority": "0.9",
       "hasPrices": true,
-      "crumbs": [["Pricing", "pricing/"]],
-      "schema": { "kind": "pricing" }
+      "crumbs": [
+        [
+          "Pricing",
+          "pricing/"
+        ]
+      ],
+      "schema": {
+        "kind": "pricing"
+      }
     },
-
     "our-films/": {
       "title": "Our Films: 3M and NAR PPF in Boca Raton | SERRES",
       "description": "Why SERRES installs 3M Scotchgard Pro Series 200 and NAR H190 paint protection film in Boca Raton, what each one warrants, and why we refuse cheap film.",
       "ogImage": "assets/og/ppf.jpg",
       "priority": "0.7",
-      "crumbs": [["Our Films", "our-films/"]],
-      "schema": { "kind": "page", "name": "Our films" }
+      "crumbs": [
+        [
+          "Our Films",
+          "our-films/"
+        ]
+      ],
+      "schema": {
+        "kind": "page",
+        "name": "Our films"
+      }
     },
-
     "gallery/": {
       "title": "Gallery: PPF, Wraps and Ceramic Work | SERRES",
-      "description": "Cars finished by the SERRES team: paint protection film, full color changes, chrome deletes, ceramic coating and paint correction, photographed panel by panel.",
+      "description": "Cars finished by the SERRES team: paint protection film, full color changes, chrome deletes and ceramic coating, photographed panel by panel.",
       "ogImage": "assets/og/gallery.jpg",
       "priority": "0.7",
-      "crumbs": [["Gallery", "gallery/"]],
-      "schema": { "kind": "collection", "name": "Gallery" }
+      "crumbs": [
+        [
+          "Gallery",
+          "gallery/"
+        ]
+      ],
+      "schema": {
+        "kind": "collection",
+        "name": "Gallery"
+      }
     },
-
     "about/": {
       "title": "About SERRES Wrap Center, Barcelona to Boca Raton",
-      "description": "From a Barcelona studio to Boca Raton: the SERRES protocol, thickness gauge at intake, filtered-air bay, gloss measured in and out, and the Florida opening timeline.",
+      "description": "From a Barcelona studio to Boca Raton: the SERRES protocol — paint thickness gauged at intake, a filtered-air bay, and gloss measured in and out.",
       "ogImage": "assets/og/why-serres.jpg",
       "priority": "0.7",
-      "crumbs": [["About", "about/"]],
-      "schema": { "kind": "about", "name": "About SERRES Wrap Center" }
+      "crumbs": [
+        [
+          "About",
+          "about/"
+        ]
+      ],
+      "schema": {
+        "kind": "about",
+        "name": "About SERRES Wrap Center"
+      }
     },
-
     "contact/": {
       "title": "Contact SERRES Wrap Center, Boca Raton FL",
       "description": "Send your make and model and get an exact quote within 2 hours. SERRES Wrap Center serves Boca Raton, Delray Beach, Pompano Beach and Fort Lauderdale.",
       "ogImage": "assets/og/home.jpg",
       "priority": "0.8",
-      "crumbs": [["Contact", "contact/"]],
-      "schema": { "kind": "contact", "name": "Contact SERRES Wrap Center" }
+      "crumbs": [
+        [
+          "Contact",
+          "contact/"
+        ]
+      ],
+      "schema": {
+        "kind": "contact",
+        "name": "Contact SERRES Wrap Center"
+      }
     },
-
     "reserve/": {
       "title": "Founders Club: Reserve Your Install | SERRES",
       "description": "Thirty founding slots at the new SERRES Boca Raton studio. Reserve your paint protection film or wrap install before the doors open and lock your date in.",
       "ogImage": "assets/og/home.jpg",
       "priority": "0.8",
       "inSitemapWhenReserveLive": true,
-      "crumbs": [["Reserve", "reserve/"]],
-      "schema": { "kind": "page", "name": "Founders Club" }
+      "crumbs": [
+        [
+          "Reserve",
+          "reserve/"
+        ]
+      ],
+      "schema": {
+        "kind": "page",
+        "name": "Founders Club"
+      }
     },
-
     "ppf-boca-raton/": {
       "title": "PPF Boca Raton {{startingAt:ppf}} | SERRES Wrap Center",
       "description": "Paint protection film in Boca Raton {{startingAt:ppf}}. 3M and NAR film, published prices, 1-year SERRES installation warranty, exact quote in 2 hours.",
       "ogImage": "assets/og/ppf.jpg",
       "priority": "0.8",
       "hasPrices": true,
-      "crumbs": [["Services", ""], ["PPF Boca Raton", "ppf-boca-raton/"]],
+      "crumbs": [
+        [
+          "Services",
+          "#services"
+        ],
+        [
+          "PPF Boca Raton",
+          "ppf-boca-raton/"
+        ]
+      ],
       "schema": {
         "kind": "local",
         "city": "Boca Raton",
@@ -193,14 +282,22 @@
         "description": "Paint protection film installed for Boca Raton drivers in NAR H190 or 3M Scotchgard Pro Series 200, with published prices and a 1-year SERRES installation warranty."
       }
     },
-
     "ppf-fort-lauderdale/": {
       "title": "PPF Fort Lauderdale {{startingAt:ppf}} | SERRES",
       "description": "Paint protection film for Fort Lauderdale cars {{startingAt:ppf}}. 3M and NAR film, published prices, 1-year install warranty, exact quote in 2 hours.",
       "ogImage": "assets/og/ppf.jpg",
       "priority": "0.8",
       "hasPrices": true,
-      "crumbs": [["Services", ""], ["PPF Fort Lauderdale", "ppf-fort-lauderdale/"]],
+      "crumbs": [
+        [
+          "Services",
+          "#services"
+        ],
+        [
+          "PPF Fort Lauderdale",
+          "ppf-fort-lauderdale/"
+        ]
+      ],
       "schema": {
         "kind": "local",
         "city": "Fort Lauderdale",
@@ -210,14 +307,22 @@
         "description": "Paint protection film installed for Fort Lauderdale drivers in NAR H190 or 3M Scotchgard Pro Series 200, with published prices and a 1-year SERRES installation warranty."
       }
     },
-
     "ppf-pompano-beach/": {
       "title": "PPF Pompano Beach {{startingAt:ppf}} | SERRES",
       "description": "Paint protection film for Pompano Beach cars {{startingAt:ppf}}. 3M and NAR film, published prices, 1-year install warranty, exact quote in 2 hours.",
       "ogImage": "assets/og/ppf.jpg",
       "priority": "0.8",
       "hasPrices": true,
-      "crumbs": [["Services", ""], ["PPF Pompano Beach", "ppf-pompano-beach/"]],
+      "crumbs": [
+        [
+          "Services",
+          "#services"
+        ],
+        [
+          "PPF Pompano Beach",
+          "ppf-pompano-beach/"
+        ]
+      ],
       "schema": {
         "kind": "local",
         "city": "Pompano Beach",
@@ -227,14 +332,22 @@
         "description": "Paint protection film installed for Pompano Beach drivers in NAR H190 or 3M Scotchgard Pro Series 200, with published prices and a 1-year SERRES installation warranty."
       }
     },
-
     "ppf-delray-beach/": {
       "title": "PPF Delray Beach {{startingAt:ppf}} | SERRES",
       "description": "Paint protection film for Delray Beach cars {{startingAt:ppf}}. 3M and NAR film, published prices, 1-year install warranty, exact quote in 2 hours.",
       "ogImage": "assets/og/ppf.jpg",
       "priority": "0.8",
       "hasPrices": true,
-      "crumbs": [["Services", ""], ["PPF Delray Beach", "ppf-delray-beach/"]],
+      "crumbs": [
+        [
+          "Services",
+          "#services"
+        ],
+        [
+          "PPF Delray Beach",
+          "ppf-delray-beach/"
+        ]
+      ],
       "schema": {
         "kind": "local",
         "city": "Delray Beach",
@@ -244,40 +357,74 @@
         "description": "Paint protection film installed for Delray Beach drivers in NAR H190 or 3M Scotchgard Pro Series 200, with published prices and a 1-year SERRES installation warranty."
       }
     },
-
     "blog/": {
       "title": "Blog: PPF, Wrap and Detailing Guides | SERRES",
       "description": "Guides from the SERRES team: what paint protection film and wraps really cost in South Florida, PPF versus ceramic, and how to keep a finish looking new.",
       "ogImage": "assets/og/home.jpg",
       "priority": "0.7",
-      "crumbs": [["Blog", "blog/"]],
-      "schema": { "kind": "collection", "name": "SERRES Blog" }
+      "crumbs": [
+        [
+          "Blog",
+          "blog/"
+        ]
+      ],
+      "schema": {
+        "kind": "collection",
+        "name": "SERRES Blog"
+      }
     },
-
     "blog/how-much-does-ppf-cost/": {
       "title": "How Much Does PPF Cost? Boca Raton Prices",
-      "description": "What paint protection film costs in Boca Raton: partial front {{price:partial-front.essential}}, full front {{price:full-front.essential}}, full body {{price:full-body.essential}}, and what changes the number.",
+      "description": "What paint protection film really costs in Boca Raton: full front {{price:full-front.essential}} in NAR H190 or {{price:full-front.signature}} in 3M, full body {{price:full-body.essential}}, and what moves the number.",
       "ogImage": "assets/blog/cuanto-cuesta-ppf-coche/og.jpg",
       "ogType": "article",
       "priority": "0.6",
       "hasPrices": true,
-      "crumbs": [["Blog", "blog/"], ["How much does PPF cost", "blog/how-much-does-ppf-cost/"]],
-      "article": { "published": "2026-07-09", "modified": "2026-07-09" },
-      "schema": { "kind": "article", "headline": "How much does PPF cost for your car?" }
+      "crumbs": [
+        [
+          "Blog",
+          "blog/"
+        ],
+        [
+          "How much does PPF cost",
+          "blog/how-much-does-ppf-cost/"
+        ]
+      ],
+      "article": {
+        "published": "2026-07-09",
+        "modified": "2026-07-09"
+      },
+      "schema": {
+        "kind": "article",
+        "headline": "How much does PPF cost for your car?"
+      }
     },
-
     "blog/how-much-does-a-car-wrap-cost/": {
       "title": "How Much Does a Car Wrap Cost in Florida?",
-      "description": "What a vinyl wrap costs in Boca Raton: chrome delete {{price:chrome-delete}}, full color change {{price:color-change}}, premium film {{price:signature-wrap}}, and what drives the price.",
+      "description": "What a vinyl wrap really costs in Boca Raton: chrome delete {{price:chrome-delete}}, full color change {{price:color-change}}, premium color-shift film {{price:signature-wrap}} — and what drives the price.",
       "ogImage": "assets/blog/cuanto-cuesta-vinilar-un-coche/og.jpg",
       "ogType": "article",
       "priority": "0.6",
       "hasPrices": true,
-      "crumbs": [["Blog", "blog/"], ["How much does a wrap cost", "blog/how-much-does-a-car-wrap-cost/"]],
-      "article": { "published": "2026-07-09", "modified": "2026-07-09" },
-      "schema": { "kind": "article", "headline": "How much does a car wrap cost?" }
+      "crumbs": [
+        [
+          "Blog",
+          "blog/"
+        ],
+        [
+          "How much does a wrap cost",
+          "blog/how-much-does-a-car-wrap-cost/"
+        ]
+      ],
+      "article": {
+        "published": "2026-07-09",
+        "modified": "2026-07-09"
+      },
+      "schema": {
+        "kind": "article",
+        "headline": "How much does a car wrap cost?"
+      }
     },
-
     "blog/ppf-vs-ceramic-coating/": {
       "title": "PPF vs Ceramic Coating: Which Do You Need?",
       "description": "Paint protection film stops stone chips, a ceramic coating adds gloss and beading. What each one does, what they cost from {{startingAtAmount:ceramic}}, and when to combine them.",
@@ -285,11 +432,25 @@
       "ogType": "article",
       "priority": "0.6",
       "hasPrices": true,
-      "crumbs": [["Blog", "blog/"], ["PPF vs Ceramic Coating", "blog/ppf-vs-ceramic-coating/"]],
-      "article": { "published": "2026-07-09", "modified": "2026-07-09" },
-      "schema": { "kind": "article", "headline": "PPF or ceramic coating: which one does your car need?" }
+      "crumbs": [
+        [
+          "Blog",
+          "blog/"
+        ],
+        [
+          "PPF vs Ceramic Coating",
+          "blog/ppf-vs-ceramic-coating/"
+        ]
+      ],
+      "article": {
+        "published": "2026-07-09",
+        "modified": "2026-07-09"
+      },
+      "schema": {
+        "kind": "article",
+        "headline": "PPF or ceramic coating: which one does your car need?"
+      }
     },
-
     "blog/car-upholstery-cleaning-cost/": {
       "title": "Car Upholstery Cleaning Cost in Boca Raton",
       "description": "What interior cleaning really costs and what it includes: extraction, leather clean and feed, from {{price:interior}} at the SERRES studio in Boca Raton, Florida.",
@@ -297,27 +458,56 @@
       "ogType": "article",
       "priority": "0.6",
       "hasPrices": true,
-      "crumbs": [["Blog", "blog/"], ["Car upholstery cleaning", "blog/car-upholstery-cleaning-cost/"]],
-      "article": { "published": "2026-07-09", "modified": "2026-07-09" },
-      "schema": { "kind": "article", "headline": "How much does cleaning a car interior cost?" }
+      "crumbs": [
+        [
+          "Blog",
+          "blog/"
+        ],
+        [
+          "Car upholstery cleaning",
+          "blog/car-upholstery-cleaning-cost/"
+        ]
+      ],
+      "article": {
+        "published": "2026-07-09",
+        "modified": "2026-07-09"
+      },
+      "schema": {
+        "kind": "article",
+        "headline": "How much does cleaning a car interior cost?"
+      }
     },
-
     "privacy/": {
       "title": "Privacy Policy | SERRES Wrap Center",
       "description": "How SERRES Wrap Center handles the information you send through this site, what we store, how long we keep it, and how to ask for it to be deleted.",
       "ogImage": "assets/og/home.jpg",
       "priority": "0.3",
-      "crumbs": [["Privacy", "privacy/"]],
-      "schema": { "kind": "page", "name": "Privacy policy" }
+      "crumbs": [
+        [
+          "Privacy",
+          "privacy/"
+        ]
+      ],
+      "schema": {
+        "kind": "page",
+        "name": "Privacy policy"
+      }
     },
-
     "terms/": {
       "title": "Terms of Service | SERRES Wrap Center",
       "description": "The terms that apply to work booked with SERRES Wrap Center in Boca Raton: quotes, deposits, warranty cover, and what happens if a job needs to be redone.",
       "ogImage": "assets/og/home.jpg",
       "priority": "0.3",
-      "crumbs": [["Terms", "terms/"]],
-      "schema": { "kind": "page", "name": "Terms of service" }
+      "crumbs": [
+        [
+          "Terms",
+          "terms/"
+        ]
+      ],
+      "schema": {
+        "kind": "page",
+        "name": "Terms of service"
+      }
     }
   }
 }

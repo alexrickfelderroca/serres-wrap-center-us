@@ -127,9 +127,16 @@
   + '.srs-burger span::before,.srs-burger span::after{content:"";position:absolute;left:0;width:20px;height:1.5px;'
   +   'background:var(--text,#f3f3f5);transition:transform .25s var(--ease,ease)}'
   + '.srs-burger span::before{top:-6px}.srs-burger span::after{top:6px}'
-  /* the inherited pages hide .nav-links at <=1200px — the burger now meets that
-     exact breakpoint so the 981-1200px navigation dead zone is closed */
-  + '@media(max-width:1200px){.srs-burger{display:inline-flex}}'
+  /* The old code showed the burger at <=980px while the pages hide .nav-links at
+     <=1200px, leaving 981-1200px with NO navigation. Rather than hardcode a second
+     breakpoint that can drift out of sync with the header CSS, the burger is driven
+     by whether the page's own nav row is actually rendered (see syncBurger). The
+     media query below is only the fallback for a page with no .nav-links at all. */
+  + '.srs-burger.us-burger-show{display:inline-flex}'
+  + '@media(max-width:1200px){.srs-burger.us-burger-auto{display:inline-flex}}'
+  /* hard floor: the spec requires a hamburger on mobile, so it is never
+     suppressed below 760px whatever the header stylesheet does */
+  + '@media(max-width:760px){.srs-burger{display:inline-flex}}'
 
   /* lower the nav row on phones so logo + burger clear the status bar / notch */
   + '@media(max-width:760px){header.nav .nav-inner{'
@@ -138,8 +145,11 @@
   /* ---------- overlay menu ---------- */
   + '.srs-menu{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;'
   +   'background:rgba(8,8,10,.97);-webkit-backdrop-filter:blur(20px) saturate(120%);backdrop-filter:blur(20px) saturate(120%);'
-  +   'opacity:0;visibility:hidden;transition:opacity .42s var(--ease,ease),visibility .42s var(--ease,ease)}'
-  + '.srs-menu.open{opacity:1;visibility:visible}'
+  /* visibility is switched with a 0s step (delayed on close) rather than
+     interpolated: a transitioned `visibility` is still computed `hidden` at
+     progress 0, so the close button could not take focus on open. */
+  +   'opacity:0;visibility:hidden;transition:opacity .42s var(--ease,ease),visibility 0s linear .42s}'
+  + '.srs-menu.open{opacity:1;visibility:visible;transition:opacity .42s var(--ease,ease),visibility 0s linear 0s}'
   + '.srs-menu-bar{display:flex;align-items:center;justify-content:space-between;'
   +   'padding:max(60px,calc(env(safe-area-inset-top) + 20px)) 22px 20px;border-bottom:1px solid var(--line,rgba(255,255,255,.09))}'
   + '.srs-menu-logo{display:inline-flex;align-items:center;padding:0;font-size:0;line-height:0}'
@@ -150,20 +160,23 @@
   + '.srs-close:hover{border-color:#fff;transform:rotate(90deg)}'
   + '.srs-close:focus-visible{outline:2px solid var(--text,#f3f3f5);outline-offset:2px}'
   + '.srs-close svg{width:20px;height:20px}'
-  + '.srs-links{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(12px,2.2vh,22px);'
+  /* justify-content:center would clip the top of an overflowing flex column and
+     make it unreachable — auto margins centre it only while there is room */
+  + '.srs-links{flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:clamp(12px,2.2vh,22px);'
   +   'padding:clamp(12px,2.6vh,26px) 22px;overflow-y:auto;-webkit-overflow-scrolling:touch}'
+  + '.srs-links>:first-child{margin-top:auto}.srs-links>:last-child{margin-bottom:auto}'
 
   /* services block (new — us- prefixed) */
   + '.us-menu-group{opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease,ease),transform .5s var(--ease,ease)}'
   + '.srs-menu.open .us-menu-group{opacity:1;transform:none}'
   + '.us-menu-eyebrow{display:block;font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;'
-  +   'text-transform:uppercase;letter-spacing:.24em;font-size:11px;color:var(--muted-2,#6e6e77);'
+  +   'text-transform:uppercase;letter-spacing:.24em;font-size:11px;color:var(--muted,#9a9aa3);'
   +   'padding-bottom:10px;border-bottom:1px solid var(--line,rgba(255,255,255,.09))}'
   + '.us-menu-svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 20px;margin-top:4px}'
   + '.us-menu-svc a{display:flex;align-items:center;min-height:44px;'
   +   'font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;'
   +   'text-transform:uppercase;letter-spacing:.07em;font-size:clamp(15px,3.6vw,18px);line-height:1.15;'
-  +   'color:var(--muted,#9a9aa3);transition:color .2s var(--ease,ease)}'
+  +   'color:var(--muted,#9a9aa3);text-decoration:none;transition:color .2s var(--ease,ease)}'
   + '.us-menu-svc a:hover,.us-menu-svc a:focus-visible{color:var(--text,#f3f3f5)}'
   + '.us-menu-svc a:focus-visible{outline:2px solid var(--text,#f3f3f5);outline-offset:3px}'
   + '@media(max-width:379px){.us-menu-svc{grid-template-columns:1fr}}'
@@ -173,7 +186,7 @@
   + '.srs-links a.us-row{display:flex;align-items:baseline;gap:18px;min-height:44px;padding:clamp(9px,1.9vh,16px) 0;'
   +   'border-bottom:1px solid var(--line,rgba(255,255,255,.09));'
   +   'font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;'
-  +   'letter-spacing:.05em;font-size:clamp(26px,6.6vw,40px);line-height:1;color:var(--text,#f3f3f5);'
+  +   'letter-spacing:.05em;font-size:clamp(26px,6.6vw,40px);line-height:1;color:var(--text,#f3f3f5);text-decoration:none;'
   +   'opacity:0;transform:translateY(14px);transition:color .25s var(--ease,ease)}'
   + '.srs-menu.open .srs-links a.us-row{opacity:1;transform:none;'
   +   'transition:opacity .5s var(--ease,ease),transform .5s var(--ease,ease),color .25s var(--ease,ease)}'
@@ -219,7 +232,7 @@
   +   'html.us-has-stickybar body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}}'
   + '.us-sb-btn{min-height:56px;display:flex;align-items:center;justify-content:center;gap:9px;'
   +   'font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:600;'
-  +   'text-transform:uppercase;letter-spacing:.15em;font-size:13px;color:var(--text,#f3f3f5);'
+  +   'text-transform:uppercase;letter-spacing:.15em;font-size:13px;color:var(--text,#f3f3f5);text-decoration:none;'
   +   'border-left:1px solid var(--line,rgba(255,255,255,.09));'
   +   '-webkit-tap-highlight-color:transparent;transition:background .18s var(--ease,ease)}'
   + '.us-sb-btn:first-child{border-left:0}'
@@ -251,7 +264,7 @@
   /* ---------- reduced motion ---------- */
   + '@media(prefers-reduced-motion:reduce){'
   +   '.srs-menu,.srs-links a.us-row,.us-menu-group,.srs-wa-float,.srs-close,.srs-burger,.us-sb-btn{'
-  +     'transition-duration:.01ms!important;animation:none!important}'
+  +     'transition-duration:.01ms!important;transition-delay:0s!important;animation:none!important}'
   +   '.srs-links a.us-row,.us-menu-group{transform:none!important}}';
 
   var style = document.createElement('style');
@@ -275,6 +288,35 @@
     return out;
   }
 
+  /* The burger shows exactly when the page's own nav row is NOT rendered, so the
+     two can never overlap and can never both be hidden — whatever breakpoint the
+     header CSS uses. */
+  function syncBurger(header, burger) {
+    var nav = header.querySelector('.nav-links, .us-nav__links, [data-us-nav-links]');
+    if (!nav) { burger.classList.add('us-burger-auto'); return; }
+    function check() {
+      var cs = window.getComputedStyle(nav);
+      var hidden = cs.display === 'none' || cs.visibility === 'hidden' ||
+                   nav.getBoundingClientRect().width === 0;
+      if (hidden) burger.classList.add('us-burger-show');
+      else burger.classList.remove('us-burger-show');
+    }
+    check();
+    var queued = false;
+    window.addEventListener('resize', function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; check(); });
+    }, { passive: true });
+    window.addEventListener('orientationchange', check, { passive: true });
+    /* late webfont / stylesheet arrival can change the nav's measured width */
+    setTimeout(check, 400);
+    setTimeout(check, 1500);
+    if (document.fonts && document.fonts.ready && document.fonts.ready.then) {
+      document.fonts.ready.then(check)['catch'](function () {});
+    }
+  }
+
   function buildMenu() {
     var header = document.querySelector('header');
     var slot = header ? (header.querySelector('.nav-right') || header.querySelector('.nav-inner')) : null;
@@ -288,6 +330,7 @@
     burger.setAttribute('aria-controls', 'srs-menu');
     burger.innerHTML = '<span></span>';
     slot.appendChild(burger);
+    syncBurger(header, burger);
 
     var menu = document.createElement('nav');
     menu.className = 'srs-menu';
@@ -367,9 +410,11 @@
       burger.setAttribute('aria-expanded', 'true');
       document.documentElement.style.overflow = 'hidden';
       rowEls.forEach(function (a, i) { a.style.transitionDelay = (0.06 + i * 0.04) + 's'; });
-      /* next frame: the overlay is visibility:hidden until the class lands, and
-         an element inside a hidden subtree cannot take focus */
-      requestAnimationFrame(function () { if (closeBtn) closeBtn.focus(); });
+      /* the overlay is visibility:hidden until the class lands, and an element
+         inside a hidden subtree cannot take focus — force a style flush first.
+         (A rAF would be throttled to never in a backgrounded tab.) */
+      void menu.offsetWidth;
+      if (closeBtn) closeBtn.focus();
     }
     function close() {
       if (!menu.classList.contains('open')) return;

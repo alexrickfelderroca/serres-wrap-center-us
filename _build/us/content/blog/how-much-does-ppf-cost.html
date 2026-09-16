@@ -162,6 +162,9 @@
       <span>8 min read</span>
     </div>
 
+    <!-- TODO(build): the cover and og images still live in assets/blog/cuanto-cuesta-ppf-coche/.
+         That folder has to be renamed to assets/blog/how-much-does-ppf-cost/ (same rename the
+         other three articles and blog/index.html need) or this image 404s. -->
     <figure class="post-cover">
       <img src="../../assets/blog/how-much-does-ppf-cost/cover.webp" width="1600" height="900"
            fetchpriority="high"
@@ -320,6 +323,18 @@
     </ul>
 
     <h2 id="is-ppf-worth-it">Is PPF worth it in Florida? Run the numbers</h2>
+    <!-- TODO(build): the four cost-per-month figures in the list below are DERIVED, not
+         catalogue prices, so assets/pricing.js cannot produce them and _build/us/verify-prices.mjs
+         will fail this file with four "dollar amount is not producible from pricing.js" errors
+         once it ships into blog/. The arithmetic itself is correct — recomputed with node against
+         assets/pricing.js:
+           1900 / 60  = 31.666… -> 31.67  (Full Front Essential, 5 years)
+           1900 / 120 = 15.833… -> 15.83  (Full Front Essential, 10 years)
+           4995 / 120 = 41.625  -> 41.63  (Full Body Essential, 10 years)
+           1200 / 36  = 33.333… -> 33.33  (3-Year Ceramic Package, 3 years)
+         Fix is one of: (a) teach the price gate a DERIVED allowlist, (b) add a per-month token
+         (id + tier + months) to the resolver so these stay generated, or (c) reword without a
+         currency figure. Do NOT silently delete the numbers — they are verified and on-brief. -->
     <p>It depends on the car and on how long you plan to keep it. The honest calculation:</p>
     <ul>
       <li><strong>Cost per month of ownership.</strong> Divide the price by the months you will
