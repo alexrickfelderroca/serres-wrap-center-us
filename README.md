@@ -113,13 +113,31 @@ ffmpeg -i in.mp4 -an -c:v libvpx-vp9 -crf 36 -b:v 0 -row-mt 1 assets/serres-hero
 
 ## Deploy
 
-GitHub Pages, from `main` branch root. `.nojekyll` is committed so Pages serves
-directories beginning with `_`.
+Asset and page links are **relative**, so the same tree runs unchanged on a GitHub Pages
+project URL, on Hostinger at the apex domain, or from any subfolder. Canonicals and OG
+tags point at `serreswrapcenter.com` (set in `assets/business.js`).
 
-Asset and page links are **relative**, so the site works both at the
-`*.github.io/<repo>/` project URL and later at `serreswrap.com`. Canonicals and OG tags
-point at `serreswrap.com` (set in `assets/business.js`). To attach the domain: add a
-`CNAME` file with `serreswrap.com`, point the DNS at GitHub Pages, and enable HTTPS.
+### Hostinger (production)
+
+Upload the repo root to `public_html/`, **excluding** `_build/`, `.git/`, `.screenshots/`
+and the `.md` files. `.htaccess` is committed and handles HTTPS, the www→apex redirect,
+`ErrorDocument 404`, caching, gzip and the woff2 MIME type.
+
+```bash
+node _build/us/deploy-hostinger.js --host <ftp host> --user <ftp user> --pass <password>
+```
+
+Note the caching policy: HTML and CSS/JS are `no-cache, must-revalidate` (stored, but
+revalidated — an unchanged file returns a cheap 304), while images, fonts and video are
+cached hard for 30 days because a new asset always gets a new filename. The Barcelona
+site used `no-store` on HTML, which forbids caching entirely and re-downloads the page on
+every visit.
+
+### GitHub Pages (preview)
+
+From `main` branch root; `.nojekyll` is committed so Pages serves `_`-prefixed
+directories. Live at `https://alexrickfelderroca.github.io/serres-wrap-center-us/`.
+`.htaccess` is ignored there (Pages is nginx), so keeping it costs nothing.
 
 ## Forms
 

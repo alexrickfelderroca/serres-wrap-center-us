@@ -75,8 +75,12 @@
   B.pixelId = null;                   // TODO(owner): Meta Pixel id
 
   /* --------------------------------------------------------------- publishing */
-  B.domain = 'serreswrap.com';        // TODO(owner): confirm registrar purchase (spec §P0-3)
-  B.origin = 'https://serreswrap.com';
+  /* serreswrapcenter.com — chosen 2026-09-16. The spec §P0-3 assumed serreswrap.com, but
+     that is already registered (Wix, 2026-02-23, parked with no site). This name is
+     geo-neutral, so it survives the studio moving or adding a second location, and it
+     mirrors the Barcelona site's name on the .es TLD. */
+  B.domain = 'serreswrapcenter.com';  // TODO(owner): confirm the registrar purchase went through
+  B.origin = 'https://serreswrapcenter.com';
 
   /* -------------------------------------------------------------------- flags
      Each flag is derived, not hand-set, so a filled-in value switches the UI on

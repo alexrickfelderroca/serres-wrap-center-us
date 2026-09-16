@@ -16,7 +16,7 @@ site picks it up — for most of these, that is the only change needed.
 | 1 | **US phone number** (E.164 + display) | `assets/business.js` → `phoneE164`, `phoneDisplay` | `tel:` links, sticky mobile bar Call button, `telephone` in every JSON-LD block |
 | 2 | **SMS number** (usually the same) | `assets/business.js` → `smsE164` | sticky mobile bar Text button |
 | 3 | **WhatsApp number** (digits only, no `+`) | `assets/business.js` → `whatsappDigits` | WhatsApp button **and the entire quote form** — its delivery is WhatsApp prefill, so with no number the form cannot send |
-| 4 | **E-mail address** — confirm `info@serreswrap.com` once the domain is live | `assets/business.js` → `email` | footer, JSON-LD `email`, form reply-to |
+| 4 | **E-mail address** — confirm `info@serreswrapcenter.com` once the domain is live | `assets/business.js` → `email` | footer, JSON-LD `email`, form reply-to |
 
 > **You chose to hide all contact details until October.** That is what ships today:
 > no call, text or WhatsApp button appears anywhere, and the quote form shows a truthful
@@ -44,7 +44,7 @@ page, every JSON-LD `PostalAddress`, the footer and the contact page in one comm
 |---|---|---|---|
 | 9 | **Opening hours** | `Mon–Sat 9:00 AM – 6:00 PM` (spec §4.3). The Barcelona studio runs Mon–Fri 9–19 + Sat 10–14 — these disagree | `assets/business.js` → `hoursDisplay`, `hoursSchema`, `hoursSpec` |
 | 10 | **Instagram handle** | Using the **real Barcelona account** `instagram.com/serres.wrap.center`. The spec guesses `instagram.com/serreswrap`, which is unverified — shipping it would be a broken link. Does the US studio get its own account? | `assets/business.js` → `instagram` |
-| 11 | **Domain purchase** | `serreswrap.com` assumed (spec §P0-3). Canonicals and OG tags already point there | `assets/business.js` → `domain`, `origin` |
+| 11 | **Domain purchase** | **`serreswrapcenter.com`** — chosen 2026-09-16, confirmed available against the Verisign registry. NOT the spec's `serreswrap.com` (§P0-3): that is already registered through Wix on 2026-02-23 and parked with no site — quite possibly by the client, worth asking. `serres.com` is also out: it belongs to a live Finnish medical-device company. Canonicals, OG tags, JSON-LD and the sitemap all point at the chosen name already | `assets/business.js` → `domain`, `origin` |
 | 12 | **Legal entity name** | Unknown — needed for `/terms` and JSON-LD `legalName` | `assets/business.js` → `legalName` |
 | 13 | **"300+ cars protected in Barcelona since 2023"** | **Not published.** The spec asks for it but flags it unconfirmed, and the Barcelona site's own figures (`50+ coches`) contradict it. Give a number you can stand behind and it goes on the home page | home page "Proven in Barcelona" block |
 | 14 | **"The only studio in Boca Raton with full transparent pricing"** | **Not published.** A competitive superlative with legal exposure — spec itself says confirm wording | `/pricing` H1 line |
@@ -98,9 +98,9 @@ page, every JSON-LD `PostalAddress`, the footer and the contact page in one comm
 **https://alexrickfelderroca.github.io/serres-wrap-center-us/**
 
 Repo: https://github.com/alexrickfelderroca/serres-wrap-center-us (public, GitHub Pages
-from `main` root). Canonical tags already point at `serreswrap.com`, so the preview URL
+from `main` root). Canonical tags already point at `serreswrapcenter.com`, so the preview URL
 will not be indexed in its place. To attach the domain: add a `CNAME` file containing
-`serreswrap.com`, point the DNS at GitHub Pages, and enable HTTPS in repo settings.
+`serreswrapcenter.com`, point the DNS at GitHub Pages, and enable HTTPS in repo settings.
 
 ### Measured, and still worth doing
 

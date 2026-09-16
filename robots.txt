@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://serreswrap.com/sitemap.xml
+Sitemap: https://serreswrapcenter.com/sitemap.xml

@@ -25,7 +25,7 @@ Home is `index.html`, `404.html` sits at the root.
 
 **All internal links and asset references are RELATIVE and depth-correct.**
 Never write a root-absolute `/assets/...` path: the site must work both at the GitHub
-Pages project URL and later at `serreswrap.com`. Depths: home 0, most pages 1,
+Pages project URL and later at `serreswrapcenter.com`. Depths: home 0, most pages 1,
 blog posts 2 (`blog/<slug>/index.html`).
 
 ## Single sources of truth — nothing may be hardcoded
@@ -125,7 +125,7 @@ Lighthouse a11y run with the score captured, before any task is called done.
 ## Deploy
 
 GitHub Pages from `main` branch root, `.nojekyll` in the repo root.
-Account `alexrickfelderroca` (never `trvevr2-a11y`). Custom domain `serreswrap.com`
+Account `alexrickfelderroca` (never `trvevr2-a11y`). Custom domain `serreswrapcenter.com`
 to be pointed here once the registrar purchase is confirmed; canonicals already use it.
 
 ## Deliberately not doing (and why)
