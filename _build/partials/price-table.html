@@ -1,0 +1,20 @@
+{{!--
+  REGION:prices:<group> — single-price groups (wraps, ceramic, tint, detailing,
+  packages). Static, crawlable, no-JS. Rows come from price-row.html.
+  Syntax + class contract: see header.html.
+--}}
+<div class="us-prices" data-us-region="prices" data-group="{{group}}">
+  <table class="us-prices__table">
+    <caption class="us-prices__caption">{{groupLabel}}</caption>
+    <thead class="us-prices__head">
+      <tr>
+        <th scope="col" class="us-prices__col">Service</th>
+        <th scope="col" class="us-prices__col">{{descHeading}}</th>
+        <th scope="col" class="us-prices__col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+{{{rows}}}
+    </tbody>
+  </table>
+</div>

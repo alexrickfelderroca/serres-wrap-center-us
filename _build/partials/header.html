@@ -1,0 +1,131 @@
+{{!--
+  REGION:header — global site header (spec §4.2).
+
+  TEMPLATE SYNTAX (implemented in _build/regen.mjs, function render()):
+    {{!-- ... --}}        comment, stripped from the output (this block)
+    {{token}}             HTML-escaped value from the render context
+    {{{token}}}           raw value — already-built HTML, NOT escaped
+    {{rel:some/route/}}   depth-correct RELATIVE href to a site path.
+                          "{{rel:}}" is the home page. Never emits a leading "/".
+    {{business:field}}    escaped field from assets/business.js
+    {{terms:key}}         escaped string from assets/pricing.js TERMS
+    {{price:<id>}}        "$1,900"        (pricing.js item.price)
+    {{price:<id>.essential|.signature}}   "$1,900" for a PPF tier column
+    {{from:<id>}}         "from $1,900"   (respects item.from)
+    {{startingAt:<group>}}       "from $1,000"
+    {{startingAtAmount:<group>}} "$1,000"
+    {{#if FLAG}} ... {{/if}} / {{#unless FLAG}} ... {{/unless}}
+                          FLAG is any truthy key in the context (business flags
+                          are pre-loaded: PHONE_LIVE, WHATSAPP_LIVE, EMAIL_LIVE,
+                          CONTACT_LIVE, RESERVE_LIVE, MAP_PIN_LIVE ...)
+
+  ────────────────────────────────────────────────────────────────────────────
+  CSS CONTRACT — every NEW class used by any partial in this folder. The CSS
+  agent implements exactly these names; regen.mjs writes no CSS. Inherited
+  classes (.wrap .btn .logo .nav .nav-inner .nav-links .nav-right .arr .display
+  .eyebrow .faq-item .faq-a .fq-x .reveal-up) are reused as-is and are NOT in
+  this list.
+
+  header.html
+    us-nav                  <header> root (sits next to inherited .nav)
+    us-nav__links           desktop link row (next to inherited .nav-links)
+    us-nav__link            a single desktop link
+    us-nav__drop            <details> wrapper for the Services dropdown
+    us-nav__drop-summary    its <summary> — needs a VISIBLE :focus-visible ring
+                            and a >=44px tap target
+    us-nav__caret           the caret glyph (decorative)
+    us-nav__panel           the dropdown panel (absolutely positioned)
+    us-nav__panel-link      a link inside the dropdown (>=44px tall)
+    us-nav__cta             header CTA button (next to inherited .btn)
+    us-nav__mobile          <details> wrapper for the mobile menu
+    us-nav__burger          its <summary> (the hamburger, >=44px)
+    us-nav__burger-bars     the 3 decorative bars
+    us-nav__mobile-panel    the open mobile panel
+    us-nav__mobile-group    a labelled group inside the mobile panel
+    us-nav__mobile-label    that group's label
+    us-nav__mobile-link     a link inside the mobile panel (>=44px)
+
+  trust-bar.html
+    us-trustbar  us-trustbar__list  us-trustbar__item
+    us-trustbar__label  us-trustbar__note
+
+  cta-band.html
+    us-ctaband  us-ctaband__inner  us-ctaband__text
+    us-ctaband__title  us-ctaband__note  us-ctaband__cta
+
+  terms.html
+    us-terms  us-terms__list  us-terms__item
+
+  footer.html
+    us-footer  us-footer__inner  us-footer__brand  us-footer__tagline
+    us-footer__langs  us-footer__cols  us-footer__col  us-footer__col-title
+    us-footer__links  us-footer__link  us-footer__nap  us-footer__nap-line
+    us-footer__hours  us-footer__bottom  us-footer__copy  us-footer__legal
+
+  price-table.html / price-table-tiers.html / price-row*.html
+    us-prices  us-prices__table  us-prices__caption  us-prices__head
+    us-prices__col  us-prices__row  us-prices__name  us-prices__desc
+    us-prices__note  us-prices__price  us-prices__amount  us-prices__badge
+    us-prices__legend  us-prices__legend-item  us-prices__legend-label
+
+  starting-at.html
+    us-startingat  us-startingat__amount
+
+  faq.html
+    us-faq   (added to the inherited .faq-list wrapper only when regen has to
+              create one; the details themselves keep the inherited classes)
+
+  BEHAVIOUR NOTES FOR THE JS AGENT
+  - The dropdown and the mobile menu are <details>/<summary>: Enter/Space open
+    and close them with zero JavaScript, and they stay usable with JS disabled.
+  - Escape-to-close is the ONLY behaviour JS must add. Hook:
+      document.querySelectorAll('[data-us-close-on-esc]')
+    -> on keydown Escape, set el.open = false and focus its <summary>.
+  - Nothing here may be hidden with display:none behind a JS-only class.
+--}}
+<header class="nav us-nav" data-us-region="header">
+  <div class="nav-inner">
+    <a href="{{rel:}}" class="logo" aria-label="SERRES Wrap Center — home"><img src="{{rel:assets/serres-logo.png}}" alt="SERRES" width="600" height="55"></a>
+    <nav class="nav-links us-nav__links" aria-label="Main">
+      <details class="us-nav__drop" data-us-close-on-esc>
+        <summary class="us-nav__drop-summary">Services<span class="us-nav__caret" aria-hidden="true"></span></summary>
+        <div class="us-nav__panel">
+          <a class="us-nav__panel-link" href="{{rel:paint-protection-film/}}">Paint Protection Film</a>
+          <a class="us-nav__panel-link" href="{{rel:car-wraps/}}">Car Wraps</a>
+          <a class="us-nav__panel-link" href="{{rel:ceramic-coating/}}">Ceramic Coating</a>
+          <a class="us-nav__panel-link" href="{{rel:window-tint/}}">Window Tint</a>
+          <a class="us-nav__panel-link" href="{{rel:detailing/}}">Detailing</a>
+        </div>
+      </details>
+      <a class="us-nav__link" href="{{rel:pricing/}}">Pricing</a>
+      <a class="us-nav__link" href="{{rel:our-films/}}">Our Films</a>
+      <a class="us-nav__link" href="{{rel:about/}}">About</a>
+      <a class="us-nav__link" href="{{rel:contact/}}">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn us-nav__cta" href="{{ctaHref}}">{{ctaLabel}} <span class="arr">→</span></a>
+      <details class="us-nav__mobile" data-us-close-on-esc>
+        <summary class="us-nav__burger" aria-label="Menu"><span class="us-nav__burger-bars" aria-hidden="true"></span></summary>
+        <nav class="us-nav__mobile-panel" aria-label="Mobile">
+          <div class="us-nav__mobile-group">
+            <span class="us-nav__mobile-label">Services</span>
+            <a class="us-nav__mobile-link" href="{{rel:paint-protection-film/}}">Paint Protection Film</a>
+            <a class="us-nav__mobile-link" href="{{rel:car-wraps/}}">Car Wraps</a>
+            <a class="us-nav__mobile-link" href="{{rel:ceramic-coating/}}">Ceramic Coating</a>
+            <a class="us-nav__mobile-link" href="{{rel:window-tint/}}">Window Tint</a>
+            <a class="us-nav__mobile-link" href="{{rel:detailing/}}">Detailing</a>
+          </div>
+          <div class="us-nav__mobile-group">
+            <span class="us-nav__mobile-label">SERRES</span>
+            <a class="us-nav__mobile-link" href="{{rel:pricing/}}">Pricing</a>
+            <a class="us-nav__mobile-link" href="{{rel:our-films/}}">Our Films</a>
+            <a class="us-nav__mobile-link" href="{{rel:gallery/}}">Gallery</a>
+            <a class="us-nav__mobile-link" href="{{rel:about/}}">About</a>
+            <a class="us-nav__mobile-link" href="{{rel:blog/}}">Blog</a>
+            <a class="us-nav__mobile-link" href="{{rel:contact/}}">Contact</a>
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
