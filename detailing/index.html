@@ -141,11 +141,14 @@
 
   /* ---------- TRANSFORMATION ---------- */
   .xform{padding:30px 0 30px}
-  .xform-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center;margin-top:40px}
+  /* Used by the paint-correction block only. The 40px margin-top and the 30px on .xspecs
+     below used to sit under a section head; with the head removed they were 70px of void
+     above the first row, so both are zeroed here. */
+  .xform-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center;margin-top:0}
   .xtext h2{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;
     line-height:.94;letter-spacing:.012em;font-size:clamp(36px,4.4vw,64px);margin:18px 0 0;text-wrap:balance}
   .xtext p{margin-top:22px;color:var(--muted);font-size:17px;max-width:46ch;text-wrap:pretty}
-  .xspecs{margin-top:30px;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .xspecs{margin-top:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
   .xspecs .row{display:flex;gap:18px;padding:13px 0;border-bottom:1px solid var(--line)}
   .xspecs .k{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.2em;
     font-size:12.5px;color:var(--muted-2);width:128px;flex:none;padding-top:2px}
@@ -722,19 +725,10 @@
 </section>
 
 <!-- ===================== PAINT CORRECTION — THE TRANSFORMATION ===================== -->
-<section class="xform" data-screen-label="Detailing — Paint correction" id="paint-correction" style="padding-top:88px">
+<section class="xform" data-screen-label="Detailing — Paint correction" id="paint-correction" style="padding-top:40px">
   <div class="wrap">
-    <div class="section-head reveal-up">
-      <div>
-        <span class="eyebrow">Paint Correction</span>
-        <h2>From hazy<br>to mirror.</h2>
-      </div>
-      <p class="sh-note">Washing makes paint clean. Correction makes it flat — and flat paint is what reflects a straight line back at you.</p>
-    </div>
     <div class="xform-grid">
       <div class="xtext reveal-up">
-        <p>This BMW arrived with years of wash-induced swirls and micro-marring dulling its gloss black — light scattering in every direction instead of reflecting cleanly.</p>
-        <p>We assessed the clear coat, then cut, refined and finished the paint by machine until the defects were gone. The hex lighting now mirrors back razor-sharp, with deep, wet-looking reflections restored.</p>
         <div class="xspecs">
           <div class="row"><span class="k">Vehicle</span><span class="v">BMW Coupé · Gloss Black</span></div>
           <div class="row"><span class="k">Process</span><span class="v">Multi-stage machine correction</span></div>
@@ -939,6 +933,7 @@
 <!-- /REGION:ctaband -->
 
 <!-- REGION:footer -->
+<footer class="us-footer" data-us-region="footer">
   <div class="wrap us-footer__bottom">
     <span class="us-footer__copy">© 2026 SERRES Wrap Center</span>
     <nav class="us-footer__legal" aria-label="Legal">

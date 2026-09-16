@@ -41,6 +41,7 @@ const GATES = [
   ['landers unique (spec P3-2)', ['_build/us/verify-landers.js', '.']],
   ['OG, JSON-LD, visible FAQ === schema', ['_build/verify-seo.js']],
   ['no orphan pages (spec 8.4)', ['_build/us/verify-reachability.js', '.']],
+  ['owner-marked removals stay removed', ['_build/us/verify-owner-marks.js', '.']],
 ];
 
 function run(label, args) {

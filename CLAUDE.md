@@ -113,8 +113,19 @@ node _build/us/verify-links.js .          # every internal ref resolves
 node _build/us/verify-prices.mjs          # every $ traces to pricing.js
 node _build/verify-seo.js                 # unique title/meta; visible FAQ === JSON-LD FAQ
 node _build/count-terms.js .              # no Barcelona / EUR / +34 / old domain left
+node _build/us/verify-owner-marks.js .    # everything the owner struck off a screenshot is still gone
+node _build/us/verify-reachability.js .   # no orphan page, nothing deeper than 2 clicks
 node _build/screenshots.js --root "<ABSOLUTE path>" --out .screenshots/<slug> --pass 1|2
+node _build/us/section-shots.js --root "<ABSOLUTE path>" --out .screenshots/<slug> --pass 1|2 \
+     --shots "index.html#services,detailing/index.html#paint-correction"
 ```
+
+`section-shots.js` clips one named block (`page#id`, `page@css`, `page~data-screen-label`)
+to its own bounding box. Use it for two-pass comparison of a single section: a full-page
+PNG of this site is 10,000px tall and unreadable once scaled down to be looked at. It
+measures the box **after** resizing the viewport to the document height — measuring first
+is how a clip silently lands on the hero instead of the section. It exits non-zero if a
+selector matched nothing.
 
 `--root` **must be absolute** for `screenshots.js` — a relative root 404s every request.
 `screenshots.js` fails the run if a capture did not actually render the site.

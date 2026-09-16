@@ -156,10 +156,17 @@ function partial(name) {
 }
 
 function render(tpl, ctx, opts = {}) {
-  /* One leading doc comment per partial. The match is GREEDY on purpose: the
-     doc comment in header.html quotes the comment syntax itself, so a lazy
-     match would end the block early and leak the documentation into the page. */
-  let out = tpl.replace(/^\{\{!--[\s\S]*--\}\}\n?/, '');
+  /* The leading doc comment ends at the first "--}}" sitting ALONE at column 0.
+     Both halves of that rule are load-bearing:
+       - lazy alone breaks header.html, whose doc comment quotes "{{!-- ... --}}"
+         on an indented line; the match would end there and leak the docs.
+       - greedy alone broke footer.html the moment it gained a SECOND comment:
+         the match ran to the LAST "--}}" in the file and swallowed the
+         <footer class="us-footer"> opening tag between the two, shipping 24
+         pages with an orphan </footer> and no contentinfo landmark. */
+  let out = tpl.replace(/^\{\{!--[\s\S]*?\n--\}\}\n?/, '');
+  /* any further comments in the body (indented, closing delimiter inline) */
+  out = out.replace(/[ \t]*\{\{!--[\s\S]*?--\}\}\n?/g, '');
 
   const BLOCK = /\{\{#(if|unless)\s+([A-Za-z0-9_.:]+)\}\}([\s\S]*?)\{\{\/\1\}\}/;
   for (let guard = 0; guard < 200 && BLOCK.test(out); guard++) {

@@ -339,37 +339,6 @@
   .svc-door:hover .sd-line,.svc-door:focus-visible .sd-line{transform:scaleX(1)}
   .svc-door:focus-visible{outline:2px solid #e7e7ec;outline-offset:3px}
 
-  /* ---------- PACKAGES ---------- */
-  .hm-pkg{
-    position:relative;padding:88px 0 92px;
-    background:linear-gradient(180deg,#0a0a0b 0%,#0c0c0f 22%,#0e0e12 50%,#0c0c0f 78%,#0a0a0b 100%);
-  }
-  .hm-pkg-foot{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
-
-  /* ---------- PROVEN IN BARCELONA ---------- */
-  .hm-proof{
-    position:relative;padding:88px 0 92px;
-    background:linear-gradient(180deg,#0a0a0b 0%,#0c0d11 20%,#101116 52%,#0c0d11 80%,#0b0b0e 100%);
-  }
-  .hm-proof-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:64px;align-items:center}
-  .hm-proof-text h2{
-    font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
-    text-transform:uppercase;line-height:.94;letter-spacing:.012em;
-    font-size:clamp(34px,4.6vw,62px);margin:18px 0 0;text-wrap:balance;
-  }
-  .hm-proof-text p{margin-top:22px;color:var(--muted);font-size:16.5px;max-width:48ch;text-wrap:pretty}
-  .hm-proof-text .btn.link{margin-top:28px}
-  .hm-proof-shots{display:grid;grid-template-columns:1.04fr .96fr;gap:14px;align-content:start}
-  .hm-proof-shots figure{
-    margin:0;overflow:hidden;background:var(--panel);border:1px solid var(--line);
-    clip-path:polygon(0 0,100% 0,100% 100%,14px 100%,0 calc(100% - 14px));
-    box-shadow:0 2px 4px rgba(0,0,0,.3),0 18px 40px -20px rgba(0,0,0,.7);
-  }
-  .hm-proof-shots img{width:100%;height:100%;object-fit:cover}
-  .hm-proof-shots figure:nth-child(1){grid-column:1;grid-row:1/span 2}
-  .hm-proof-shots figure:nth-child(2){grid-column:2;grid-row:1;margin-top:46px;aspect-ratio:4/5}
-  .hm-proof-shots figure:nth-child(3){grid-column:2;grid-row:2;aspect-ratio:4/5}
-
   /* ---------- GALLERY PREVIEW ---------- */
   .hm-gal{
     position:relative;padding:84px 0 92px;
@@ -460,13 +429,6 @@
     .svcnav-grid{grid-template-columns:repeat(2,1fr)}
     .svc-door{min-height:220px}
     .svc-door.lead{grid-column:span 2;min-height:290px}
-    .hm-proof-grid{grid-template-columns:1fr;gap:44px}
-  }
-  @media(max-width:880px){
-    .hm-proof-shots{grid-template-columns:1fr 1fr}
-    .hm-proof-shots figure:nth-child(1){grid-column:1;grid-row:1;aspect-ratio:3/4}
-    .hm-proof-shots figure:nth-child(2){grid-column:2;grid-row:1;margin-top:0;aspect-ratio:3/4}
-    .hm-proof-shots figure:nth-child(3){grid-column:1/-1;grid-row:2;aspect-ratio:16/9}
   }
   @media(max-width:760px){
     .wrap,.nav-inner{padding-left:24px;padding-right:24px}
@@ -488,13 +450,13 @@
     .svc-door .sd-name{font-size:21px;margin-top:22px}
     .svc-door .sd-sub{font-size:13.5px}
     .svc-door .sd-price{font-size:17px;margin-top:12px;padding-top:11px}
-    .hm-pkg,.hm-proof,.hm-gal{padding:68px 0 76px}
+    .hm-gal{padding:68px 0 76px}
     .faq{padding:68px 0 30px}
     .hm-gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:33vw;gap:8px;margin-top:34px}
     .hm-gal-tile:nth-child(n){grid-column:span 1;grid-row:span 1}
     .hm-gal-tile:nth-child(1){grid-column:span 2;grid-row:span 2}
     .hm-gal-tile:nth-child(6){grid-column:span 2}
-    .hm-gal-foot .btn,.hm-pkg-foot .btn{width:100%}
+    .hm-gal-foot .btn{width:100%}
   }
   @media(max-width:420px){
     .svcnav-grid{grid-template-columns:1fr}
@@ -971,9 +933,8 @@
 </section>
 
 <!-- ===================== 2 · TRUST BAR (generated region) ===================== -->
-<div class="hm-trustwrap">
+<div class="hm-trustwrap"></div>
 <main id="main">
-</div>
 
 <!-- ===================== 3 · SERVICES · five doors ===================== -->
 <section class="svcnav" id="services" aria-labelledby="hm-svc-title" data-screen-label="Services">
@@ -989,7 +950,6 @@
         <img class="sd-img" src="assets/ppf/after.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">01</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
         <span class="sd-name">Paint Protection Film</span>
-        <span class="sd-sub">Self-healing urethane over the panels that take the hits. NAR H190 or 3M Scotchgard Pro Series 200.</span>
         <span class="sd-price"><!--P:STARTING:ppf-->from $1,000<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
@@ -997,7 +957,6 @@
         <img class="sd-img" src="assets/gallery/xm-grille-s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">02</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
         <span class="sd-name">Car Wraps</span>
-        <span class="sd-sub">Chrome delete to a full color change, edges wrapped in.</span>
         <span class="sd-price"><!--P:STARTING:wraps-->from $450<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
@@ -1005,7 +964,6 @@
         <img class="sd-img" src="assets/ceramic/after.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">03</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
         <span class="sd-name">Ceramic Coating</span>
-        <span class="sd-sub">Decon, gloss prep, coating, cure — on bare paint or over fresh film.</span>
         <span class="sd-price"><!--P:STARTING:ceramic-->from $600<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
@@ -1013,7 +971,6 @@
         <img class="sd-img" src="assets/gallery/gts-rear-s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">04</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
         <span class="sd-name">Window Tint</span>
-        <span class="sd-sub">Ceramic IR-rejecting film, Florida-legal VLT options.</span>
         <span class="sd-price"><!--P:STARTING:tint-->from $500<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
@@ -1021,91 +978,10 @@
         <img class="sd-img" src="assets/detailing/int-after.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span class="sd-top"><span class="sd-num">05</span><span class="sd-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
         <span class="sd-name">Detailing</span>
-        <span class="sd-sub">Interior strip-down and extraction, or 1–2 stage paint correction.</span>
         <span class="sd-price"><!--P:STARTING:detailing-->from $300<!--/P--></span>
         <span class="sd-line" aria-hidden="true"></span>
       </a>
     </nav>
-  </div>
-</section>
-
-<!-- ===================== 4 · PACKAGES ===================== -->
-<section class="hm-pkg" id="packages" aria-labelledby="hm-pkg-title" data-screen-label="Packages">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Packages</span>
-        <h2 id="hm-pkg-title">Bundled,<br>not padded.</h2>
-      </div>
-      <p class="sh-note">Three combinations that cover most of what comes through the bay. Anything outside them is quoted line by line.</p>
-    </div>
-
-    <div class="us-pkg-grid">
-      <article class="us-pkg-card">
-        <h3 class="us-pkg-name">Daily Driver</h3>
-        <ul class="us-pkg-incl">
-          <li>Partial front PPF — full bumper, partial hood and fenders, mirrors</li>
-          <li>3-year ceramic coating on top</li>
-          <li>The panels that collect I-95 rock chips, covered</li>
-        </ul>
-        <p class="us-pkg-price"><small>Package price</small><!--P:PRICE:daily-driver-->$1,990<!--/P--></p>
-      </article>
-
-      <article class="us-pkg-card us-price-popular">
-        <span class="us-price-popular">Most popular</span>
-        <h3 class="us-pkg-name">New Car</h3>
-        <ul class="us-pkg-incl">
-          <li>Full front PPF — full hood, full fenders, bumper, mirrors</li>
-          <li>3-year ceramic coating</li>
-          <li>Ceramic window tint, Florida-legal VLT</li>
-          <li>The one to book before the first summer</li>
-        </ul>
-        <p class="us-pkg-price"><small>Package price</small><!--P:PRICE:new-car-->$2,990<!--/P--></p>
-      </article>
-
-      <article class="us-pkg-card">
-        <h3 class="us-pkg-name">Collector</h3>
-        <ul class="us-pkg-incl">
-          <li>Full body PPF — every painted panel</li>
-          <li>3-year ceramic coating over the film</li>
-          <li>Gloss measured in and out, photographed panel by panel</li>
-        </ul>
-        <p class="us-pkg-price"><small>Package price</small><!--P:PRICE:collector-->$5,990<!--/P--></p>
-      </article>
-    </div>
-
-    <div class="hm-pkg-foot">
-      <a class="btn ghost" href="pricing/">See the full price list <span class="arr">→</span></a>
-      <a class="btn link" href="our-films/">Compare the two film tiers <span class="arr">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== 5 · PROVEN IN BARCELONA ===================== -->
-<!-- TODO(owner): spec 6.1.5 wants the line "300+ cars protected in Barcelona since 2023".
-     That number is unconfirmed and the Barcelona site's own figure (50+) contradicts it,
-     so NO car count is published here. Confirm the real figure and it can be added to this
-     block (and, if it is to be reused elsewhere, to assets/business.js as a single source). -->
-<section class="hm-proof" id="barcelona" aria-labelledby="hm-proof-title" data-screen-label="Proven in Barcelona">
-  <div class="wrap hm-proof-grid">
-    <div class="hm-proof-text">
-      <span class="eyebrow">Proven in Barcelona</span>
-      <h2 id="hm-proof-title">Not a new shop.<br><span class="chrome-text">A second one.</span></h2>
-      <p>SERRES has been fitting paint protection film, color-change wraps and ceramic coatings in Barcelona since 2023 — RWB Porsches, BMW M cars, a Range Rover Sport taken to satin black, plenty of daily drivers.</p>
-      <p>Boca Raton gets the same protocol, not a lighter version of it: paint thickness gauged at intake, a HEPA-filtered install bay, anti-static prep, a filtered-air dry, gloss measured in and out, and every car photographed panel by panel before it leaves.</p>
-      <a class="btn link" href="about/">Read the Barcelona story <span class="arr">→</span></a>
-    </div>
-    <div class="hm-proof-shots">
-      <figure>
-        <img src="assets/gallery/rwb-top-s.jpg" alt="Porsche 993 RWB widebody in a mirror-silver finish, shot from above the nose under the hexagon studio lights" width="600" height="900" loading="lazy" decoding="async">
-      </figure>
-      <figure>
-        <img src="assets/gallery/m2-tower-s.jpg" alt="BMW M2 in a matte frozen-grey wrap with gloss-black detailing, rear view with a communications tower behind it" width="600" height="900" loading="lazy" decoding="async">
-      </figure>
-      <figure>
-        <img src="assets/gallery/supra-villa-s.jpg" alt="Pearl-white Toyota GR Supra after paint protection and ceramic sealing" width="720" height="900" loading="lazy" decoding="async">
-      </figure>
-    </div>
   </div>
 </section>
 
@@ -1278,6 +1154,7 @@
 <!-- /REGION:ctaband -->
 
 <!-- REGION:footer -->
+<footer class="us-footer" data-us-region="footer">
   <div class="wrap us-footer__bottom">
     <span class="us-footer__copy">© 2026 SERRES Wrap Center</span>
     <nav class="us-footer__legal" aria-label="Legal">
