@@ -93,6 +93,24 @@ page, every JSON-LD `PostalAddress`, the footer and the contact page in one comm
 
 ---
 
+## 9. Live preview
+
+**https://alexrickfelderroca.github.io/serres-wrap-center-us/**
+
+Repo: https://github.com/alexrickfelderroca/serres-wrap-center-us (public, GitHub Pages
+from `main` root). Canonical tags already point at `serreswrap.com`, so the preview URL
+will not be indexed in its place. To attach the domain: add a `CNAME` file containing
+`serreswrap.com`, point the DNS at GitHub Pages, and enable HTTPS in repo settings.
+
+### Measured, and still worth doing
+
+| # | Item | Detail |
+|---|---|---|
+| 32 | **Image payload** | A performance trace on the home page reports ~1.4 MB of image bytes that could be saved by resizing/re-encoding the gallery and service photos. The hero video and poster are already inside the spec budget; the stills are not optimised. |
+| 33 | **Review strip omitted** | Spec 6.1.7 wants Barcelona Google review screenshots on the home page. None were supplied, and re-badging the 5 Spanish testimonials as US reviews is not acceptable, so the section is absent rather than faked. See item 24. |
+
+---
+
 ## Note on the spec's dates
 
 The spec was written 2026-08-25 with a **Sep 15, 2026** launch deadline and an Aug 27 –
