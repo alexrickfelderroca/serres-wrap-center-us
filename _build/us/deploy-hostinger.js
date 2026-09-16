@@ -32,12 +32,44 @@ const PASS = opt('pass');
 const PORT = opt('port', '21');
 const REMOTE = opt('dir', 'public_html').replace(/^\/+|\/+$/g, '');
 const DRY = flag('dry');
+const LIST = flag('list');
 const ONLY = opt('only', '');
 const SCHEME = flag('ftps') ? 'ftps' : 'ftp';
 
 if (!DRY && (!HOST || !USER || !PASS)) {
-  console.error('usage: node _build/us/deploy-hostinger.js --host H --user U --pass P [--dir public_html] [--dry]');
+  console.error('usage: node _build/us/deploy-hostinger.js --host H --user U --pass P [--dir public_html] [--dry] [--list]');
   process.exit(2);
+}
+
+/* --list: show what is on the server WITHOUT uploading anything.
+   On a Hostinger plan with several domains the main site lives in public_html/ and the
+   others in domains/<domain>/public_html/. Sending 72 MB to the wrong one is not
+   something to discover afterwards, so look first. */
+if (LIST) {
+  const probe = (p) => {
+    try {
+      const out = execFileSync('curl', [
+        '--silent', '--show-error', '--fail', '--ftp-pasv',
+        '--connect-timeout', '25', '--max-time', '60',
+        '--user', `${USER}:${PASS}`,
+        `${SCHEME}://${HOST}:${PORT}/${p}`,
+      ], { stdio: ['ignore', 'pipe', 'pipe'] }).toString();
+      return out.trim().split('\n').filter(Boolean);
+    } catch (e) {
+      return null;
+    }
+  };
+  for (const p of ['', 'public_html/', 'domains/', `domains/${opt('domain', 'serreswrapcenter.com')}/`,
+                   `domains/${opt('domain', 'serreswrapcenter.com')}/public_html/`]) {
+    const rows = probe(p);
+    console.log(`\n/${p}`);
+    if (rows === null) { console.log('   (not readable / does not exist)'); continue; }
+    if (!rows.length) { console.log('   (empty)'); continue; }
+    rows.slice(0, 25).forEach(r => console.log('   ' + r));
+    if (rows.length > 25) console.log(`   … ${rows.length - 25} more`);
+  }
+  console.log('\n--list: nothing uploaded. Re-run with --dir <the right path> to deploy.');
+  process.exit(0);
 }
 
 /* ---------------------------------------------------------------- selection */
@@ -81,7 +113,11 @@ if (DRY) {
 }
 
 /* ------------------------------------------------------------------ upload */
-const base = `${SCHEME}://${HOST}:${PORT}/${REMOTE}/`;
+/* A domain-scoped Hostinger FTP account (user "uNNNNNNNN.<domain>") already lands INSIDE
+   that site's public_html, so there is no public_html/ to descend into — the listing at /
+   shows default.php directly. Pass --dir "" in that case; an empty REMOTE must not
+   produce a double slash. */
+const base = REMOTE ? `${SCHEME}://${HOST}:${PORT}/${REMOTE}/` : `${SCHEME}://${HOST}:${PORT}/`;
 let done = 0, bytes = 0, failed = [];
 const started = Date.now();
 
