@@ -1,0 +1,62 @@
+/* =====================================================================
+   SERRES — official wordmark in the nav and footer
+   ---------------------------------------------------------------------
+   Replaces the old Barlow Condensed text logo (.logo.chrome-text) with
+   the client's real mark, assets/serres-logo.png.
+
+   Loaded LAST in <head> on every page so it overrides the per-page
+   inline .logo rules (which still set 28-30px font metrics inherited
+   from the text version) without needing !important.
+
+   The mark is an unusually wide 11:1 lockup (600x55), so it is sized by
+   WIDTH and the height follows from the aspect ratio. Sizing by height
+   would make it run off the end of the nav.
+   ===================================================================== */
+
+.logo {
+  /* neutralise the text-logo metrics: the em-based padding and the
+     letter-spacing were sized against a 30px font that no longer exists */
+  padding: 0;
+  letter-spacing: normal;
+  font-size: 0;
+  line-height: 0;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  display: block;
+  width: 176px;
+  height: auto;
+  aspect-ratio: 600 / 55;   /* reserves height before the PNG decodes */
+  transition: opacity .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+a.logo:hover img { opacity: .78; }
+
+/* visible focus for keyboard users — the old text logo had none */
+a.logo:focus-visible {
+  outline: 2px solid #fdfdfe;
+  outline-offset: 6px;
+}
+
+.foot .logo img { width: 190px; }
+
+@media (max-width: 1180px) {
+  .logo img { width: 152px; }
+}
+
+@media (max-width: 860px) {
+  .logo img { width: 138px; }
+  .foot .logo img { width: 160px; }
+}
+
+@media (max-width: 480px) {
+  .logo img { width: 124px; }
+  .foot .logo img { width: 148px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo img { transition: none; }
+}

@@ -1,0 +1,45 @@
+# Strings the orphan checker treats as neutral (brand / model / proper nouns that are identical in EN and ES).
+# One per line, exact match against the trimmed text core.
+SERRES
+PPF
+Blog
+Instagram
+WhatsApp
+Google Maps
+BMW
+BMW M2
+BMW XM
+BMW 335i
+M2
+XM
+335i
+Ligier
+Microcar
+Porsche
+Porsche 993
+Porsche 993 RWB
+RWB
+Porsche Cayenne
+Cayenne
+911 Carrera GTS
+Carrera GTS
+Toyota
+Toyota Supra
+GR Supra
+Range Rover
+Range Rover Sport
+Sport
+GU
+OEM
+SiO₂
+Ceramic Coating SiO₂
+# brand terms deliberately left untranslated inside [data-i18n-skip] headings / nav
+Ceramic
+Coating
+Ceramic Coating
+Car Wrap
+CAR WRAP
+Wrap
+Detailing
+Body Kits
+· Blog

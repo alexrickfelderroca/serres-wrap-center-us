@@ -1,0 +1,290 @@
+{
+  "webp": [
+    {
+      "src": "assets/svc/bodykit.png",
+      "out": "assets/svc/bodykit.webp",
+      "width": 1200,
+      "height": 896,
+      "kb": 50
+    },
+    {
+      "src": "assets/vinyl/wrap-texture.png",
+      "out": "assets/vinyl/wrap-texture.webp",
+      "width": 1024,
+      "height": 1024,
+      "kb": 30
+    },
+    {
+      "src": "assets/vinyl/xm-after.jpg",
+      "out": "assets/vinyl/xm-after.webp",
+      "width": 1400,
+      "height": 933,
+      "kb": 193
+    },
+    {
+      "src": "assets/vinyl/xm-before.jpg",
+      "out": "assets/vinyl/xm-before.webp",
+      "width": 1248,
+      "height": 936,
+      "kb": 190
+    },
+    {
+      "src": "assets/bodykit/after.jpg",
+      "out": "assets/bodykit/after.webp",
+      "width": 600,
+      "height": 896,
+      "kb": 52
+    },
+    {
+      "src": "assets/bodykit/before.jpg",
+      "out": "assets/bodykit/before.webp",
+      "width": 600,
+      "height": 896,
+      "kb": 51
+    },
+    {
+      "src": "assets/ceramic/after.jpg",
+      "out": "assets/ceramic/after.webp",
+      "width": 600,
+      "height": 896,
+      "kb": 54
+    },
+    {
+      "src": "assets/ceramic/before.jpg",
+      "out": "assets/ceramic/before.webp",
+      "width": 600,
+      "height": 896,
+      "kb": 48
+    },
+    {
+      "src": "assets/ppf/after.jpg",
+      "out": "assets/ppf/after.webp",
+      "width": 1000,
+      "height": 1500,
+      "kb": 197
+    },
+    {
+      "src": "assets/ppf/before.jpg",
+      "out": "assets/ppf/before.webp",
+      "width": 1290,
+      "height": 1710,
+      "kb": 153
+    },
+    {
+      "src": "assets/correction/after.jpg",
+      "out": "assets/correction/after.webp",
+      "width": 1086,
+      "height": 1448,
+      "kb": 147
+    },
+    {
+      "src": "assets/correction/before.jpg",
+      "out": "assets/correction/before.webp",
+      "width": 1086,
+      "height": 1448,
+      "kb": 195
+    },
+    {
+      "src": "assets/detailing/ext-after.jpg",
+      "out": "assets/detailing/ext-after.webp",
+      "width": 1290,
+      "height": 1693,
+      "kb": 130
+    },
+    {
+      "src": "assets/detailing/ext-before.jpg",
+      "out": "assets/detailing/ext-before.webp",
+      "width": 1290,
+      "height": 1997,
+      "kb": 116
+    },
+    {
+      "src": "assets/detailing/int-after.jpg",
+      "out": "assets/detailing/int-after.webp",
+      "width": 1290,
+      "height": 2256,
+      "kb": 102
+    },
+    {
+      "src": "assets/detailing/int-before.jpg",
+      "out": "assets/detailing/int-before.webp",
+      "width": 1290,
+      "height": 2300,
+      "kb": 101
+    },
+    {
+      "src": "assets/gallery/xm-front.jpg",
+      "out": "assets/gallery/xm-front.webp",
+      "width": 1400,
+      "height": 933,
+      "kb": 192
+    },
+    {
+      "src": "assets/gallery/xm-grille.jpg",
+      "out": "assets/gallery/xm-grille.webp",
+      "width": 813,
+      "height": 1445,
+      "kb": 191
+    },
+    {
+      "src": "assets/gallery/xm-rear.jpg",
+      "out": "assets/gallery/xm-rear.webp",
+      "width": 1200,
+      "height": 1800,
+      "kb": 194
+    },
+    {
+      "src": "assets/gallery/supra-villa.jpg",
+      "out": "assets/gallery/supra-villa.webp",
+      "width": 1239,
+      "height": 1550,
+      "kb": 186
+    },
+    {
+      "src": "assets/gallery/supra-rear.jpg",
+      "out": "assets/gallery/supra-rear.webp",
+      "width": 1439,
+      "height": 1800,
+      "kb": 174
+    },
+    {
+      "src": "assets/gallery/ligier-front.jpg",
+      "out": "assets/gallery/ligier-front.webp",
+      "width": 1350,
+      "height": 1800,
+      "kb": 173
+    },
+    {
+      "src": "assets/gallery/ligier-rear.jpg",
+      "out": "assets/gallery/ligier-rear.webp",
+      "width": 1413,
+      "height": 1800,
+      "kb": 131
+    },
+    {
+      "src": "assets/gallery/serie1-front.jpg",
+      "out": "assets/gallery/serie1-front.webp",
+      "width": 1290,
+      "height": 1714,
+      "kb": 98
+    },
+    {
+      "src": "assets/gallery/rwb-snow.jpg",
+      "out": "assets/gallery/rwb-snow.webp",
+      "width": 1200,
+      "height": 1800,
+      "kb": 167
+    },
+    {
+      "src": "assets/gallery/rwb-side.jpg",
+      "out": "assets/gallery/rwb-side.webp",
+      "width": 1600,
+      "height": 1067,
+      "kb": 88
+    },
+    {
+      "src": "assets/gallery/rwb-top.jpg",
+      "out": "assets/gallery/rwb-top.webp",
+      "width": 1200,
+      "height": 1800,
+      "kb": 107
+    },
+    {
+      "src": "assets/gallery/m2-rooftop.jpg",
+      "out": "assets/gallery/m2-rooftop.webp",
+      "width": 1200,
+      "height": 1800,
+      "kb": 171
+    },
+    {
+      "src": "assets/gallery/m2-front.jpg",
+      "out": "assets/gallery/m2-front.webp",
+      "width": 1200,
+      "height": 1800,
+      "kb": 129
+    },
+    {
+      "src": "assets/gallery/e92-coast.jpg",
+      "out": "assets/gallery/e92-coast.webp",
+      "width": 1600,
+      "height": 1067,
+      "kb": 129
+    }
+  ],
+  "og": [
+    {
+      "out": "assets/og/home.jpg",
+      "kb": 67
+    },
+    {
+      "out": "assets/og/ppf.jpg",
+      "kb": 142
+    },
+    {
+      "out": "assets/og/vinyl.jpg",
+      "kb": 173
+    },
+    {
+      "out": "assets/og/ceramic.jpg",
+      "kb": 38
+    },
+    {
+      "out": "assets/og/detailing.jpg",
+      "kb": 55
+    },
+    {
+      "out": "assets/og/paint-correction.jpg",
+      "kb": 88
+    },
+    {
+      "out": "assets/og/body-kits.jpg",
+      "kb": 55
+    },
+    {
+      "out": "assets/og/gallery.jpg",
+      "kb": 57
+    },
+    {
+      "out": "assets/og/projects.jpg",
+      "kb": 74
+    },
+    {
+      "out": "assets/og/prices.jpg",
+      "kb": 70
+    },
+    {
+      "out": "assets/og/why-serres.jpg",
+      "kb": 43
+    }
+  ],
+  "blog": [
+    {
+      "slug": "cuanto-cuesta-vinilar-un-coche",
+      "cover": "assets/blog/cuanto-cuesta-vinilar-un-coche/cover.webp",
+      "coverKb": 188,
+      "og": "assets/blog/cuanto-cuesta-vinilar-un-coche/og.jpg",
+      "ogKb": 173
+    },
+    {
+      "slug": "ppf-o-ceramico-que-elegir",
+      "cover": "assets/blog/ppf-o-ceramico-que-elegir/cover.webp",
+      "coverKb": 31,
+      "og": "assets/blog/ppf-o-ceramico-que-elegir/og.jpg",
+      "ogKb": 38
+    },
+    {
+      "slug": "cuanto-cuesta-ppf-coche",
+      "cover": "assets/blog/cuanto-cuesta-ppf-coche/cover.webp",
+      "coverKb": 183,
+      "og": "assets/blog/cuanto-cuesta-ppf-coche/og.jpg",
+      "ogKb": 142
+    },
+    {
+      "slug": "limpieza-tapiceria-coche-precio",
+      "cover": "assets/blog/limpieza-tapiceria-coche-precio/cover.webp",
+      "coverKb": 52,
+      "og": "assets/blog/limpieza-tapiceria-coche-precio/og.jpg",
+      "ogKb": 55
+    }
+  ]
+}

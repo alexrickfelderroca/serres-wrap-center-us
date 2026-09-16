@@ -1,0 +1,5 @@
+# pages whose content is English-only by design (only nav/CTA/footer/breadcrumb translate). Globs, one per line.
+blog/how-much-does-ppf-cost.html
+blog/how-much-does-a-car-wrap-cost.html
+blog/ppf-vs-ceramic-coating.html
+blog/car-upholstery-cleaning-cost.html

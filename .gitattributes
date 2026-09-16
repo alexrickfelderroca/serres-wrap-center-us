@@ -1,0 +1,3 @@
+# This repo is CRLF end-to-end (inherited from the Barcelona source) and the
+# _build edit helpers preserve EOL byte-for-byte. Disable all git normalisation.
+* -text

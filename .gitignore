@@ -1,0 +1,22 @@
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+.bak-2026-07-09/
+.screenshots/
+
+# Working material — never publish (contains client photos & internal docs)
+ACTUALIZACIONES PARA MEJOR SEO/
+fotos sin matricula/
+SEO-TZ-programmer-ES.md
+sitemap 2.xml.inetloc
+
+# Build tooling deps
+_build/node_modules/
+_build/package-lock.json
+
+# US port additions
+_build/reports/
+node_modules/
+*.bak
+.screenshots/

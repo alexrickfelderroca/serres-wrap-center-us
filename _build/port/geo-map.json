@@ -1,0 +1,334 @@
+[
+ {
+  "en": "PPF, Car Wrap & Detailing in Barcelona | SERRES",
+  "newEn": "PPF, Car Wrap & Detailing in Miami | SERRES",
+  "newEs": "PPF, Car Wrap y Detailing en Miami | SERRES",
+  "note": "SEO: a Miami neighbourhood/area could be added later (home <title>)"
+ },
+ {
+  "en": "PPF, custom Car Wrap and concours-level detailing in Barcelona (Sant Cugat del Vallès) — engineered for the cars you build your life around. One workshop. Obsessive standards.",
+  "newEn": "PPF, custom Car Wrap and concours-level detailing in Miami, Florida — engineered for the cars you build your life around. One workshop. Obsessive standards.",
+  "newEs": "PPF, Car Wrap a medida y detailing de nivel concours en Miami, Florida, pensados para los coches alrededor de los que construyes tu vida. Un taller. Estándares obsesivos.",
+  "note": "the '(Sant Cugat del Vallès)' slot was removed — a Miami area could take its place later"
+ },
+ {
+  "en": "Barcelona, Spain",
+  "newEn": "Miami, Florida",
+  "newEs": "Miami, Florida",
+  "note": "locality label (footer/NAP); a neighbourhood could be prefixed later. NOT REACHABLE BY THE DICTIONARY (inline HTML, no key — route to the HTML/NAP/trust-signal/blog passes): index.html:885 '<p>Sant Cugat del Vallès<br>Barcelona, Spain</p>' (first line has no key; delete it or leave the Miami neighbourhood slot empty until the owner supplies it); index.html:846 '.cm-v' 'Sant Cugat del Vallès, Barcelona' -> 'Miami, Florida'; the 8 identical '<p class=\"phone\">Sant Cugat del Vallès, Barcelona · +34 …</p>' lines (services/ppf.html:703, vinyl.html:669, ceramic.html:567, paint-correction.html:636, detailing.html:493, body-kits.html:598, pages/projects.html:379, pages/why-serres.html:421) -> 'Miami, Florida' (leave the +34 phone to the NAP pass); index.html:811 id=\"taller-barcelona\" -> 'taller-miami' (no href points to it in stage); the 98% stat tile pages/why-serres.html:398 and the 98% sentence blog/cuanto-cuesta-ppf-coche.html:332 (drop or make non-numeric); services/detailing.html:556 inline JSON-LD FAQ text (Sant Cugat + 98%); JSON-LD PostalAddress/areaServed in all 14 pages (jsonld-map.json); the Spanish-only blog pages with 'en España' / ITV / DGT (blog/cuanto-cuesta-vinilar-un-coche.html:115-118 and 354-356, cuanto-cuesta-ppf-coche.html, ppf-o-ceramico-que-elegir.html)"
+ },
+ {
+  "en": "Every car gets its own room in this gallery of work. Shot in and around Barcelona — no stock photos, no rented cars. Pick a build below, or scroll the floor.",
+  "newEn": "Every car gets its own room in this gallery of work. All of it shot by us — no stock photos, no rented cars. Pick a build below, or scroll the floor.",
+  "newEs": "Cada coche tiene su propia sala en esta galería de trabajos. Todo fotografiado por nosotros — sin fotos de stock ni coches de alquiler. Elige un proyecto abajo o recorre la planta.",
+  "note": "gallery intro made location-neutral (photos were shot in Barcelona); review: 'Every shot is our own work' replaced to avoid repeating Every…/work"
+ },
+ {
+  "en": "A new G87 M2 wrapped in a deep frozen grey, photographed on a Barcelona rooftop with the Collserola tower behind it. Matte body, gloss-black detailing, carbon accents.",
+  "newEn": "A new G87 M2 wrapped in a deep frozen grey, photographed on a city rooftop with a communications tower behind it. Matte body, gloss-black detailing, carbon accents.",
+  "newEs": "Un M2 G87 nuevo con Car Wrap en un gris frozen profundo, fotografiado en una azotea urbana con una torre de telecomunicaciones detrás. Carrocería mate, detalles en negro brillo, acentos de carbono.",
+  "note": "caption neutralised: Barcelona rooftop / Collserola tower -> city rooftop / communications tower; ES 'torre de telecomunicaciones' matches alt-map.json for the same photos"
+ },
+ {
+  "en": "A pearl-white GR Supra protected and sealed, then taken out into the Catalan countryside.",
+  "newEn": "A pearl-white GR Supra protected and sealed, then taken out into the open countryside.",
+  "newEs": "Un GR Supra blanco perla protegido y sellado, llevado después a campo abierto.",
+  "note": "caption neutralised"
+ },
+ {
+  "en": "A matte-black XM wrapped in full PPF and finished inside and out — illuminated kidney grille, Alcantara starlight headliner and quad exhaust, shot on a sun-broken Catalan back road.",
+  "newEn": "A matte-black XM wrapped in full PPF and finished inside and out — illuminated kidney grille, Alcantara starlight headliner and quad exhaust, shot on a quiet, sun-broken back road.",
+  "newEs": "Un XM negro mate cubierto con PPF completo y rematado por dentro y por fuera — parrilla iluminada, cielo estrellado de Alcantara y escape cuádruple, fotografiado en una carretera secundaria tranquila con el sol entre las nubes.",
+  "note": "caption neutralised"
+ },
+ {
+  "en": "Collserola",
+  "newEn": "Tower",
+  "newEs": "Torre",
+  "note": "gallery location tag for the M2 tower shot; neutral label (the adjacent shot already uses the existing key Rooftop/Azotea)"
+ },
+ {
+  "en": "Front end · Collserola",
+  "newEn": "Front end · Tower",
+  "newEs": "Frontal · Torre",
+  "note": "gallery location tag; keeps the ' · ' separator"
+ },
+ {
+  "en": "Exclusive — Car Transformation Projects in Barcelona | SERRES",
+  "newEn": "Exclusive — Car Transformation Projects in Miami | SERRES",
+  "newEs": "Exclusivo — Proyectos de Transformación en Miami | SERRES"
+ },
+ {
+  "en": "The Exclusive is our complete car transformation project in Barcelona: paint correction, colour change, PPF, Ceramic Coating, body work and interior — every discipline we have, applied to one car as a single project.",
+  "newEn": "The Exclusive is our complete car transformation project in Miami: paint correction, colour change, PPF, Ceramic Coating, body work and interior — every discipline we have, applied to one car as a single project.",
+  "newEs": "Exclusivo es nuestro proyecto de transformación completa de coches en Miami: corrección de pintura, cambio de color, PPF, Ceramic Coating, carrocería e interior — cada disciplina que tenemos, aplicada a un coche como un único proyecto."
+ },
+ {
+  "en": "Detailing Studio in Sant Cugat — Why SERRES",
+  "newEn": "Detailing Studio in Miami — Why SERRES",
+  "newEs": "Estudio de Detailing en Miami — Por Qué SERRES",
+  "note": "SEO: a Miami neighbourhood/area could replace the old town name later (why-serres <title>)"
+ },
+ {
+  "en": "We are a detailing studio in Sant Cugat del Vallès with one obsession: doing it properly. No shortcuts, no “good enough” — meticulous prep, premium materials and the same standards applied to a daily driver and a hypercar alike.",
+  "newEn": "We are a detailing studio in Miami, Florida, with one obsession: doing it properly. No shortcuts, no “good enough” — meticulous prep, premium materials and the same standards applied to a daily driver and a hypercar alike.",
+  "newEs": "Somos un estudio de detailing en Miami, Florida, con una obsesión: hacerlo bien. Sin atajos, sin “ya vale” — solo preparación meticulosa, materiales premium y los mismos estándares aplicados a un coche diario y a un hiperdeportivo por igual.",
+  "note": "SEO: neighbourhood slot"
+ },
+ {
+  "en": "We install PPF in Barcelona, at our workshop in Sant Cugat del Vallès: an invisible urethane skin over your factory paint that absorbs stone chips, swirls and bug acid. Self-healing film with a 3-year warranty, from 890 €. Available clear, gloss, satin and full colour-shift.",
+  "newEn": "We install PPF in Miami, Florida, at our own workshop: an invisible urethane skin over your factory paint that absorbs stone chips, swirls and bug acid. Self-healing film with a 3-year warranty, from 890 €. Available clear, gloss, satin and full colour-shift.",
+  "newEs": "Instalamos PPF en Miami, Florida, en nuestro propio taller: una piel de uretano invisible sobre tu pintura de fábrica que absorbe impactos de piedra, micro-arañazos y ácido de insectos. Film autorregenerable con 3 años de garantía, desde 890 €. Disponible en transparente, brillo, satinado y colour-shift completo.",
+  "note": "money fragment '890 €' copied verbatim; 3-year warranty is source text"
+ },
+ {
+  "en": "The SERRES ceramic coating for cars in Barcelona: a SiO₂ coating that chemically bonds to the paint — sealing the gloss with a slick, hydrophobic layer that repels water, grime and UV for years.",
+  "newEn": "The SERRES ceramic coating for cars in Miami: a SiO₂ coating that chemically bonds to the paint — sealing the gloss with a slick, hydrophobic layer that repels water, grime and UV for years.",
+  "newEs": "El tratamiento cerámico para coche en Miami de SERRES: un recubrimiento SiO₂ que se adhiere químicamente a la pintura — sella el brillo con una capa hidrófoba y deslizante que repele agua, suciedad y UV durante años."
+ },
+ {
+  "en": "Car detailing in Barcelona: steam cleaning, decontamination and hand finishing, inside and out, at our Sant Cugat del Vallès studio. Deep Clean from €150.",
+  "newEn": "Car detailing in Miami, Florida: steam cleaning, decontamination and hand finishing, inside and out, at our own studio. Deep Clean from €150.",
+  "newEs": "Detailing de coche en Miami, Florida: limpieza a vapor, descontaminación y acabado a mano, por dentro y por fuera, en nuestro propio estudio. Deep Clean desde 150 €.",
+  "note": "money fragment copied verbatim"
+ },
+ {
+  "en": "SERRES car polishing in Barcelona is a multi-stage machine paint correction that removes micro-scratches, holograms and oxidation, restoring the true gloss and depth of your paint. We work in Sant Cugat del Vallès, 20 minutes from Barcelona.",
+  "newEn": "SERRES car polishing in Miami is a multi-stage machine paint correction that removes micro-scratches, holograms and oxidation, restoring the true gloss and depth of your paint. We work from our own studio, by appointment.",
+  "newEs": "El pulido de coche en Miami de SERRES es una corrección multietapa a máquina que elimina micro-arañazos, hologramas y oxidación, devolviendo el brillo y la profundidad reales a tu pintura. Trabajamos desde nuestro propio estudio, con cita previa.",
+  "note": "'20 minutes from Barcelona' dropped — a Miami area / driving-time reference could be added later; 'by appointment' is source text (same page FAQ, services/paint-correction.html:601); second 'Miami' removed to avoid doubling in body copy"
+ },
+ {
+  "en": "Car wrapping in Barcelona: we wrap your car with a full or partial colour change using 3M, Avery Dennison and Inozetek films — over 150 colours in matte, satin, gloss, metallic and colour-flip. Full car from €1,490, fully reversible, at our workshop in Sant Cugat del Vallès.",
+  "newEn": "Car wrapping in Miami, Florida: we wrap your car with a full or partial colour change using 3M, Avery Dennison and Inozetek films — over 150 colours in matte, satin, gloss, metallic and colour-flip. Full car from €1,490, fully reversible, at our own workshop.",
+  "newEs": "Car wrapping en Miami, Florida: vinilamos tu coche con cambio de color total o parcial usando films 3M, Avery Dennison e Inozetek — más de 150 colores en mate, satinado, brillo, metalizado y colour-flip. Coche completo desde 1.490 €, totalmente reversible, en nuestro propio taller.",
+  "note": "money fragment copied verbatim"
+ },
+ {
+  "en": "We fit body kits in Barcelona (workshop in Sant Cugat del Vallès): installation, painting and OEM-level fitment of lips, diffusers, spoilers and widebody conversions, from €450. Custom rims and exhaust tips too, to completely transform your car.",
+  "newEn": "We fit body kits at our own workshop in Miami, Florida: installation, painting and OEM-level fitment of lips, diffusers, spoilers and widebody conversions, from €450. Custom rims and exhaust tips too, to completely transform your car.",
+  "newEs": "Realizamos el montaje de body kits en nuestro propio taller de Miami, Florida: instalación, pintura y ajuste a nivel OEM de labios, difusores, alerones y conversiones widebody, desde 450 €. También llantas a medida y colas de escape para transformar por completo tu coche.",
+  "note": "money fragment copied verbatim; the '(workshop in Sant Cugat del Vallès)' parenthesis folded into the sentence instead of leaving an empty slot"
+ },
+ {
+  "en": "PPF, Car Wrap and detailing studio in Barcelona (Sant Cugat del Vallès): Ceramic Coating, multi-stage polishing and body kits. Get a quote on WhatsApp.",
+  "newEn": "PPF, Car Wrap and detailing studio in Miami, Florida: Ceramic Coating, multi-stage polishing and body kits. Get a quote on WhatsApp.",
+  "newEs": "Estudio de PPF, Car Wrap y detailing en Miami, Florida: Ceramic Coating, pulido por etapas y body kits. Pide presupuesto por WhatsApp.",
+  "note": "SEO: neighbourhood slot (organization/meta description)"
+ },
+ {
+  "en": "Detailing studio in Sant Cugat del Vallès: PPF, Car Wrap and paint correction with certified materials and 98% of clients who recommend us.",
+  "newEn": "Detailing studio in Miami, Florida: PPF, Car Wrap and paint correction with certified materials, recommended by the clients we work for.",
+  "newEs": "Estudio de detailing en Miami, Florida: PPF, Car Wrap y corrección de pintura con materiales certificados, recomendado por los clientes con los que trabajamos.",
+  "note": "98% claim dropped (rephrased without a number); SEO: neighbourhood slot"
+ },
+ {
+  "en": "SERRES projects in Barcelona: a gallery of real PPF, Car Wrap, Ceramic Coating and detailing work on Porsche, BMW, Toyota and Range Rover.",
+  "newEn": "SERRES projects: a gallery of real PPF, Car Wrap, Ceramic Coating and detailing work on Porsche, BMW, Toyota and Range Rover.",
+  "newEs": "Proyectos de SERRES: galería de trabajos reales de PPF, Car Wrap, Ceramic Coating y detailing en Porsche, BMW, Toyota y Range Rover.",
+  "note": "geo dropped on purpose: 'projects in Miami' would claim the pictured work was done in Miami (it was shot in Barcelona)"
+ },
+ {
+  "en": "SERRES Exclusive: complete car transformation projects in Barcelona. Correction, colour change, PPF, Ceramic Coating and interior. Only 6 a year.",
+  "newEn": "SERRES Exclusive: complete car transformation projects in Miami. Correction, colour change, PPF, Ceramic Coating and interior. Only 6 a year.",
+  "newEs": "Exclusivo SERRES: proyectos de transformación completa de coches en Miami. Corrección, cambio de color, PPF, Ceramic Coating e interior. Solo 6 al año.",
+  "note": "'Only 6 a year' is source text, kept — confirm it applies to the Miami branch"
+ },
+ {
+  "en": "Complete transformation projects in Barcelona",
+  "newEn": "Complete transformation projects in Miami",
+  "newEs": "Proyectos de transformación completa en Miami"
+ },
+ {
+  "en": "Detailing studio in Sant Cugat del Vallès",
+  "newEn": "Detailing studio in Miami, Florida",
+  "newEs": "Estudio de detailing en Miami, Florida",
+  "note": "SEO: neighbourhood slot"
+ },
+ {
+  "en": "Professional detailing in Sant Cugat",
+  "newEn": "Professional detailing in Miami",
+  "newEs": "Detailing profesional en Miami",
+  "note": "SEO: neighbourhood slot"
+ },
+ {
+  "en": "PPF, Car Wrap & Detailing in Barcelona",
+  "newEn": "PPF, Car Wrap & Detailing in Miami",
+  "newEs": "PPF, Car Wrap y Detailing en Miami",
+  "note": "H1 keyword line; SEO: neighbourhood slot"
+ },
+ {
+  "en": "Workshop in Barcelona",
+  "newEn": "Workshop in Miami",
+  "newEs": "Taller en Miami",
+  "note": "SEO: neighbourhood slot"
+ },
+ {
+  "en": "PPF, Car Wrap and detailing in Barcelona",
+  "newEn": "PPF, Car Wrap and detailing in Miami",
+  "newEs": "PPF, Car Wrap y detailing en Miami"
+ },
+ {
+  "en": "SERRES is a PPF, Car Wrap and detailing workshop in Sant Cugat del Vallès, minutes from Barcelona. We work with films from several professional brands: PPF in more than 50 colours and 3M, Avery Dennison and Inozetek vinyls with more than 150 colours for colour changes.",
+  "newEn": "SERRES is a PPF, Car Wrap and detailing workshop in Miami, Florida. We work with films from several professional brands: PPF in more than 50 colours and 3M, Avery Dennison and Inozetek vinyls with more than 150 colours for colour changes.",
+  "newEs": "SERRES es un taller de PPF, Car Wrap y detailing en Miami, Florida. Trabajamos con films de varias marcas profesionales: PPF con más de 50 colores y vinilos 3M, Avery Dennison e Inozetek con más de 150 colores para el cambio de color.",
+  "note": "'minutes from Barcelona' dropped — SEO: neighbourhood / area slot"
+ },
+ {
+  "en": "How much does PPF installation cost in Barcelona?",
+  "newEn": "How much does PPF installation cost in Miami?",
+  "newEs": "¿Cuánto cuesta instalar PPF en Miami?"
+ },
+ {
+  "en": "We are at Av. Can Fatjó dels Aurons, 15, 08174 Sant Cugat del Vallès (Barcelona). We work by appointment: Monday to Friday from 09:00 to 19:00 and Saturdays from 10:00 to 14:00.",
+  "newEn": "Our workshop is in Miami, Florida, and we work by appointment only: Monday to Friday from 09:00 to 19:00 and Saturdays from 10:00 to 14:00.",
+  "newEs": "Nuestro taller está en Miami, Florida, y trabajamos solo con cita previa: de lunes a viernes de 09:00 a 19:00 y sábados de 10:00 a 14:00.",
+  "note": "Barcelona street + ZIP removed; hours copied verbatim from the Barcelona source — owner must confirm Miami hours (and 12h format); ~-25% length until the Miami address is inserted"
+ },
+ {
+  "en": "PPF in Barcelona — paint protection for your car",
+  "newEn": "PPF in Miami — paint protection for your car",
+  "newEs": "PPF en Miami — protección de pintura para tu coche"
+ },
+ {
+  "en": "Paint decontamination and correction, cutting the pattern specific to your model, application in a clean booth and a panel-by-panel review under controlled hexagonal lighting. The process takes place in our workshop in Sant Cugat del Vallès and, if anything falls short of our standard, it is redone before delivery.",
+  "newEn": "Paint decontamination and correction, cutting the pattern specific to your model, application in a clean booth and a panel-by-panel review under controlled hexagonal lighting. The process takes place in our own workshop in Miami and, if anything falls short of our standard, it is redone before delivery.",
+  "newEs": "Descontaminación y corrección de la pintura, corte del patrón específico de tu modelo, aplicación en cabina limpia y revisión panel a panel bajo iluminación hexagonal controlada. El proceso se realiza en nuestro propio taller de Miami y, si algo no cumple nuestro estándar, se repite antes de la entrega."
+ },
+ {
+  "en": "Car Wrap — car colour change in Barcelona",
+  "newEn": "Car Wrap — car colour change in Miami",
+  "newEs": "Car Wrap — cambio de color de coche en Miami"
+ },
+ {
+  "en": "Ceramic Coating — paint correction and ceramic sealing in Barcelona",
+  "newEn": "Ceramic Coating — paint correction and ceramic sealing in Miami",
+  "newEs": "Ceramic Coating — corrección y sellado cerámico en Miami"
+ },
+ {
+  "en": "Car detailing in Barcelona",
+  "newEn": "Car detailing in Miami",
+  "newEs": "Detailing de coche en Miami"
+ },
+ {
+  "en": "What people ask before a detail — prices, timings and how we work in Sant Cugat.",
+  "newEn": "What people ask before a detail — prices, timings and how we work in Miami.",
+  "newEs": "Lo que nos preguntan antes de un detailing — precios, tiempos y cómo trabajamos en Miami.",
+  "note": "SEO: neighbourhood slot"
+ },
+ {
+  "en": "We don't work by eye alone: we review the finish panel by panel under controlled hexagonal lighting, at our Sant Cugat del Vallès workshop. If anything falls short of our standard, it is redone before delivery. That is the reason behind our 4.9 rating and why 98% of clients recommend us.",
+  "newEn": "We don't work by eye alone: we review the finish panel by panel under controlled hexagonal lighting, at our own Miami workshop. If anything falls short of our standard, it is redone before delivery. That is the reason behind our 4.9 rating and why our clients recommend us.",
+  "newEs": "No trabajamos a ojo: revisamos el acabado panel a panel bajo iluminación hexagonal controlada, en nuestro propio taller de Miami. Si algo no cumple nuestro estándar, se repite antes de la entrega. Es la razón de nuestra valoración de 4,9 y de que nuestros clientes nos recomienden.",
+  "note": "98% dropped; '4.9 rating' kept verbatim — it is the Barcelona listing rating, trust-signal pass to decide"
+ },
+ {
+  "en": "We work by appointment only, Monday to Saturday, at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès (Barcelona). Message us on WhatsApp or call +34 621 24 44 69 with your car's model and condition and we confirm a fixed price and date, usually the same day.",
+  "newEn": "We work by appointment only, Monday to Saturday, at our workshop in Miami, Florida. Message us on WhatsApp or call +34 621 24 44 69 with your car's model and condition and we confirm a fixed price and date, usually the same day.",
+  "newEs": "Trabajamos solo con cita previa, de lunes a sábado, en nuestro taller de Miami, Florida. Escríbenos por WhatsApp o llama al +34 621 24 44 69 con el modelo y el estado del coche y te confirmamos precio cerrado y fecha, normalmente el mismo día.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Miami address slot"
+ },
+ {
+  "en": "Ceramic coating for cars in Barcelona",
+  "newEn": "Ceramic coating for cars in Miami",
+  "newEs": "Tratamiento cerámico para coche en Miami"
+ },
+ {
+  "en": "By prior appointment from Monday to Saturday at our workshop in Sant Cugat del Vallès (Av. Can Fatjó dels Aurons 15). Message us on WhatsApp or call +34 621 24 44 69 and we will give you a closed quote the same day.",
+  "newEn": "By prior appointment from Monday to Saturday at our workshop in Miami, Florida. Message us on WhatsApp or call +34 621 24 44 69 and we will give you a closed quote the same day.",
+  "newEs": "Con cita previa de lunes a sábado en nuestro taller de Miami, Florida. Escríbenos por WhatsApp o llama al +34 621 24 44 69 y te damos presupuesto cerrado en el día.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Miami address slot"
+ },
+ {
+  "en": "Work gallery — PPF, Car Wrap & Detailing in Barcelona",
+  "newEn": "Work gallery — PPF, Car Wrap & Detailing",
+  "newEs": "Galería de trabajos — PPF, Car Wrap y Detailing",
+  "note": "geo dropped on purpose (gallery H1 sits directly above Barcelona-shot photos), consistent with the geo-free <title> and the neutral meta description of the same page; -2 words, inside the H1 allowance of ±3"
+ },
+ {
+  "en": "PPF protection in Barcelona",
+  "newEn": "PPF protection in Miami",
+  "newEs": "Protección PPF en Miami"
+ },
+ {
+  "en": "Body kit fitting in Barcelona",
+  "newEn": "Body kit fitting in Miami",
+  "newEs": "Montaje de body kits en Miami"
+ },
+ {
+  "en": "Car Wrap and colour change in Barcelona",
+  "newEn": "Car Wrap and colour change in Miami",
+  "newEs": "Car Wrap y cambio de color en Miami"
+ },
+ {
+  "en": "What we get asked every week at the Sant Cugat workshop. If your question isn't here, message us on WhatsApp.",
+  "newEn": "What we get asked every week at the Miami workshop. If your question isn't here, message us on WhatsApp.",
+  "newEs": "Lo que nos preguntan cada semana en el taller de Miami. Si tu duda no está aquí, escríbenos por WhatsApp.",
+  "note": "SEO: neighbourhood slot"
+ },
+ {
+  "en": "Yes. We guarantee the mounting, the panel-gap fitment and the paint finish of the installed kit. All the work is done at our Sant Cugat del Vallès workshop, so we answer directly for every part we fit. The exact terms depend on the kit's material and are detailed in the quote.",
+  "newEn": "Yes. We guarantee the mounting, the panel-gap fitment and the paint finish of the installed kit. All the work is done at our own Miami workshop, so we answer directly for every part we fit. The exact terms depend on the kit's material and are detailed in the quote.",
+  "newEs": "Sí. Garantizamos la fijación, el ajuste de holguras y el acabado de pintura del kit instalado. Todo el trabajo se hace en nuestro propio taller de Miami, por lo que respondemos directamente de cada pieza montada. Las condiciones exactas dependen del material del kit y se detallan en el presupuesto."
+ },
+ {
+  "en": "We work by appointment Monday to Saturday at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès, 20 minutes from Barcelona. Message us on WhatsApp or call +34 621 24 44 69 with your model and the kit you have in mind, and we'll give you a quote and a date the same day.",
+  "newEn": "We work by appointment Monday to Saturday at our workshop in Miami, Florida. Message us on WhatsApp or call +34 621 24 44 69 with your model and the kit you have in mind, and we'll give you a quote and a date the same day.",
+  "newEs": "Trabajamos con cita previa de lunes a sábado en nuestro taller de Miami, Florida. Escríbenos por WhatsApp o llama al +34 621 24 44 69 con el modelo y el kit que tienes en mente, y te damos valoración y fecha en el día.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Miami address slot"
+ },
+ {
+  "en": "PPF, Car Wrap, Ceramic Coating & Detailing prices in Barcelona",
+  "newEn": "PPF, Car Wrap, Ceramic Coating & Detailing prices in Miami",
+  "newEs": "Precios de PPF, Car Wrap, Ceramic Coating y Detailing en Miami"
+ },
+ {
+  "en": "Car polishing in Barcelona — paint correction",
+  "newEn": "Car polishing in Miami — paint correction",
+  "newEs": "Pulido de coche en Miami — corrección de pintura"
+ },
+ {
+  "en": "How much does car polishing cost in Barcelona?",
+  "newEn": "How much does car polishing cost in Miami?",
+  "newEs": "¿Cuánto cuesta un pulido de coche en Miami?"
+ },
+ {
+  "en": "We work in three stages: cutting to remove the defects, refining and final finishing. We review the car panel by panel under controlled hexagonal lighting and, if anything falls short of our standard, it is redone before delivery. Everything is done at our workshop in Sant Cugat del Vallès.",
+  "newEn": "We work in three stages: cutting to remove the defects, refining and final finishing. We review the car panel by panel under controlled hexagonal lighting and, if anything falls short of our standard, it is redone before delivery. Everything is done at our own workshop in Miami.",
+  "newEs": "Trabajamos en tres etapas: corte para eliminar los defectos, refinado y acabado final. Revisamos el coche panel a panel bajo iluminación hexagonal controlada y, si algo no cumple nuestro estándar, se repite antes de la entrega. Todo se hace en nuestro propio taller de Miami."
+ },
+ {
+  "en": "Message us on WhatsApp at +34 621 24 44 69 or call us and we'll book you in Monday to Saturday. We are at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès, 20 minutes from Barcelona. For corrections taking more than one day we can coordinate pick-up and delivery with you.",
+  "newEn": "Message us on WhatsApp at +34 621 24 44 69 or call us and we'll book you in Monday to Saturday. Our workshop is in Miami, Florida, and we see every car by appointment. For corrections taking more than one day we can coordinate pick-up and delivery with you.",
+  "newEs": "Escríbenos por WhatsApp al +34 621 24 44 69 o llámanos y te damos cita de lunes a sábado. Nuestro taller está en Miami, Florida, y atendemos cada coche con cita previa. Para correcciones de más de un día podemos coordinar la recogida y entrega contigo.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Miami address slot"
+ },
+ {
+  "en": "Car wrapping in Barcelona — wrap your car",
+  "newEn": "Car wrapping in Miami — wrap your car",
+  "newEs": "Car Wrapping en Miami — vinilar tu coche"
+ },
+ {
+  "en": "The 3M, Avery Dennison and Inozetek films we install last between 5 and 7 years outdoors with normal care, and the manufacturer backs them with its official warranty. We also guarantee our installation in writing: edges, seams and no lifting. All the work is done at our own workshop in Sant Cugat del Vallès.",
+  "newEn": "The 3M, Avery Dennison and Inozetek films we install last between 5 and 7 years outdoors with normal care, and the manufacturer backs them with its official warranty. We also guarantee our installation in writing: edges, seams and no lifting. All the work is done at our own workshop in Miami.",
+  "newEs": "Los films 3M, Avery Dennison e Inozetek que instalamos duran entre 5 y 7 años en exterior con un mantenimiento normal, y el fabricante los respalda con su garantía oficial. Además garantizamos por escrito nuestra instalación: bordes, uniones y ausencia de levantamientos. Todo el trabajo se hace en nuestro taller propio de Miami."
+ },
+ {
+  "en": "We work by appointment from Monday to Saturday at Av. Can Fatjó dels Aurons 15, Sant Cugat del Vallès (Barcelona), 20 minutes from central Barcelona. Message us on WhatsApp or call +34 621 24 44 69 and we'll confirm the day and an approximate quote in the same conversation.",
+  "newEn": "We work by appointment only, from Monday to Saturday, at our own workshop in Miami, Florida. Message us on WhatsApp or call +34 621 24 44 69 and we'll confirm the day and an approximate quote in the same conversation.",
+  "newEs": "Trabajamos solo con cita previa, de lunes a sábado, en nuestro taller propio de Miami, Florida. Escríbenos por WhatsApp o llama al +34 621 24 44 69 y te confirmamos día y presupuesto orientativo en la misma conversación.",
+  "note": "Barcelona street removed; +34 phone kept verbatim (NAP pass); Miami address slot; ~-21% length until the address is inserted"
+ },
+ {
+  "en": "Masia driveway",
+  "newEn": "Farmhouse driveway",
+  "newEs": "Entrada de la finca",
+  "note": "gallery location tag of the Supra villa shot (pages/gallery.html:423); 'masia' is a Catalan farmhouse — neutralised in line with alt-map.json ('old stone farmhouse' / 'casa rural de piedra'); 'finca' keeps 19->19 chars"
+ },
+ {
+  "en": "Pearl white · Masia driveway",
+  "newEn": "Pearl white · Farmhouse driveway",
+  "newEs": "Blanco perla · Entrada de la finca",
+  "note": "lightbox data-note of the same shot (pages/gallery.html:420); keeps the ' · ' separator"
+ }
+]

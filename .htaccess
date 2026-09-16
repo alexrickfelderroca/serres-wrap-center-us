@@ -1,0 +1,43 @@
+# ─────────────────────────────────────────────────────────────────────────
+#  SERRES — cache policy
+#
+#  Goal: every change pushed to the site is visible immediately, for every
+#  visitor, on every device (not just in incognito).
+#
+#  How: browsers may still STORE files, but they must re-check ("revalidate")
+#  with the server before reusing them. When a file hasn't changed, the server
+#  answers with a tiny "304 Not Modified" (still fast, no re-download). When a
+#  file HAS changed, the browser fetches the new version right away. This
+#  removes the stale-cache problem caused by the previous 7-day cache rule.
+# ─────────────────────────────────────────────────────────────────────────
+
+# 1) Disable any long-lived expiry rules (Hostinger enables these by default,
+#    which is what cached files for up to 7 days).
+<IfModule mod_expires.c>
+  ExpiresActive Off
+</IfModule>
+
+# 2) Tell every response to always revalidate before being reused.
+<IfModule mod_headers.c>
+  Header unset Expires
+  Header unset Pragma
+  Header set Cache-Control "no-cache, must-revalidate"
+
+  # HTML pages: never reuse without checking the server first.
+  <FilesMatch "\.(html?|json)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+  </FilesMatch>
+</IfModule>
+
+# 3) Keep validators on so unchanged files can return a fast 304 instead of
+#    re-downloading. (ETag + Last-Modified power the revalidation above.)
+FileETag MTime Size
+
+# 4) Correct MIME types for the self-hosted fonts. Most Apache builds already
+#    know woff2, but some Hostinger setups do not; declaring it guarantees the
+#    browser receives the fonts as fonts (not as octet-stream / html).
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType font/woff  .woff
+  AddType font/ttf   .ttf
+</IfModule>
