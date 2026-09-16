@@ -1036,3 +1036,812 @@
   .us-nav-drop-panel{transform:none}
   .us-countdown::before{box-shadow:0 0 0 3px rgba(212,175,95,.18)}
 }
+
+
+/* ==========================================================================
+   ==========================================================================
+   17. CHROME  -  header, trust bar, price tables, terms, CTA band, footer
+   ==========================================================================
+
+   WHY THIS SECTION EXISTS
+   -----------------------
+   The chrome partials in _build/partials/ were written to a BEM contract
+   (us-nav__links, us-trustbar__item, us-footer__col ...) while sections 1-16
+   above implement an older flat scheme (us-trust-item, us-nav-drop, us-tier-*).
+   60 of the 63 "us-" classes in the shipped markup therefore had no CSS at all
+   and the trust bar rendered as a raw bulleted <ul> underneath the fixed header
+   on all 14 pages.
+
+   THE MARKUP IS THE CONTRACT. Nothing in _build/partials/ or in any .html page
+   was renamed to fit this stylesheet; this stylesheet was written to fit the
+   markup that ships. Sections 1-16 are left untouched: their flat classes are
+   dead but harmless, and deleting them is a separate, riskier change.
+
+   Where a section above already styles a ROOT that the partials also use
+   (.us-trustbar, .us-ctaband, .us-terms), the rules here come later in the same
+   file and deliberately re-declare only the handful of properties that assumed
+   the old flat children. Everything else from those sections still applies.
+
+   INHERITED RULES THIS SECTION OVERRIDES ON PURPOSE (all in the pages' inline
+   <style>, which loads BEFORE this file):
+     header.nav{position:fixed}        -> sticky, so it can no longer sit on top
+                                         of REGION:trustbar, which the markup
+                                         places immediately after </header>.
+     .nav-links{display:none} @1200px  -> the desktop links now hide at exactly
+                                         980px, where the burger appears. The
+                                         inherited pair left 981-1200px with no
+                                         navigation at all.
+     .nav-inner{padding-top:68px} @760 -> that padding existed to clear a FIXED
+                                         header over a hero; a sticky header in
+                                         flow does not need it.
+     .nav-right .btn:not(.compact){display:none} @760
+                                      -> the header CTA stays, in a compact form.
+
+   MEASURED CONTRAST (sRGB alpha-composited in Node, not eyeballed - see the
+   report; --muted-2 #6e6e77 is 3.92:1 on --bg and is therefore NEVER used for
+   text in this section):
+     --text  #f3f3f5 on --bg #0a0a0b .................... 17.86:1
+     --muted #9a9aa3 on --bg #0a0a0b ....................  7.09:1
+     --muted #9a9aa3 on trust bar (#fff .022 over --bg) .  6.87:1
+     --muted #9a9aa3 on footer (#fff .018 over --bg-2) ..  6.70:1
+     --muted #9a9aa3 on nav (rgba(10,10,11,.86) over the
+                             brightest pixel of the hero)  5.49:1
+     #a8a8b2 on the dropdown panel #16161a ..............  7.66:1
+     chrome darkest stop #8d8d97 on --bg ................  6.02:1
+     chrome darkest stop #8d8d97 on --panel .............  5.59:1
+     #0a0a0b on the chrome button (worst stop #8d8d97) ..  6.02:1
+   ========================================================================== */
+
+
+/* ------------------------------------------------------- chrome tokens ---
+   The roots introduced here, so --us-display / --us-body / --us-ease /
+   --us-chrome inherit into their children and nowhere else.                  */
+.us-nav,.us-footer,.us-prices,.us-startingat,
+.us-trustbar__list,.us-terms__list,.us-ctaband__inner{
+  --us-display:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;
+  --us-body:"DM Sans",system-ui,-apple-system,sans-serif;
+  --us-ease:var(--ease,cubic-bezier(.22,.61,.36,1));
+  --us-chrome:var(--chrome,linear-gradient(176deg,#fdfdfe 0%,#cfcfd6 32%,#8d8d97 52%,#f0f0f4 72%,#a6a6b0 100%));
+  --us-hairline:var(--chrome-line,linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 100%));
+  --us-gold:rgba(212,175,95,.62);
+  --us-gold-soft:rgba(212,175,95,.07);
+  /* text colours, all measured above. --us-dim is the DIMMEST value allowed
+     for running text anywhere in this section. */
+  --us-dim:var(--muted,#9a9aa3);
+  --us-dim-hi:#a8a8b2;
+  /* stacked, never a single flat shadow */
+  --us-chrome-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 2px 6px rgba(0,0,0,.34),0 14px 30px -14px rgba(0,0,0,.62),0 38px 74px -34px rgba(0,0,0,.78);
+  --us-focus:2px solid #fdfdfe;
+}
+
+
+/* ==========================================================================
+   17.1  SITE HEADER  -  .us-nav
+   Logo left, links centre/right, CTA right. STICKY, not fixed: REGION:trustbar
+   is the very next element in the DOM on all 14 pages, so a fixed header would
+   always be painted on top of it (that is the bug this section fixes). Sticky
+   keeps the bar pinned to the top while scrolling without taking it out of
+   flow, so nothing can overlap it and nothing is overlapped by it.
+   ========================================================================== */
+header.us-nav{
+  position:sticky;top:0;left:auto;right:auto;z-index:50;
+  isolation:isolate;
+  background:linear-gradient(180deg,rgba(10,10,11,.93) 0%,rgba(10,10,11,.90) 60%,rgba(10,10,11,.86) 100%);
+  -webkit-backdrop-filter:blur(16px) saturate(125%);
+  backdrop-filter:blur(16px) saturate(125%);
+  border-bottom:1px solid var(--line,rgba(255,255,255,.09));
+  box-shadow:0 1px 0 rgba(255,255,255,.035),0 6px 18px -10px rgba(0,0,0,.6),0 24px 48px -30px rgba(0,0,0,.75);
+  font-family:var(--us-body);
+}
+/* the inherited .scrolled class only swaps the same translucent dark in; the
+   hairline below it must not double up with ours */
+header.us-nav.scrolled{border-bottom-color:var(--line-strong,rgba(255,255,255,.16))}
+
+.us-nav .nav-inner{
+  padding-top:16px;padding-bottom:16px;
+  gap:clamp(16px,2.2vw,34px);
+  min-height:76px;
+}
+.us-nav .logo{position:relative;z-index:2}
+
+/* --- desktop link row ---------------------------------------------------- */
+.us-nav .us-nav__links{
+  display:flex;align-items:center;
+  gap:clamp(14px,1.6vw,26px);
+  margin-left:auto;margin-right:clamp(6px,1.2vw,18px);
+  min-width:0;
+}
+.us-nav__link,
+.us-nav__drop-summary{
+  position:relative;
+  display:inline-flex;align-items:center;
+  min-height:44px;
+  padding:0 2px;
+  font-family:var(--us-display);font-weight:500;
+  text-transform:uppercase;letter-spacing:.15em;
+  font-size:clamp(13px,1.05vw,15px);line-height:1;
+  color:var(--us-dim);
+  white-space:nowrap;
+  transition:color .18s var(--us-ease);
+}
+/* the underline grows from the left on entering, 180ms, ease-out */
+.us-nav__link::after,
+.us-nav__drop-summary::after{
+  content:"";position:absolute;left:0;right:0;bottom:11px;height:1px;
+  background:var(--us-chrome);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform .18s var(--us-ease);
+}
+.us-nav__link:hover,
+.us-nav__drop-summary:hover,
+.us-nav__drop[open] > .us-nav__drop-summary{color:var(--text,#f3f3f5)}
+.us-nav__link:hover::after,
+.us-nav__drop-summary:hover::after,
+.us-nav__drop[open] > .us-nav__drop-summary::after{transform:scaleX(1)}
+.us-nav__link[aria-current]{color:var(--text,#f3f3f5)}
+.us-nav__link[aria-current]::after{transform:scaleX(1)}
+
+.us-nav__link:focus-visible,
+.us-nav__drop-summary:focus-visible,
+.us-nav__panel-link:focus-visible,
+.us-nav__burger:focus-visible,
+.us-nav__mobile-link:focus-visible,
+.us-nav__cta:focus-visible{
+  outline:var(--us-focus);outline-offset:4px;
+}
+
+/* --- Services dropdown (<details>) --------------------------------------- */
+.us-nav__drop{position:relative;display:inline-flex;align-items:center}
+.us-nav__drop-summary{
+  cursor:pointer;gap:9px;
+  list-style:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.us-nav__drop-summary::-webkit-details-marker{display:none}
+.us-nav__drop-summary::marker{content:"";font-size:0}
+
+.us-nav__caret{
+  display:inline-block;width:7px;height:7px;margin-top:-3px;flex:none;
+  border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;
+  transform:rotate(45deg);
+  transition:transform .2s var(--us-ease),opacity .2s var(--us-ease);
+  opacity:.75;
+}
+.us-nav__drop[open] .us-nav__caret{transform:rotate(-135deg) translate(-2px,-2px);opacity:1}
+
+.us-nav__panel{
+  position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+  z-index:70;
+  min-width:262px;padding:8px;
+  display:flex;flex-direction:column;
+  background:linear-gradient(180deg,#191920 0%,#16161a 55%,#141417 100%);
+  border:1px solid var(--line-strong,rgba(255,255,255,.16));
+  box-shadow:var(--us-chrome-shadow);
+  clip-path:polygon(0 0,100% 0,100% 100%,16px 100%,0 calc(100% - 16px));
+}
+/* the hairline that ties the panel back to the bar */
+.us-nav__panel::before{
+  content:"";position:absolute;left:16px;right:16px;top:0;height:1px;
+  background:var(--us-hairline);
+  opacity:.5;pointer-events:none;
+}
+/* (0,2,0) on purpose: these links sit inside the inherited nav.nav-links, whose
+   `.nav-links a` rule is (0,1,1) and would otherwise decide their type and
+   colour by accident. Same display-font treatment as the bar above them, and
+   as .us-nav__mobile-link, so the two menus are one type system. */
+.us-nav .us-nav__panel-link{
+  display:flex;align-items:center;
+  min-height:44px;padding:11px 16px;
+  font-family:var(--us-display);font-weight:500;
+  text-transform:uppercase;letter-spacing:.14em;
+  font-size:13.5px;line-height:1.35;
+  color:var(--us-dim-hi);
+  white-space:normal;
+  transition:color .18s var(--us-ease),background .18s var(--us-ease),padding-left .18s var(--us-ease);
+}
+.us-nav .us-nav__panel-link:hover{color:var(--text,#f3f3f5);background:rgba(255,255,255,.055);padding-left:20px}
+.us-nav__panel-link:focus-visible{outline-offset:-2px}
+
+@keyframes us-nav-pop{from{opacity:0;transform:translate(-50%,-8px)}to{opacity:1;transform:translate(-50%,0)}}
+.us-nav__drop[open] > .us-nav__panel{animation:us-nav-pop .2s var(--us-ease) both}
+
+/* --- header CTA ---------------------------------------------------------- */
+.us-nav .nav-right{gap:clamp(12px,1.4vw,20px)}
+.us-nav .nav-right .us-nav__cta{
+  display:inline-flex;align-items:center;
+  min-height:44px;flex:none;
+}
+
+/* --- mobile menu (<details>) ---------------------------------------------
+   position:static on purpose - see .us-nav__mobile-panel below.             */
+.us-nav__mobile{position:static;display:none}
+.us-nav__burger{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:46px;height:46px;
+  cursor:pointer;list-style:none;
+  color:var(--text,#f3f3f5);
+  border:1px solid var(--line-strong,rgba(255,255,255,.16));
+  background:rgba(255,255,255,.03);
+  -webkit-tap-highlight-color:transparent;
+  transition:background .18s var(--us-ease),border-color .18s var(--us-ease);
+}
+.us-nav__burger::-webkit-details-marker{display:none}
+.us-nav__burger::marker{content:"";font-size:0}
+.us-nav__burger:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.28)}
+
+.us-nav__burger-bars{position:relative;display:block;width:20px;height:2px}
+.us-nav__burger-bars,
+.us-nav__burger-bars::before,
+.us-nav__burger-bars::after{
+  background-color:currentColor;
+  transition:transform .2s var(--us-ease),background-color .2s var(--us-ease);
+}
+.us-nav__burger-bars::before,
+.us-nav__burger-bars::after{content:"";position:absolute;left:0;width:20px;height:2px}
+.us-nav__burger-bars::before{top:-6px}
+.us-nav__burger-bars::after{top:6px}
+.us-nav__mobile[open] .us-nav__burger-bars{background-color:transparent}
+.us-nav__mobile[open] .us-nav__burger-bars::before{transform:translateY(6px) rotate(45deg)}
+.us-nav__mobile[open] .us-nav__burger-bars::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* The panel is anchored to the HEADER, not to the 44px <details> that triggers
+   it: header.us-nav is position:sticky and therefore the nearest positioned
+   ancestor once .us-nav__mobile goes static. Anchoring it to the <details>
+   put its left edge at -12px on a 390px screen (measured), i.e. off-screen. */
+.us-nav__mobile-panel{
+  position:absolute;top:100%;right:40px;left:auto;z-index:70;
+  margin-top:13px;
+  width:min(calc(100vw - 48px),340px);
+  max-height:calc(100dvh - 160px);overflow-y:auto;overscroll-behavior:contain;
+  padding:8px 8px 12px;
+  display:flex;flex-direction:column;gap:4px;
+  background:linear-gradient(180deg,#191920 0%,#16161a 55%,#131316 100%);
+  border:1px solid var(--line-strong,rgba(255,255,255,.16));
+  box-shadow:var(--us-chrome-shadow);
+  clip-path:polygon(0 0,100% 0,100% 100%,18px 100%,0 calc(100% - 18px));
+}
+@keyframes us-nav-drawer{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.us-nav__mobile[open] > .us-nav__mobile-panel{animation:us-nav-drawer .22s var(--us-ease) both}
+
+.us-nav__mobile-group{display:flex;flex-direction:column}
+.us-nav__mobile-group + .us-nav__mobile-group{
+  margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--line,rgba(255,255,255,.09));
+}
+.us-nav__mobile-label{
+  display:block;padding:10px 16px 6px;
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.24em;font-size:11px;line-height:1.4;
+  color:var(--us-dim);
+}
+.us-nav__mobile-link{
+  display:flex;align-items:center;
+  min-height:46px;padding:12px 16px;
+  font-family:var(--us-display);font-weight:500;
+  text-transform:uppercase;letter-spacing:.14em;
+  font-size:14px;line-height:1.35;
+  color:var(--us-dim-hi);
+  transition:color .18s var(--us-ease),background .18s var(--us-ease);
+}
+.us-nav__mobile-link:hover,
+.us-nav__mobile-link:active{color:var(--text,#f3f3f5);background:rgba(255,255,255,.055)}
+.us-nav__mobile-link:focus-visible{outline-offset:-2px}
+
+/* --- THE BREAKPOINT PAIR -------------------------------------------------
+   These two must MEET: 980 / 981. The inherited sheet hid .nav-links at
+   1200px while nothing showed a burger until 980px, so 981-1200px had no
+   navigation at all. Both selectors below are (0,2,0) and come after the
+   inherited (0,1,0) rules, so they win in every branch.                     */
+@media (min-width:981px){
+  .us-nav .us-nav__links{display:flex}
+  .us-nav .us-nav__mobile{display:none}
+}
+@media (max-width:980px){
+  .us-nav .us-nav__links{display:none}
+  .us-nav .us-nav__mobile{display:inline-flex}
+}
+
+/* ONE burger, never two. assets/serres-enhance.js appends its own .srs-burger
+   into .nav-right and shows it exactly when it measures .us-nav__links as not
+   rendered - which, with the pair above, is exactly <=980px. So with the script
+   running the two menus would BOTH be in the bar (measured: two hamburgers side
+   by side at 390px). The script's overlay menu is the richer one, so it wins
+   when it exists; the <details> menu in the markup is what the partial promises
+   for JS-off, and that is when this selector stops matching and it appears.
+   Either way the burger and the desktop links still meet exactly at 980/981.
+   Nothing outside .us-nav is addressed: .srs-burger only appears inside :has(). */
+.us-nav .nav-right:has(> .srs-burger) .us-nav__mobile{display:none}
+
+/* keep the CTA on phones (the inherited sheet hid it at 760px), compact.
+   NOTE: padding-top/bottom here are deliberately NOT escalated. serres-enhance.js
+   injects `@media(max-width:760px){header.nav .nav-inner{padding-top:max(64px,
+   env(safe-area-inset-top)+20px)}}` at (0,2,1) from a runtime <style>, so it wins
+   over this (0,2,0) rule whenever the script runs and the phone header measures
+   125px tall. That is the script author's deliberate notch clearance, in a file
+   this section does not own - it is reported, not overridden. The values below
+   are what applies with JS off. */
+@media (max-width:760px){
+  .us-nav .nav-inner{
+    padding-top:12px;padding-bottom:12px;
+    padding-left:24px;padding-right:24px;   /* matches .wrap, so the logo lines
+                                               up with the trust bar below it */
+    min-height:68px;gap:12px;
+  }
+  .us-nav .nav-right .us-nav__cta{
+    display:inline-flex;
+    padding:11px 15px;font-size:12px;letter-spacing:.1em;gap:0;
+  }
+  .us-nav .nav-right .us-nav__cta .arr{display:none}
+  .us-nav__burger{width:44px;height:44px}
+  .us-nav__mobile-panel{right:24px}
+}
+@media (max-width:400px){
+  .us-nav .nav-inner{gap:8px}
+  .us-nav .nav-right .us-nav__cta{padding:10px 11px;font-size:11px;letter-spacing:.07em}
+  .us-nav__mobile-panel{right:16px;width:min(calc(100vw - 32px),320px)}
+}
+
+
+/* ==========================================================================
+   17.2  TRUST BAR  -  .us-trustbar__list / __item / __label / __note
+   A 4-up row, never a bulleted list. __label and __note used to run together
+   as "1-yearSERRES installation warranty"; the label is now its own block with
+   real space under it, and a faded hairline separates the items.
+   Section 4 above styled the (now dead) flat .us-trust-item and set the
+   SECTION to flex; the section is a block again here because its only child is
+   the .wrap <ul> that carries the grid.
+   ========================================================================== */
+.us-trustbar{display:block;margin-top:0}
+.us-trustbar__list{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  list-style:none;margin:0 auto;
+  font-family:var(--us-body);
+}
+.us-trustbar__item{
+  position:relative;min-width:0;
+  display:flex;flex-direction:column;justify-content:center;
+  gap:6px;
+  padding:20px 24px;min-height:84px;
+  list-style:none;
+}
+.us-trustbar__item::marker{content:"";font-size:0}
+.us-trustbar__item:first-child{padding-left:0}
+.us-trustbar__item:last-child{padding-right:0}
+/* vertical hairline between items, faded at both ends - never a hard rule */
+.us-trustbar__item + .us-trustbar__item::before{
+  content:"";position:absolute;left:0;top:16px;bottom:16px;width:1px;
+  background:linear-gradient(180deg,transparent,var(--line-strong,rgba(255,255,255,.16)) 26%,var(--line-strong,rgba(255,255,255,.16)) 74%,transparent);
+}
+.us-trustbar__label{
+  display:block;
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.055em;
+  font-size:clamp(17px,1.5vw,21px);line-height:1.04;
+  overflow-wrap:break-word;
+  background:var(--us-chrome);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+.us-trustbar__note{
+  display:block;
+  font-family:var(--us-body);font-weight:400;
+  font-size:13px;line-height:1.45;letter-spacing:.005em;
+  color:var(--us-dim);
+  text-wrap:pretty;overflow-wrap:break-word;
+}
+@media (max-width:860px){
+  .us-trustbar__list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .us-trustbar__item{padding:16px 18px;min-height:78px}
+  .us-trustbar__item:first-child,
+  .us-trustbar__item:nth-child(3){padding-left:0}
+  .us-trustbar__item:nth-child(even){padding-right:0}
+  /* 2x2: vertical rule inside each pair, horizontal rule between the rows */
+  .us-trustbar__item + .us-trustbar__item::before{content:none}
+  .us-trustbar__item:nth-child(even)::before{
+    content:"";position:absolute;left:0;top:14px;bottom:14px;width:1px;height:auto;
+    background:linear-gradient(180deg,transparent,var(--line-strong,rgba(255,255,255,.16)),transparent);
+  }
+  .us-trustbar__item:nth-child(n+3)::after{
+    content:"";position:absolute;left:0;right:0;top:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--line,rgba(255,255,255,.09)) 24%,var(--line,rgba(255,255,255,.09)) 76%,transparent);
+  }
+  .us-trustbar__label{font-size:16px;letter-spacing:.04em}
+  .us-trustbar__note{font-size:12.5px}
+}
+@media (max-width:400px){
+  .us-trustbar__item{padding:14px 12px;min-height:72px}
+  .us-trustbar__label{font-size:15px}
+}
+
+
+/* ==========================================================================
+   17.3  PRICE TABLES  -  .us-prices + __table/__caption/__head/__col/__row/
+   __name/__desc/__note/__price/__amount/__badge/__legend*
+   Real <table> markup (crawlable, no-JS). Native table layout on desktop;
+   below 640px every row becomes a stacked card, so the 4-column PPF tier
+   matrix CANNOT produce a horizontal scrollbar at 390px.
+   ========================================================================== */
+.us-prices{margin-top:32px;min-width:0;font-family:var(--us-body)}
+.us-prices__table{
+  width:100%;max-width:100%;
+  border-collapse:collapse;
+  background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,.004) 55%,transparent);
+  border:1px solid var(--line,rgba(255,255,255,.09));
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 10px 24px -18px rgba(0,0,0,.7),0 30px 60px -40px rgba(0,0,0,.8);
+}
+.us-prices__caption{
+  caption-side:top;text-align:left;
+  padding:0 0 14px;
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;
+  font-size:13px;line-height:1.3;
+  color:var(--us-dim);
+}
+.us-prices__head .us-prices__col{
+  text-align:left;vertical-align:bottom;
+  padding:15px 20px;
+  font-family:var(--us-display);font-weight:600;
+  text-transform:uppercase;letter-spacing:.18em;
+  font-size:11px;line-height:1.4;
+  color:var(--us-dim);
+  background:rgba(255,255,255,.028);
+  border-bottom:1px solid var(--line-strong,rgba(255,255,255,.16));
+}
+.us-prices__head .us-prices__col:nth-child(2){width:40%}
+.us-prices__head .us-prices__col:nth-child(n+3){text-align:right;width:15%;white-space:nowrap}
+.us-prices__row > *{
+  padding:16px 20px;vertical-align:top;
+  border-bottom:1px solid var(--line,rgba(255,255,255,.09));
+}
+.us-prices__table tbody .us-prices__row:last-child > *{border-bottom:0}
+.us-prices__row{transition:background .18s var(--us-ease)}
+.us-prices__row:hover{background:rgba(255,255,255,.026)}
+.us-prices__name{
+  text-align:left;
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.035em;
+  font-size:19px;line-height:1.12;
+  color:var(--text,#f3f3f5);
+}
+.us-prices__desc{
+  font-size:14.5px;line-height:1.55;
+  color:var(--us-dim);text-wrap:pretty;
+}
+.us-prices__note{
+  display:block;margin-top:7px;
+  font-size:12.5px;line-height:1.5;letter-spacing:.005em;
+  color:var(--us-dim);
+}
+.us-prices__price{text-align:right;white-space:nowrap}
+.us-prices__amount{
+  font-family:var(--us-display);font-weight:700;
+  letter-spacing:.02em;font-size:21px;line-height:1.1;
+  background:var(--us-chrome);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+.us-prices__badge{
+  display:inline-block;margin-left:10px;vertical-align:2px;
+  padding:4px 9px;
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.18em;
+  font-size:10px;line-height:1.3;
+  color:#e6cf9a;
+  border:1px solid rgba(212,175,95,.34);
+  background:var(--us-gold-soft);
+  white-space:nowrap;
+}
+.us-prices__legend{
+  list-style:none;margin:18px 0 0;
+  display:flex;flex-direction:column;gap:9px;
+  font-size:13.5px;line-height:1.55;
+  color:var(--us-dim);
+}
+.us-prices__legend-item{margin:0;max-width:74ch;text-wrap:pretty;list-style:none}
+.us-prices__legend-item::marker{content:"";font-size:0}
+.us-prices__legend-label{
+  display:inline-block;margin-right:9px;
+  padding:3px 9px;
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.16em;
+  font-size:10.5px;line-height:1.4;
+  color:var(--text,#f3f3f5);
+  border:1px solid var(--line-strong,rgba(255,255,255,.16));
+  background:rgba(255,255,255,.045);
+}
+
+/* --- stacked cards below 640px ------------------------------------------ */
+@media (max-width:640px){
+  .us-prices__table{display:block;border:0;background:none;box-shadow:none}
+  .us-prices__table thead,
+  .us-prices__table tbody{display:block;width:100%}
+  .us-prices__caption{display:block;padding-bottom:12px}
+
+  /* the 3-column tables lose their header entirely; the 4-column PPF tier
+     matrix keeps ONLY the two tier names, as a strip above the cards, so the
+     two amounts in each card stay identifiable. No tier name is authored here
+     - it is the markup's own <th> text. Without :has() support the strip is
+     simply hidden and the legend under the table still names both tiers. */
+  .us-prices__table thead{display:none}
+  .us-prices__table:has(.us-prices__head .us-prices__col:nth-child(4)) thead{display:block}
+  .us-prices__head tr{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:0;
+    border-bottom:1px solid var(--line-strong,rgba(255,255,255,.16));
+  }
+  .us-prices__head .us-prices__col{
+    padding:10px 14px;border-bottom:0;background:none;
+    text-align:right;letter-spacing:.14em;
+  }
+  .us-prices__head .us-prices__col:nth-child(1),
+  .us-prices__head .us-prices__col:nth-child(2){display:none}
+  .us-prices__head .us-prices__col:nth-child(n+3){width:auto}
+
+  .us-prices__row{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:6px 14px;align-items:end;
+    padding:18px 16px;
+    border-bottom:1px solid var(--line,rgba(255,255,255,.09));
+    background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008) 60%,transparent);
+  }
+  .us-prices__table tbody .us-prices__row:last-child{border-bottom:1px solid var(--line,rgba(255,255,255,.09))}
+  .us-prices__row > *{padding:0;border-bottom:0}
+  .us-prices__name{grid-column:1/-1;font-size:21px}
+  .us-prices__desc{grid-column:1/-1;font-size:13.5px;margin-bottom:4px}
+  .us-prices__price{text-align:right;min-width:0}
+  /* a 3-column row has exactly three cells, so its single price is both the
+     3rd and the last child -> it spans the card. A 4-column row's two prices
+     sit side by side under the tier strip. */
+  .us-prices__row > .us-prices__price:nth-child(3):last-child{grid-column:1/-1}
+  .us-prices__amount{font-size:19px}
+  .us-prices__badge{margin-left:0;margin-top:8px;display:table}
+  .us-prices__legend{font-size:13px}
+}
+
+
+/* ==========================================================================
+   17.4  TERMS SMALL PRINT  -  .us-terms__list / __item
+   Section 6 above put the border and the flex row on .us-terms itself, which
+   in this markup is a full-bleed <div> wrapping a .wrap <ul>. The rule moves
+   to the list so the hairline lines up with the page grid.
+   ========================================================================== */
+.us-terms{display:block;border-top:0;padding:0;margin-top:40px}
+.us-terms__list{
+  display:flex;flex-wrap:wrap;
+  gap:10px 30px;
+  list-style:none;margin:0 auto;
+  padding-top:18px;
+  border-top:1px solid var(--line,rgba(255,255,255,.09));
+  font-family:var(--us-body);font-size:13px;line-height:1.55;
+  color:var(--us-dim);
+}
+.us-terms__item{
+  position:relative;margin:0;min-width:0;max-width:62ch;
+  list-style:none;text-wrap:pretty;
+}
+.us-terms__item::marker{content:"";font-size:0}
+@media (max-width:760px){
+  .us-terms__list{gap:9px 0;flex-direction:column}
+  .us-terms__item{max-width:none}
+}
+
+
+/* ==========================================================================
+   17.5  CTA BAND  -  .us-ctaband__inner / __text / __title / __note / __cta
+   Section 5 above already paints the strip (6-stop vertical blend, hairlines
+   that fade at both ends). This only lays the contents out.
+   ========================================================================== */
+.us-ctaband__inner{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+}
+.us-ctaband__text{max-width:44ch;min-width:0}
+.us-ctaband__title{
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;line-height:.94;letter-spacing:.012em;
+  font-size:clamp(34px,5.6vw,72px);
+  margin:0;max-width:none;
+  color:var(--text,#f3f3f5);text-wrap:balance;
+}
+.us-ctaband__note{
+  margin:20px auto 0;max-width:52ch;
+  font-family:var(--us-body);
+  font-size:clamp(15px,1.3vw,17px);line-height:1.6;
+  color:var(--us-dim);text-wrap:pretty;
+}
+.us-ctaband__cta{margin-top:36px;min-height:48px}
+@media (max-width:760px){
+  .us-ctaband__cta{margin-top:28px}
+}
+
+
+/* ==========================================================================
+   17.6  FOOTER  -  .us-footer and its 16 children
+   Brand + tagline + languages, four link columns (one of them the NAP block
+   and the hours), then a bottom bar with the copyright and the legal links.
+   ========================================================================== */
+.us-footer{
+  position:relative;
+  padding:72px 0 0;
+  font-family:var(--us-body);
+  color:var(--us-dim);
+  /* >=3 stops: no hard cut against the CTA band above, which ends on --bg */
+  background:linear-gradient(180deg,
+    var(--bg,#0a0a0b) 0%,
+    rgba(11,11,13,1) 14%,
+    var(--bg-2,#0e0e10) 42%,
+    #101013 74%,
+    #0b0b0d 100%);
+}
+.us-footer::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--line,rgba(255,255,255,.09)) 24%,var(--line,rgba(255,255,255,.09)) 76%,transparent);
+}
+.us-footer__inner{
+  display:grid;grid-template-columns:minmax(0,1fr);
+  gap:44px;
+  padding-bottom:56px;
+}
+.us-footer__brand{min-width:0;max-width:34ch}
+.us-footer__brand .logo img{width:186px}
+.us-footer__tagline{
+  margin-top:18px;
+  font-size:15px;line-height:1.6;
+  color:var(--us-dim);text-wrap:pretty;
+}
+.us-footer__langs{
+  margin-top:16px;
+  display:inline-block;
+  padding:6px 12px;
+  font-family:var(--us-display);font-weight:600;
+  text-transform:uppercase;letter-spacing:.2em;
+  font-size:11px;line-height:1.45;
+  color:var(--us-dim-hi);
+  border:1px solid var(--line,rgba(255,255,255,.09));
+  background:rgba(255,255,255,.025);
+}
+.us-footer__cols{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:32px 28px;min-width:0;
+}
+.us-footer__col{min-width:0}
+.us-footer__col-title{
+  margin:0 0 6px;
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.22em;
+  font-size:12px;line-height:1.5;
+  color:var(--text,#f3f3f5);
+}
+.us-footer__links{display:flex;flex-direction:column;align-items:flex-start}
+.us-footer__link{
+  position:relative;
+  display:inline-block;
+  padding:10px 0;
+  font-size:14.5px;line-height:1.45;
+  color:var(--us-dim);
+  overflow-wrap:break-word;max-width:100%;
+  transition:color .18s var(--us-ease),transform .18s var(--us-ease);
+}
+.us-footer__link:hover{color:var(--text,#f3f3f5);transform:translateX(3px)}
+.us-footer__link:focus-visible{outline:var(--us-focus);outline-offset:3px}
+.us-footer__nap{
+  font-style:normal;
+  margin:10px 0 0;
+  font-size:14.5px;line-height:1.6;
+  color:var(--us-dim-hi);
+}
+.us-footer__nap-line{display:block;overflow-wrap:break-word}
+.us-footer__nap-line:first-child{
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;
+  font-size:17px;line-height:1.2;
+  color:var(--text,#f3f3f5);
+  margin-bottom:4px;
+}
+.us-footer__hours{
+  margin:12px 0 4px;
+  padding-left:14px;
+  position:relative;
+  font-size:13.5px;line-height:1.55;
+  color:var(--us-dim);text-wrap:pretty;
+}
+.us-footer__hours::before{
+  content:"";position:absolute;left:0;top:5px;bottom:5px;width:2px;
+  background:var(--us-gold);
+}
+.us-footer__bottom{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:12px 28px;
+  padding-top:20px;padding-bottom:28px;
+  border-top:1px solid var(--line,rgba(255,255,255,.09));
+}
+.us-footer__copy{
+  font-size:13px;line-height:1.5;letter-spacing:.02em;
+  color:var(--us-dim);
+}
+.us-footer__legal{display:flex;flex-wrap:wrap;align-items:center;gap:6px 24px}
+.us-footer__legal .us-footer__link{padding:6px 0;font-size:13px}
+@media (min-width:700px){
+  .us-footer__cols{grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 24px}
+}
+@media (min-width:1000px){
+  .us-footer{padding-top:88px}
+  .us-footer__inner{
+    grid-template-columns:minmax(240px,0.9fr) minmax(0,2.4fr);
+    gap:72px;padding-bottom:64px;
+  }
+}
+@media (max-width:440px){
+  .us-footer__cols{grid-template-columns:minmax(0,1fr);gap:28px}
+  .us-footer__brand .logo img{width:160px}
+}
+
+
+/* ==========================================================================
+   17.7  INLINE "from $X"  -  .us-startingat / __amount
+   Dropped into running copy and into service tiles. Purely inline: no
+   display:inline-block, no padding, no line-height of its own, so it cannot
+   change the height of the line box it sits in.
+   ========================================================================== */
+.us-startingat{
+  display:inline;
+  white-space:nowrap;
+  font-family:var(--us-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.045em;
+  font-size:1.06em;
+  /* line-height:0 so this fragment's inline box can never be taller than its
+     parent's strut. `line-height:inherit` inherits the NUMBER (e.g. 1.6), which
+     is then multiplied by the LARGER font-size and grew the host paragraph by
+     2.4px per affected line (measured: 84px vs 81.6px over three lines). */
+  line-height:0;vertical-align:baseline;
+}
+.us-startingat__amount{
+  display:inline;
+  background:var(--us-chrome);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+/* if the gradient cannot be clipped to the glyphs, fall back to solid text
+   rather than to invisible text */
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .us-startingat__amount,.us-trustbar__label,.us-prices__amount{
+    background:none;color:var(--text,#f3f3f5);-webkit-text-fill-color:currentColor;
+  }
+}
+
+
+/* ==========================================================================
+   17.9  MARKER CLASS FROM ANOTHER PIPELINE  -  .us-post-grid
+   NOT part of the chrome brief. _build/us/30-install-blog.js stamps
+   `class="post-grid us-post-grid"` on the blog listing so its generated block
+   is identifiable; the LOOK of that grid is .post-grid in assets/blog.css and
+   is not this file's to change. Declared here only so the "us-" contract holds
+   for it too, with the single property that cannot alter that look. Delete this
+   one rule if the blog pipeline grows its own stylesheet entry.
+   ========================================================================== */
+.us-post-grid{min-width:0}
+
+
+/* ==========================================================================
+   17.8  REDUCED MOTION  -  extends the section 16 block for the chrome
+   Every element keeps its resting geometry; both <details> keep their native
+   open/closed mechanism, so the menus stay fully usable.
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  .us-nav__link,.us-nav__link::after,
+  .us-nav__drop-summary,.us-nav__drop-summary::after,
+  .us-nav__caret,
+  .us-nav__panel,.us-nav__panel-link,
+  .us-nav__burger,.us-nav__burger-bars,
+  .us-nav__burger-bars::before,.us-nav__burger-bars::after,
+  .us-nav__mobile-panel,.us-nav__mobile-link,
+  .us-prices__row,
+  .us-footer__link{
+    transition:none !important;
+    animation:none !important;
+  }
+  .us-nav__drop[open] > .us-nav__panel{animation:none;transform:translateX(-50%)}
+  .us-nav__mobile[open] > .us-nav__mobile-panel{animation:none;transform:none}
+  .us-footer__link:hover{transform:none}
+  .us-nav__panel-link:hover{padding-left:16px}
+}

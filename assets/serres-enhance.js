@@ -138,9 +138,14 @@
      suppressed below 760px whatever the header stylesheet does */
   + '@media(max-width:760px){.srs-burger{display:inline-flex}}'
 
-  /* lower the nav row on phones so logo + burger clear the status bar / notch */
+  /* Lower the nav row on phones only as far as the notch actually requires.
+     This used to be max(64px, …), inherited from the Barcelona site where the header was
+     position:fixed. The US header is position:sticky and env(safe-area-inset-top) is 0 in
+     an ordinary browser tab, so the 64px floor was pure empty space — a measured 125px-tall
+     header on a 390x844 screen, ~15% of the viewport, above the logo. The inset term still
+     does its job in a standalone/PWA context. */
   + '@media(max-width:760px){header.nav .nav-inner{'
-  +   'padding-top:max(64px,calc(env(safe-area-inset-top) + 20px));padding-bottom:14px}}'
+  +   'padding-top:max(18px,calc(env(safe-area-inset-top) + 18px));padding-bottom:14px}}'
 
   /* ---------- overlay menu ---------- */
   + '.srs-menu{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;'
@@ -151,7 +156,7 @@
   +   'opacity:0;visibility:hidden;transition:opacity .42s var(--ease,ease),visibility 0s linear .42s}'
   + '.srs-menu.open{opacity:1;visibility:visible;transition:opacity .42s var(--ease,ease),visibility 0s linear 0s}'
   + '.srs-menu-bar{display:flex;align-items:center;justify-content:space-between;'
-  +   'padding:max(60px,calc(env(safe-area-inset-top) + 20px)) 22px 20px;border-bottom:1px solid var(--line,rgba(255,255,255,.09))}'
+  +   'padding:max(22px,calc(env(safe-area-inset-top) + 20px)) 22px 20px;border-bottom:1px solid var(--line,rgba(255,255,255,.09))}'
   + '.srs-menu-logo{display:inline-flex;align-items:center;padding:0;font-size:0;line-height:0}'
   + '.srs-menu-logo img{display:block;width:150px;height:auto;aspect-ratio:600/55}'
   + '.srs-close{width:46px;height:46px;display:grid;place-items:center;cursor:pointer;'
