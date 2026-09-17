@@ -74,7 +74,10 @@ const MARKS = [
   ['round 3  tint "Pending verification" note', 'Pending verification', {}],
   ['round 3  tint "Non-reflective film above the AS-1 line"', 'Non-reflective film above', {}],
   ['round 3  tint FAQ unverified disclaimer', 'not yet verified these figures', {}],
-  ['rounds 1+3  footer body (columns, NAP, hours, Instagram)', 'us-footer__col', {}],
+  /* The footer body WAS on this list. It came off on 2026-09-16 (evening), in the same
+     commit that restored it, because the owner asked for it back after seeing the
+     emptied version. What he struck separately and has not asked back is still guarded
+     above: the "PPF near you" column and the languages line. */
 ];
 
 const cache = new Map();
