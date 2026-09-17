@@ -32,8 +32,8 @@
   },
   "routes": {
     "": {
-      "title": "PPF, Wraps and Ceramic in Boca Raton | SERRES",
-      "description": "Paint protection film from {{startingAtAmount:ppf}}, wraps from {{startingAtAmount:wraps}} and ceramic coating in Boca Raton. 3M and NAR films, published prices, 1-year install warranty.",
+      "title": "PPF, Wraps and Window Tint in Boca Raton | SERRES",
+      "description": "Paint protection film from {{startingAtAmount:ppf}}, wraps from {{startingAtAmount:wraps}} and ceramic window tint in Boca Raton. 3M and NAR films, published prices, 1-year install warranty.",
       "ogImage": "assets/og/home.jpg",
       "priority": "1.0",
       "schema": {
@@ -88,30 +88,6 @@
         "description": "Chrome delete, full color change and premium color-shift wraps in 3M 2080, Avery SW900, Inozetek and KPMF film, with edges wrapped in and a 1-year SERRES installation warranty."
       }
     },
-    "ceramic-coating/": {
-      "title": "Ceramic Coating Boca Raton {{startingAt:ceramic}} | SERRES",
-      "description": "Ceramic coating in Boca Raton {{startingAt:ceramic}}: decon, gloss prep, coating and cure, or a top-up over fresh PPF or wrap. Published prices, exact quote in 2 hours.",
-      "ogImage": "assets/og/ceramic.jpg",
-      "priority": "0.9",
-      "hasPrices": true,
-      "crumbs": [
-        [
-          "Services",
-          "#services"
-        ],
-        [
-          "Ceramic Coating",
-          "ceramic-coating/"
-        ]
-      ],
-      "schema": {
-        "kind": "service",
-        "name": "Ceramic coating in Boca Raton",
-        "serviceType": "Ceramic Coating",
-        "group": "ceramic",
-        "description": "Three-year ceramic coating over decontaminated and gloss-prepped paint, or applied over fresh paint protection film or wrap as a top-up."
-      }
-    },
     "window-tint/": {
       "title": "Window Tint Boca Raton {{startingAt:tint}} | SERRES",
       "description": "Ceramic window tint in Boca Raton {{startingAt:tint}}: IR-rejecting film on every side window and the rear glass, Florida-legal VLT options. Exact quote in 2 hours.",
@@ -161,8 +137,8 @@
       }
     },
     "pricing/": {
-      "title": "PPF, Wrap and Ceramic Prices in Boca Raton | SERRES",
-      "description": "Every SERRES price in one place: PPF {{startingAt:ppf}}, wraps {{startingAt:wraps}}, ceramic {{startingAt:ceramic}}, tint and detailing. No bait pricing, exact quote in 2 hours.",
+      "title": "PPF, Wrap and Tint Prices in Boca Raton | SERRES",
+      "description": "Every SERRES price in one place: PPF {{startingAt:ppf}}, wraps {{startingAt:wraps}}, tint {{startingAt:tint}} and detailing {{startingAt:detailing}}. No bait pricing, exact quote in 2 hours.",
       "ogImage": "assets/og/prices.jpg",
       "priority": "0.9",
       "hasPrices": true,
@@ -193,8 +169,8 @@
       }
     },
     "gallery/": {
-      "title": "Gallery: PPF, Wraps and Ceramic Work | SERRES",
-      "description": "Cars finished by the SERRES team: paint protection film, full color changes, chrome deletes and ceramic coating, photographed panel by panel.",
+      "title": "Gallery: PPF, Wraps and Tint Work | SERRES",
+      "description": "Cars finished by the SERRES team: paint protection film, full color changes, chrome deletes and ceramic window tint, photographed panel by panel.",
       "ogImage": "assets/og/gallery.jpg",
       "priority": "0.7",
       "crumbs": [
@@ -359,7 +335,7 @@
     },
     "blog/": {
       "title": "Blog: PPF, Wrap and Detailing Guides | SERRES",
-      "description": "Guides from the SERRES team: what paint protection film and wraps really cost in South Florida, PPF versus ceramic, and how to keep a finish looking new.",
+      "description": "Guides from the SERRES team: what paint protection film and wraps really cost in South Florida, and how to keep a finish looking new in this climate.",
       "ogImage": "assets/og/home.jpg",
       "priority": "0.7",
       "crumbs": [
@@ -423,32 +399,6 @@
       "schema": {
         "kind": "article",
         "headline": "How much does a car wrap cost?"
-      }
-    },
-    "blog/ppf-vs-ceramic-coating/": {
-      "title": "PPF vs Ceramic Coating: Which Do You Need?",
-      "description": "Paint protection film stops stone chips, a ceramic coating adds gloss and beading. What each one does, what they cost from {{startingAtAmount:ceramic}}, and when to combine them.",
-      "ogImage": "assets/blog/ppf-vs-ceramic-coating/og.jpg",
-      "ogType": "article",
-      "priority": "0.6",
-      "hasPrices": true,
-      "crumbs": [
-        [
-          "Blog",
-          "blog/"
-        ],
-        [
-          "PPF vs Ceramic Coating",
-          "blog/ppf-vs-ceramic-coating/"
-        ]
-      ],
-      "article": {
-        "published": "2026-07-09",
-        "modified": "2026-07-09"
-      },
-      "schema": {
-        "kind": "article",
-        "headline": "PPF or ceramic coating: which one does your car need?"
       }
     },
     "blog/car-upholstery-cleaning-cost/": {

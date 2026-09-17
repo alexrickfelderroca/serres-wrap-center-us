@@ -91,7 +91,6 @@
   var SERVICES = [
     { label: 'Paint Protection Film', slug: 'paint-protection-film' },
     { label: 'Car Wraps',             slug: 'car-wraps' },
-    { label: 'Ceramic Coating',       slug: 'ceramic-coating' },
     { label: 'Window Tint',           slug: 'window-tint' },
     { label: 'Detailing',             slug: 'detailing' }
   ];

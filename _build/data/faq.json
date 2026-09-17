@@ -39,7 +39,7 @@
    },
    {
     "q": "How do I look after a filmed car?",
-    "a": "Wash it like paint, just more gently. Hand wash with a pH-neutral shampoo, keep a pressure washer off the film edges, and leave polishes, waxes and anything abrasive out of it. A ceramic top-up over fresh film makes washing easier again: {{from:ceramic-topup}}."
+    "a": "Wash it like paint, just more gently. Hand wash with a pH-neutral shampoo, keep a pressure washer off the film edges, and leave polishes, waxes and anything abrasive out of it."
    },
    {
     "q": "Can the film be removed later?",
@@ -110,7 +110,7 @@
    },
    {
     "q": "What does paint correction do, and how many stages do I need?",
-    "a": "Correction is machine polishing that removes defects rather than hiding them. Stage 1 cuts, levelling swirls, scratches and oxidation. Stage 2 refines away the haze that cutting leaves. Stage 3 is a final jewelling pass for a show finish. The listed price covers one to two stages, which is what most daily-driven cars need, and a third stage is quoted separately when the clear coat asks for it. Gloss is read with a meter before and after, so the result is a number: a typical neglected panel goes from about 42 GU on arrival to about 94 GU after correction. It is also the right prep step before a ceramic coating, so the finish is sealed at its best rather than as found."
+    "a": "Correction is machine polishing that removes defects rather than hiding them. Stage 1 cuts, levelling swirls, scratches and oxidation. Stage 2 refines away the haze that cutting leaves. Stage 3 is a final jewelling pass for a show finish. The listed price covers one to two stages, which is what most daily-driven cars need, and a third stage is quoted separately when the clear coat asks for it. Gloss is read with a meter before and after, so the result is a number: a typical neglected panel goes from about 42 GU on arrival to about 94 GU after correction. It is also the right prep step before paint protection film, so what the film preserves is the paint at its best rather than as found."
    }
   ]
  },
@@ -131,7 +131,7 @@
    },
    {
     "q": "What is not priced on this page?",
-    "a": "Roof, mirrors, spoilers, stripes and one-off requests are quoted per car, because the panel count and the shapes decide the price. Everything else we sell today is listed above, grouped by service: paint protection film {{startingAt:ppf}}, wraps {{startingAt:wraps}}, ceramic coating {{startingAt:ceramic}}, window tint {{startingAt:tint}}, detailing {{startingAt:detailing}}."
+    "a": "Roof, mirrors, spoilers, stripes and one-off requests are quoted per car, because the panel count and the shapes decide the price. Everything else we sell today is listed above, grouped by service: paint protection film {{startingAt:ppf}}, wraps {{startingAt:wraps}}, window tint {{startingAt:tint}}, detailing {{startingAt:detailing}}."
    }
   ]
  },
@@ -268,7 +268,7 @@
   "items": [
    {
     "q": "What exactly do the first thirty cars get?",
-    "a": "Three things: 15% off any paint protection film or wrap, a free ceramic top-up over the fresh film, normally {{price:ceramic-topup}}, and Founding Member status, which is 10% off detailing for life. The discount is locked to the price list in force on the day you book. {{terms:fromMeaning}}"
+    "a": "Two things: 15% off any paint protection film or wrap, and Founding Member status, which is 10% off detailing for life. The discount is locked to the price list in force on the day you book. {{terms:fromMeaning}}"
    },
    {
     "q": "Is the deposit refundable, and what happens to it?",

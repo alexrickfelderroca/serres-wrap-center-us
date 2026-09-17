@@ -133,6 +133,26 @@ will not be indexed in its place. To attach the domain: add a `CNAME` file conta
 | 45 | **The `/window-tint` price still stands — one decision open since round 2** | Your red box around "One tint. Ceramic film." reached the bottom edge of the phone screen and so enclosed the `$500 · Full car — ceramic film` row underneath. The prose above it went; the price stayed, because it is the only price on that page and published prices are the spec's whole positioning. Say the word and it goes in one line. The same "content below the screen edge is not assumed marked" rule is why `/detailing` kept its spec rows and its before/after slider |
 | 44 | **FAQ open/close icon renders nothing on `/detailing` and `/car-wraps`** | Predates all the removals. Those two pages style `.fq-ico`, but the FAQ generator emits `.fq-x`, so the plus/minus affordance is a zero-width span. The other 11 FAQ pages define `.fq-x` correctly. The accordion still works by click and by keyboard; it just has no visible icon |
 
+### Ceramic coating withdrawn — 2026-09-17
+
+You asked for the service gone from the whole site. It is. These are the decisions that
+came with it, none of them invented, all of them reversible.
+
+| # | Item | Detail |
+|---|---|---|
+| 46 | 🔴 **The three packages are unpublished — I need new ones from you** | Daily Driver **$1,990**, New Car **$2,990** and Collector **$5,990** all bundled ceramic coating, and their prices were set with it in them. I cannot drop the line and keep the number, and I cannot invent a new one. They are now `published: false` in `assets/pricing.js` — off `/pricing`, out of the JSON-LD and out of the quote form, with the old contents and prices kept as the record. **Send me the bundles you want and what they cost, and one flag turns them back on.** Without them the site currently sells five services and no bundle, which is the biggest commercial change in this batch |
+| 47 | **The Founders Club offer is now two benefits, not three** | It was 15% off film or wrap, **a free ceramic top-up normally $600**, and Founding Member status. The middle one went with the service. `RESERVE_LIVE` is `false` and `/reserve` is unlinked until Nov 2, so nobody has been promised this — but decide what replaces it before the page goes live, or confirm two is right |
+| 48 | **Wheels-off rim coating kept, unpublished** | `assets/pricing.js` still has *Wheels-Off: rim ceramic + caliper paint* at $300, `published: false`. Withdrawing **paint** coating does not obviously withdraw **wheel** coating — different surface, and it renders nowhere today. Say the word either way |
+| 49 | **The dormant Spanish dictionary still describes the service** | `assets/serres-i18n.js` is **not loaded by any page** (Spanish is deferred to December, spec §6.13) and still carries the Barcelona ceramic copy *and euro prices*. It ships to nobody. It must be cleaned before `/es` is ever switched on — the withdrawal gate exempts the whole file and says why |
+| 50 | **Six HTML comments still name the old file** | Per-page CSS-prefix notes like *"same convention as `cc-` on ceramic-coating/index.html"*. They document a naming rule, not a service, and they are comments. Cosmetic |
+| 51 | **Orphaned ceramic media** | `assets/ceramic/` (6 files incl. a video) and `assets/og/ceramic.jpg` are no longer referenced by any page. Left on disk rather than deleted — they are recoverable client media and cost nothing where they sit. Remove them and their `_build/optimize-images.js` entries whenever you want the repo tidy |
+| 52 | **Pre-existing, unrelated: a gallery figure fails one Lighthouse check** | `label-content-name-mismatch` on the Porsche figure — its `aria-label` ("Open larger image: In the studio") does not match its visible caption. Present before this batch, on a figure nothing here touched. Accessibility still scores 100; the rule is unweighted |
+
+**Two URLs now 301 instead of 404**, in `.htaccess`: `/ceramic-coating/` → `/`, and
+`/blog/ppf-vs-ceramic-coating/` → `/blog/`. Both were indexed. These rules are live
+because the site is on Hostinger (Apache); the note at the top of that file about GitHub
+Pages ignoring it is about the mirror, not the live host.
+
 ---
 
 ## Note on the spec's dates

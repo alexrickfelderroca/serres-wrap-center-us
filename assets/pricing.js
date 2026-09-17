@@ -57,14 +57,6 @@
       coverage: 'Roof, mirrors, spoiler, stripes, one-off requests' }
   ];
 
-  /* ------------------------------------------------------------------ ceramic */
-  P.CERAMIC = [
-    { id: 'ceramic-3yr', name: '3-Year Ceramic Package', price: 1200, from: true, published: true,
-      coverage: 'Decon, single-stage gloss prep, coating, cure' },
-    { id: 'ceramic-topup', name: 'Top-up over PPF / wrap', price: 600, from: true, published: true,
-      coverage: 'Ceramic applied over fresh film — hydrophobics without touching the paint' }
-  ];
-
   /* --------------------------------------------------------------------- tint */
   P.TINT = [
     { id: 'tint-full', name: 'Full Car — Ceramic Film', price: 500, from: true, published: true,
@@ -80,14 +72,21 @@
       coverage: 'Compound + polish, swirl and hologram removal, gloss measured in and out' }
   ];
 
-  /* ----------------------------------------------------------------- packages */
+  /* ----------------------------------------------------------------- packages
+     UNPUBLISHED 2026-09-17, not deleted. Every one of these bundles ceramic coating,
+     and ceramic coating was withdrawn as a service. Their prices were set with it in
+     them, so they cannot simply drop the line and keep the number, and a new price may
+     not be invented here. published:false takes them off /pricing, out of the JSON-LD
+     OfferCatalog and out of the quote form on its own, because everything reads through
+     P.published(). The old contents and prices stay as the record of what was offered.
+     Flip published back to true once the owner supplies the new bundles. TODO item 46. */
   P.PACKAGES = [
     { id: 'daily-driver', name: 'Daily Driver',
-      includes: 'Partial front PPF + ceramic', price: 1990, published: true },
+      includes: 'Partial front PPF + ceramic', price: 1990, published: false },
     { id: 'new-car', name: 'New Car',
-      includes: 'Full front PPF + ceramic + tint', price: 2990, published: true, popular: true },
+      includes: 'Full front PPF + ceramic + tint', price: 2990, published: false, popular: true },
     { id: 'collector', name: 'Collector',
-      includes: 'Full body PPF + ceramic', price: 5990, published: true }
+      includes: 'Full body PPF + ceramic', price: 5990, published: false }
   ];
 
   /* Phase 2 — present in the data, MUST NOT render until the owner flips published. */
@@ -135,12 +134,11 @@
 
   /* ============================== selectors =============================== */
 
-  P.GROUPS = ['ppf', 'wraps', 'ceramic', 'tint', 'detailing', 'packages', 'phase2'];
+  P.GROUPS = ['ppf', 'wraps', 'tint', 'detailing', 'packages', 'phase2'];
 
   P.GROUP_LABELS = {
     ppf: 'Paint Protection Film',
     wraps: 'Car Wraps',
-    ceramic: 'Ceramic Coating',
     tint: 'Window Tint',
     detailing: 'Detailing & Paint Correction',
     packages: 'Packages',
@@ -151,7 +149,6 @@
   P.GROUP_ROUTES = {
     ppf: 'paint-protection-film',
     wraps: 'car-wraps',
-    ceramic: 'ceramic-coating',
     tint: 'window-tint',
     detailing: 'detailing',
     packages: 'pricing',
@@ -160,7 +157,7 @@
 
   P.groups = function () {
     return {
-      ppf: P.PPF, wraps: P.WRAPS, ceramic: P.CERAMIC, tint: P.TINT,
+      ppf: P.PPF, wraps: P.WRAPS, tint: P.TINT,
       detailing: P.DETAILING, packages: P.PACKAGES, phase2: P.PHASE2
     };
   };

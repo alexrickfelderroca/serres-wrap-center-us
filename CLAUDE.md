@@ -135,9 +135,22 @@ Lighthouse a11y run with the score captured, before any task is called done.
 
 ## Deploy
 
-GitHub Pages from `main` branch root, `.nojekyll` in the repo root.
-Account `alexrickfelderroca` (never `trvevr2-a11y`). Custom domain `serreswrapcenter.com`
-to be pointed here once the registrar purchase is confirmed; canonicals already use it.
+**A push to GitHub does not publish.** The live site is **https://serreswrapcenter.com on
+Hostinger** (Apache — so `.htaccess` is live and its rules really run), uploaded over FTP:
+
+```
+node _build/us/deploy-hostinger.js --list --host H --user U --pass P     # look first
+node _build/us/deploy-hostinger.js --host H --user U --pass P --dir "" [--only .html]
+```
+
+`--list` first, always: the domain-scoped FTP account lands **inside** the site root, so
+`--dir ""` is correct even though hPanel says `public_html` — passing `public_html` creates
+a nested folder and publishes nothing. `--only .html` when no asset changed: 24 files and
+1.1 MB instead of 352 files and 72.5 MB. Credentials come from the owner per run and are
+never written to a file, and he rotates them afterwards.
+
+GitHub is the repo mirror: `alexrickfelderroca/serres-wrap-center-us` (never
+`trvevr2-a11y`), `main` branch, `.nojekyll` in the root.
 
 ## Deliberately not doing (and why)
 

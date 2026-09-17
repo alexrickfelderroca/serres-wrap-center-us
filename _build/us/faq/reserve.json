@@ -3,7 +3,7 @@
   "items": [
     {
       "q": "What exactly do the first thirty cars get?",
-      "a": "Three things: 15% off any paint protection film or wrap, a free ceramic top-up over the fresh film, normally {{price:ceramic-topup}}, and Founding Member status, which is 10% off detailing for life. The discount is locked to the price list in force on the day you book. {{terms:fromMeaning}}"
+      "a": "Two things: 15% off any paint protection film or wrap, and Founding Member status, which is 10% off detailing for life. The discount is locked to the price list in force on the day you book. {{terms:fromMeaning}}"
     },
     {
       "q": "Is the deposit refundable, and what happens to it?",

@@ -29,7 +29,6 @@ const SRC = path.join(root, '_build', 'us', 'content', 'blog');
 const SLUGS = {
   'cuanto-cuesta-ppf-coche': 'how-much-does-ppf-cost',
   'cuanto-cuesta-vinilar-un-coche': 'how-much-does-a-car-wrap-cost',
-  'ppf-o-ceramico-que-elegir': 'ppf-vs-ceramic-coating',
   'limpieza-tapiceria-coche-precio': 'car-upholstery-cleaning-cost',
 };
 

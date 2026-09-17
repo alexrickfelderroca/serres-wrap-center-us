@@ -144,7 +144,7 @@
   function serviceGroups() {
     var p = P();
     if (!p || typeof p.published !== 'function') return [];
-    var order = ['packages', 'ppf', 'wraps', 'ceramic', 'tint', 'detailing'];
+    var order = ['packages', 'ppf', 'wraps', 'tint', 'detailing'];
     var labels = p.GROUP_LABELS || {};
     var out = [];
     order.forEach(function (g) {

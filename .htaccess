@@ -36,6 +36,18 @@
 DirectoryIndex index.html
 Options -Indexes
 
+# ── 2b. Retired URLs ────────────────────────────────────────────────────────
+# Ceramic coating was withdrawn as a service on 2026-09-17. Both of these were
+# indexed and linked, so they get a 301 rather than a 404: the service page to
+# the home page, since no other service replaces it, and the article to the blog
+# index, which still carries its three siblings.
+#
+# This block sits BEFORE ErrorDocument on purpose — a 301 has to win over the 404.
+# And it is live: this site is served by Hostinger (Apache), not GitHub Pages, so
+# unlike the note at the top of this file these rules actually run.
+RedirectMatch 301 ^/ceramic-coating/?$ /
+RedirectMatch 301 ^/blog/ppf-vs-ceramic-coating/?$ /blog/
+
 # ── 3. Custom 404 ───────────────────────────────────────────────────────────
 # Root-relative, so it resolves whatever folder the missing URL pretended to be
 # in. 404.html itself uses depth-0 paths for exactly this reason.

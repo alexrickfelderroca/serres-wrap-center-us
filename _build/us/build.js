@@ -42,6 +42,7 @@ const GATES = [
   ['OG, JSON-LD, visible FAQ === schema', ['_build/verify-seo.js']],
   ['no orphan pages (spec 8.4)', ['_build/us/verify-reachability.js', '.']],
   ['owner-marked removals stay removed', ['_build/us/verify-owner-marks.js', '.']],
+  ['ceramic withdrawn, ceramic tint kept', ['_build/us/verify-ceramic-withdrawn.js', '.']],
 ];
 
 function run(label, args) {
