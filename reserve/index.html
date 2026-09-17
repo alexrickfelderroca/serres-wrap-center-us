@@ -172,7 +172,13 @@
   .rs-offer-card{background:var(--bg);padding:40px 34px 42px;display:flex;flex-direction:column;gap:16px;
     transition:background .3s var(--ease)}
   .rs-offer-card:hover{background:var(--panel)}
-  .rs-offer-card.is-lead{grid-row:span 2;justify-content:flex-start}
+  /* The lead spanned two rows when the offer had THREE benefits: one tall card on the
+     left, two stacked on the right. The second benefit went with the service withdrawn on
+     2026-09-17, so there are two, and the span left an empty cell bottom-right. One row
+     now, both cards stretching to the taller of the two. Restore the span if a third
+     benefit is ever added back — see TODO item 47. (The withdrawn service is not named
+     here: the gate in _build/us/ fails on its name anywhere in a shipped page.) */
+  .rs-offer-card.is-lead{justify-content:flex-start}
   .rs-offer-no{font-family:"Barlow Condensed","Bahnschrift","Arial Narrow",sans-serif;font-weight:700;
     font-size:46px;line-height:.8;letter-spacing:.01em;color:transparent;-webkit-text-stroke:1px var(--line-strong)}
   .rs-offer-card:hover .rs-offer-no{-webkit-text-stroke:1px transparent;background:var(--chrome);
